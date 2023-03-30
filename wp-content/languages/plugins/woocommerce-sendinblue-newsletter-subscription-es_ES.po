@@ -1,0 +1,141 @@
+# Translation of Plugins - Sendinblue for WooCommerce - Development (trunk) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - Sendinblue for WooCommerce - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2023-01-31 09:53:19+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.0-alpha.3\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - Sendinblue for WooCommerce - Development (trunk)\n"
+
+#: woocommerce-sendinblue.php:176
+msgid "Please install and activate WooCommerce 3.1 or newer before this."
+msgstr "Por favor, instala y activa WooCommerce 3.1 o superior antes de esto."
+
+#: src/views/admin_view.php:812
+msgid "Do it all with Sendinblue"
+msgstr "Hacerlo todo con Sendiblue"
+
+#: src/views/admin_view.php:784
+msgid "Connect your account"
+msgstr "Conecta tu cuenta"
+
+#: src/views/admin_view.php:775
+msgid "chat, forms, sales CRM and more"
+msgstr "chat, formularios CRM de ventas y más"
+
+#: src/views/admin_view.php:774
+msgid "businesses. Email marketing, automations,"
+msgstr "negocios. Marketing por correo electrónico, automatizaciones,"
+
+#: src/views/admin_view.php:773
+msgid "WooCommerce marketing tools for small"
+msgstr "Herramientas de marketing para WooCommerce para pequeños"
+
+#: src/views/admin_view.php:770
+msgid "takeoff."
+msgstr "despegar."
+
+#: src/views/admin_view.php:767
+msgid "Prepare for"
+msgstr "Prepárate para"
+
+#: src/views/admin_menus.php:893 src/views/admin_view.php:875
+msgid "Connect to your favorite plugins"
+msgstr "Conecta con tus plugins favoritos"
+
+#: src/views/admin_menus.php:883
+msgid "See my conversations"
+msgstr "Ver mis conversaciones"
+
+#: src/views/admin_menus.php:873 src/views/admin_view.php:867
+msgid ""
+"Be there for customers instantly when they have a question\n"
+"                  while browsing your site"
+msgstr ""
+"Atiende a tus clientes al instante cuando tengan una pregunta\n"
+"\tmientras navegan por tu sitio"
+
+#: src/views/admin_menus.php:871 src/views/admin_view.php:865
+msgid "Conversations"
+msgstr "Conversaciones"
+
+#: src/views/admin_menus.php:850
+msgid "See my workflows"
+msgstr "Ver mis flujos de trabajo"
+
+#: src/views/admin_menus.php:841 src/views/admin_view.php:848
+msgid "Save time and boost performance by automating your marketing messages"
+msgstr "Ahorra tiempo y mejora el rendimiento automatizando tus mensajes de marketing"
+
+#: src/views/admin_menus.php:819
+msgid "See my campaigns"
+msgstr "Ver mis campañas"
+
+#: src/views/admin_menus.php:809 src/views/admin_view.php:829
+msgid "Sell more with sleek email messages that you can design in no time"
+msgstr "Vende más con sencillos mensajes de correo electrónico que puedes diseñar en nada de tiempo"
+
+#: src/views/admin_menus.php:807 src/views/admin_view.php:827
+msgid "Email Marketing"
+msgstr "Marketing por correo electrónico"
+
+#: src/views/admin_menus.php:770
+msgid "Go to dashboard"
+msgstr "Ir al escritorio"
+
+#: src/views/admin_menus.php:760
+msgid "The connection between Woocommerce and Sendinblue works!"
+msgstr "¡La conexión entre WooCommerce y Sendinblue funciona!"
+
+#: src/views/admin_menus.php:759
+msgid "You’re all set!"
+msgstr "¡Todo listo!"
+
+#: src/views/admin_menus.php:745
+msgid "Settings"
+msgstr "Ajustes"
+
+#: src/views/admin_menus.php:729 src/views/admin_view.php:726
+msgid "for WooCommerce"
+msgstr "para WooCommerce"
+
+#: src/managers/api-manager.php:876
+msgid "Price"
+msgstr "Precio"
+
+#: src/managers/api-manager.php:876
+msgid "Quantity"
+msgstr "Cantidad"
+
+#: src/managers/api-manager.php:876
+msgid "Products"
+msgstr "Productos"
+
+#: src/managers/api-manager.php:355 src/managers/api-manager.php:364
+msgid "Sorry, you are not allowed to do that."
+msgstr "Lo siento, no tienes permisos para hacer eso."
+
+#: src/views/admin_menus.php:839 src/views/admin_view.php:846
+msgid "Automation"
+msgstr "Automatización"
+
+#. Author of the plugin
+msgid "Sendinblue"
+msgstr "Sendinblue"
+
+#. Description of the plugin
+msgid "Allow users to subscribe to your newsletter via the checkout page and a client to send SMS campaign."
+msgstr "Permite a los usuarios suscribirse a tu boletín desde la página de finalizar compra y a un cliente enviar campañas por SMS."
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://www.sendinblue.com/?r=wporg"
+msgstr "https://www.sendinblue.com/?r=wporg"
+
+#. Plugin Name of the plugin
+msgid "Sendinblue - WooCommerce Email Marketing"
+msgstr "Sendinblue - WooCommerce Email Marketing"
