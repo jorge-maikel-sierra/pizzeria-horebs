@@ -1,4 +1,4 @@
-/*! elementor-pro - v3.11.0 - 13-02-2023 */
+/*! elementor-pro - v3.12.1 - 02-04-2023 */
 (self["webpackChunkelementor_pro"] = self["webpackChunkelementor_pro"] || []).push([["jszip.vendor"],{
 
 /***/ "../node_modules/jszip/dist/jszip.min.js":

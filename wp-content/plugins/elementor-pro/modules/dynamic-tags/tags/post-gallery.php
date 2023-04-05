@@ -45,6 +45,8 @@ class Post_Gallery extends Data_Tag {
 			}
 		}
 
+		$images = array_merge( $images, get_attached_media( 'image', get_the_ID() ) );
+
 		foreach ( $images as $image ) {
 			if ( ! in_array( $image->ID, array_column( $value, 'id' ), true ) ) {
 				$value[] = [

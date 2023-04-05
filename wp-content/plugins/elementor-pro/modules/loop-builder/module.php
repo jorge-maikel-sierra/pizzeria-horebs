@@ -63,24 +63,19 @@ class Module extends Module_Base {
 		}
 
 		// Prevent enqueue default dynamic CSS for loop item templates
-		add_action( 'elementor/css-file/post/enqueue', function( $css_file ) {
-			$this->remove_enqueue_default_dynamic_css( $css_file );
-		} );
-	}
+		add_filter( 'elementor/css-file/dynamic/should_enqueue',
+			function ( $should_enqueue, $post_id ) {
+				if ( static::TEMPLATE_LIBRARY_TYPE_SLUG === get_post_meta( $post_id, Document::TYPE_META_KEY, true ) ) {
+					$should_enqueue = false;
+				}
+				return $should_enqueue;
+			},
+		10, 2 );
 
-	/**
-	 * Remove action for enqueueing default dynamic css
-	 *
-	 * @param Elementor\Core\Files\CSS\Post $css_file
-	 */
-	private function remove_enqueue_default_dynamic_css( $css_file ) {
-		if ( $this->should_not_remove_default_dynamic_css( $css_file, $css_file->get_post_id() ) ) {
-			return;
-		}
-
-		$dynamic_tags = Plugin::elementor()->dynamic_tags;
-
-		remove_action( 'elementor/css-file/post/enqueue', [ $dynamic_tags, 'after_enqueue_post_css' ] );
+		add_filter( 'elementor/editor/localize_settings', function ( $config ) {
+			$config['admin_url'] = admin_url();
+			return $config;
+		});
 	}
 
 	public function filter_template_to_canvas_view() {
@@ -125,14 +120,13 @@ class Module extends Module_Base {
 	public static function get_experimental_data() {
 		return [
 			'name' => static::EXPERIMENT_NAME,
-			'tag' => esc_html__( 'Feature', 'elementor-pro' ),
 			'title' => esc_html__( 'Loop', 'elementor-pro' ),
 			'description' => sprintf(
 				esc_html__( 'Create powerful & repeating templates and populate each one with dynamic content like text or images. Great for listings, posts, portfolios and more! %1$sLearn More%2$s', 'elementor-pro' ),
 				'<a href="https://go.elementor.com/wp-dash-loop/" target="_blank">',
 				'</a>'
 			),
-			'release_status' => Manager::RELEASE_STATUS_BETA,
+			'release_status' => Manager::RELEASE_STATUS_STABLE,
 			'default' => Manager::STATE_ACTIVE,
 		];
 	}
@@ -252,11 +246,5 @@ class Module extends Module_Base {
 		}
 
 		return $columns;
-	}
-
-	private function should_not_remove_default_dynamic_css( $css_file, $post_id ) {
-		return ( 'elementor_library' === get_post_type( $post_id )
-			&& static::TEMPLATE_LIBRARY_TYPE_SLUG !== get_post_meta( $post_id, Document::TYPE_META_KEY, true ) )
-			|| $css_file instanceof Elementor\Core\DynamicTags\Dynamic_CSS;
 	}
 }
