@@ -169,6 +169,10 @@ If you need some assistance, you can post an issue in the Support tab, or send u
 
 == Changelog ==
 
+= 3.0.5 =
+* Improved the connection creation process with Sendinblue
+* Added endpoint to get the saved settings
+
 = 3.0.4 =
 * Improved handling of alphanumeric Order IDs in emails with Sendinblue Templates
 * Updated hyperlink in plugin description
