@@ -1,4 +1,4 @@
-/*! elementor - v3.11.5 - 14-03-2023 */
+/*! elementor - v3.12.1 - 02-04-2023 */
 (self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["preloaded-modules"],{
 
 /***/ "../assets/dev/js/frontend/handlers/accordion.js":
