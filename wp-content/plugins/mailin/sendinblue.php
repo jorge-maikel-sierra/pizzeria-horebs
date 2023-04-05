@@ -3,7 +3,7 @@
  * Plugin Name: Newsletter, SMTP, Email marketing and Subscribe forms by Sendinblue
  * Plugin URI: https://www.sendinblue.com/?r=wporg
  * Description: Manage your contact lists, subscription forms and all email and marketing-related topics from your wp panel, within one single plugin
- * Version: 3.1.58
+ * Version: 3.1.59
  * Author: Sendinblue
  * Author URI: https://www.sendinblue.com/?r=wporg
  * License: GPLv2 or later

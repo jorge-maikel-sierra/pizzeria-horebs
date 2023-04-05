@@ -2,9 +2,9 @@
 Contributors: neeraj_slit
 Tags: Email Marketing, Newsletter, Sendinblue, Forms, smtp, marketing automation, email campaign, WordPress smtp, subscription form, email, marketing, signup form
 Requires at least: 4.4
-Tested up to: 6.1.1
+Tested up to: 6.2
 Requires PHP: 5.6
-Stable tag: 3.1.58
+Stable tag: 3.1.59
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -115,6 +115,9 @@ In order to create a signup form, you need to:
 2. Integrate the form in a sidebar using a widget from WP panel > Appearance > Widgets. The Sendinblue widget form should appear in your widgets list, you just to have to drag and drop the widget into the sidebar of your choice.
 
 == Changelog ==
+
+= 3.1.59 =
+* Enhanced the plugin code to be compatible with WordPress version 6.2.
 
 = 3.1.58 =
 * Fixed bug related to multiple attachments not being sent when sending emails via Sendinblue SMTP.
