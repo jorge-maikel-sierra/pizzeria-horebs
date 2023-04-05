@@ -4,30 +4,31 @@
 
 El repositorio se estructura de la siguiente manera:
 
-├── wp-admin/
-├── wp-content/
-│   ├── themes/
-│   │   ├── pizzeria-horebs/
-│   │   │   ├── assets/
-│   │   │   ├── templates/
-│   │   │   ├── functions.php
-│   │   │   ├── style.css
-│   │   │   └── screenshot.png
-│   ├── plugins/
-│   ├── uploads/
-│   └── index.php
-├── wp-includes/
-├── wp-config.php
-├── .htaccess
-├── index.php
-├── wp-login.php
-├── wp-cron.php
-├── wp-load.php
-├── wp-settings.php
-├── wp-links-opml.php
-├── wp-trackback.php
-├── README.md
-└── LICENSE
+wp-admin/
+wp-content/
+  themes/
+    pizzeria-horebs/
+      assets/
+      templates/
+      functions.php
+      style.css
+      screenshot.png
+  plugins/
+  uploads/
+  index.php
+wp-includes/
+wp-config.php
+.htaccess
+index.php
+wp-login.php
+wp-cron.php
+wp-load.php
+wp-settings.php
+wp-links-opml.php
+wp-trackback.php
+README.md
+LICENSE
+
 
 + La carpeta wp-admin contiene todos los archivos necesarios para la sección de administración de WordPress.
 + La carpeta wp-content contiene todo el contenido personalizado del sitio web, incluyendo temas, plugins y cargas de archivos.
