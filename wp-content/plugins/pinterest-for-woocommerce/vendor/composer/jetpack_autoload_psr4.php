@@ -11,7 +11,7 @@ return array(
 		'path'    => array( $vendorDir . '/defuse/php-encryption/src' )
 	),
 	'Automattic\\WooCommerce\\Pinterest\\' => array(
-		'version' => 'dev-release/1.2.17',
+		'version' => 'dev-release/1.2.18',
 		'path'    => array( $baseDir . '/src' )
 	),
 	'Automattic\\WooCommerce\\ActionSchedulerJobFramework\\' => array(
