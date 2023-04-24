@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Plugins - Pinterest for WooCommerce - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-08-24 18:34:16+0000\n"
+"PO-Revision-Date: 2023-04-11 16:22:21+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/4.0.0-alpha.3\n"
+"X-Generator: GlotPress/4.0.0-alpha.4\n"
 "Language: es\n"
 "Project-Id-Version: Plugins - Pinterest for WooCommerce - Stable (latest release)\n"
 
@@ -15,15 +15,15 @@ msgstr ""
 msgid "Review issues"
 msgstr "Revisar problemas"
 
-#: class-pinterest-for-woocommerce.php:152
+#: class-pinterest-for-woocommerce.php:153
 msgid "Cloning this class is forbidden."
 msgstr "La clonación de esta clase está prohibida."
 
-#: class-pinterest-for-woocommerce.php:161
+#: class-pinterest-for-woocommerce.php:162
 msgid "Unserializing instances of this class is forbidden."
 msgstr "La deserialización de instancias de esta clase está prohibida."
 
-#: includes/admin/class-pinterest-for-woocommerce-admin.php:483
+#: includes/admin/class-pinterest-for-woocommerce-admin.php:488
 msgid "Cheatin' huh?"
 msgstr "¿Haces trampas?"
 
@@ -105,24 +105,24 @@ msgstr "Faltan parámetros de opción."
 msgid "There was an error saving the settings."
 msgstr "Se ha producido un error al guardar la configuración."
 
-#: src/FeedGenerator.php:127
+#: src/FeedGenerator.php:141
 msgid "Feed generation queued."
 msgstr "Generación del feed en cola."
 
-#: src/FeedGenerator.php:138
+#: src/FeedGenerator.php:152
 msgid "Feed generation start. Preparing temporary files."
 msgstr "Inicio de la generación del feed. Preparando archivos temporales."
 
-#: src/FeedGenerator.php:163
+#: src/FeedGenerator.php:198
 msgid "Feed generation end. Moving files to the final destination."
 msgstr "Finalización de la generación del feed. Moviendo archivos al destino final."
 
-#: src/FeedGenerator.php:178
+#: src/FeedGenerator.php:213
 msgid "Feed generated successfully."
 msgstr "Feed generado correctamente."
 
 #. translators: number of products
-#: src/FeedGenerator.php:289
+#: src/FeedGenerator.php:301
 msgid "Feed batch generated. Wrote %s products to the feed file."
 msgstr "Feed batch generated. Wrote %s products to the feed file."
 
@@ -131,12 +131,12 @@ msgstr "Feed batch generated. Wrote %s products to the feed file."
 msgid "Could not rename %1$s to %2$s"
 msgstr "No se pudo cambiar el nombre de %1$s a %2$s"
 
-#: class-pinterest-for-woocommerce.php:682
+#: class-pinterest-for-woocommerce.php:684
 msgid "There was an error disconnecting the Advertiser."
 msgstr "Se produjo un error al desconectar al anunciante."
 
-#: class-pinterest-for-woocommerce.php:684
-#: class-pinterest-for-woocommerce.php:767
+#: class-pinterest-for-woocommerce.php:686
+#: class-pinterest-for-woocommerce.php:769
 msgid "There was an error disconnecting the Advertiser. Please try again."
 msgstr "Se produjo un error al desconectar al anunciante. Inténtalo de nuevo."
 
@@ -156,19 +156,19 @@ msgstr "Categoría de Google"
 msgid "Categorization of the product based on the standardized Google Product Taxonomy."
 msgstr "Categorización del producto según la taxonomía normalizada de productos de Google."
 
-#: src/API/AdvertiserConnect.php:57
+#: src/API/AdvertiserConnect.php:58
 msgid "Missing advertiser or tag parameters."
 msgstr "Faltan parámetros del anunciante o de la etiqueta."
 
-#: src/API/AdvertiserConnect.php:96
+#: src/API/AdvertiserConnect.php:101
 msgid "The advertiser could not be connected to Pinterest."
 msgstr "El anunciante no se pudo conectar a Pinterest."
 
-#: src/API/AdvertiserConnect.php:100
+#: src/API/AdvertiserConnect.php:105
 msgid "Incorrect advertiser ID."
 msgstr "ID de anunciante incorrecto."
 
-#: src/API/AdvertiserConnect.php:149 src/API/AdvertiserConnect.php:163
+#: src/API/AdvertiserConnect.php:154 src/API/AdvertiserConnect.php:168
 msgid "The advertiser could not be disconnected from Pinterest."
 msgstr "El anunciante no se pudo desconectar de Pinterest."
 
@@ -192,17 +192,13 @@ msgstr[1] "Generado correctamente hace %1$s; se han escrito %2$s productos en el
 msgid "The feed is queued for processing."
 msgstr "El feed está en cola para su procesamiento."
 
-#: src/Feeds.php:45 src/Feeds.php:90
+#: src/Feeds.php:46 src/Feeds.php:88
 msgid "Wrong feed info."
 msgstr "Información del feed incorrecta."
 
-#: src/Feeds.php:57
+#: src/Feeds.php:58
 msgid "No feed found with the requested ID."
 msgstr "No se encontró ningún feed con el ID solicitado."
-
-#: src/Feeds.php:102
-msgid "No feed found with the requested location."
-msgstr "No se encontró ningún feed con la ubicación solicitada."
 
 #: src/Merchants.php:71
 msgid "Wrong response when trying to create or update merchant."
@@ -225,7 +221,7 @@ msgid "Used"
 msgstr "Usado"
 
 #. Translators: The error description
-#: src/Tracking.php:622
+#: src/Tracking.php:617
 msgid "Advertiser connected successfully"
 msgstr "El anunciante se conectó correctamente"
 
@@ -237,7 +233,7 @@ msgstr "Atributos del producto"
 msgid "As this is a variable product, you can add additional product attributes by going to Variations > Select one variation > Pinterest."
 msgstr "Como este producto es una variable, puedes añadir más atributos de producto en Variaciones > Seleccionar una variación > Pinterest."
 
-#: class-pinterest-for-woocommerce.php:667
+#: class-pinterest-for-woocommerce.php:669
 msgid "Response error on disconnect merchant."
 msgstr "Error de respuesta al desconectar al comerciante."
 
@@ -257,48 +253,48 @@ msgstr "WooCommerce"
 msgid "https://woocommerce.com"
 msgstr "https://woocommerce.com"
 
-#: class-pinterest-for-woocommerce.php:169
+#: class-pinterest-for-woocommerce.php:170
 msgid "Only a single instance of this class is allowed. Use singleton."
 msgstr "Solo se permite una instancia de esta clase. Usa singleton."
 
-#: class-pinterest-for-woocommerce.php:360
+#: class-pinterest-for-woocommerce.php:361
 msgid "Pinterest for WooCommerce requires WooCommerce Admin to be enabled."
 msgstr "Pinterest para WooCommerce requiere la activación de un administrador de WooCommerce."
 
-#: class-pinterest-for-woocommerce.php:1136
+#: class-pinterest-for-woocommerce.php:1149
 msgid "Pinterest for WooCommerce verification page"
 msgstr "Página de verificación de Pinterest para WooCommerce"
 
-#: includes/admin/class-pinterest-for-woocommerce-admin.php:63
-#: includes/admin/class-pinterest-for-woocommerce-admin.php:67
-#: includes/admin/class-pinterest-for-woocommerce-admin.php:94
-#: includes/admin/class-pinterest-for-woocommerce-admin.php:98
-#: includes/admin/class-pinterest-for-woocommerce-admin.php:216
-#: includes/admin/class-pinterest-for-woocommerce-admin.php:223
+#: includes/admin/class-pinterest-for-woocommerce-admin.php:64
+#: includes/admin/class-pinterest-for-woocommerce-admin.php:68
+#: includes/admin/class-pinterest-for-woocommerce-admin.php:95
+#: includes/admin/class-pinterest-for-woocommerce-admin.php:99
+#: includes/admin/class-pinterest-for-woocommerce-admin.php:217
+#: includes/admin/class-pinterest-for-woocommerce-admin.php:224
 #: views/attributes/variations-form.php:32 assets/build/setup-guide.js:6
 #: assets/source/setup-guide/index.js:52
 msgid "Pinterest"
 msgstr "Pinterest"
 
-#: includes/admin/class-pinterest-for-woocommerce-admin.php:78
+#: includes/admin/class-pinterest-for-woocommerce-admin.php:79
 #: assets/build/setup-guide.js:4
 #: assets/source/components/navigation-classic/main-tab-nav.js:16
 msgid "Catalog"
 msgstr "Catálogo"
 
-#: includes/admin/class-pinterest-for-woocommerce-admin.php:109
-#: includes/admin/class-pinterest-for-woocommerce-admin.php:157
+#: includes/admin/class-pinterest-for-woocommerce-admin.php:110
+#: includes/admin/class-pinterest-for-woocommerce-admin.php:158
 msgid "Setup Pinterest"
 msgstr "Configurar Pinterest"
 
-#: includes/admin/class-pinterest-for-woocommerce-admin.php:126
+#: includes/admin/class-pinterest-for-woocommerce-admin.php:127
 #: assets/build/setup-guide.js:4 assets/build/setup-guide.js:6
 #: assets/source/components/navigation-classic/main-tab-nav.js:26
 #: assets/source/setup-guide/index.js:82
 msgid "Connection"
 msgstr "Conexión"
 
-#: includes/admin/class-pinterest-for-woocommerce-admin.php:169
+#: includes/admin/class-pinterest-for-woocommerce-admin.php:170
 msgid "Landing page"
 msgstr "Página de destino"
 
@@ -312,6 +308,7 @@ msgid "No advertiser exists."
 msgstr "No existe ningún anunciante."
 
 #: src/API/Advertisers.php:59 src/API/Tags.php:58
+#: src/PinterestSyncSettings.php:113
 msgid "Response error"
 msgstr "Error de respuesta"
 
@@ -323,15 +320,15 @@ msgstr "Se ha producido un error al intentar autorizar esta aplicación. Intént
 msgid "Empty response, please try again later."
 msgstr "Respuesta vacía, vuelve a intentarlo más tarde."
 
-#: src/API/Base.php:243
+#: src/API/Base.php:289
 msgid "Reconnect to your Pinterest account"
 msgstr "Vuelve a conectar tu cuenta de Pinterest"
 
-#: src/API/Base.php:298
+#: src/API/Base.php:344
 msgid "Empty body"
 msgstr "Cuerpo vacío"
 
-#: src/API/Base.php:369 src/API/Base.php:457 src/Merchants.php:133
+#: src/API/Base.php:415 src/API/Base.php:516 src/Merchants.php:139
 msgid "Auto-created by Pinterest for WooCommerce"
 msgstr "Creado automáticamente por Pinterest para WooCommerce"
 
@@ -380,8 +377,8 @@ msgstr "La generación del feed comenzará pronto."
 msgid "Feed configuration will start shortly."
 msgstr "La configuración del feed comenzará pronto."
 
-#: src/API/FeedState.php:222 src/API/FeedState.php:274 src/Feeds.php:41
-#: src/Feeds.php:86
+#: src/API/FeedState.php:222 src/API/FeedState.php:274 src/Feeds.php:42
+#: src/Feeds.php:84
 msgid "Could not get feed info."
 msgstr "No se pudo obtener la información del feed."
 
@@ -474,7 +471,7 @@ msgstr "Estado de sincronización remota"
 msgid "Pinterest returned: %1$s"
 msgstr "Pinterest devolvió: %1$s"
 
-#: src/API/HealthCheck.php:60
+#: src/API/HealthCheck.php:65
 msgid "Could not get approval status from Pinterest."
 msgstr "No se pudo obtener el estado de aprobación de Pinterest."
 
@@ -490,11 +487,11 @@ msgstr "No se ha podido crear una etiqueta. Consulta los registros para obtener 
 msgid "Could not decrypt key value. Try reconnecting to Pinterest."
 msgstr "No se pudo descifrar el valor de la clave. Intenta volver a conectarte a Pinterest."
 
-#: src/FeedRegistration.php:95
+#: src/FeedRegistration.php:96
 msgid "Could not register feed."
 msgstr "No se pudo registrar el feed."
 
-#: src/Merchants.php:84 src/Merchants.php:167
+#: src/Merchants.php:84 src/Merchants.php:172
 msgid "Response error when trying to create a merchant or update the existing one."
 msgstr "Error de respuesta al intentar crear un comerciante o actualizar uno existente."
 
@@ -514,7 +511,7 @@ msgstr "Pinterest for WooCommerce"
 msgid "Grow your business on Pinterest! Use this official plugin to allow shoppers to Pin products while browsing your store, track conversions, and advertise on Pinterest."
 msgstr "Haz crecer tu negocio en Pinterest. Usa este complemento oficial para que los compradores puedan añadir Pines de productos mientras navegan por tu tienda, hacer un seguimiento de las conversiones y anunciarse en Pinterest."
 
-#: includes/admin/class-pinterest-for-woocommerce-admin.php:139
+#: includes/admin/class-pinterest-for-woocommerce-admin.php:140
 #: assets/build/setup-guide.js:4 assets/build/setup-guide.js:6
 #: assets/source/components/navigation-classic/main-tab-nav.js:21
 #: assets/source/setup-guide/index.js:95

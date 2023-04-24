@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 6.2.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-03-31 07:22:32+0000\n"
+"PO-Revision-Date: 2023-04-06 14:12:40+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -238,7 +238,7 @@ msgstr "Experimenta con el editor del sitio, ahora que ya no es beta"
 
 #: wp-admin/about.php:140
 msgid "For those times you want to be alone with your ideas. You can now hide all your panels and controls, leaving you free to bring your content to life."
-msgstr "Para esas veces que quieres estar a solas con tus ideas. Ahora puedes ocultar todos tus paneles y controles, dejándote libre para llevar a la vida tu contenido."
+msgstr "Para esas veces que quieres estar a solas con tus ideas. Ahora puedes ocultar todos tus paneles y controles, dejándote libertad para darle vida a tu contenido."
 
 #: wp-admin/about.php:139
 msgid "Focus on writing with Distraction Free mode"
@@ -262,7 +262,7 @@ msgstr "Crea más rápido con cabeceras y pies de página para temas de bloques"
 
 #: wp-admin/about.php:108
 msgid "Your block settings sidebar is better organized with tabs for Settings and Styles. So the tools you need are easy to identify and access."
-msgstr "Tu barra lateral de ajustes del bloque está mejor organizada, con pestañas para los ajustes y estilos. De este modo las herramientas que necesitas están fáciles de identificar y acceder."
+msgstr "Tu barra lateral de ajustes del bloque está mejor organizada, con pestañas para los ajustes y estilos. De este modo las herramientas que necesitas son fáciles de identificar y acceder."
 
 #: wp-admin/about.php:107
 msgid "Find the controls you want when you need them"
@@ -516,12 +516,12 @@ msgstr "Se ha detectado caché de página y el tiempo de respuesta del servidor 
 
 #: wp-admin/includes/class-wp-site-health.php:2358
 msgid "Page cache is not detected but the server response time is OK"
-msgstr "No se ha detectado caché de página pero el tiempo de respuesta del servidor es BUENO"
+msgstr "No se ha detectado caché de página pero el tiempo de respuesta del servidor está bien"
 
 #. translators: 1: Error message, 2: Error code.
 #: wp-admin/includes/class-wp-site-health.php:2346
 msgid "Unable to detect page cache due to possible loopback request problem. Please verify that the loopback request test is passing. Error: %1$s (Code: %2$s)"
-msgstr "No se puede detectar el almacenamiento en caché de página debido a un posible problema de solicitud de bucle de retorno. Por favor, verifique que la prueba de solicitud de bucle de retorno es correcta. Error: %1$s (Código: %2$s)"
+msgstr "No se puede detectar el almacenamiento en caché de página debido a un posible problema de solicitud de bucle de retorno. Por favor, verifica que la prueba de solicitud de bucle de retorno es correcta. Error: %1$s (Código: %2$s)"
 
 #: wp-admin/includes/class-wp-site-health.php:2342
 msgid "Unable to detect the presence of page cache"
@@ -577,7 +577,7 @@ msgstr "Al probar la API REST se encontró un error:"
 #: wp-admin/includes/class-wp-site-health.php:815
 #: wp-admin/includes/dashboard.php:1860
 msgid "Your site is running on an outdated version of PHP (%s), which does not receive security updates. It should be updated."
-msgstr "Tu sitio está ejecutando en una versión obsoleta de PHP (%s), y por eso no recibes actualizaciones de seguridad. Deberías actualizar."
+msgstr "Tu sitio está ejecutando en una versión obsoleta de PHP (%s), que no recibe actualizaciones de seguridad. Deberías actualizarla."
 
 #. translators: %s: The server PHP version.
 #: wp-admin/includes/class-wp-site-health.php:808
@@ -596,7 +596,7 @@ msgstr "Tu sitio está ejecutando una versión obsoleta de PHP (%s), que pronto 
 #. translators: %s: The minimum recommended PHP version.
 #: wp-admin/includes/class-wp-site-health.php:744
 msgid "PHP is one of the programming languages used to build WordPress. Newer versions of PHP receive regular security updates and may increase your site&#8217;s performance. The minimum recommended version of PHP is %s."
-msgstr "PHP es uno de los lenguajes de programación utilizados para crear WordPress. Las versiones más recientes de PHP reciben actualizaciones de seguridad frecuentes y pueden mejorar el rendimiento de tu sitio. La versión mínima recomendad de PHP es la %s."
+msgstr "PHP es uno de los lenguajes de programación utilizados para crear WordPress. Las versiones más recientes de PHP reciben actualizaciones de seguridad frecuentes y pueden mejorar el rendimiento de tu sitio. La versión mínima recomendada de PHP es la %s."
 
 #: wp-admin/includes/class-wp-site-health.php:609
 msgid "Your site does not have any installed themes."
@@ -3448,7 +3448,7 @@ msgstr "Gestiona tus temas"
 
 #: wp-admin/includes/class-wp-site-health.php:471
 msgid "Manage inactive plugins"
-msgstr "Gestiona los plugins inactivos"
+msgstr "Gestionar los plugins inactivos"
 
 #: wp-admin/includes/class-wp-site-health.php:417
 msgid "Update your plugins"
@@ -3456,7 +3456,7 @@ msgstr "Actualiza tus plugins"
 
 #: wp-admin/includes/class-wp-site-health.php:370
 msgid "Manage your plugins"
-msgstr "Gestiona tus plugins"
+msgstr "Gestionar tus plugins"
 
 #: wp-admin/includes/class-wp-privacy-policy-content.php:337
 msgid "View Privacy Policy Guide."
@@ -6321,7 +6321,7 @@ msgstr "Lo siento, no tienes permisos para crear usuarios."
 #: wp-admin/customize.php:268
 msgctxt "short (~12 characters) label for hide controls button"
 msgid "Hide Controls"
-msgstr "Ocultar los controles"
+msgstr "Ocultar controles"
 
 #: wp-admin/theme-install.php:72
 msgid "Expand Sidebar"

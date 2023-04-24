@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Elementor Website Builder - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-04-02 13:58:08+0000\n"
+"PO-Revision-Date: 2023-04-23 07:59:05+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -52,7 +52,7 @@ msgid "Generator Tag"
 msgstr "Etiqueta generator"
 
 #. translators: %d: Number of rows.
-#: includes/utils.php:214
+#: includes/utils.php:222
 msgid "%d database row affected."
 msgid_plural "%d database rows affected."
 msgstr[0] "%d fila de la base de datos afectada."
@@ -819,10 +819,6 @@ msgstr "Añade tu código personalizado"
 #: modules/promotions/admin-menu-items/custom-code-promotion-item.php:15
 msgid "Custom Code"
 msgstr "Código personalizado"
-
-#: includes/editor-templates/panel-elements.php:39
-msgid "For easy access, favorite the widgets you use most often by right clicking > Add to Favorites."
-msgstr "Para facilitar el acceso, marca como favoritos los widgets que usas más a menudo haciendo clic con el botón derecho > Añadir a favoritos."
 
 #: includes/controls/groups/typography.php:230
 msgctxt "Typography Control"
@@ -2456,11 +2452,6 @@ msgstr "¡Por favor, ten en cuenta! Permitir la subida de cualquier archivo (inc
 #: includes/template-library/sources/local.php:583
 msgid "Template not exist."
 msgstr "La plantilla no existe."
-
-#: includes/elements/column.php:902 includes/elements/container.php:1610
-#: includes/elements/section.php:1363 includes/widgets/common.php:1133
-msgid "Responsive visibility will take effect only on preview or live page, and not while editing in Elementor."
-msgstr "La visibilidad adaptativa tendrá efecto solo en la página de vista previa o en la página real, y no mientras estás editando en Elementor."
 
 #: includes/base/widget-base.php:1009
 msgid "Deprecated"

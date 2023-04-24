@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Yoast - Yoast SEO Premium (for WordPress) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-03-31 10:56:27+0000\n"
+"PO-Revision-Date: 2023-04-24 11:40:01+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,7 +11,26 @@ msgstr ""
 "Language: es\n"
 "Project-Id-Version: Yoast - Yoast SEO Premium (for WordPress)\n"
 
-#. Author URI of the plugin
+#: src/deprecated/integrations/admin/crawl-settings-integration.php:312
+msgid "Disable"
+msgstr "Desactivar"
+
+#: src/deprecated/integrations/admin/crawl-settings-integration.php:310
+msgid "Allow Control"
+msgstr "Permitir control"
+
+#. translators: %1$s and %2$s expands to the link to
+#. https:yoast.com/features/zapier, %3$s for Yoast SEO, %4$s for support email.
+#: src/integrations/admin/zapier-notification-integration.php:105
+msgid "The %1$sZapier integration%2$s (on the Integrations page) will be removed from %3$s in 20.7 (release date May 9th). If you have any questions, please reach out to %4$s."
+msgstr "La %1$sintegración con Zapier%2$s (en la página de integraciones) se eliminará de %3$s en la versión 20.7 (fecha de lanzamiento el 9 de mayo). Si tienes alguna pregunta, por favor, contacta con %4$s."
+
+#. translators: %1$s for Yoast SEO
+#: src/integrations/admin/zapier-notification-integration.php:102
+msgid "Zapier integration will be removed from %1$s"
+msgstr "La integración con Zapier se eliminará de %1$s"
+
+#. Author URI of the plugin/theme
 msgid "https://yoa.st/team-yoast-premium"
 msgstr "https://yoa.st/team-yoast-premium"
 
@@ -67,7 +86,6 @@ msgid "<strong>New in Yoast SEO Premium 19.2:</strong> Did you know that you can
 msgstr "<strong>Nuevo en Yoast SEO Premium 19.2:</strong> ¿Sabías que ahora puedes obtener información sobre el uso del lenguaje inclusivo? Esta característica está desactivada por defecto. Por favor, contacta con el administrador de tu red para activarla. %2$sAprende más sobre esta característica%3$s."
 
 #: src/integrations/frontend-inspector.php:71
-#: assets/js/src/frontend-inspector/components/frontend-inspector.js:28
 msgid "Front-end SEO inspector"
 msgstr "Inspector SEO en portada"
 
@@ -308,7 +326,6 @@ msgid "%1$sCornerstone content%2$s is the content on your site that’s most imp
 msgstr "%1$sContenido esencial%2$s es el contenido más importante de tu sitio. Quieres posicionar alto en Google con estos artículos. Asegúrate de que tu estructura de enlazado interno refleje qué páginas son las más importantes. ¿Quieres saber cómo hacerlo?"
 
 #: classes/views/thank-you.php:17
-#: assets/js/src/workouts/components/CornerstoneWorkout.js:106
 msgid "Rank with articles you want to rank with"
 msgstr "Posiciona con los artículos con los que quieres posicionar"
 
@@ -486,16 +503,15 @@ msgstr "Por favor, contacta con un administrador de la red para instalar %1$s %2
 msgid "Please contact an administrator to install %1$s %2$s."
 msgstr "Por favor, contacta con un administrador para instalar %1$s %2$s."
 
+#: src/integrations/admin/plugin-links-integration.php:74
+msgid "Activate your subscription"
+msgstr "Activa tu suscripción"
+
 #: src/integrations/blocks/estimated-reading-time-block.php:57
-#: assets/js/src/blocks/estimated-reading-time/block.js:179
 msgid "Estimated reading time:"
 msgstr "Tiempo de lectura estimado:"
 
 #: src/integrations/blocks/estimated-reading-time-block.php:84
-#: assets/js/src/blocks/estimated-reading-time/block.js:64
-#: assets/js/src/blocks/estimated-reading-time/legacy/15.6.js:58
-#: assets/js/src/blocks/estimated-reading-time/legacy/15.6.non-admin.js:28
-#: assets/js/src/blocks/estimated-reading-time/legacy/15.8.js:22
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minuto"
@@ -515,9 +531,6 @@ msgid "Edit"
 msgstr "Editar"
 
 #: classes/premium-javascript-strings.php:53
-#: assets/js/src/components/RedirectNotification.js:122
-#: assets/js/src/elementor/components/RedirectNotification.js:127
-#: assets/js/src/frontend-inspector/components/frontend-inspector.js:61
 msgid "OK"
 msgstr "Aceptable"
 
@@ -593,12 +606,11 @@ msgstr "Como estás en Nginx, debes añadir el siguiente include en el fichero d
 msgid "As you're on Apache, you should add the following include to the website httpd config file:"
 msgstr "Como estás en Apache, debes añadir el siguiente include en el archivo httpd config de la web:"
 
-#. Description of the plugin
+#. Description of the plugin/theme
 msgid "The first true all-in-one SEO solution for WordPress, including on-page content analysis, XML sitemaps and much more."
 msgstr "La primera verdadera solución SEO todo en uno para WordPress, incluyendo análisis de contenido de páginas, mapas del sitio en XML y mucho más."
 
 #: classes/redirect/exporters/redirect-csv-exporter.php:76
-#: assets/js/src/workouts/components/CornerstoneWorkout/MostLinked.js:98
 msgid "Type"
 msgstr "Tipo"
 
@@ -611,7 +623,7 @@ msgstr "No podemos guardar las redirecciones a tu archivo %s, por favor añade p
 msgid "Generate a separate redirect file"
 msgstr "Genera un archivo de redirecciones separado"
 
-#: classes/redirect/redirect-page.php:142
+#: classes/redirect/redirect-page.php:143
 msgid "Redirects per page"
 msgstr "Redirecciónes por pagina"
 
@@ -635,7 +647,7 @@ msgstr "Error al guardar esta redirección"
 msgid "New type can't be empty."
 msgstr "Nuevo tipo no puede estar vacío."
 
-#. Author of the plugin
+#. Author of the plugin/theme
 msgid "Team Yoast"
 msgstr "Equipo Yoast"
 
@@ -1009,7 +1021,6 @@ msgid "'Orphaned content' refers to %1$s that have no inbound links, consider ad
 msgstr "Por «contenido huérfano» nos referimos a %1$s que no tienen enlaces entrantes, plantéate añadir enlaces hacia estas %1$s. %2$s"
 
 #: classes/premium-orphaned-post-filter.php:140
-#: assets/js/src/workouts/components/OrphanedWorkout.js:88
 msgid "Orphaned content"
 msgstr "Contenido huérfano"
 
@@ -1116,11 +1127,11 @@ msgstr "Exportar frases clave"
 msgid "Export keyphrase scores"
 msgstr "Exportar puntuaciones de frase clave"
 
-#. Plugin URI of the plugin
+#. Plugin URI of the plugin/theme
 msgid "https://yoa.st/2jc"
 msgstr "https://yoa.st/2jc"
 
-#. Plugin Name of the plugin
+#. Plugin Name of the plugin/theme
 msgid "Yoast SEO Premium"
 msgstr "Yoast SEO Premium"
 
@@ -1177,8 +1188,7 @@ msgstr "El contenido esencial anticuado se refiere al contenido esencial que no 
 msgid "Choose a CSV file from your computer:"
 msgstr "Elige un archivo CSV de tu ordenador:"
 
-#: classes/watcher.php:247 assets/js/src/components/RedirectNotification.js:132
-#: assets/js/src/elementor/components/RedirectNotification.js:133
+#: classes/watcher.php:247
 msgid "Undo"
 msgstr "Deshacer"
 
@@ -1213,8 +1223,6 @@ msgid "Ok"
 msgstr "Vale"
 
 #: src/deprecated/integrations/admin/crawl-settings-integration.php:301
-#: assets/js/src/components/semrush/SEMrushRemoveRelatedKeyphraseLink.js:19
-#: assets/js/src/workouts/components/OrphanedWorkout/RedirectModal.js:87
 msgid "Remove"
 msgstr "Quitar"
 
@@ -1244,7 +1252,6 @@ msgstr "Copiar al portapapeles"
 #. translators: 1: Link start tag, 2: Yoast SEO, 3: Zapier, 4: Link closing
 #. tag.
 #: src/integrations/third-party/zapier-classic-editor.php:86
-#: assets/js/src/components/ZapierPostPublishContent.js:23
 msgid "%1$sConnect %2$s with %3$s%4$s to instantly share your published posts with 2000+ destinations such as Twitter, Facebook and more."
 msgstr "%1$sConecta %2$s con %3$s%4$s para compartir instantáneamente tus entradas publicadas con más de 2000 destinos como Twitter, Facebook y más."
 
@@ -1265,8 +1272,6 @@ msgid "Please note that you can only create 1 Zap with a trigger event from %1$s
 msgstr "Ten en cuenta que solo puedes crear 1 Zap con un evento disparador desde %1$s. Dentro de este Zap puedes elegir una o más acciones."
 
 #. translators: %s: Zapier.
-#. translators: 1: Zapier
 #: src/integrations/third-party/zapier.php:187
-#: assets/js/src/components/ZapierModal.js:217
 msgid "Create a Zap in %s"
 msgstr "Crear un Zap en %s"
