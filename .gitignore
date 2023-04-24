@@ -58,3 +58,6 @@ readme.html
 
 # eliminacion de archivos .htaccess
 .htaccess
+
+# eliminacion de cache
+wp-content/advanced-cache.php
