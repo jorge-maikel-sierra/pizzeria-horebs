@@ -22,3 +22,26 @@ endif;
 add_action( 'wp_enqueue_scripts', 'child_theme_configurator_css', 10 );
 
 // END ENQUEUE PARENT ACTION
+// 
+add_filter( 'woocommerce_checkout_fields' , 'remove_state_fields_checkout' );
+
+function remove_state_fields_checkout( $fields ) {
+    unset( $fields['shipping']['shipping_state'] );
+    unset( $fields['shipping']['shipping_company'] );
+	unset( $fields['shipping']['shipping_vat'] );
+	unset( $fields['shipping']['shipping_country'] );
+	unset( $fields['shipping']['shipping_city'] );
+	unset( $fields['shipping']['shipping_state'] );
+	unset( $fields['shipping']['shipping_postcode'] );
+	
+	unset( $fields['billing']['billing_state'] );
+    unset( $fields['billing']['billing_company'] );
+	unset( $fields['billing']['billing_vat'] );
+	unset( $fields['billing']['billing_country'] );
+	unset( $fields['billing']['billing_city'] );
+	unset( $fields['billing']['billing_state'] );
+	unset( $fields['billing']['billing_postcode'] );
+	
+    return $fields;
+}
+
