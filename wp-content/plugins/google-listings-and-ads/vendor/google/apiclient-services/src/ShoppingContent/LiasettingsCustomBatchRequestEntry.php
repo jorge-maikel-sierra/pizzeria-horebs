@@ -45,7 +45,6 @@ class LiasettingsCustomBatchRequestEntry extends \Automattic\WooCommerce\GoogleL
   public $gmbEmail;
   protected $liaSettingsType = LiaSettings::class;
   protected $liaSettingsDataType = '';
-  public $liaSettings;
   /**
    * @var string
    */

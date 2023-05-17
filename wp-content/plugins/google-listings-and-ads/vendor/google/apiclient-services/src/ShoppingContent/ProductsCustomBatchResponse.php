@@ -22,7 +22,6 @@ class ProductsCustomBatchResponse extends \Automattic\WooCommerce\GoogleListings
   protected $collection_key = 'entries';
   protected $entriesType = ProductsCustomBatchResponseEntry::class;
   protected $entriesDataType = 'array';
-  public $entries;
   /**
    * @var string
    */

@@ -21,7 +21,6 @@ class ProductSubscriptionCost extends \Automattic\WooCommerce\GoogleListingsAndA
 {
   protected $amountType = Price::class;
   protected $amountDataType = '';
-  public $amount;
   /**
    * @var string
    */

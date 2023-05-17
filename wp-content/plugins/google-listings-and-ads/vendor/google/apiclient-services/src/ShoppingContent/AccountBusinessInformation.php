@@ -21,10 +21,8 @@ class AccountBusinessInformation extends \Automattic\WooCommerce\GoogleListingsA
 {
   protected $addressType = AccountAddress::class;
   protected $addressDataType = '';
-  public $address;
   protected $customerServiceType = AccountCustomerService::class;
   protected $customerServiceDataType = '';
-  public $customerService;
   /**
    * @var string
    */

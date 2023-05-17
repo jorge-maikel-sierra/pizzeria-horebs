@@ -25,14 +25,12 @@ class RegionalinventoryCustomBatchResponseEntry extends \Automattic\WooCommerce\
   public $batchId;
   protected $errorsType = Errors::class;
   protected $errorsDataType = '';
-  public $errors;
   /**
    * @var string
    */
   public $kind;
   protected $regionalInventoryType = RegionalInventory::class;
   protected $regionalInventoryDataType = '';
-  public $regionalInventory;
 
   /**
    * @param string

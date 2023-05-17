@@ -21,7 +21,6 @@ class UnitInvoiceAdditionalCharge extends \Automattic\WooCommerce\GoogleListings
 {
   protected $additionalChargeAmountType = Amount::class;
   protected $additionalChargeAmountDataType = '';
-  public $additionalChargeAmount;
   /**
    * @var string
    */

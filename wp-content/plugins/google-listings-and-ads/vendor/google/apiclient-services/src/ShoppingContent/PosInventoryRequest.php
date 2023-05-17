@@ -33,7 +33,6 @@ class PosInventoryRequest extends \Automattic\WooCommerce\GoogleListingsAndAds\V
   public $itemId;
   protected $priceType = Price::class;
   protected $priceDataType = '';
-  public $price;
   /**
    * @var string
    */

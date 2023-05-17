@@ -30,7 +30,6 @@ class AccounttaxListResponse extends \Automattic\WooCommerce\GoogleListingsAndAd
   public $nextPageToken;
   protected $resourcesType = AccountTax::class;
   protected $resourcesDataType = 'array';
-  public $resources;
 
   /**
    * @param string

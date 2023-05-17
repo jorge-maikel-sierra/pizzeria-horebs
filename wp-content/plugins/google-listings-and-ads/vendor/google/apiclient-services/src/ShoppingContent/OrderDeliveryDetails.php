@@ -21,7 +21,6 @@ class OrderDeliveryDetails extends \Automattic\WooCommerce\GoogleListingsAndAds\
 {
   protected $addressType = OrderAddress::class;
   protected $addressDataType = '';
-  public $address;
   /**
    * @var string
    */

@@ -53,7 +53,6 @@ class ProductShipping extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendo
   public $postalCode;
   protected $priceType = Price::class;
   protected $priceDataType = '';
-  public $price;
   /**
    * @var string
    */

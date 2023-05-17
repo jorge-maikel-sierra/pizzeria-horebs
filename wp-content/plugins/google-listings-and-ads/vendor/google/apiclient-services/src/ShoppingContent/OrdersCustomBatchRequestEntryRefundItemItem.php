@@ -21,7 +21,6 @@ class OrdersCustomBatchRequestEntryRefundItemItem extends \Automattic\WooCommerc
 {
   protected $amountType = MonetaryAmount::class;
   protected $amountDataType = '';
-  public $amount;
   /**
    * @var bool
    */

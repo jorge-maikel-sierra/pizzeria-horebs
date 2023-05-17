@@ -21,7 +21,6 @@ class OrdersCustomBatchRequestEntryRefundItemShipping extends \Automattic\WooCom
 {
   protected $amountType = Price::class;
   protected $amountDataType = '';
-  public $amount;
   /**
    * @var bool
    */

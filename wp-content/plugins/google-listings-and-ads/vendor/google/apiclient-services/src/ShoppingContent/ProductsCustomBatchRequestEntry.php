@@ -37,7 +37,6 @@ class ProductsCustomBatchRequestEntry extends \Automattic\WooCommerce\GoogleList
   public $method;
   protected $productType = Product::class;
   protected $productDataType = '';
-  public $product;
   /**
    * @var string
    */

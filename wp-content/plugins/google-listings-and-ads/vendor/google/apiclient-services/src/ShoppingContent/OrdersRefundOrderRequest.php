@@ -21,7 +21,6 @@ class OrdersRefundOrderRequest extends \Automattic\WooCommerce\GoogleListingsAnd
 {
   protected $amountType = MonetaryAmount::class;
   protected $amountDataType = '';
-  public $amount;
   /**
    * @var bool
    */

@@ -33,7 +33,6 @@ class ReturnaddressCustomBatchRequestEntry extends \Automattic\WooCommerce\Googl
   public $method;
   protected $returnAddressType = ReturnAddress::class;
   protected $returnAddressDataType = '';
-  public $returnAddress;
   /**
    * @var string
    */

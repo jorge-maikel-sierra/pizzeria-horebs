@@ -26,7 +26,6 @@ class SearchResponse extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor
   public $nextPageToken;
   protected $resultsType = ReportRow::class;
   protected $resultsDataType = 'array';
-  public $results;
 
   /**
    * @param string

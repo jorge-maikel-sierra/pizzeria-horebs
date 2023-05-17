@@ -25,7 +25,6 @@ class LocalinventoryCustomBatchResponseEntry extends \Automattic\WooCommerce\Goo
   public $batchId;
   protected $errorsType = Errors::class;
   protected $errorsDataType = '';
-  public $errors;
   /**
    * @var string
    */

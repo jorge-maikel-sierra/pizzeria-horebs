@@ -22,7 +22,6 @@ class OrdersCreateTestReturnRequest extends \Automattic\WooCommerce\GoogleListin
   protected $collection_key = 'items';
   protected $itemsType = OrdersCustomBatchRequestEntryCreateTestReturnReturnItem::class;
   protected $itemsDataType = 'array';
-  public $items;
 
   /**
    * @param OrdersCustomBatchRequestEntryCreateTestReturnReturnItem[]

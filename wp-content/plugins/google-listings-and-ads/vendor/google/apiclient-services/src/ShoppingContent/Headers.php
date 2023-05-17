@@ -22,7 +22,6 @@ class Headers extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor\Google
   protected $collection_key = 'weights';
   protected $locationsType = LocationIdSet::class;
   protected $locationsDataType = 'array';
-  public $locations;
   /**
    * @var string[]
    */
@@ -33,10 +32,8 @@ class Headers extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor\Google
   public $postalCodeGroupNames;
   protected $pricesType = Price::class;
   protected $pricesDataType = 'array';
-  public $prices;
   protected $weightsType = Weight::class;
   protected $weightsDataType = 'array';
-  public $weights;
 
   /**
    * @param LocationIdSet[]

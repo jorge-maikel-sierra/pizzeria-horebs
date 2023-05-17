@@ -26,7 +26,6 @@ class ListRepricingProductReportsResponse extends \Automattic\WooCommerce\Google
   public $nextPageToken;
   protected $repricingProductReportsType = RepricingProductReport::class;
   protected $repricingProductReportsDataType = 'array';
-  public $repricingProductReports;
 
   /**
    * @param string

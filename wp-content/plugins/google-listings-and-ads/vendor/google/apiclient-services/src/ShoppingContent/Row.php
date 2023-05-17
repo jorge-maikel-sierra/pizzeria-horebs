@@ -22,7 +22,6 @@ class Row extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor\Google\Col
   protected $collection_key = 'cells';
   protected $cellsType = Value::class;
   protected $cellsDataType = 'array';
-  public $cells;
 
   /**
    * @param Value[]

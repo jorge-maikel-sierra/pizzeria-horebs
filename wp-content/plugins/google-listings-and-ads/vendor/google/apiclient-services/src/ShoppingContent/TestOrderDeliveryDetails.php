@@ -21,7 +21,6 @@ class TestOrderDeliveryDetails extends \Automattic\WooCommerce\GoogleListingsAnd
 {
   protected $addressType = TestOrderAddress::class;
   protected $addressDataType = '';
-  public $address;
   /**
    * @var bool
    */

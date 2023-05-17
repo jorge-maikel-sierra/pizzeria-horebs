@@ -26,7 +26,6 @@ class LiasettingsListPosDataProvidersResponse extends \Automattic\WooCommerce\Go
   public $kind;
   protected $posDataProvidersType = PosDataProviders::class;
   protected $posDataProvidersDataType = 'array';
-  public $posDataProviders;
 
   /**
    * @param string

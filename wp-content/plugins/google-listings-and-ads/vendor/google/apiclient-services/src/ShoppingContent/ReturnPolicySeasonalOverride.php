@@ -29,7 +29,6 @@ class ReturnPolicySeasonalOverride extends \Automattic\WooCommerce\GoogleListing
   public $name;
   protected $policyType = ReturnPolicyPolicy::class;
   protected $policyDataType = '';
-  public $policy;
   /**
    * @var string
    */

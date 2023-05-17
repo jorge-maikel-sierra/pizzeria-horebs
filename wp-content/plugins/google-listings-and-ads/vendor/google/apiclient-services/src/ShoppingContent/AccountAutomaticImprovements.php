@@ -21,13 +21,10 @@ class AccountAutomaticImprovements extends \Automattic\WooCommerce\GoogleListing
 {
   protected $imageImprovementsType = AccountImageImprovements::class;
   protected $imageImprovementsDataType = '';
-  public $imageImprovements;
   protected $itemUpdatesType = AccountItemUpdates::class;
   protected $itemUpdatesDataType = '';
-  public $itemUpdates;
   protected $shippingImprovementsType = AccountShippingImprovements::class;
   protected $shippingImprovementsDataType = '';
-  public $shippingImprovements;
 
   /**
    * @param AccountImageImprovements

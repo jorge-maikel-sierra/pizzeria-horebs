@@ -26,7 +26,6 @@ class LinkedAccount extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor\
   public $linkedAccountId;
   protected $servicesType = LinkService::class;
   protected $servicesDataType = 'array';
-  public $services;
 
   /**
    * @param string

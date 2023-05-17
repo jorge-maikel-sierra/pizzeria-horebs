@@ -25,7 +25,6 @@ class Value extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor\Google\M
   public $carrierRateName;
   protected $flatRateType = Price::class;
   protected $flatRateDataType = '';
-  public $flatRate;
   /**
    * @var bool
    */

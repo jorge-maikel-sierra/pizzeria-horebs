@@ -25,7 +25,6 @@ class DeliveryArea extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor\G
   public $countryCode;
   protected $postalCodeRangeType = DeliveryAreaPostalCodeRange::class;
   protected $postalCodeRangeDataType = '';
-  public $postalCodeRange;
   /**
    * @var string
    */

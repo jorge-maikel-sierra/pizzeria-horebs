@@ -33,7 +33,6 @@ class PosSaleRequest extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor
   public $itemId;
   protected $priceType = Price::class;
   protected $priceDataType = '';
-  public $price;
   /**
    * @var string
    */

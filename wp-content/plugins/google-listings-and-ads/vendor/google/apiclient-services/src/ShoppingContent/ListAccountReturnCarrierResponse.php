@@ -22,7 +22,6 @@ class ListAccountReturnCarrierResponse extends \Automattic\WooCommerce\GoogleLis
   protected $collection_key = 'accountReturnCarriers';
   protected $accountReturnCarriersType = AccountReturnCarrier::class;
   protected $accountReturnCarriersDataType = 'array';
-  public $accountReturnCarriers;
 
   /**
    * @param AccountReturnCarrier[]

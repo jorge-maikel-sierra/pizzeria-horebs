@@ -25,7 +25,6 @@ class LocalinventoryCustomBatchRequestEntry extends \Automattic\WooCommerce\Goog
   public $batchId;
   protected $localInventoryType = LocalInventory::class;
   protected $localInventoryDataType = '';
-  public $localInventory;
   /**
    * @var string
    */

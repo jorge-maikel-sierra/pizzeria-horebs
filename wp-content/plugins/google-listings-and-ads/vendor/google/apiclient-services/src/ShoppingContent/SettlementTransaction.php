@@ -21,17 +21,14 @@ class SettlementTransaction extends \Automattic\WooCommerce\GoogleListingsAndAds
 {
   protected $amountType = SettlementTransactionAmount::class;
   protected $amountDataType = '';
-  public $amount;
   protected $identifiersType = SettlementTransactionIdentifiers::class;
   protected $identifiersDataType = '';
-  public $identifiers;
   /**
    * @var string
    */
   public $kind;
   protected $transactionType = SettlementTransactionTransaction::class;
   protected $transactionDataType = '';
-  public $transaction;
 
   /**
    * @param SettlementTransactionAmount

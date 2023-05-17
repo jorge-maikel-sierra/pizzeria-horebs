@@ -22,7 +22,6 @@ class LocalinventoryCustomBatchResponse extends \Automattic\WooCommerce\GoogleLi
   protected $collection_key = 'entries';
   protected $entriesType = LocalinventoryCustomBatchResponseEntry::class;
   protected $entriesDataType = 'array';
-  public $entries;
   /**
    * @var string
    */

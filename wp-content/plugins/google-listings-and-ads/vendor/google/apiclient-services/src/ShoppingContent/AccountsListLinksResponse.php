@@ -26,7 +26,6 @@ class AccountsListLinksResponse extends \Automattic\WooCommerce\GoogleListingsAn
   public $kind;
   protected $linksType = LinkedAccount::class;
   protected $linksDataType = 'array';
-  public $links;
   /**
    * @var string
    */

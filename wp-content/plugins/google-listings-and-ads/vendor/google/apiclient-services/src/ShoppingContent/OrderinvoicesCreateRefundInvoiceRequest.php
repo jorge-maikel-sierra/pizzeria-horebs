@@ -30,13 +30,10 @@ class OrderinvoicesCreateRefundInvoiceRequest extends \Automattic\WooCommerce\Go
   public $operationId;
   protected $refundOnlyOptionType = OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption::class;
   protected $refundOnlyOptionDataType = '';
-  public $refundOnlyOption;
   protected $returnOptionType = OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption::class;
   protected $returnOptionDataType = '';
-  public $returnOption;
   protected $shipmentInvoicesType = ShipmentInvoice::class;
   protected $shipmentInvoicesDataType = 'array';
-  public $shipmentInvoices;
 
   /**
    * @param string

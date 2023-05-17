@@ -21,10 +21,8 @@ class Amount extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor\Google\
 {
   protected $priceAmountType = Price::class;
   protected $priceAmountDataType = '';
-  public $priceAmount;
   protected $taxAmountType = Price::class;
   protected $taxAmountDataType = '';
-  public $taxAmount;
 
   /**
    * @param Price

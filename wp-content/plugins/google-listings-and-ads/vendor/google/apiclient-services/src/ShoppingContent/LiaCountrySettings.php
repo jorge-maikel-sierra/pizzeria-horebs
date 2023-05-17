@@ -21,7 +21,6 @@ class LiaCountrySettings extends \Automattic\WooCommerce\GoogleListingsAndAds\Ve
 {
   protected $aboutType = LiaAboutPageSettings::class;
   protected $aboutDataType = '';
-  public $about;
   /**
    * @var string
    */
@@ -32,13 +31,10 @@ class LiaCountrySettings extends \Automattic\WooCommerce\GoogleListingsAndAds\Ve
   public $hostedLocalStorefrontActive;
   protected $inventoryType = LiaInventorySettings::class;
   protected $inventoryDataType = '';
-  public $inventory;
   protected $onDisplayToOrderType = LiaOnDisplayToOrderSettings::class;
   protected $onDisplayToOrderDataType = '';
-  public $onDisplayToOrder;
   protected $posDataProviderType = LiaPosDataProvider::class;
   protected $posDataProviderDataType = '';
-  public $posDataProvider;
   /**
    * @var bool
    */

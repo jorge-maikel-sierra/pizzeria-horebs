@@ -22,7 +22,6 @@ class TransitTableTransitTimeRow extends \Automattic\WooCommerce\GoogleListingsA
   protected $collection_key = 'values';
   protected $valuesType = TransitTableTransitTimeRowTransitTimeValue::class;
   protected $valuesDataType = 'array';
-  public $values;
 
   /**
    * @param TransitTableTransitTimeRowTransitTimeValue[]

@@ -50,7 +50,6 @@ class FreeListingsProgramStatusRegionStatus extends \Automattic\WooCommerce\Goog
   public $reviewIneligibilityReasonDescription;
   protected $reviewIneligibilityReasonDetailsType = FreeListingsProgramStatusReviewIneligibilityReasonDetails::class;
   protected $reviewIneligibilityReasonDetailsDataType = '';
-  public $reviewIneligibilityReasonDetails;
   /**
    * @var string[]
    */

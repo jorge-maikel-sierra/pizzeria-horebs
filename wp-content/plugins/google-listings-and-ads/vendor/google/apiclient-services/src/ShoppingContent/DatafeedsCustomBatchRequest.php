@@ -22,7 +22,6 @@ class DatafeedsCustomBatchRequest extends \Automattic\WooCommerce\GoogleListings
   protected $collection_key = 'entries';
   protected $entriesType = DatafeedsCustomBatchRequestEntry::class;
   protected $entriesDataType = 'array';
-  public $entries;
 
   /**
    * @param DatafeedsCustomBatchRequestEntry[]

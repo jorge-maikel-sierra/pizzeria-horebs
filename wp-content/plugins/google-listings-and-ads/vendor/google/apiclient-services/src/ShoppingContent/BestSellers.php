@@ -49,7 +49,6 @@ class BestSellers extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor\Go
   public $relativeDemandChange;
   protected $reportDateType = Date::class;
   protected $reportDateDataType = '';
-  public $reportDate;
   /**
    * @var string
    */

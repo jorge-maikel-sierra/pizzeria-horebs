@@ -29,7 +29,6 @@ class OrdersInStoreRefundLineItemRequest extends \Automattic\WooCommerce\GoogleL
   public $operationId;
   protected $priceAmountType = Price::class;
   protected $priceAmountDataType = '';
-  public $priceAmount;
   /**
    * @var string
    */
@@ -48,7 +47,6 @@ class OrdersInStoreRefundLineItemRequest extends \Automattic\WooCommerce\GoogleL
   public $reasonText;
   protected $taxAmountType = Price::class;
   protected $taxAmountDataType = '';
-  public $taxAmount;
 
   /**
    * @param string

@@ -50,7 +50,6 @@ class ShoppingAdsProgramStatusRegionStatus extends \Automattic\WooCommerce\Googl
   public $reviewIneligibilityReasonDescription;
   protected $reviewIneligibilityReasonDetailsType = ShoppingAdsProgramStatusReviewIneligibilityReasonDetails::class;
   protected $reviewIneligibilityReasonDetailsDataType = '';
-  public $reviewIneligibilityReasonDetails;
   /**
    * @var string[]
    */

@@ -26,7 +26,6 @@ class ListCollectionsResponse extends \Automattic\WooCommerce\GoogleListingsAndA
   public $nextPageToken;
   protected $resourcesType = Collection::class;
   protected $resourcesDataType = 'array';
-  public $resources;
 
   /**
    * @param string

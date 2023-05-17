@@ -22,7 +22,6 @@ class RegionalinventoryCustomBatchRequest extends \Automattic\WooCommerce\Google
   protected $collection_key = 'entries';
   protected $entriesType = RegionalinventoryCustomBatchRequestEntry::class;
   protected $entriesDataType = 'array';
-  public $entries;
 
   /**
    * @param RegionalinventoryCustomBatchRequestEntry[]

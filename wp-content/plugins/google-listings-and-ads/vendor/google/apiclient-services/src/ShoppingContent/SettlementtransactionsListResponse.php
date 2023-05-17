@@ -30,7 +30,6 @@ class SettlementtransactionsListResponse extends \Automattic\WooCommerce\GoogleL
   public $nextPageToken;
   protected $resourcesType = SettlementTransaction::class;
   protected $resourcesDataType = 'array';
-  public $resources;
 
   /**
    * @param string

@@ -21,10 +21,8 @@ class ProductDeliveryTimeAreaDeliveryTime extends \Automattic\WooCommerce\Google
 {
   protected $deliveryAreaType = DeliveryArea::class;
   protected $deliveryAreaDataType = '';
-  public $deliveryArea;
   protected $deliveryTimeType = ProductDeliveryTimeAreaDeliveryTimeDeliveryTime::class;
   protected $deliveryTimeDataType = '';
-  public $deliveryTime;
 
   /**
    * @param DeliveryArea

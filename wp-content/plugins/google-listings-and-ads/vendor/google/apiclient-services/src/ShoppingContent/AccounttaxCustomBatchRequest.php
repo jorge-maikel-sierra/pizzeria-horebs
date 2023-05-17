@@ -22,7 +22,6 @@ class AccounttaxCustomBatchRequest extends \Automattic\WooCommerce\GoogleListing
   protected $collection_key = 'entries';
   protected $entriesType = AccounttaxCustomBatchRequestEntry::class;
   protected $entriesDataType = 'array';
-  public $entries;
 
   /**
    * @param AccounttaxCustomBatchRequestEntry[]

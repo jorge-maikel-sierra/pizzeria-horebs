@@ -29,7 +29,6 @@ class CarrierRate extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor\Go
   public $carrierService;
   protected $flatAdjustmentType = Price::class;
   protected $flatAdjustmentDataType = '';
-  public $flatAdjustment;
   /**
    * @var string
    */

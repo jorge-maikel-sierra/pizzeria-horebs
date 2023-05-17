@@ -22,7 +22,6 @@ class RegionPostalCodeArea extends \Automattic\WooCommerce\GoogleListingsAndAds\
   protected $collection_key = 'postalCodes';
   protected $postalCodesType = RegionPostalCodeAreaPostalCodeRange::class;
   protected $postalCodesDataType = 'array';
-  public $postalCodes;
   /**
    * @var string
    */

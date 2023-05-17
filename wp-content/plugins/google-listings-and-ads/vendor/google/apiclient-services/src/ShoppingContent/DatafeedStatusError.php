@@ -30,7 +30,6 @@ class DatafeedStatusError extends \Automattic\WooCommerce\GoogleListingsAndAds\V
   public $count;
   protected $examplesType = DatafeedStatusExample::class;
   protected $examplesDataType = 'array';
-  public $examples;
   /**
    * @var string
    */

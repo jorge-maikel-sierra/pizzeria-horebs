@@ -22,14 +22,12 @@ class CollectionStatus extends \Automattic\WooCommerce\GoogleListingsAndAds\Vend
   protected $collection_key = 'destinationStatuses';
   protected $collectionLevelIssusesType = CollectionStatusItemLevelIssue::class;
   protected $collectionLevelIssusesDataType = 'array';
-  public $collectionLevelIssuses;
   /**
    * @var string
    */
   public $creationDate;
   protected $destinationStatusesType = CollectionStatusDestinationStatus::class;
   protected $destinationStatusesDataType = 'array';
-  public $destinationStatuses;
   /**
    * @var string
    */

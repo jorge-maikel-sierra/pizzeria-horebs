@@ -22,7 +22,6 @@ class ShippingsettingsCustomBatchRequest extends \Automattic\WooCommerce\GoogleL
   protected $collection_key = 'entries';
   protected $entriesType = ShippingsettingsCustomBatchRequestEntry::class;
   protected $entriesDataType = 'array';
-  public $entries;
 
   /**
    * @param ShippingsettingsCustomBatchRequestEntry[]

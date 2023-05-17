@@ -42,7 +42,6 @@ class Collection extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor\Goo
   public $customLabel4;
   protected $featuredProductType = CollectionFeaturedProduct::class;
   protected $featuredProductDataType = 'array';
-  public $featuredProduct;
   /**
    * @var string[]
    */

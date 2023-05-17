@@ -21,7 +21,6 @@ class UnitInvoiceTaxLine extends \Automattic\WooCommerce\GoogleListingsAndAds\Ve
 {
   protected $taxAmountType = Price::class;
   protected $taxAmountDataType = '';
-  public $taxAmount;
   /**
    * @var string
    */

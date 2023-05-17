@@ -26,14 +26,12 @@ class ProductStatus extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor\
   public $creationDate;
   protected $destinationStatusesType = ProductStatusDestinationStatus::class;
   protected $destinationStatusesDataType = 'array';
-  public $destinationStatuses;
   /**
    * @var string
    */
   public $googleExpirationDate;
   protected $itemLevelIssuesType = ProductStatusItemLevelIssue::class;
   protected $itemLevelIssuesDataType = 'array';
-  public $itemLevelIssues;
   /**
    * @var string
    */

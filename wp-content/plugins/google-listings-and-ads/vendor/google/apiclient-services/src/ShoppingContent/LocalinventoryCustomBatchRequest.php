@@ -22,7 +22,6 @@ class LocalinventoryCustomBatchRequest extends \Automattic\WooCommerce\GoogleLis
   protected $collection_key = 'entries';
   protected $entriesType = LocalinventoryCustomBatchRequestEntry::class;
   protected $entriesDataType = 'array';
-  public $entries;
 
   /**
    * @param LocalinventoryCustomBatchRequestEntry[]

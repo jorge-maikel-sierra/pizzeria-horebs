@@ -21,7 +21,6 @@ class ReturnAddress extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor\
 {
   protected $addressType = ReturnAddressAddress::class;
   protected $addressDataType = '';
-  public $address;
   /**
    * @var string
    */

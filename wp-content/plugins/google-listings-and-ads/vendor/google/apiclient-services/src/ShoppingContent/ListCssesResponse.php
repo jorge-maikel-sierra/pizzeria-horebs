@@ -22,7 +22,6 @@ class ListCssesResponse extends \Automattic\WooCommerce\GoogleListingsAndAds\Ven
   protected $collection_key = 'csses';
   protected $cssesType = Css::class;
   protected $cssesDataType = 'array';
-  public $csses;
   /**
    * @var string
    */

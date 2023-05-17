@@ -30,7 +30,6 @@ class AccountTax extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor\Goo
   public $kind;
   protected $rulesType = AccountTaxTaxRule::class;
   protected $rulesDataType = 'array';
-  public $rules;
 
   /**
    * @param string

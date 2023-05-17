@@ -21,7 +21,6 @@ class InvoiceSummaryAdditionalChargeSummary extends \Automattic\WooCommerce\Goog
 {
   protected $totalAmountType = Amount::class;
   protected $totalAmountDataType = '';
-  public $totalAmount;
   /**
    * @var string
    */

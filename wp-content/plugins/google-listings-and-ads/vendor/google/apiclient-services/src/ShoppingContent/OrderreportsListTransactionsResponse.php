@@ -30,7 +30,6 @@ class OrderreportsListTransactionsResponse extends \Automattic\WooCommerce\Googl
   public $nextPageToken;
   protected $transactionsType = OrderReportTransaction::class;
   protected $transactionsDataType = 'array';
-  public $transactions;
 
   /**
    * @param string

@@ -26,10 +26,8 @@ class OrderinvoicesCreateChargeInvoiceRequest extends \Automattic\WooCommerce\Go
   public $invoiceId;
   protected $invoiceSummaryType = InvoiceSummary::class;
   protected $invoiceSummaryDataType = '';
-  public $invoiceSummary;
   protected $lineItemInvoicesType = ShipmentInvoiceLineItemInvoice::class;
   protected $lineItemInvoicesDataType = 'array';
-  public $lineItemInvoices;
   /**
    * @var string
    */

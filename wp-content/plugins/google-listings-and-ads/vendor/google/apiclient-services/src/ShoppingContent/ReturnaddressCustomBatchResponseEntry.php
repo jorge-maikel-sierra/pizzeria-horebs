@@ -25,14 +25,12 @@ class ReturnaddressCustomBatchResponseEntry extends \Automattic\WooCommerce\Goog
   public $batchId;
   protected $errorsType = Errors::class;
   protected $errorsDataType = '';
-  public $errors;
   /**
    * @var string
    */
   public $kind;
   protected $returnAddressType = ReturnAddress::class;
   protected $returnAddressDataType = '';
-  public $returnAddress;
 
   /**
    * @param string

@@ -25,14 +25,12 @@ class ReturnpolicyCustomBatchResponseEntry extends \Automattic\WooCommerce\Googl
   public $batchId;
   protected $errorsType = Errors::class;
   protected $errorsDataType = '';
-  public $errors;
   /**
    * @var string
    */
   public $kind;
   protected $returnPolicyType = ReturnPolicy::class;
   protected $returnPolicyDataType = '';
-  public $returnPolicy;
 
   /**
    * @param string

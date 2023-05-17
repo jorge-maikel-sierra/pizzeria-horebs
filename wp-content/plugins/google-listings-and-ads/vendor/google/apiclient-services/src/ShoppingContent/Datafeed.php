@@ -30,14 +30,12 @@ class Datafeed extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor\Googl
   public $contentType;
   protected $fetchScheduleType = DatafeedFetchSchedule::class;
   protected $fetchScheduleDataType = '';
-  public $fetchSchedule;
   /**
    * @var string
    */
   public $fileName;
   protected $formatType = DatafeedFormat::class;
   protected $formatDataType = '';
-  public $format;
   /**
    * @var string
    */
@@ -52,7 +50,6 @@ class Datafeed extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor\Googl
   public $name;
   protected $targetsType = DatafeedTarget::class;
   protected $targetsDataType = 'array';
-  public $targets;
 
   /**
    * @param string

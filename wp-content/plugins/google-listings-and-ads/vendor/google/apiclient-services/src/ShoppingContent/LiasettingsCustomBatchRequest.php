@@ -22,7 +22,6 @@ class LiasettingsCustomBatchRequest extends \Automattic\WooCommerce\GoogleListin
   protected $collection_key = 'entries';
   protected $entriesType = LiasettingsCustomBatchRequestEntry::class;
   protected $entriesDataType = 'array';
-  public $entries;
 
   /**
    * @param LiasettingsCustomBatchRequestEntry[]

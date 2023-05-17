@@ -29,7 +29,6 @@ class OrdersCreateTestOrderRequest extends \Automattic\WooCommerce\GoogleListing
   public $templateName;
   protected $testOrderType = TestOrder::class;
   protected $testOrderDataType = '';
-  public $testOrder;
 
   /**
    * @param string

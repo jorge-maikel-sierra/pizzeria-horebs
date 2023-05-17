@@ -26,7 +26,6 @@ class LiasettingsGetAccessibleGmbAccountsResponse extends \Automattic\WooCommerc
   public $accountId;
   protected $gmbAccountsType = GmbAccountsGmbAccount::class;
   protected $gmbAccountsDataType = 'array';
-  public $gmbAccounts;
   /**
    * @var string
    */

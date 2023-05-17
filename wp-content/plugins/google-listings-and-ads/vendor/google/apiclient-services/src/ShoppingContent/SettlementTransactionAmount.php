@@ -21,14 +21,12 @@ class SettlementTransactionAmount extends \Automattic\WooCommerce\GoogleListings
 {
   protected $commissionType = SettlementTransactionAmountCommission::class;
   protected $commissionDataType = '';
-  public $commission;
   /**
    * @var string
    */
   public $description;
   protected $transactionAmountType = Price::class;
   protected $transactionAmountDataType = '';
-  public $transactionAmount;
   /**
    * @var string
    */

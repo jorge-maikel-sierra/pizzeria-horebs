@@ -22,7 +22,6 @@ class ReturnaddressCustomBatchResponse extends \Automattic\WooCommerce\GoogleLis
   protected $collection_key = 'entries';
   protected $entriesType = ReturnaddressCustomBatchResponseEntry::class;
   protected $entriesDataType = 'array';
-  public $entries;
   /**
    * @var string
    */

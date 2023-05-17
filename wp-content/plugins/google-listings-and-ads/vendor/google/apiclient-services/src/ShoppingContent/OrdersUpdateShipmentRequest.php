@@ -41,7 +41,6 @@ class OrdersUpdateShipmentRequest extends \Automattic\WooCommerce\GoogleListings
   public $readyPickupDate;
   protected $scheduledDeliveryDetailsType = OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails::class;
   protected $scheduledDeliveryDetailsDataType = '';
-  public $scheduledDeliveryDetails;
   /**
    * @var string
    */

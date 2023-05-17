@@ -25,10 +25,8 @@ class DatafeedstatusesCustomBatchResponseEntry extends \Automattic\WooCommerce\G
   public $batchId;
   protected $datafeedStatusType = DatafeedStatus::class;
   protected $datafeedStatusDataType = '';
-  public $datafeedStatus;
   protected $errorsType = Errors::class;
   protected $errorsDataType = '';
-  public $errors;
 
   /**
    * @param string

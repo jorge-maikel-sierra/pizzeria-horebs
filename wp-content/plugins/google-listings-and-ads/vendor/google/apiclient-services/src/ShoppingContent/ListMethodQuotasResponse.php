@@ -22,7 +22,6 @@ class ListMethodQuotasResponse extends \Automattic\WooCommerce\GoogleListingsAnd
   protected $collection_key = 'methodQuotas';
   protected $methodQuotasType = MethodQuota::class;
   protected $methodQuotasDataType = 'array';
-  public $methodQuotas;
   /**
    * @var string
    */

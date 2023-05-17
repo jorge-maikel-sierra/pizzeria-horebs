@@ -45,7 +45,6 @@ class DateTime extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor\Googl
   public $seconds;
   protected $timeZoneType = TimeZone::class;
   protected $timeZoneDataType = '';
-  public $timeZone;
   /**
    * @var string
    */

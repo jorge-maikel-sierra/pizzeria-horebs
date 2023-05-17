@@ -22,7 +22,6 @@ class AccountsCustomBatchRequestEntry extends \Automattic\WooCommerce\GoogleList
   protected $collection_key = 'labelIds';
   protected $accountType = Account::class;
   protected $accountDataType = '';
-  public $account;
   /**
    * @var string
    */
@@ -41,7 +40,6 @@ class AccountsCustomBatchRequestEntry extends \Automattic\WooCommerce\GoogleList
   public $labelIds;
   protected $linkRequestType = AccountsCustomBatchRequestEntryLinkRequest::class;
   protected $linkRequestDataType = '';
-  public $linkRequest;
   /**
    * @var string
    */

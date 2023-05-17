@@ -26,7 +26,6 @@ class AccountsLinkRequest extends \Automattic\WooCommerce\GoogleListingsAndAds\V
   public $action;
   protected $eCommercePlatformLinkInfoType = ECommercePlatformLinkInfo::class;
   protected $eCommercePlatformLinkInfoDataType = '';
-  public $eCommercePlatformLinkInfo;
   /**
    * @var string
    */
@@ -37,7 +36,6 @@ class AccountsLinkRequest extends \Automattic\WooCommerce\GoogleListingsAndAds\V
   public $linkedAccountId;
   protected $paymentServiceProviderLinkInfoType = PaymentServiceProviderLinkInfo::class;
   protected $paymentServiceProviderLinkInfoDataType = '';
-  public $paymentServiceProviderLinkInfo;
   /**
    * @var string[]
    */

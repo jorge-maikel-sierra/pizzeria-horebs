@@ -22,7 +22,6 @@ class OrdersRefundItemRequest extends \Automattic\WooCommerce\GoogleListingsAndA
   protected $collection_key = 'items';
   protected $itemsType = OrdersCustomBatchRequestEntryRefundItemItem::class;
   protected $itemsDataType = 'array';
-  public $items;
   /**
    * @var string
    */
@@ -37,7 +36,6 @@ class OrdersRefundItemRequest extends \Automattic\WooCommerce\GoogleListingsAndA
   public $reasonText;
   protected $shippingType = OrdersCustomBatchRequestEntryRefundItemShipping::class;
   protected $shippingDataType = '';
-  public $shipping;
 
   /**
    * @param OrdersCustomBatchRequestEntryRefundItemItem[]

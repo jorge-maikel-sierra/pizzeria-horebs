@@ -21,7 +21,6 @@ class Installment extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor\Go
 {
   protected $amountType = Price::class;
   protected $amountDataType = '';
-  public $amount;
   /**
    * @var string
    */

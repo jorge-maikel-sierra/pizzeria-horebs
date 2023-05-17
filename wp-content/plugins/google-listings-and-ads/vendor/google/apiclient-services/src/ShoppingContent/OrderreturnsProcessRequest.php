@@ -30,10 +30,8 @@ class OrderreturnsProcessRequest extends \Automattic\WooCommerce\GoogleListingsA
   public $operationId;
   protected $refundShippingFeeType = OrderreturnsRefundOperation::class;
   protected $refundShippingFeeDataType = '';
-  public $refundShippingFee;
   protected $returnItemsType = OrderreturnsReturnItem::class;
   protected $returnItemsDataType = 'array';
-  public $returnItems;
 
   /**
    * @param bool

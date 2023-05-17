@@ -22,7 +22,6 @@ class AccountstatusesCustomBatchRequest extends \Automattic\WooCommerce\GoogleLi
   protected $collection_key = 'entries';
   protected $entriesType = AccountstatusesCustomBatchRequestEntry::class;
   protected $entriesDataType = 'array';
-  public $entries;
 
   /**
    * @param AccountstatusesCustomBatchRequestEntry[]

@@ -26,7 +26,6 @@ class ListCollectionStatusesResponse extends \Automattic\WooCommerce\GoogleListi
   public $nextPageToken;
   protected $resourcesType = CollectionStatus::class;
   protected $resourcesDataType = 'array';
-  public $resources;
 
   /**
    * @param string

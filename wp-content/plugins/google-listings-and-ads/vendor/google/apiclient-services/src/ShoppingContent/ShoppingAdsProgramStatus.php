@@ -26,7 +26,6 @@ class ShoppingAdsProgramStatus extends \Automattic\WooCommerce\GoogleListingsAnd
   public $globalState;
   protected $regionStatusesType = ShoppingAdsProgramStatusRegionStatus::class;
   protected $regionStatusesDataType = 'array';
-  public $regionStatuses;
 
   /**
    * @param string

@@ -21,7 +21,6 @@ class ReturnPolicyOnlineReturnShippingFee extends \Automattic\WooCommerce\Google
 {
   protected $fixedFeeType = PriceAmount::class;
   protected $fixedFeeDataType = '';
-  public $fixedFee;
   /**
    * @var string
    */

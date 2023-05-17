@@ -21,10 +21,8 @@ class OrderreturnsReturnItem extends \Automattic\WooCommerce\GoogleListingsAndAd
 {
   protected $refundType = OrderreturnsRefundOperation::class;
   protected $refundDataType = '';
-  public $refund;
   protected $rejectType = OrderreturnsRejectOperation::class;
   protected $rejectDataType = '';
-  public $reject;
   /**
    * @var string
    */

@@ -26,14 +26,12 @@ class TestOrderPickupDetails extends \Automattic\WooCommerce\GoogleListingsAndAd
   public $locationCode;
   protected $pickupLocationAddressType = TestOrderAddress::class;
   protected $pickupLocationAddressDataType = '';
-  public $pickupLocationAddress;
   /**
    * @var string
    */
   public $pickupLocationType;
   protected $pickupPersonsType = TestOrderPickupDetailsPickupPerson::class;
   protected $pickupPersonsDataType = 'array';
-  public $pickupPersons;
 
   /**
    * @param string

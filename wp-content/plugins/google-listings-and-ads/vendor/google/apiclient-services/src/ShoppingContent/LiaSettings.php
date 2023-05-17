@@ -26,7 +26,6 @@ class LiaSettings extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor\Go
   public $accountId;
   protected $countrySettingsType = LiaCountrySettings::class;
   protected $countrySettingsDataType = 'array';
-  public $countrySettings;
   /**
    * @var string
    */

@@ -15,7 +15,7 @@ return array(
 		'path'    => $vendorDir . '/symfony/deprecation-contracts/function.php'
 	),
 	'decc78cc4436b1292c6c0d151b19445c' => array(
-		'version' => '3.0.18.0',
+		'version' => '3.0.19.0',
 		'path'    => $vendorDir . '/phpseclib/phpseclib/phpseclib/bootstrap.php'
 	),
 	'320cde22f66dd4f5d3fd621d3e88b98f' => array(
@@ -47,11 +47,11 @@ return array(
 		'path'    => $vendorDir . '/symfony/polyfill-intl-normalizer/bootstrap.php'
 	),
 	'a66af3295a2671f868924c6f4a9afc6c' => array(
-		'version' => 'dev-release/2.4.2',
+		'version' => 'dev-release/2.4.5',
 		'path'    => $vendorDir . '/guzzlehttp/guzzle/src/functions_include.php'
 	),
 	'7fd7393568b2f049bdce22a915a0972c' => array(
-		'version' => 'dev-release/2.4.2',
+		'version' => 'dev-release/2.4.5',
 		'path'    => $vendorDir . '/guzzlehttp/promises/src/functions_include.php'
 	),
 );

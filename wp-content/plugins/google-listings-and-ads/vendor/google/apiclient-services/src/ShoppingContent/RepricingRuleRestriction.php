@@ -21,7 +21,6 @@ class RepricingRuleRestriction extends \Automattic\WooCommerce\GoogleListingsAnd
 {
   protected $floorType = RepricingRuleRestrictionBoundary::class;
   protected $floorDataType = '';
-  public $floor;
   /**
    * @var bool
    */

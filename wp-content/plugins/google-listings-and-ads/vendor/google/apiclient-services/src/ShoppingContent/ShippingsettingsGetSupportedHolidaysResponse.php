@@ -22,7 +22,6 @@ class ShippingsettingsGetSupportedHolidaysResponse extends \Automattic\WooCommer
   protected $collection_key = 'holidays';
   protected $holidaysType = HolidaysHoliday::class;
   protected $holidaysDataType = 'array';
-  public $holidays;
   /**
    * @var string
    */

@@ -21,7 +21,6 @@ class OrderTrackingSignalShippingInfo extends \Automattic\WooCommerce\GoogleList
 {
   protected $actualDeliveryTimeType = DateTime::class;
   protected $actualDeliveryTimeDataType = '';
-  public $actualDeliveryTime;
   /**
    * @var string
    */
@@ -32,10 +31,8 @@ class OrderTrackingSignalShippingInfo extends \Automattic\WooCommerce\GoogleList
   public $carrierServiceName;
   protected $earliestDeliveryPromiseTimeType = DateTime::class;
   protected $earliestDeliveryPromiseTimeDataType = '';
-  public $earliestDeliveryPromiseTime;
   protected $latestDeliveryPromiseTimeType = DateTime::class;
   protected $latestDeliveryPromiseTimeDataType = '';
-  public $latestDeliveryPromiseTime;
   /**
    * @var string
    */
@@ -50,7 +47,6 @@ class OrderTrackingSignalShippingInfo extends \Automattic\WooCommerce\GoogleList
   public $shipmentId;
   protected $shippedTimeType = DateTime::class;
   protected $shippedTimeDataType = '';
-  public $shippedTime;
   /**
    * @var string
    */

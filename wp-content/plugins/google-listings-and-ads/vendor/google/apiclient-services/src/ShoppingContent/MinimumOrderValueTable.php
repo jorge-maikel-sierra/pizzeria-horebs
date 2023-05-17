@@ -22,7 +22,6 @@ class MinimumOrderValueTable extends \Automattic\WooCommerce\GoogleListingsAndAd
   protected $collection_key = 'storeCodeSetWithMovs';
   protected $storeCodeSetWithMovsType = MinimumOrderValueTableStoreCodeSetWithMov::class;
   protected $storeCodeSetWithMovsDataType = 'array';
-  public $storeCodeSetWithMovs;
 
   /**
    * @param MinimumOrderValueTableStoreCodeSetWithMov[]

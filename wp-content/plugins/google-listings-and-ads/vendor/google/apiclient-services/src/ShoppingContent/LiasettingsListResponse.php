@@ -30,7 +30,6 @@ class LiasettingsListResponse extends \Automattic\WooCommerce\GoogleListingsAndA
   public $nextPageToken;
   protected $resourcesType = LiaSettings::class;
   protected $resourcesDataType = 'array';
-  public $resources;
 
   /**
    * @param string

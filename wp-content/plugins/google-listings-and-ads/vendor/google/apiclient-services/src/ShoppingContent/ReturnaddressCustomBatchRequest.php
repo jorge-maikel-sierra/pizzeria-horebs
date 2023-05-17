@@ -22,7 +22,6 @@ class ReturnaddressCustomBatchRequest extends \Automattic\WooCommerce\GoogleList
   protected $collection_key = 'entries';
   protected $entriesType = ReturnaddressCustomBatchRequestEntry::class;
   protected $entriesDataType = 'array';
-  public $entries;
 
   /**
    * @param ReturnaddressCustomBatchRequestEntry[]

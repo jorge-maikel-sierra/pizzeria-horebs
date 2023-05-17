@@ -70,7 +70,6 @@ class ProductView extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor\Go
   public $currencyCode;
   protected $expirationDateType = Date::class;
   protected $expirationDateDataType = '';
-  public $expirationDate;
   /**
    * @var string[]
    */
@@ -85,7 +84,6 @@ class ProductView extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor\Go
   public $itemGroupId;
   protected $itemIssuesType = ProductViewItemIssue::class;
   protected $itemIssuesDataType = 'array';
-  public $itemIssues;
   /**
    * @var string
    */

@@ -22,7 +22,6 @@ class PosCustomBatchRequest extends \Automattic\WooCommerce\GoogleListingsAndAds
   protected $collection_key = 'entries';
   protected $entriesType = PosCustomBatchRequestEntry::class;
   protected $entriesDataType = 'array';
-  public $entries;
 
   /**
    * @param PosCustomBatchRequestEntry[]

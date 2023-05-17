@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Google Listings and Ads plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Google Listings and Ads 2.4.2\n"
+"Project-Id-Version: Google Listings and Ads 2.4.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/google-listings-and-ads\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-03-29T09:10:15+00:00\n"
+"POT-Creation-Date: 2023-05-09T09:34:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: google-listings-and-ads\n"
@@ -20,7 +20,7 @@ msgid "Google Listings and Ads"
 msgstr ""
 
 #. Description of the plugin
-#: src/MultichannelMarketing/GLAChannel.php:108
+#: src/MultichannelMarketing/GLAChannel.php:100
 msgid "Native integration with Google that allows merchants to easily display their products across Google’s network."
 msgstr ""
 
@@ -501,7 +501,7 @@ msgstr ""
 
 #: src/API/Site/Controllers/Ads/AccountController.php:149
 #: src/API/Site/Controllers/Google/AccountController.php:151
-#: src/API/Site/Controllers/Jetpack/AccountController.php:161
+#: src/API/Site/Controllers/Jetpack/AccountController.php:160
 msgid "Successfully disconnected."
 msgstr ""
 
@@ -854,11 +854,11 @@ msgstr ""
 msgid "The URL for making a connection to Google."
 msgstr ""
 
-#: src/API/Site/Controllers/Jetpack/AccountController.php:139
+#: src/API/Site/Controllers/Jetpack/AccountController.php:138
 msgid "Indicates the next page name mapped to the redirect URL when back from Jetpack authorization."
 msgstr ""
 
-#: src/API/Site/Controllers/Jetpack/AccountController.php:250
+#: src/API/Site/Controllers/Jetpack/AccountController.php:249
 msgid "The URL for making a connection to Jetpack (wordpress.com)."
 msgstr ""
 
@@ -1406,13 +1406,13 @@ msgstr ""
 msgid "Attribute Mapping"
 msgstr ""
 
-#: src/Menu/Dashboard.php:39
-#: src/Menu/Dashboard.php:56
-#: src/Menu/Dashboard.php:60
-#: src/Menu/GetStarted.php:39
-#: src/Menu/GetStarted.php:56
-#: src/Menu/GetStarted.php:60
-#: src/MultichannelMarketing/GLAChannel.php:99
+#: src/Menu/Dashboard.php:41
+#: src/Menu/Dashboard.php:58
+#: src/Menu/Dashboard.php:62
+#: src/Menu/GetStarted.php:41
+#: src/Menu/GetStarted.php:58
+#: src/Menu/GetStarted.php:62
+#: src/MultichannelMarketing/GLAChannel.php:91
 #: views/attributes/variations-form.php:22
 #: views/meta-box/channel_visibility.php:95
 #: views/meta-box/coupon_channel_visibility.php:160
@@ -1420,7 +1420,7 @@ msgstr ""
 msgid "Google Listings & Ads"
 msgstr ""
 
-#: src/Menu/Dashboard.php:71
+#: src/Menu/Dashboard.php:73
 #: js/build/index.js:78
 #: js/build/index.js:113
 msgid "Dashboard"

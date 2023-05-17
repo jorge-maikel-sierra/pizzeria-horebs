@@ -26,7 +26,6 @@ class Errors extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor\Google\
   public $code;
   protected $errorsType = Error::class;
   protected $errorsDataType = 'array';
-  public $errors;
   /**
    * @var string
    */

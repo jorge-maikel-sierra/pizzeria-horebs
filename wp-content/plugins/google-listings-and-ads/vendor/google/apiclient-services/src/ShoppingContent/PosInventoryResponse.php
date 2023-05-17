@@ -37,7 +37,6 @@ class PosInventoryResponse extends \Automattic\WooCommerce\GoogleListingsAndAds\
   public $kind;
   protected $priceType = Price::class;
   protected $priceDataType = '';
-  public $price;
   /**
    * @var string
    */

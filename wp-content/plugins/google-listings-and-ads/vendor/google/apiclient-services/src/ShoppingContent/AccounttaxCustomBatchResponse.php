@@ -22,7 +22,6 @@ class AccounttaxCustomBatchResponse extends \Automattic\WooCommerce\GoogleListin
   protected $collection_key = 'entries';
   protected $entriesType = AccounttaxCustomBatchResponseEntry::class;
   protected $entriesDataType = 'array';
-  public $entries;
   /**
    * @var string
    */

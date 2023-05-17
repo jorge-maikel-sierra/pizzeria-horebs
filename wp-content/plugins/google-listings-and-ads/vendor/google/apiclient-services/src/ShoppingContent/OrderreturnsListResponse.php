@@ -30,7 +30,6 @@ class OrderreturnsListResponse extends \Automattic\WooCommerce\GoogleListingsAnd
   public $nextPageToken;
   protected $resourcesType = MerchantOrderReturn::class;
   protected $resourcesDataType = 'array';
-  public $resources;
 
   /**
    * @param string

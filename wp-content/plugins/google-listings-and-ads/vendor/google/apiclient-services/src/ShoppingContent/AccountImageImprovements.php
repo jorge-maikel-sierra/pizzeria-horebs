@@ -21,7 +21,6 @@ class AccountImageImprovements extends \Automattic\WooCommerce\GoogleListingsAnd
 {
   protected $accountImageImprovementsSettingsType = AccountImageImprovementsSettings::class;
   protected $accountImageImprovementsSettingsDataType = '';
-  public $accountImageImprovementsSettings;
   /**
    * @var bool
    */

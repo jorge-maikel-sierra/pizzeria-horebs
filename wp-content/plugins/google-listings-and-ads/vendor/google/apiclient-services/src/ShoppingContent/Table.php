@@ -22,17 +22,14 @@ class Table extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor\Google\C
   protected $collection_key = 'rows';
   protected $columnHeadersType = Headers::class;
   protected $columnHeadersDataType = '';
-  public $columnHeaders;
   /**
    * @var string
    */
   public $name;
   protected $rowHeadersType = Headers::class;
   protected $rowHeadersDataType = '';
-  public $rowHeaders;
   protected $rowsType = Row::class;
   protected $rowsDataType = 'array';
-  public $rows;
 
   /**
    * @param Headers

@@ -21,14 +21,12 @@ class ProductViewItemIssue extends \Automattic\WooCommerce\GoogleListingsAndAds\
 {
   protected $issueTypeType = ProductViewItemIssueItemIssueType::class;
   protected $issueTypeDataType = '';
-  public $issueType;
   /**
    * @var string
    */
   public $resolution;
   protected $severityType = ProductViewItemIssueItemIssueSeverity::class;
   protected $severityDataType = '';
-  public $severity;
 
   /**
    * @param ProductViewItemIssueItemIssueType

@@ -30,7 +30,6 @@ class ReturnaddressListResponse extends \Automattic\WooCommerce\GoogleListingsAn
   public $nextPageToken;
   protected $resourcesType = ReturnAddress::class;
   protected $resourcesDataType = 'array';
-  public $resources;
 
   /**
    * @param string

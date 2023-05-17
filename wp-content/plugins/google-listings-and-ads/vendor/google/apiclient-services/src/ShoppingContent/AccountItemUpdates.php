@@ -21,7 +21,6 @@ class AccountItemUpdates extends \Automattic\WooCommerce\GoogleListingsAndAds\Ve
 {
   protected $accountItemUpdatesSettingsType = AccountItemUpdatesSettings::class;
   protected $accountItemUpdatesSettingsDataType = '';
-  public $accountItemUpdatesSettings;
   /**
    * @var bool
    */

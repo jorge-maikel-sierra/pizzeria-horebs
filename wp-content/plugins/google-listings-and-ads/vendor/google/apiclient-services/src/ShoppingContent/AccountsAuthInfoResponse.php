@@ -22,7 +22,6 @@ class AccountsAuthInfoResponse extends \Automattic\WooCommerce\GoogleListingsAnd
   protected $collection_key = 'accountIdentifiers';
   protected $accountIdentifiersType = AccountIdentifier::class;
   protected $accountIdentifiersDataType = 'array';
-  public $accountIdentifiers;
   /**
    * @var string
    */

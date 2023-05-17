@@ -25,16 +25,12 @@ class ReturnPricingInfo extends \Automattic\WooCommerce\GoogleListingsAndAds\Ven
   public $chargeReturnShippingFee;
   protected $maxReturnShippingFeeType = MonetaryAmount::class;
   protected $maxReturnShippingFeeDataType = '';
-  public $maxReturnShippingFee;
   protected $refundableItemsTotalAmountType = MonetaryAmount::class;
   protected $refundableItemsTotalAmountDataType = '';
-  public $refundableItemsTotalAmount;
   protected $refundableShippingAmountType = MonetaryAmount::class;
   protected $refundableShippingAmountDataType = '';
-  public $refundableShippingAmount;
   protected $totalRefundedAmountType = MonetaryAmount::class;
   protected $totalRefundedAmountDataType = '';
-  public $totalRefundedAmount;
 
   /**
    * @param bool

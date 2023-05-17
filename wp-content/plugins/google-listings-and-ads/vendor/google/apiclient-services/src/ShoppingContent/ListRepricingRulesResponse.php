@@ -26,7 +26,6 @@ class ListRepricingRulesResponse extends \Automattic\WooCommerce\GoogleListingsA
   public $nextPageToken;
   protected $repricingRulesType = RepricingRule::class;
   protected $repricingRulesDataType = 'array';
-  public $repricingRules;
 
   /**
    * @param string

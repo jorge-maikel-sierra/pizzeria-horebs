@@ -25,7 +25,6 @@ class OrdersGetByMerchantOrderIdResponse extends \Automattic\WooCommerce\GoogleL
   public $kind;
   protected $orderType = Order::class;
   protected $orderDataType = '';
-  public $order;
 
   /**
    * @param string

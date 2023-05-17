@@ -21,7 +21,6 @@ class SiteVerificationWebResourceGettokenRequest extends \Automattic\WooCommerce
 {
   protected $siteType = SiteVerificationWebResourceGettokenRequestSite::class;
   protected $siteDataType = '';
-  public $site;
   /**
    * @var string
    */

@@ -37,7 +37,6 @@ class PosInventory extends \Automattic\WooCommerce\GoogleListingsAndAds\Vendor\G
   public $kind;
   protected $priceType = Price::class;
   protected $priceDataType = '';
-  public $price;
   /**
    * @var string
    */
