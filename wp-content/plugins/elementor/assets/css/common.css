@@ -1,4 +1,4 @@
-/*! elementor - v3.12.2 - 23-04-2023 */
+/*! elementor - v3.13.2 - 11-05-2023 */
 .dialog-widget-content {
   background-color: var(--e-a-bg-default);
   position: absolute;
@@ -110,7 +110,7 @@
   margin-bottom: 10px;
 }
 
-#e-experiments-dependency-dialog .dialog-confirm-header {
+#e-experiments-messages-dialog .dialog-confirm-header {
   font-weight: 600;
 }
 
@@ -163,7 +163,7 @@
 .elementor-templates-modal .dialog-message {
   height: 750px;
   max-height: 85vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 20px;
 }
 .elementor-templates-modal .dialog-content {

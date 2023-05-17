@@ -1,4 +1,4 @@
-/*! elementor - v3.12.2 - 23-04-2023 */
+/*! elementor - v3.13.2 - 11-05-2023 */
 (self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["kit-library"],{
 
 /***/ "../app/modules/kit-library/assets/js/components/badge.scss":
@@ -1117,10 +1117,10 @@ function ItemHeader(props) {
   }, [props.buttons, applyButton]);
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, error && /*#__PURE__*/_react.default.createElement(_appUi.Dialog, {
     title: error.message,
-    text: __('Nothing to worry about, just try again. If the problem continues, head over to the Help Center.', 'elementor'),
-    approveButtonText: __('Learn More', 'elementor'),
-    approveButtonColor: "link",
-    approveButtonUrl: "http://go.elementor.com/app-kit-library-error/",
+    text: __('Go to the pages screen to make sure your kit pages have been imported successfully. If not, try again.', 'elementor'),
+    approveButtonText: __('Go to pages', 'elementor'),
+    approveButtonColor: "primary",
+    approveButtonUrl: elementorAppConfig.admin_url + 'edit.php?post_type=page',
     approveButtonOnClick: function approveButtonOnClick() {
       return setError(false);
     },
@@ -3912,12 +3912,8 @@ function OverviewSidebar(props) {
   var _props$groupedKitCont;
   var _useState = (0, _react.useState)(true),
     _useState2 = (0, _slicedToArray2.default)(_useState, 2),
-    isTagsCollapseOpen = _useState2[0],
-    setIsTagsCollapseOpen = _useState2[1];
-  var _useState3 = (0, _react.useState)(false),
-    _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
-    isInformationCollapseOpen = _useState4[0],
-    setIsInformationCollapseOpen = _useState4[1];
+    isInformationCollapseOpen = _useState2[0],
+    setIsInformationCollapseOpen = _useState2[1];
   var eventTracking = function eventTracking(command) {
     var section = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
     var kitName = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
@@ -3954,25 +3950,7 @@ function OverviewSidebar(props) {
     src: props.model.thumbnailUrl || ''
   }), /*#__PURE__*/_react.default.createElement(_appUi.Text, {
     className: "e-kit-library__item-sidebar-description"
-  }, props.model.description || ''), props.model.taxonomies.length > 0 && /*#__PURE__*/_react.default.createElement(_collapse.default, {
-    isOpen: isTagsCollapseOpen,
-    onChange: setIsTagsCollapseOpen,
-    title: __('TAGS', 'elementor'),
-    className: "e-kit-library__item-sidebar-collapse-tags",
-    onClick: function onClick(collapseState, title) {
-      eventTracking(null, title, null, null, collapseState);
-    }
-  }, /*#__PURE__*/_react.default.createElement(_appUi.Grid, {
-    container: true,
-    className: "e-kit-library__item-sidebar-tags-container"
-  }, props.model.taxonomies.map(function (taxonomy) {
-    return /*#__PURE__*/_react.default.createElement(_overviewTaxonomyBadge.default, {
-      key: taxonomy,
-      onClick: function onClick(taxonomyText) {
-        eventTracking('kit-library/filter', null, props.model.title, taxonomyText);
-      }
-    }, taxonomy);
-  }))), ((_props$groupedKitCont = props.groupedKitContent) === null || _props$groupedKitCont === void 0 ? void 0 : _props$groupedKitCont.length) > 0 && props.model.documents.length > 0 && /*#__PURE__*/_react.default.createElement(_collapse.default, {
+  }, props.model.description || ''), ((_props$groupedKitCont = props.groupedKitContent) === null || _props$groupedKitCont === void 0 ? void 0 : _props$groupedKitCont.length) > 0 && props.model.documents.length > 0 && /*#__PURE__*/_react.default.createElement(_collapse.default, {
     isOpen: isInformationCollapseOpen,
     onChange: setIsInformationCollapseOpen,
     title: __('WHAT\'S INSIDE', 'elementor'),
@@ -4500,4 +4478,4 @@ exports["default"] = _default;
 /***/ })
 
 }]);
-//# sourceMappingURL=kit-library.1101176ec8af9d357159.bundle.js.map
+//# sourceMappingURL=kit-library.18b65108d23ab1dafb8a.bundle.js.map

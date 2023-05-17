@@ -1,4 +1,4 @@
-/*! elementor - v3.12.2 - 23-04-2023 */
+/*! elementor - v3.13.2 - 11-05-2023 */
 (self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["modules_nested-elements_assets_js_editor_views_view_js"],{
 
 /***/ "../modules/nested-elements/assets/js/editor/views/view.js":
@@ -64,6 +64,25 @@ var View = /*#__PURE__*/function (_$e$components$get$ex) {
         });
       };
       return events;
+    }
+
+    /**
+     * Function renderHTML().
+     *
+     * The `renderHTML()` method is overridden as it causes redundant renders when removing focus from any nested element.
+     * This is because the original `renderHTML()` method sets `editModel.renderOnLeave = true;`.
+     */
+  }, {
+    key: "renderHTML",
+    value: function renderHTML() {
+      var templateType = this.getTemplateType(),
+        editModel = this.getEditModel();
+      if ('js' === templateType) {
+        editModel.setHtmlCache();
+        this.render();
+      } else {
+        editModel.renderRemoteServer();
+      }
     }
   }]);
   return View;
@@ -216,4 +235,4 @@ module.exports = _superPropBase, module.exports.__esModule = true, module.export
 /***/ })
 
 }]);
-//# sourceMappingURL=41242dd2abc7917a4e40.bundle.js.map
+//# sourceMappingURL=96124ada3ba05750eec1.bundle.js.map

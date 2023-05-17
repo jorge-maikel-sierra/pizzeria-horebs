@@ -1,4 +1,4 @@
-/*! elementor - v3.12.2 - 23-04-2023 */
+/*! elementor - v3.13.2 - 11-05-2023 */
 "use strict";
 (self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["onboarding"],{
 
@@ -740,7 +740,7 @@ function Layout(props) {
       text: __('My Elementor', 'elementor-pro'),
       hideText: false,
       icon: 'eicon-user-circle-o',
-      url: 'https://my.elementor.com/?utm_source=onboarding-wizard&utm_medium=wp-dash&utm_campaign=my-account&utm_content=top-bar&utm_term=' + elementorAppConfig.onboarding.onboardingVersion,
+      url: 'https://my.elementor.com/websites/?utm_source=onboarding-wizard&utm_medium=wp-dash&utm_campaign=my-account&utm_content=top-bar&utm_term=' + elementorAppConfig.onboarding.onboardingVersion,
       target: '_blank',
       onClick: function onClick() {
         elementorCommon.events.dispatchEvent({
@@ -2376,4 +2376,4 @@ Connect.propTypes = {
 /***/ })
 
 }]);
-//# sourceMappingURL=onboarding.9ee547c8074641c253ee.bundle.js.map
+//# sourceMappingURL=onboarding.11552dda33809c4e4b47.bundle.js.map

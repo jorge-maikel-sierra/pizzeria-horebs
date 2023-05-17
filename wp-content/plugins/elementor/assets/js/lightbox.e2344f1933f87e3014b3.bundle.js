@@ -1,4 +1,4 @@
-/*! elementor - v3.12.2 - 23-04-2023 */
+/*! elementor - v3.13.2 - 11-05-2023 */
 (self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["lightbox"],{
 
 /***/ "../assets/dev/js/frontend/utils/icons/e-icons.js":
@@ -373,8 +373,8 @@ module.exports = elementorModules.ViewModule.extend({
       closeButtonOptions: {
         ...closeIcon,
         attributes: {
-          tabindex: 0,
           role: 'button',
+          tabindex: 0,
           'aria-label': elementorFrontend.config.i18n.close + ' (Esc)'
         }
       },
@@ -561,7 +561,8 @@ module.exports = elementorModules.ViewModule.extend({
           target: '_blank'
         }).text(networkLabel),
         $socialNetworkIconElement = this.isFontIconSvgExperiment ? $(data.iconElement.element) : $('<i>', {
-          class: 'eicon-' + key
+          class: 'eicon-' + key,
+          'aria-hidden': 'true'
         });
       $link.prepend($socialNetworkIconElement);
       $linkList.append($link);
@@ -611,6 +612,7 @@ module.exports = elementorModules.ViewModule.extend({
       elements.$iconShare = $(iconElement, {
         class: slideshowClasses.iconShare,
         role: 'button',
+        tabindex: 0,
         'aria-label': i18n.share,
         'aria-expanded': false
       }).append($('<span>'));
@@ -630,6 +632,7 @@ module.exports = elementorModules.ViewModule.extend({
         showZoomElements = [],
         showZoomAttrs = {
           role: 'switch',
+          tabindex: 0,
           'aria-checked': false,
           'aria-label': i18n.zoom
         },
@@ -653,6 +656,7 @@ module.exports = elementorModules.ViewModule.extend({
         fullScreenElements = [],
         fullScreenAttrs = {
           role: 'switch',
+          tabindex: 0,
           'aria-checked': false,
           'aria-label': i18n.fullscreen
         },
@@ -857,19 +861,25 @@ module.exports = elementorModules.ViewModule.extend({
     $container.prepend(this.elements.$header).append($slidesWrapper);
     if (!isSingleSlide) {
       const $prevButtonIcon = this.isFontIconSvgExperiment ? $(_eIcons.chevronLeft.element) : $('<i>', {
-          class: slideshowClasses.prevButtonIcon
+          class: slideshowClasses.prevButtonIcon,
+          'aria-hidden': 'true'
         }),
         $nextButtonIcon = this.isFontIconSvgExperiment ? $(_eIcons.chevronRight.element) : $('<i>', {
-          class: slideshowClasses.nextButtonIcon
-        });
+          class: slideshowClasses.nextButtonIcon,
+          'aria-hidden': 'true'
+        }),
+        $prevButtonLabel = $('<span>', {
+          class: 'screen-reader-text'
+        }).html(i18n.previous),
+        $nextButtonLabel = $('<span>', {
+          class: 'screen-reader-text'
+        }).html(i18n.next);
       $prevButton = $('<div>', {
-        class: slideshowClasses.prevButton + ' ' + classes.preventClose,
-        'aria-label': i18n.previous
-      }).html($prevButtonIcon);
+        class: slideshowClasses.prevButton + ' ' + classes.preventClose
+      }).append($prevButtonIcon, $prevButtonLabel);
       $nextButton = $('<div>', {
-        class: slideshowClasses.nextButton + ' ' + classes.preventClose,
-        'aria-label': i18n.next
-      }).html($nextButtonIcon);
+        class: slideshowClasses.nextButton + ' ' + classes.preventClose
+      }).append($nextButtonIcon, $nextButtonLabel);
       $container.append($nextButton, $prevButton);
       this.$buttons = this.$buttons.add($nextButton).add($prevButton);
     }
@@ -1363,4 +1373,4 @@ module.exports = _typeof, module.exports.__esModule = true, module.exports["defa
 /***/ })
 
 }]);
-//# sourceMappingURL=lightbox.d1807324971bbc117b97.bundle.js.map
+//# sourceMappingURL=lightbox.e2344f1933f87e3014b3.bundle.js.map

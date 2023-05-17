@@ -1,4 +1,4 @@
-/*! elementor - v3.12.2 - 23-04-2023 */
+/*! elementor - v3.13.2 - 11-05-2023 */
 "use strict";
 (self["webpackChunkelementor"] = self["webpackChunkelementor"] || []).push([["modules_nested-elements_assets_js_editor_nested-element-types-base_js"],{
 
@@ -310,6 +310,25 @@ var View = /*#__PURE__*/function (_$e$components$get$ex) {
       };
       return events;
     }
+
+    /**
+     * Function renderHTML().
+     *
+     * The `renderHTML()` method is overridden as it causes redundant renders when removing focus from any nested element.
+     * This is because the original `renderHTML()` method sets `editModel.renderOnLeave = true;`.
+     */
+  }, {
+    key: "renderHTML",
+    value: function renderHTML() {
+      var templateType = this.getTemplateType(),
+        editModel = this.getEditModel();
+      if ('js' === templateType) {
+        editModel.setHtmlCache();
+        this.render();
+      } else {
+        editModel.renderRemoteServer();
+      }
+    }
   }]);
   return View;
 }($e.components.get('nested-elements/nested-repeater').exports.NestedViewBase);
@@ -320,4 +339,4 @@ exports["default"] = _default;
 /***/ })
 
 }]);
-//# sourceMappingURL=1be27d786af272b43945.bundle.js.map
+//# sourceMappingURL=adea2c8e99ec77c3e05d.bundle.js.map
