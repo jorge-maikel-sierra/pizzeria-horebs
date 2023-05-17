@@ -106,15 +106,15 @@ if ( ! class_exists( 'SIB_Page_Scenarios' ) ) {
 
 		/** Generate main page */
 		function generate_main_page() {
-			$ma_link = 'https://automation.sendinblue.com/scenarios/?create_new_scenario';
-			$ma_exist_link = 'https://automation.sendinblue.com/scenarios/?utm_source=wordpress_plugin&utm_medium=plugin&utm_campaign=module_link';
-			$ma_logs_link = 'https://automation.sendinblue.com/log/scenarios/?utm_source=wordpress_plugin&utm_medium=plugin&utm_campaign=module_link';
+			$ma_link = 'https://automation.brevo.com/scenarios/?create_new_scenario';
+			$ma_exist_link = 'https://automation.brevo.com/scenarios/?utm_source=wordpress_plugin&utm_medium=plugin&utm_campaign=module_link';
+			$ma_logs_link = 'https://automation.brevo.com/log/scenarios/?utm_source=wordpress_plugin&utm_medium=plugin&utm_campaign=module_link';
 
 			?>
 			<h2 style="text-align: center;"><?php esc_attr_e( 'Create your workflow', 'mailin' ); ?></h2>
 			<div class="sib-scenarios">
 				<div class="col-md-4 ">
-					<a class="sib-scenario-link" href="<?php echo esc_url( $ma_link ); ?>" target="_blank">
+					<a class="sib-scenario-link" href="<?php echo esc_url( $ma_link ); ?>" target="_blank" rel="noopener">
 						<div class="thumbnail thumbanail_focus">
 							<h4 class="text-center"><?php esc_attr_e( 'Custom workflow','mailin' ); ?></h4>
 							<p class="text-center">
@@ -125,7 +125,7 @@ if ( ! class_exists( 'SIB_Page_Scenarios' ) ) {
 					</a>
 				</div>
 				<div class="col-md-4">
-					<a class="sib-scenario-link" href="<?php echo esc_url( $ma_link ); ?>" target="_blank">
+					<a class="sib-scenario-link" href="<?php echo esc_url( $ma_link ); ?>" target="_blank" rel="noopener">
 						<div class="thumbnail thumbanail_focus">
 							<h4 class="text-center"><?php esc_attr_e( 'Welcome Message','mailin' ); ?></h4>
 							<p class="text-center">
@@ -136,7 +136,7 @@ if ( ! class_exists( 'SIB_Page_Scenarios' ) ) {
 					</a>
 				</div>
 				<div class="col-md-4">
-					<a class="sib-scenario-link" href="<?php echo esc_url( $ma_link ); ?>" target="_blank">
+					<a class="sib-scenario-link" href="<?php echo esc_url( $ma_link ); ?>" target="_blank" rel="noopener">
 						<div class="thumbnail thumbanail_focus">
 							<h4 class="text-center"><?php esc_attr_e( 'Anniversary Date','mailin' ); ?></h4>
 							<p class="text-center">
@@ -147,7 +147,7 @@ if ( ! class_exists( 'SIB_Page_Scenarios' ) ) {
 					</a>
 				</div>
 				<div class="col-md-4">
-					<a class="sib-scenario-link" href="<?php echo esc_url( $ma_link ); ?>" target="_blank">
+					<a class="sib-scenario-link" href="<?php echo esc_url( $ma_link ); ?>" target="_blank" rel="noopener">
 						<div class="thumbnail thumbanail_focus">
 							<h4 class="text-center"><?php esc_attr_e( 'Page Visit','mailin' ); ?></h4>
 							<p class="text-center">
@@ -158,7 +158,7 @@ if ( ! class_exists( 'SIB_Page_Scenarios' ) ) {
 					</a>
 				</div>
 				<div class="col-md-4">
-					<a class="sib-scenario-link" href="<?php echo esc_url( $ma_link ); ?>" target="_blank">
+					<a class="sib-scenario-link" href="<?php echo esc_url( $ma_link ); ?>" target="_blank" rel="noopener">
 						<div class="thumbnail thumbanail_focus">
 							<h4 class="text-center"><?php esc_attr_e( 'Website Event','mailin' ); ?></h4>
 							<p class="text-center">
@@ -169,7 +169,7 @@ if ( ! class_exists( 'SIB_Page_Scenarios' ) ) {
 					</a>
 				</div>
 				<div class="col-md-4">
-					<a class="sib-scenario-link" href="<?php echo esc_url( $ma_link ); ?>" target="_blank">
+					<a class="sib-scenario-link" href="<?php echo esc_url( $ma_link ); ?>" target="_blank" rel="noopener">
 						<div class="thumbnail thumbanail_focus">
 							<h4 class="text-center"><?php esc_attr_e( 'Product Purchase','mailin' ); ?></h4>
 							<p class="text-center">
@@ -180,7 +180,7 @@ if ( ! class_exists( 'SIB_Page_Scenarios' ) ) {
 					</a>
 				</div>
 				<div class="col-md-4">
-					<a class="sib-scenario-link" href="<?php echo esc_url( $ma_link ); ?>" target="_blank">
+					<a class="sib-scenario-link" href="<?php echo esc_url( $ma_link ); ?>" target="_blank" rel="noopener">
 						<div class="thumbnail thumbanail_focus">
 							<h4 class="text-center"><?php esc_attr_e( 'Marketing Activity','mailin' ); ?></h4>
 							<p class="text-center">
@@ -191,7 +191,7 @@ if ( ! class_exists( 'SIB_Page_Scenarios' ) ) {
 					</a>
 				</div>
 				<div class="col-md-4">
-					<a class="sib-scenario-link" href="<?php echo esc_url( $ma_link ); ?>" target="_blank">
+					<a class="sib-scenario-link" href="<?php echo esc_url( $ma_link ); ?>" target="_blank" rel="noopener">
 						<div class="thumbnail thumbanail_focus">
 							<h4 class="text-center"><?php esc_attr_e( 'Transactional Activity','mailin' ); ?></h4>
 							<p class="text-center">
@@ -204,10 +204,10 @@ if ( ! class_exists( 'SIB_Page_Scenarios' ) ) {
 			</div>
 
 			<div class="col-md-6" style="text-align: right;padding: 0 50px;">
-				<a href="<?php echo esc_url( $ma_exist_link ); ?>" class="button" target="_blank" style="width: 200px;text-align: center;"><?php esc_attr_e( 'View my existing workflows', 'mailin' ); ?></a>
+				<a href="<?php echo esc_url( $ma_exist_link ); ?>" class="button" target="_blank" rel="noopener" style="width: 200px;text-align: center;"><?php esc_attr_e( 'View my existing workflows', 'mailin' ); ?></a>
 				</div>
 			<div class="col-md-6" style="text-align: left;padding: 0 50px;">
-				<a href="<?php echo esc_url( $ma_logs_link ); ?>" class="button" target="_blank" style="width: 200px;text-align: center;"><?php esc_attr_e( 'View logs', 'mailin' ); ?></a>
+				<a href="<?php echo esc_url( $ma_logs_link ); ?>" class="button" target="_blank" rel="noopener" style="width: 200px;text-align: center;"><?php esc_attr_e( 'View logs', 'mailin' ); ?></a>
 			</div>
 
 			<?php

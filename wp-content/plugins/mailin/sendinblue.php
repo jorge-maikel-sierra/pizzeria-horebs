@@ -3,7 +3,7 @@
  * Plugin Name: Newsletter, SMTP, Email marketing and Subscribe forms by Sendinblue
  * Plugin URI: https://www.sendinblue.com/?r=wporg
  * Description: Manage your contact lists, subscription forms and all email and marketing-related topics from your wp panel, within one single plugin
- * Version: 3.1.59
+ * Version: 3.1.61
  * Author: Sendinblue
  * Author URI: https://www.sendinblue.com/?r=wporg
  * License: GPLv2 or later
@@ -83,7 +83,7 @@ if ( ! class_exists( 'SIB_Manager' ) ) {
         const API_KEY_V3_OPTION_NAME = 'sib_api_key_v3';
 
 		const RECAPTCHA_API_TEMPLATE = 'https://www.google.com/recaptcha/api/siteverify?%s';
-		
+
 		/** Installation id option name */
 		const INSTALLATION_ID = 'sib_installation_id';
 
@@ -803,7 +803,7 @@ if ( ! class_exists( 'SIB_Manager' ) ) {
 			array_walk_recursive( $_POST, function(&$value) {
 				$value = stripslashes($value);
 			});
-			
+
 			if ( empty( $_POST['sib_security'] ) ) {
 				wp_send_json(
 					array(
@@ -1039,7 +1039,7 @@ if ( ! class_exists( 'SIB_Manager' ) ) {
 			if ( ! is_array( $to ) ) {
 				$to = explode( ',', $to );
 			}
-			
+
 			$from_email = apply_filters( 'wp_mail_from', $from_email );
 			$from_name = apply_filters( 'wp_mail_from_name', $from_name );
 
@@ -1427,8 +1427,19 @@ if ( ! class_exists( 'SIB_Manager' ) ) {
 										if ( null === $exist ) {
 											continue;
 										} else {
-											$option_text = ( 'selected' === $selected ) ? sprintf( '<option value="" selected>%s</option>', $language['native_name'] ) : sprintf( '<option value="?page=%s&action=%s&pid=%s&lang=%s" %s >%s</option>', sanitize_text_field( $_REQUEST['page'] ), 'edit', absint( $pID ), $language['language_code'], $selected, $language['native_name'] );
-										}
+                                            $option_text = ( 'selected' === $selected ) ?
+                                                sprintf( '<option value="" selected>%s</option>', esc_html( $language['native_name'] ) ) :
+                                                sprintf( '<option value="%s" %s>%s</option>',
+                                                    esc_url( add_query_arg( array(
+                                                        'page' => sanitize_text_field( $_REQUEST['page'] ),
+                                                        'action' => 'edit',
+                                                        'pid' => absint( $pID ),
+                                                        'lang' => sanitize_text_field( $language['language_code'] )
+                                                    ) ) ),
+                                                    $selected,
+                                                    esc_html( $language['native_name'] )
+                                                );
+                                        }
 									}
 									echo $option_text ;
 								}
@@ -1472,8 +1483,14 @@ if ( ! class_exists( 'SIB_Manager' ) ) {
 												$td = $href . '<img src="' . $img_src . '" style="margin:2px;"></a>';
 											} else {
 												$img_src = plugins_url( 'img/edit_translation.png', __FILE__ );
-												$href = sprintf( '<a class="sib-form-redirect" href="?page=%s&action=%s&id=%s&pid=%s&lang=%s" style="width: 20px; text-align: center;padding: 2px 1px;">', sanitize_text_field( $_REQUEST['page'] ), 'edit', absint( $exist ), absint( $pID ), $language['language_code'] );
-												$td = $href . '<img src="' . $img_src . '" style="margin:2px;"></a>';
+                                                $href = sprintf( '<a class="sib-form-redirect" href="%s" style="width: 20px; text-align: center;padding: 2px 1px;">', esc_url( add_query_arg( array(
+                                                    'page' => sanitize_text_field( $_REQUEST['page'] ),
+                                                    'action' => 'edit',
+                                                    'id' => absint( $exist ),
+                                                    'pid' => absint( $pID ),
+                                                    'lang' => sanitize_text_field( $language['language_code'] )
+                                                ) ) ) );
+                                                $td = $href . '<img src="' . $img_src . '" style="margin:2px;"></a>';
 											}
 										}
 										?>
