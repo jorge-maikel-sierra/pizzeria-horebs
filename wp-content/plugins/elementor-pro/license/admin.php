@@ -149,7 +149,6 @@ class Admin {
 	}
 
 	public function register_page() {
-		return;
 		$menu_text = esc_html__( 'License', 'elementor-pro' );
 
 		add_submenu_page(

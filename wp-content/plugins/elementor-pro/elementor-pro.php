@@ -4,13 +4,22 @@
  * Description: Elevate your designs and unlock the full power of Elementor. Gain access to dozens of Pro widgets and kits, Theme Builder, Pop Ups, Forms and WooCommerce building capabilities.
  * Plugin URI: https://go.elementor.com/wp-dash-wp-plugins-author-uri/
  * Author: Elementor.com
- * Version: 3.12.2
- * Elementor tested up to: 3.11.0
+ * Version: 3.13.1
+ * Elementor tested up to: 3.13.0
  * Author URI: https://go.elementor.com/wp-dash-wp-plugins-author-uri/
  *
  * Text Domain: elementor-pro
  */
-update_option( 'elementor_pro_license_key', '*********' );
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
+if ( get_option('_elementor_pro_license_data') ) {
+	delete_option( '_elementor_pro_license_data');
+}
+
+update_option( 'elementor_pro_license_key', 'activated' );
 update_option( '_elementor_pro_license_v2_data', [ 'timeout' => strtotime( '+12 hours', current_time( 'timestamp' ) ), 'value' => json_encode( [ 'success' => true, 'license' => 'valid', 'expires' => '01.01.2030', 'features' => [] ] ) ] );
 add_filter( 'elementor/connect/additional-connect-info', '__return_empty_array', 999 );
 
@@ -33,11 +42,8 @@ return $pre;
 }
 }, 10, 3 );
 } );
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
-}
 
-define( 'ELEMENTOR_PRO_VERSION', '3.12.2' );
+define( 'ELEMENTOR_PRO_VERSION', '3.13.1' );
 
 define( 'ELEMENTOR_PRO__FILE__', __FILE__ );
 define( 'ELEMENTOR_PRO_PLUGIN_BASE', plugin_basename( ELEMENTOR_PRO__FILE__ ) );
@@ -64,14 +70,14 @@ function elementor_pro_load_plugin() {
 		return;
 	}
 
-	$elementor_version_required = '3.8.0';
+	$elementor_version_required = '3.11.0';
 	if ( ! version_compare( ELEMENTOR_VERSION, $elementor_version_required, '>=' ) ) {
 		add_action( 'admin_notices', 'elementor_pro_fail_load_out_of_date' );
 
 		return;
 	}
 
-	$elementor_version_recommendation = '3.12.0';
+	$elementor_version_recommendation = '3.13.0';
 	if ( ! version_compare( ELEMENTOR_VERSION, $elementor_version_recommendation, '>=' ) ) {
 		add_action( 'admin_notices', 'elementor_pro_admin_notice_upgrade_recommendation' );
 	}
