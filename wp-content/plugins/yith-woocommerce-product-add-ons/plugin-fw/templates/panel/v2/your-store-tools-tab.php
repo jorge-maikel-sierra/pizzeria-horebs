@@ -18,7 +18,7 @@ defined( 'ABSPATH' ) || exit;
 			</div>
 		</div>
 		<div class="yith-plugin-fw__panel__content__page__description">
-			<?php echo wp_kses_post( __( 'Additional tools <mark>you need</mark> to boost your store', 'yith-plugin-fw' ) ); ?>
+			<?php echo wp_kses_post( __( 'Additional tools to improve UX, increase conversions, and loyalize customers.', 'yith-plugin-fw' ) ); ?>
 		</div>
 	</div>
 	<div class="yith-plugin-fw__panel__content__page__container">
@@ -30,6 +30,16 @@ defined( 'ABSPATH' ) || exit;
 						<div class="name">
 							<?php echo esc_html( $item['name'] ); ?>
 						</div>
+						<?php if ( $item['is_recommended'] ) : ?>
+							<div class="recommended">
+								<?php echo esc_html( _x( 'Best choice', 'Plugin in "Your Store Tools" tab', 'yith-plugin-fw' ) ); ?>
+							</div>
+						<?php endif; ?>
+					</div>
+					<div class="description">
+						<?php echo wp_kses_post( $item['description'] ); ?>
+					</div>
+					<div class="footer">
 						<div class="status">
 							<?php if ( $item['is_active'] ) : ?>
 								<div class="active-status">
@@ -37,13 +47,15 @@ defined( 'ABSPATH' ) || exit;
 								</div>
 							<?php else : ?>
 								<a class="get-it" href="<?php echo esc_attr( $item['url'] ); ?>">
-									<?php echo esc_html( _x( 'Get it!', 'Plugin in "Your Store Tools" tab', 'yith-plugin-fw' ) ); ?>
+									<span class="get-it__wrap">
+										<?php echo esc_html( _x( 'Get it', 'Plugin in "Your Store Tools" tab', 'yith-plugin-fw' ) ); ?>
+										<svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+											<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"></path>
+										</svg>
+									</span>
 								</a>
 							<?php endif; ?>
 						</div>
-					</div>
-					<div class="description">
-						<?php echo wp_kses_post( $item['description'] ); ?>
 					</div>
 				</div>
 			<?php endforeach; ?>

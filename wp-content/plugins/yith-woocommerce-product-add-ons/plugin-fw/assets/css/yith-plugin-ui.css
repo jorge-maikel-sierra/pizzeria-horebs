@@ -871,6 +871,29 @@
   border: 1px solid var(--yith-delete-hover);
 }
 
+.yith-plugin-fw__confirm__wrap .yith-plugin-fw__confirm__button.yith-plugin-fw__confirm__button--is-loading {
+  position: relative;
+  padding-left: 40px;
+  opacity: .7;
+  cursor: progress;
+  user-select: none;
+}
+
+.yith-plugin-fw__confirm__wrap .yith-plugin-fw__confirm__button.yith-plugin-fw__confirm__button--is-loading:before {
+  content: '';
+  position: absolute;
+  top: calc(50% - 9px);
+  left: 12px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  z-index: 999;
+  border: 2px solid #fff;
+  border-top-color: transparent;
+  animation: rotation .8s infinite linear;
+  box-sizing: border-box;
+}
+
 .yith-plugin-fw__list-items {
   display: grid;
   grid-gap: 13px;

@@ -1,6 +1,6 @@
 {
   "name": "yith-plugin-framewowrk",
-  "version": "4.1.0",
+  "version": "4.1.4",
   "description": "YITH Plugin Framework",
   "main": "Gruntfile.js",
   "scripts": {

@@ -332,7 +332,7 @@ if ( ! class_exists( 'YIT_Plugin_Panel' ) ) {
 		 * @return void
 		 * @since 4.0.0
 		 */
-		protected function add_notice( string $message, string $type = 'info' ) {
+		public function add_notice( string $message, string $type = 'info' ) {
 			$this->notices[] = array(
 				'message' => $message,
 				'type'    => $type,
@@ -494,41 +494,43 @@ if ( ! class_exists( 'YIT_Plugin_Panel' ) ) {
 			$yit_options      = $this->get_main_array_options();
 			$validated_fields = $this->get_options();
 
-			foreach ( $yit_options[ $option_key ] as $section => $data ) {
-				foreach ( $data as $key => $option ) {
-					if ( ! empty( $option['is_option_disabled'] ) ) {
-						unset( $yit_options[ $option_key ][ $section ][ $key ] );
-						continue;
-					}
+			if ( isset( $yit_options[ $option_key ] ) ) {
+				foreach ( $yit_options[ $option_key ] as $section => $data ) {
+					foreach ( $data as $key => $option ) {
+						if ( ! empty( $option['is_option_disabled'] ) ) {
+							unset( $yit_options[ $option_key ][ $section ][ $key ] );
+							continue;
+						}
 
-					if ( isset( $option['sanitize_call'] ) && isset( $option['id'] ) ) {
-						if ( is_array( $option['sanitize_call'] ) ) {
-							foreach ( $option['sanitize_call'] as $callback ) {
+						if ( isset( $option['sanitize_call'] ) && isset( $option['id'] ) ) {
+							if ( is_array( $option['sanitize_call'] ) ) {
+								foreach ( $option['sanitize_call'] as $callback ) {
+									if ( is_array( $field[ $option['id'] ] ) ) {
+										$validated_fields[ $option['id'] ] = array_map( $callback, $field[ $option['id'] ] );
+									} else {
+										$validated_fields[ $option['id'] ] = call_user_func( $callback, $field[ $option['id'] ] );
+									}
+								}
+							} else {
 								if ( is_array( $field[ $option['id'] ] ) ) {
-									$validated_fields[ $option['id'] ] = array_map( $callback, $field[ $option['id'] ] );
+									$validated_fields[ $option['id'] ] = array_map( $option['sanitize_call'], $field[ $option['id'] ] );
 								} else {
-									$validated_fields[ $option['id'] ] = call_user_func( $callback, $field[ $option['id'] ] );
+									$validated_fields[ $option['id'] ] = call_user_func( $option['sanitize_call'], $field[ $option['id'] ] );
 								}
 							}
 						} else {
-							if ( is_array( $field[ $option['id'] ] ) ) {
-								$validated_fields[ $option['id'] ] = array_map( $option['sanitize_call'], $field[ $option['id'] ] );
-							} else {
-								$validated_fields[ $option['id'] ] = call_user_func( $option['sanitize_call'], $field[ $option['id'] ] );
-							}
-						}
-					} else {
-						if ( isset( $option['id'] ) ) {
-							$value = isset( $field[ $option['id'] ] ) ? $field[ $option['id'] ] : false;
-							if ( isset( $option['type'] ) && in_array( $option['type'], array( 'checkbox', 'onoff' ), true ) ) {
-								$value = yith_plugin_fw_is_true( $value ) ? 'yes' : 'no';
-							}
+							if ( isset( $option['id'] ) ) {
+								$value = $field[ $option['id'] ] ?? false;
+								if ( isset( $option['type'] ) && in_array( $option['type'], array( 'checkbox', 'onoff' ), true ) ) {
+									$value = yith_plugin_fw_is_true( $value ) ? 'yes' : 'no';
+								}
 
-							if ( ! empty( $option['yith-sanitize-callback'] ) && is_callable( $option['yith-sanitize-callback'] ) ) {
-								$value = call_user_func( $option['yith-sanitize-callback'], $value );
-							}
+								if ( ! empty( $option['yith-sanitize-callback'] ) && is_callable( $option['yith-sanitize-callback'] ) ) {
+									$value = call_user_func( $option['yith-sanitize-callback'], $value );
+								}
 
-							$validated_fields[ $option['id'] ] = $value;
+								$validated_fields[ $option['id'] ] = $value;
+							}
 						}
 					}
 				}
@@ -839,7 +841,7 @@ if ( ! class_exists( 'YIT_Plugin_Panel' ) ) {
 		 * @return bool Whether panel has help tab or no.
 		 */
 		public function has_help_tab() {
-			return apply_filters( 'yith_plugin_fw_panel_has_help_tab', ! empty( $this->settings['help_tab'] ) && ( ! $this->is_free() || ! empty( $this->settings['help_tab']['show_on_free'] ) ), $this );
+			return apply_filters( 'yith_plugin_fw_panel_has_help_tab', isset( $this->settings['help_tab'] ) && is_array( $this->settings['help_tab'] ) && ( ! $this->is_free() || ! empty( $this->settings['help_tab']['show_on_free'] ) ), $this );
 		}
 
 
@@ -872,7 +874,7 @@ if ( ! class_exists( 'YIT_Plugin_Panel' ) ) {
 			// translators: 1. Plugin name.
 			$default_title       = $is_premium ? _x( 'Thank you for purchasing %s!', 'Help tab default title', 'yith-plugin-fw' ) : _x( 'Thank you for using %s!', 'Help tab default title', 'yith-plugin-fw' );
 			$default_doc_url     = $this->get_doc_url();
-			$default_support_url = $is_extended ? add_query_arg( array( 'page' => 'bluehost' ), admin_url( 'admin.php' ) ) . '#/help' : 'https://yithemes.com/my-account/support/submit-a-ticket/';
+			$default_support_url = $is_extended ? trailingslashit( $default_doc_url ) . 'overview/need-support/' : 'https://yithemes.com/my-account/support/submit-a-ticket/';
 
 			// parse options.
 			$options = wp_parse_args(
@@ -977,7 +979,12 @@ if ( ! class_exists( 'YIT_Plugin_Panel' ) ) {
 		protected function get_doc_url() {
 			$plugin_slug = sanitize_title( $this->settings['plugin_slug'] ?? '' );
 			if ( $plugin_slug ) {
-				return $this->is_extended() ? "https://www.bluehost.com/help/article/{$plugin_slug}/" : "https://docs.yithemes.com/{$plugin_slug}/";
+				$doc_slug = $plugin_slug;
+				if ( $this->is_extended() ) {
+					$doc_slug .= '-extended';
+				}
+
+				return "https://docs.yithemes.com/{$doc_slug}/";
 			}
 
 			return '';
@@ -1265,30 +1272,22 @@ if ( ! class_exists( 'YIT_Plugin_Panel' ) ) {
 			);
 			$options  = wp_parse_args( $options, $defaults );
 
-			$plugin_defaults = array(
-				'name'         => '',
-				'description'  => '',
-				'url'          => '',
-				'icon_url'     => '',
-				'is_active_cb' => false,
-				'constant'     => '',
+			$item_defaults = array(
+				'name'           => '',
+				'description'    => '',
+				'url'            => '',
+				'icon_url'       => '',
+				'is_active'      => false,
+				'is_recommended' => false,
 			);
 
 			foreach ( $options['items'] as $key => $item ) {
-				$item      = wp_parse_args( $item, $plugin_defaults );
-				$is_active = false;
-
-				if ( $item['is_active_cb'] && is_callable( $item['is_active_cb'] ) ) {
-					$is_active = call_user_func( $item['is_active_cb'] );
-				} elseif ( $item['constant'] ) {
-					$is_active = defined( $item['constant'] ) && constant( $item['constant'] );
-				}
+				$item = wp_parse_args( $item, $item_defaults );
 
 				if ( $item['url'] ) {
 					$item['url'] = $this->add_utm_data( $item['url'], 'your-store-tools' );
 				}
 
-				$item['is_active']        = $is_active;
 				$options['items'][ $key ] = $item;
 			}
 

@@ -125,8 +125,8 @@ if ( ! function_exists( 'yit_plugin_fw_row_meta' ) ) {
 			$to_remove      = array( 'live_demo' );
 
 			// set custom base uri.
-			$base_uri['documentation'] = 'https://www.bluehost.com/help/article/';
-			$base_uri['free_support']  = add_query_arg( array( 'page' => 'bluehost' ), admin_url( 'admin.php' ) ) . '#/help';
+			$base_uri['documentation'] = 'https://docs.yithemes.com/';
+			$base_uri['free_support']  = 'https://docs.yithemes.com/';
 		} else {
 			$plugin_version = 'free';
 		}
@@ -172,12 +172,22 @@ if ( ! function_exists( 'yit_plugin_fw_row_meta' ) ) {
 							$url = $base_uri[ $support_field ];
 						}
 
-						if ( 'free_support' === $support_field && ! $is_extended ) {
+						if ( 'free_support' === $support_field ) {
 							$url = $url . $slug;
+
+							if ( $is_extended ) {
+								$url .= '-extended/overview/need-support/';
+							}
 						}
 					} else {
 						if ( isset( $base_uri[ $field ] ) ) {
-							$url = apply_filters( "yith_plugin_row_meta_{$field}_url", $base_uri[ $field ] . $slug, $field, $slug, $base_uri );
+							$url = $base_uri[ $field ] . $slug;
+
+							if ( 'documentation' === $field && $is_extended ) {
+								$url .= '-extended';
+							}
+
+							$url = apply_filters( "yith_plugin_row_meta_{$field}_url", $url, $field, $slug, $base_uri );
 						}
 					}
 				}
