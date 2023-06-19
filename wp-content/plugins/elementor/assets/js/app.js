@@ -1,4 +1,4 @@
-/*! elementor - v3.13.2 - 11-05-2023 */
+/*! elementor - v3.14.0 - 18-06-2023 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -442,7 +442,7 @@ var isPropValid = /* #__PURE__ */(0,_emotion_memoize__WEBPACK_IMPORTED_MODULE_0_
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ memoize)
 /* harmony export */ });
 function memoize(fn) {
   var cache = Object.create(null);
@@ -452,7 +452,7 @@ function memoize(fn) {
   };
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (memoize);
+
 
 
 /***/ }),
@@ -2942,10 +2942,13 @@ function useAjax() {
             response: response === null || response === void 0 ? void 0 : response.data
           });
         });
-      }).catch(function () {
+      }).catch(function (error) {
+        var _error$responseJSON;
+        var response = 408 === error.status ? 'timeout' : (_error$responseJSON = error.responseJSON) === null || _error$responseJSON === void 0 ? void 0 : _error$responseJSON.data;
         setAjaxState(function (prevState) {
           return _objectSpread(_objectSpread({}, prevState), {}, {
-            status: 'error'
+            status: 'error',
+            response: response
           });
         });
       }).finally(function () {
@@ -3791,6 +3794,9 @@ function Tooltip(props) {
 
         // Cleanup of existing tipsy element in case of re-render.
         var nodes = document.querySelectorAll('.tipsy');
+        if (!nodes.length) {
+          return;
+        }
         nodes[nodes.length - 1].remove();
       }
     };
@@ -7274,12 +7280,14 @@ function useKit() {
     kitState = _useState2[0],
     setKitState = _useState2[1],
     uploadKit = function uploadKit(_ref) {
-      var file = _ref.file,
+      var kitId = _ref.kitId,
+        file = _ref.file,
         kitLibraryNonce = _ref.kitLibraryNonce;
       setAjax({
         data: _objectSpread({
           action: UPLOAD_KIT_KEY,
-          e_import_file: file
+          e_import_file: file,
+          kit_id: kitId
         }, kitLibraryNonce ? {
           e_kit_library_nonce: kitLibraryNonce
         } : {})
@@ -7365,11 +7373,13 @@ function useKit() {
               }
               _context2.next = 14;
               return runRequest(ajaxConfig).catch(function (error) {
+                var _error$responseJSON;
                 stopIterations = true;
+                var response = 408 === error.status ? 'timeout' : (_error$responseJSON = error.responseJSON) === null || _error$responseJSON === void 0 ? void 0 : _error$responseJSON.data;
                 setKitState(function (prevState) {
                   return _objectSpread(_objectSpread({}, prevState), {
                     status: KIT_STATUS_MAP.ERROR,
-                    data: error
+                    data: response || {}
                   });
                 });
               });
@@ -7611,7 +7621,9 @@ function usePlugins() {
         method: method,
         headers: {
           'Content-Type': 'application/json; charset=utf-8',
-          'X-WP-Nonce': wpApiSettings.nonce
+          'X-WP-Nonce': wpApiSettings.nonce,
+          // TODO 18/04/2023 : This needs to be removed after https://elementor.atlassian.net/browse/HTS-434 is done.
+          'X-Elementor-Action': 'import-plugins'
         }
       };
       if (body) {
@@ -10238,6 +10250,7 @@ function ImportProcess() {
         payload: decodedFileURL
       });
       kitActions.upload({
+        kitId: id,
         file: decodedFileURL,
         kitLibraryNonce: nonce
       });
@@ -12044,27 +12057,49 @@ var _router = __webpack_require__(/*! @reach/router */ "../node_modules/@reach/r
 var _dialog = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/dialog/dialog */ "../app/assets/js/ui/dialog/dialog.js"));
 var _useQueryParams = _interopRequireDefault(__webpack_require__(/*! elementor-app/hooks/use-query-params */ "../app/assets/js/hooks/use-query-params.js"));
 var _useAction = _interopRequireDefault(__webpack_require__(/*! elementor-app/hooks/use-action */ "../app/assets/js/hooks/use-action.js"));
+var _inlineLink = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/molecules/inline-link */ "../app/assets/js/ui/molecules/inline-link.js"));
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 var messagesContent = {
-    general: {
-      text: __('Nothing to worry about, just try again. If the problem continues, head over to the Help Center.', 'elementor')
-    },
-    'zip-archive-module-not-installed': {
-      text: __('Install a PHP zip on your server or contact your site host.', 'elementor')
-    },
-    'manifest-error': {
-      text: __('There is an error with the manifest file. Try importing again with a new kit file.', 'elementor')
-    },
-    'no-write-permissions': {
-      text: __('Elementor is not authorized to read or write from this file. Contact your site host.', 'elementor')
-    },
-    'plugin-installation-permissions-error': {
-      text: __('This kit requires new plugin installation. Unfortunately, you do not have permissions to install new plugins. Contact your site host.', 'elementor')
-    }
+  general: {
+    title: __('Unable to download the Kit', 'elementor'),
+    text: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, __('We couldn’t download the Kit due to technical difficulties on our part. Try again and if the problem persists contact ', 'elementor'), /*#__PURE__*/_react.default.createElement(_inlineLink.default, {
+      url: "https://my.elementor.com/support-center/"
+    }, __('Support', 'elementor')))
   },
-  dialogTitle = __('Something went wrong.', 'elementor'),
-  tryAgainText = __('Try Again', 'elementor');
+  'zip-archive-module-missing': {
+    title: __('Couldn’t handle the Kit', 'elementor'),
+    text: __('Seems like your server is missing the PHP zip module. Install it on your server or contact your site host for further instructions.', 'elementor')
+  },
+  'invalid-zip-file': {
+    title: __('Couldn’t use the Kit', 'elementor'),
+    text: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, __('Seems like there is a problem with the Kit’s files. Try installing again and if the problem persists contact ', 'elementor'), /*#__PURE__*/_react.default.createElement(_inlineLink.default, {
+      url: "https://my.elementor.com/support-center/"
+    }, __('Support', 'elementor')))
+  },
+  timeout: {
+    title: __('Unable to download the Kit', 'elementor'),
+    text: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, __('It took too much time to download your Kit and we were unable to complete the process. If all the Kit’s parts don’t appear in ', 'elementor'), /*#__PURE__*/_react.default.createElement(_inlineLink.default, {
+      url: elementorAppConfig.pages_url
+    }, __('Pages', 'elementor')), __(', try again and if the problem persists contact ', 'elementor'), /*#__PURE__*/_react.default.createElement(_inlineLink.default, {
+      url: "https://my.elementor.com/support-center/"
+    }, __('Support', 'elementor')))
+  },
+  'invalid-kit-library-zip-error': {
+    title: __('Unable to download the Kit', 'elementor'),
+    text: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, __('We couldn’t download the Kit due to technical difficulty on our part. Try again in a few minutes and if the problem persists contact ', 'elementor'), /*#__PURE__*/_react.default.createElement(_inlineLink.default, {
+      url: "https://my.elementor.com/support-center/"
+    }, __('Support', 'elementor')))
+  },
+  'no-write-permissions': {
+    title: __('Couldn’t access the file', 'elementor'),
+    text: __('Seems like Elementor isn’t authorized to access relevant files for installing this Kit. Contact your site host to get permission.', 'elementor')
+  },
+  'plugin-installation-permissions-error': {
+    title: __('Couldn’t install the Kit', 'elementor'),
+    text: __('The Kit includes plugins you don’t have permission to install. Contact your site admin to change your permissions.', 'elementor')
+  }
+};
 function ProcessFailedDialog(_ref) {
   var errorType = _ref.errorType,
     onApprove = _ref.onApprove,
@@ -12079,7 +12114,10 @@ function ProcessFailedDialog(_ref) {
     _useQueryParams$getAl = (0, _useQueryParams.default)().getAll(),
     referrer = _useQueryParams$getAl.referrer,
     error = 'string' === typeof errorType && messagesContent[errorType] ? errorType : 'general',
-    text = messagesContent[error].text,
+    _messagesContent$erro = messagesContent[error],
+    title = _messagesContent$erro.title,
+    text = _messagesContent$erro.text,
+    tryAgainText = __('Try Again', 'elementor'),
     isTryAgainAction = 'general' === error && onApprove,
     handleOnApprove = function handleOnApprove() {
       /*
@@ -12107,7 +12145,7 @@ function ProcessFailedDialog(_ref) {
     onError === null || onError === void 0 ? void 0 : onError();
   }, []);
   return /*#__PURE__*/_react.default.createElement(_dialog.default, {
-    title: dialogTitle,
+    title: title,
     text: text,
     approveButtonColor: "link",
     approveButtonText: isTryAgainAction ? tryAgainText : approveButton,
@@ -16093,8 +16131,8 @@ try {
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
 /******/ 			if (chunkId === "vendors-node_modules_react-query_devtools_index_js") return "62aed6374b1561fb5fd8.bundle.js";
-/******/ 			if (chunkId === "kit-library") return "" + chunkId + ".18b65108d23ab1dafb8a.bundle.js";
-/******/ 			if (chunkId === "onboarding") return "" + chunkId + ".11552dda33809c4e4b47.bundle.js";
+/******/ 			if (chunkId === "kit-library") return "" + chunkId + ".3dff2fd14c0324c37675.bundle.js";
+/******/ 			if (chunkId === "onboarding") return "" + chunkId + ".2da315965610a6ac2448.bundle.js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
