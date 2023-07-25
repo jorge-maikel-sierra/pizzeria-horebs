@@ -1,15 +1,23 @@
-# Translation of Plugins - Akismet Spam Protection - Stable (latest release) in Spanish (Spain)
-# This file is distributed under the same license as the Plugins - Akismet Spam Protection - Stable (latest release) package.
+# Translation of Plugins - Akismet Anti-Spam: Spam Protection - Stable (latest release) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - Akismet Anti-Spam: Spam Protection - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-03-20 19:52:21+0000\n"
+"PO-Revision-Date: 2023-04-05 10:34:26+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: GlotPress/4.0.0-alpha.4\n"
 "Language: es\n"
-"Project-Id-Version: Plugins - Akismet Spam Protection - Stable (latest release)\n"
+"Project-Id-Version: Plugins - Akismet Anti-Spam: Spam Protection - Stable (latest release)\n"
+
+#. Author of the plugin
+msgid "Automattic - Anti Spam Team"
+msgstr "Automattic - Equipo Anti Spam"
+
+#. Plugin Name of the plugin
+msgid "Akismet Anti-Spam: Spam Protection"
+msgstr "Protección Anti-Spam Akismet"
 
 #: views/config.php:65
 msgid "Akismet is active and ready to stop spam. Your site&#8217;s spam statistics will be displayed here."
@@ -133,7 +141,7 @@ msgstr "Akismet no ha podido volver a comprobar tus comentarios para encontrar s
 
 #: class.akismet-admin.php:439
 msgid "You don&#8217;t have permission to do that."
-msgstr "No tienes permisos para hacer eso."
+msgstr "No tienes permiso para hacer eso."
 
 #: class.akismet-cli.php:165
 msgid "Stats response could not be decoded."
@@ -226,10 +234,9 @@ msgid "On this page, you are able to update your Akismet settings and view spam 
 msgstr "En esta página podrás actualizar tus ajustes de Akismet y ver las estadísticas de spam."
 
 #. Description of the plugin
-msgid "Used by millions, Akismet is quite possibly the best way in the world to <strong>protect your blog from spam</strong>. It keeps your site protected even while you sleep. To get started: activate the Akismet plugin and then go to your Akismet Settings page to set up your API key."
+msgid "Used by millions, Akismet is quite possibly the best way in the world to <strong>protect your blog from spam</strong>. Akismet anti spam keeps your site protected even while you sleep. To get started: activate the Akismet plugin and then go to your Akismet Settings page to set up your API key."
 msgstr "Utilizado por millones, Akismet es, posiblemente, la mejor manera del mundo de <strong>proteger tu blog del spam</strong>. Mantiene tu blog protegido incluso cuando duermes. Para comenzar: activa el plugin Akismet y ve a la página de ajustes de Akismet para establecer tu clave de la API."
 
-#. Plugin Name of the plugin
 #: class.akismet-admin.php:114 class.akismet-admin.php:117
 msgid "Akismet Anti-Spam"
 msgstr "Akismet Anti-Spam"
@@ -457,10 +464,6 @@ msgstr "Se ha informado sobre este comentario como spam."
 #. Author URI of the plugin
 msgid "https://automattic.com/wordpress-plugins/"
 msgstr "https://automattic.com/wordpress-plugins/"
-
-#. Author of the plugin
-msgid "Automattic"
-msgstr "Automattic"
 
 #. Plugin URI of the plugin
 msgid "https://akismet.com/"
