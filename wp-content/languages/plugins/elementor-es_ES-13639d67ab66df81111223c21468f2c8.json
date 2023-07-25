@@ -1,1 +1,5 @@
+<<<<<<< HEAD
+{"translation-revision-date":"2023-06-19 16:05:23+0000","generator":"GlotPress\/4.0.0-alpha.4","domain":"messages","locale_data":{"messages":{"":{"domain":"messages","plural-forms":"nplurals=2; plural=n != 1;","lang":"es"},"Edit \"%s\" with Elementor":["Editar \u00ab%s\u00bb con Elementor"]}},"comment":{"reference":"assets\/js\/packages\/editor.js"}}
+=======
 {"translation-revision-date":"2023-06-27 17:55:44+0000","generator":"GlotPress\/4.0.0-alpha.4","domain":"messages","locale_data":{"messages":{"":{"domain":"messages","plural-forms":"nplurals=2; plural=n != 1;","lang":"es"},"Edit \"%s\" with Elementor":["Editar \u00ab%s\u00bb con Elementor"]}},"comment":{"reference":"assets\/js\/packages\/editor.js"}}
+>>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73

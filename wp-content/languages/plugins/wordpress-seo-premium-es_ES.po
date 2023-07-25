@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Yoast - Yoast SEO Premium (for WordPress) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-04-24 11:40:01+0000\n"
+"PO-Revision-Date: 2023-06-13 20:40:39+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,41 @@ msgstr ""
 "X-Generator: GlotPress/4.0.0-alpha.3\n"
 "Language: es\n"
 "Project-Id-Version: Yoast - Yoast SEO Premium (for WordPress)\n"
+
+#. translators: 1: Yoast SEO Premium
+#: src/integrations/admin/update-premium-notification.php:125
+msgid "Update to the latest version of %1$s!"
+msgstr "¡Actualiza a la última versión de %1$s!"
+
+#. translators: 1: Yoast SEO Premium, 2 and 3: opening and closing anchor tag.
+#: src/integrations/admin/update-premium-notification.php:117
+msgid "Please %2$supdate %1$s to the latest version%3$s to ensure you can fully use all Premium settings and features."
+msgstr "Por favor, %2$sactualiza %1$s a la última versión%3$s para asegurarte de que puedes usar al completo todos los ajustes y características Premium."
+
+#: src/integrations/admin/inclusive-language-filter-integration.php:56
+msgid "All Inclusive Language Scores"
+msgstr "Todas las puntuaciones de lenguaje inclusivo"
+
+#: src/integrations/admin/inclusive-language-filter-integration.php:51
+msgid "Filter by Inclusive Language Score"
+msgstr "Filtrar por puntuación en lenguaje inclusivo"
+
+#: src/integrations/admin/inclusive-language-column-integration.php:145
+#: src/integrations/admin/inclusive-language-column-integration.php:146
+#: src/integrations/admin/inclusive-language-taxonomy-column-integration.php:113
+#: src/integrations/admin/inclusive-language-taxonomy-column-integration.php:114
+msgid "Inclusive language score"
+msgstr "Puntuación de lenguaje inclusivo"
+
+#: src/integrations/admin/cornerstone-column-integration.php:135
+#: src/integrations/admin/cornerstone-taxonomy-column-integration.php:103
+msgid "Cornerstone content"
+msgstr "Contenido esencial"
+
+#: src/integrations/admin/cornerstone-column-integration.php:134
+#: src/integrations/admin/cornerstone-taxonomy-column-integration.php:102
+msgid "Is this cornerstone content?"
+msgstr "¿Es esto contenido esencial?"
 
 #: src/deprecated/integrations/admin/crawl-settings-integration.php:312
 msgid "Disable"
@@ -21,12 +56,12 @@ msgstr "Permitir control"
 
 #. translators: %1$s and %2$s expands to the link to
 #. https:yoast.com/features/zapier, %3$s for Yoast SEO, %4$s for support email.
-#: src/integrations/admin/zapier-notification-integration.php:105
+#: src/deprecated/integrations/admin/zapier-notification-integration.php:127
 msgid "The %1$sZapier integration%2$s (on the Integrations page) will be removed from %3$s in 20.7 (release date May 9th). If you have any questions, please reach out to %4$s."
 msgstr "La %1$sintegración con Zapier%2$s (en la página de integraciones) se eliminará de %3$s en la versión 20.7 (fecha de lanzamiento el 9 de mayo). Si tienes alguna pregunta, por favor, contacta con %4$s."
 
 #. translators: %1$s for Yoast SEO
-#: src/integrations/admin/zapier-notification-integration.php:102
+#: src/deprecated/integrations/admin/zapier-notification-integration.php:124
 msgid "Zapier integration will be removed from %1$s"
 msgstr "La integración con Zapier se eliminará de %1$s"
 
@@ -39,7 +74,7 @@ msgid "Mastodon profile URL"
 msgstr "URL del perfil en Mastodon"
 
 #. translators: 1: Zapier, 2: Link start tag, 3: Zapier, 4: Link closing tag.
-#: src/integrations/third-party/zapier-classic-editor.php:75
+#: src/deprecated/integrations/third-party/zapier-classic-editor.php:98
 msgid "You’re successfully connected to %1$s. Publishing a post will trigger automated actions based on your Zap’s configuration. %2$sManage your Zap in %3$s%4$s."
 msgstr "Te has conectado correctamente a %1$s. Al publicar una entrada se lanzarán automáticamente acciones basadas en la configuración de tu Zap. %2$sGestiona tu Zap en %3$s%4$s."
 
@@ -74,14 +109,14 @@ msgstr "Beta"
 #. translators: %1$s is a link to the Features tab on the Yoast SEO Dashboard
 #. page, %2$s is a link to the blog post about this feature, %3$s is the link
 #. closing tag.
-#: src/deprecated/integrations/admin/inclusive-language-notification-integration.php:184
+#: src/deprecated/integrations/admin/inclusive-language-notification-integration.php:183
 msgid "<strong>New in Yoast SEO Premium 19.2:</strong> Did you know that you can now %1$senable the beta version of our inclusive language feature%3$s to get feedback on the use of inclusive language? This feature is disabled by default. %2$sLearn more about this feature%3$s."
 msgstr "<strong>Nuevo en Yoast SEO Premium 19.2:</strong> ¿Sabías que ahora puedes %1$sactivar la versión beta de nuestra característica de lenguaje inclusivo%3$s para obtener información sobre el uso del lenguaje inclusivo? Esta característica está desactivada por defecto. %2$sAprende más sobre esta característica%3$s."
 
 #. translators: %1$s is a link to the Features tab on the Yoast SEO Dashboard
 #. page, %2$s is a link to the blog post about this feature, %3$s is the link
 #. closing tag.
-#: src/deprecated/integrations/admin/inclusive-language-notification-integration.php:172
+#: src/deprecated/integrations/admin/inclusive-language-notification-integration.php:171
 msgid "<strong>New in Yoast SEO Premium 19.2:</strong> Did you know that you can now get feedback on the use of inclusive language? This feature is disabled by default. Please contact your Network admin if you want to enable it. %2$sLearn more about this feature%3$s."
 msgstr "<strong>Nuevo en Yoast SEO Premium 19.2:</strong> ¿Sabías que ahora puedes obtener información sobre el uso del lenguaje inclusivo? Esta característica está desactivada por defecto. Por favor, contacta con el administrador de tu red para activarla. %2$sAprende más sobre esta característica%3$s."
 
@@ -454,11 +489,11 @@ msgstr "Prefijo honorífico"
 msgid "Basic information"
 msgstr "Información básica"
 
-#: premium.php:312
+#: premium.php:310
 msgid "Custom fields to include in page analysis"
 msgstr "Campos personalizados a incluir en el análisis de página"
 
-#: premium.php:305
+#: premium.php:303
 msgid "Learn more about including custom fields in the page analysis"
 msgstr "Aprende más sobre cómo incluir campos personalizados en el análisis de página"
 
@@ -542,11 +577,11 @@ msgstr "título"
 msgid "meta description"
 msgstr "metadescripción"
 
-#: premium.php:272
+#: premium.php:270
 msgid "Create Redirect"
 msgstr "Crear redirección"
 
-#: classes/redirect/redirect-formats.php:23 premium.php:336
+#: classes/redirect/redirect-formats.php:23 premium.php:334
 msgid "Redirects"
 msgstr "Redirecciones"
 
@@ -892,7 +927,7 @@ msgstr "El tipo de redirección es el código de respuesta HTTP enviado al naveg
 msgid "Regular Expression (regex) Redirects are extremely powerful redirects. You should only use them if you know what you are doing. %1$sRead more about regex redirects on our help center%2$s."
 msgstr "Las redirecciones con expresiones regulares (regex) son redirecciones extremadamente potentes. Solo deberías usarlas si sabes lo que estás haciendo %1$sLee más acerca de las redirecciones regex en nuestra base de conocimiento%2$s."
 
-#: premium.php:372
+#: premium.php:370
 #: src/deprecated/integrations/admin/crawl-settings-integration.php:225
 msgid "Enabled"
 msgstr "Activo"
@@ -1227,51 +1262,51 @@ msgid "Remove"
 msgstr "Quitar"
 
 #. translators: %s: Zapier.
-#: src/integrations/third-party/zapier.php:128
+#: src/deprecated/integrations/third-party/zapier.php:156
 msgid "Go to your %s Dashboard"
 msgstr "Ve a tu panel de control de %s"
 
 #. translators: 1: Zapier, 2: The Zapier API Key.
-#: src/integrations/third-party/zapier.php:133
+#: src/deprecated/integrations/third-party/zapier.php:161
 msgid "%1$s uses this API Key: %2$s"
 msgstr "%1$s utiliza esta API: %2$s"
 
-#: src/integrations/third-party/zapier.php:137
+#: src/deprecated/integrations/third-party/zapier.php:165
 msgid "Reset API Key"
 msgstr "Restablecer clave API"
 
 #. translators: %s: Zapier.
-#: src/integrations/third-party/zapier.php:176
+#: src/deprecated/integrations/third-party/zapier.php:204
 msgid "%s will ask for an API key. Use this one:"
 msgstr "%s te pedirá una clave de API. Utiliza esta:"
 
-#: src/integrations/third-party/zapier.php:182
+#: src/deprecated/integrations/third-party/zapier.php:210
 msgid "Copy to clipboard"
 msgstr "Copiar al portapapeles"
 
 #. translators: 1: Link start tag, 2: Yoast SEO, 3: Zapier, 4: Link closing
 #. tag.
-#: src/integrations/third-party/zapier-classic-editor.php:86
+#: src/deprecated/integrations/third-party/zapier-classic-editor.php:109
 msgid "%1$sConnect %2$s with %3$s%4$s to instantly share your published posts with 2000+ destinations such as Twitter, Facebook and more."
 msgstr "%1$sConecta %2$s con %3$s%4$s para compartir instantáneamente tus entradas publicadas con más de 2000 destinos como Twitter, Facebook y más."
 
 #. translators: 1: Yoast SEO, 2: Zapier.
-#: src/integrations/third-party/zapier.php:117
+#: src/deprecated/integrations/third-party/zapier.php:145
 msgid "%1$s is successfully connected to %2$s!"
 msgstr "¡%1$s está conectado correctamente a %2$s!"
 
 #. translators: 1: Yoast SEO, 2: Zapier, 3: Emphasis open tag, 4: Emphasis
 #. close tag.
-#: src/integrations/third-party/zapier.php:151
+#: src/deprecated/integrations/third-party/zapier.php:179
 msgid "%1$s is not connected to %2$s. To set up a connection, make sure you click %3$sSave changes%4$s first, then copy the given API key below and use it to %3$screate%4$s and %3$sturn on%4$s a Zap within your %2$s account."
 msgstr "%1$s no está conectado a %2$s. Para configurar una conexión asegúrate de hacer clic primero en %3$sGuardar cambios%4$s, luego copia la clave API de abajo y úsala para %3$screar%4$s y %3$sactivar%4$s un Zap dentro de tu cuenta de %2$s."
 
 #. translators: 1: Yoast SEO.
-#: src/integrations/third-party/zapier.php:161
+#: src/deprecated/integrations/third-party/zapier.php:189
 msgid "Please note that you can only create 1 Zap with a trigger event from %1$s. Within this Zap you can choose one or more actions."
 msgstr "Ten en cuenta que solo puedes crear 1 Zap con un evento disparador desde %1$s. Dentro de este Zap puedes elegir una o más acciones."
 
 #. translators: %s: Zapier.
-#: src/integrations/third-party/zapier.php:187
+#: src/deprecated/integrations/third-party/zapier.php:215
 msgid "Create a Zap in %s"
 msgstr "Crear un Zap en %s"
