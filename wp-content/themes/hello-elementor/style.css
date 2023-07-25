@@ -1,14 +1,14 @@
 /*
 	Theme Name: Hello Elementor
 	Theme URI: https://elementor.com/hello-theme/?utm_source=wp-themes&utm_campaign=theme-uri&utm_medium=wp-dash
-	Description: A plain-vanilla & lightweight theme for Elementor page builder
+	Description: A lightweight and minimalist WordPress theme for Elementor page builder.
 	Author: Elementor Team
 	Author URI: https://elementor.com/?utm_source=wp-themes&utm_campaign=author-uri&utm_medium=wp-dash
-	Version: 2.7.1
-	Stable tag: 2.7.1
+	Version: 2.8.1
+	Stable tag: 2.8.1
 	Requires at least: 5.9
 	Tested up to: 6.2
-	Requires PHP: 5.6
+	Requires PHP: 7.0
 	License: GNU General Public License v3 or later.
 	License URI: https://www.gnu.org/licenses/gpl-3.0.html
 	Text Domain: hello-elementor
@@ -22,7 +22,7 @@
  */
 /*
  * Inspired by Normalize.css, HTML5 Boilerplate & Bootstrap Reboot Projects under MIT License
-*/
+ */
 /**
  * Document basic styling
  * DO NOT CHANGE THIS FILE!
@@ -63,8 +63,8 @@ body {
  * `article` contexts in Chrome, Firefox, and Safari.
  */
 h1, h2, h3, h4, h5, h6 {
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
+  margin-block-start: 0.5rem;
+  margin-block-end: 1rem;
   font-family: inherit;
   font-weight: 500;
   line-height: 1.2;
@@ -96,8 +96,8 @@ h6 {
 }
 
 p {
-  margin-top: 0;
-  margin-bottom: 0.9rem;
+  margin-block-start: 0;
+  margin-block-end: 0.9rem;
 }
 
 /* Grouping content
@@ -149,7 +149,7 @@ a:not([href]):not([tabindex]):focus {
  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
  */
 abbr[title] {
-  border-bottom: none; /* 1 */
+  border-block-end: none; /* 1 */
   text-decoration: underline dotted; /* 2 */
 }
 
@@ -250,17 +250,6 @@ template {
   display: none;
 }
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
 /* Print
  */
 @media print {
@@ -292,7 +281,7 @@ template {
   }
   pre,
   blockquote {
-    page-break-inside: avoid;
+    break-inside: avoid;
     border: 1px solid #cccccc;
   }
   thead {
@@ -300,7 +289,7 @@ template {
   }
   tr,
   img {
-    page-break-inside: avoid;
+    break-inside: avoid;
   }
   p,
   h2,
@@ -310,7 +299,7 @@ template {
   }
   h2,
   h3 {
-    page-break-after: avoid;
+    break-after: avoid;
   }
 }
 /**
@@ -546,7 +535,7 @@ select {
 table {
   background-color: transparent;
   width: 100%;
-  margin-bottom: 15px;
+  margin-block-end: 15px;
   font-size: 0.9em;
   border-spacing: 0;
   border-collapse: collapse;
@@ -577,7 +566,7 @@ table thead:first-child tr:first-child th,
 table thead:first-child tr:first-child td,
 table thead:first-child tr:first-child th,
 table thead:first-child tr:first-child td {
-  border-top: 1px solid rgba(128, 128, 128, 0.5019607843);
+  border-block-start: 1px solid rgba(128, 128, 128, 0.5019607843);
 }
 table tbody > tr:nth-child(odd) > td,
 table tbody > tr:nth-child(odd) > th {
@@ -588,7 +577,7 @@ table tbody tr:hover > th {
   background-color: rgba(128, 128, 128, 0.1019607843);
 }
 table tbody + tbody {
-  border-top: 2px solid rgba(128, 128, 128, 0.5019607843);
+  border-block-start: 2px solid rgba(128, 128, 128, 0.5019607843);
 }
 @media (max-width: 767px) {
   table table {
@@ -615,8 +604,8 @@ dd,
 ol,
 ul,
 li {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
   border: 0;
   outline: 0;
   font-size: 100%;

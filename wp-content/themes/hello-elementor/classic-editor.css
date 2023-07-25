@@ -1,5 +1,5 @@
 /**
- * Style for your classic editor.
+ * Classic editor styling
  */
 /**
  * DO NOT CHANGE THIS FILE!
@@ -7,7 +7,7 @@
  * Loading first in the style.scss & classic-editor.scss
  */
 p {
-  margin-bottom: 0.75rem;
+  margin-block-end: 0.75rem;
 }
 
 img {

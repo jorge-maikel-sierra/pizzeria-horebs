@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'HELLO_ELEMENTOR_VERSION', '2.7.1' );
+define( 'HELLO_ELEMENTOR_VERSION', '2.8.1' );
 
 if ( ! isset( $content_width ) ) {
 	$content_width = 800; // Pixels.
@@ -199,6 +199,22 @@ if ( ! function_exists( 'hello_elementor_check_hide_title' ) ) {
 	}
 }
 add_filter( 'hello_elementor_page_title', 'hello_elementor_check_hide_title' );
+
+if ( ! function_exists( 'hello_elementor_add_description_meta_tag' ) ) {
+	/**
+	 * Add description meta tag with excerpt text.
+	 *
+	 * @return void
+	 */
+	function hello_elementor_add_description_meta_tag() {
+		$post = get_queried_object();
+
+		if ( is_singular() && ! empty( $post->post_excerpt ) ) {
+			echo '<meta name="description" content="' . esc_attr( wp_strip_all_tags( $post->post_excerpt ) ) . '">' . "\n";
+		}
+	}
+}
+add_action( 'wp_head', 'hello_elementor_add_description_meta_tag' );
 
 /**
  * BC:
