@@ -1,5 +1,11 @@
 /*global woocommerce_admin_meta_boxes */
 jQuery( function ( $ ) {
+	let isPageUnloading = false;
+
+	$( window ).on( 'beforeunload', function () {
+		isPageUnloading = true;
+	} );
+
 	// Scroll to first checked category
 	// https://github.com/scribu/wp-category-checklist-tree/blob/d1c3c1f449e1144542efa17dde84a9f52ade1739/category-checklist-tree.php
 	$( function () {
@@ -120,6 +126,34 @@ jQuery( function ( $ ) {
 			return false;
 		} );
 
+	function disable_or_enable_fields() {
+		var product_type = $( 'select#product-type' ).val();
+		$( `.enable_if_simple` ).each( function () {
+			$( this ).addClass( 'disabled' );
+			if ( $( this ).is( 'input' ) ) {
+				$( this ).prop( 'disabled', true );
+			}
+		} );
+		$( `.enable_if_external` ).each( function () {
+			$( this ).addClass( 'disabled' );
+			if ( $( this ).is( 'input' ) ) {
+				$( this ).prop( 'disabled', true );
+			}
+		} );
+		$( `.enable_if_variable` ).each( function () {
+			$( this ).addClass( 'disabled' );
+			if ( $( this ).is( 'input' ) ) {
+				$( this ).prop( 'disabled', true );
+			}
+		} );
+		$( `.enable_if_${ product_type }` ).each( function () {
+			$( this ).removeClass( 'disabled' );
+			if ( $( this ).is( 'input' ) ) {
+				$( this ).prop( 'disabled', false );
+			}
+		} );
+	}
+
 	// Product type specific options.
 	$( 'select#product-type' )
 		.on( 'change', function () {
@@ -139,6 +173,7 @@ jQuery( function ( $ ) {
 			}
 
 			show_and_hide_panels();
+			disable_or_enable_fields();
 			change_product_type_tip( get_product_tip_content( select_val ) );
 
 			$( 'ul.wc-tabs li:visible' ).eq( 0 ).find( 'a' ).trigger( 'click' );
@@ -395,29 +430,27 @@ jQuery( function ( $ ) {
 			} );
 	} );
 
-	// Attribute Tables.
+	// Set up attributes, if current page has the attributes list.
+	const $product_attributes = $( '.product_attributes' );
+	if ( $product_attributes.length === 1 ) {
+		var woocommerce_attribute_items = $product_attributes.find( '.woocommerce_attribute' ).get();
 
-	// Initial order.
-	var woocommerce_attribute_items = $( '.product_attributes' )
-		.find( '.woocommerce_attribute' )
-		.get();
-
-	// If the product has no attributes, add an empty attribute to be filled out by the user.
-	$( function add_blank_custom_attribute_if_no_attributes() {
-
+		// If the product has no attributes, add an empty attribute to be filled out by the user.
 		if ( woocommerce_attribute_items.length === 0  ) {
 			add_custom_attribute_to_list();
 		}
-	} );
 
-	woocommerce_attribute_items.sort( function ( a, b ) {
-		var compA = parseInt( $( a ).attr( 'rel' ), 10 );
-		var compB = parseInt( $( b ).attr( 'rel' ), 10 );
-		return compA < compB ? -1 : compA > compB ? 1 : 0;
-	} );
-	$( woocommerce_attribute_items ).each( function ( index, el ) {
-		$( '.product_attributes' ).append( el );
-	} );
+		// Sort the attributes by their position.
+		woocommerce_attribute_items.sort( function ( a, b ) {
+			var compA = parseInt( $( a ).attr( 'rel' ), 10 );
+			var compB = parseInt( $( b ).attr( 'rel' ), 10 );
+			return compA < compB ? -1 : compA > compB ? 1 : 0;
+		} );
+
+		$( woocommerce_attribute_items ).each( function ( index, el ) {
+			$product_attributes.append( el );
+		} );
+	}
 
 	function update_attribute_row_indexes() {
 		$( '.product_attributes .woocommerce_attribute' ).each( function (
@@ -519,8 +552,16 @@ jQuery( function ( $ ) {
 
 			toggle_expansion_of_attribute_list_item( $attributeListItem );
 
+			disable_or_enable_fields();
+
 			jQuery.maybe_disable_save_button();
 		} catch ( error ) {
+			if ( isPageUnloading ) {
+				// If the page is unloading, the outstanding ajax fetch may fail in Firefox (and possible other browsers, too).
+				// We don't want to show an error message in this case, because it was caused by the user leaving the page.
+				return;
+			}
+
 			alert( woocommerce_admin_meta_boxes.i18n_add_attribute_error_notice );
 			throw error;
 		} finally {
@@ -680,13 +721,12 @@ jQuery( function ( $ ) {
 		'.product_attributes .remove_row',
 		function () {
 			var $parent = $( this ).parent().parent();
-			var confirmMessage = $parent
-				.find( 'input[name^="attribute_variation"]' )
-				.is( ':visible:checked' )
-				? woocommerce_admin_meta_boxes.i18n_remove_used_attribute_confirmation_message
-				: woocommerce_admin_meta_boxes.remove_attribute;
+			var isUsedForVariations = $parent
+			.find( 'input[name^="attribute_variation"]' )
+			.is( ':visible:checked' )
 
-			if ( window.confirm( confirmMessage ) ) {
+			if ( ! isUsedForVariations
+					|| window.confirm( woocommerce_admin_meta_boxes.i18n_remove_used_attribute_confirmation_message ) ) {
 				if ( $parent.is( '.taxonomy' ) ) {
 					$parent.find( 'select, input[type=text]' ).val( '' );
 					$parent.hide();
@@ -838,6 +878,8 @@ jQuery( function ( $ ) {
 
 				// Hide the 'Used for variations' checkbox if not viewing a variable product
 				show_and_hide_panels();
+
+				disable_or_enable_fields();
 
 				// Make sure the dropdown is not disabled for empty value attributes.
 				$( 'select.attribute_taxonomy' )
