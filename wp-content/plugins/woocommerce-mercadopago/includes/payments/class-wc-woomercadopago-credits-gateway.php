@@ -501,14 +501,14 @@ class WC_WooMercadoPago_Credits_Gateway extends WC_WooMercadoPago_Payment_Abstra
 	}
 
 	/**
-	 * Active Credits by default
+	 * Enable Credits by default
 	 *
 	 * @return mixed
 	 */
 	public function active_by_default() {
-		$this->update_option('enabled', 'yes');
-		$this->update_option('credits_banner', 'yes');
-		$this->update_option('already_enabled_by_default', true);
-	}
 
+		$this->update_option_default('enabled', 'yes');
+		$this->update_option_default('credits_banner', 'yes');
+
+	}
 }
