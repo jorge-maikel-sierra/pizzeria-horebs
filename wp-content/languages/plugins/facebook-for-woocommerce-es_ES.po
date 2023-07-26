@@ -2,14 +2,19 @@
 # This file is distributed under the same license as the Plugins - Facebook for WooCommerce - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-02-01 13:34:00+0000\n"
+"PO-Revision-Date: 2023-07-19 11:34:07+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/4.0.0-alpha.3\n"
+"X-Generator: GlotPress/4.0.0-alpha.4\n"
 "Language: es\n"
 "Project-Id-Version: Plugins - Facebook for WooCommerce - Stable (latest release)\n"
+
+#. translators: Text label
+#: class-wc-facebookcommerce.php:379
+msgid "Go to %s"
+msgstr "Ir a %s"
 
 #: includes/Admin/Tasks/Setup.php:36
 msgid "Advertise your products across Meta's platforms, including Facebook, Instagram, and WhatsApp"
@@ -83,28 +88,28 @@ msgstr "Facebook: Restablecer los ajustes de la conexión"
 msgid "https://github.com/woocommerce/facebook-for-woocommerce/"
 msgstr "https://github.com/woocommerce/facebook-for-woocommerce/"
 
-#: includes/Framework/Utilities/BackgroundJobHandler.php:996
+#: includes/Framework/Utilities/BackgroundJobHandler.php:1010
 msgid "Could not connect. Please ask your hosting company to ensure your server has loopback connections enabled."
 msgstr "No se ha podido conectar. Por favor, pídele a tu empresa de hosting que se asegure de que tu servidor tiene habilitadas las conexiones loopback."
 
-#: includes/Framework/Utilities/BackgroundJobHandler.php:993
+#: includes/Framework/Utilities/BackgroundJobHandler.php:1007
 msgid "Success! You should be able to process background jobs."
 msgstr "¡Éxito! Deberías poder procesar tareas en segundo plano."
 
-#: includes/Framework/Utilities/BackgroundJobHandler.php:976
+#: includes/Framework/Utilities/BackgroundJobHandler.php:990
 msgid "This tool will test whether your server is capable of processing background jobs."
 msgstr "Esta herramienta comprobará si tu servidor es capaza de procesar tareas en segundo plano."
 
-#: includes/Framework/Utilities/BackgroundJobHandler.php:975
+#: includes/Framework/Utilities/BackgroundJobHandler.php:989
 msgid "Run Test"
 msgstr "Ejecutar la prueba"
 
-#: includes/Framework/Utilities/BackgroundJobHandler.php:974
+#: includes/Framework/Utilities/BackgroundJobHandler.php:988
 msgid "Background Processing Test"
 msgstr "Test de procesamiento en segundo plano"
 
 #. translators: %d - interval in minutes.
-#: includes/Framework/Utilities/BackgroundJobHandler.php:826
+#: includes/Framework/Utilities/BackgroundJobHandler.php:840
 msgid "Every %d Minutes"
 msgstr "Cada %d minutos"
 
@@ -362,7 +367,7 @@ msgstr "Desconexión correcta."
 msgid "Connection successful!"
 msgstr "¡Conexión correcta!"
 
-#: includes/Handlers/Connection.php:1289
+#: includes/Handlers/Connection.php:1291
 msgid "You do not have permission to finish App Store login."
 msgstr "No tienes permiso para finalizar el acceso a la App Store."
 
@@ -406,22 +411,22 @@ msgid "The name is how it appears on Facebook Catalog."
 msgstr "El nombre es cómo aparece en el catálogo de Facebook."
 
 #. translators: Text label
-#: class-wc-facebookcommerce.php:379
+#: class-wc-facebookcommerce.php:378
 msgid "Choose from the most used %s"
 msgstr "Elige entre los %s más usados"
 
 #. translators: Text label
-#: class-wc-facebookcommerce.php:377
+#: class-wc-facebookcommerce.php:376
 msgid "Separate %s with commas"
 msgstr "Separa %s con comas"
 
 #. translators: Search label
-#: class-wc-facebookcommerce.php:375
+#: class-wc-facebookcommerce.php:374
 msgid "Search %s."
 msgstr "Buscar %s."
 
 #. translators: No items found text
-#: class-wc-facebookcommerce.php:373
+#: class-wc-facebookcommerce.php:372
 msgid "No %s found."
 msgstr "No se ha encontrado %s."
 
@@ -463,7 +468,7 @@ msgstr "Elige una categoría de productos por defecto de Google para los product
 msgid "Facebook catalogs now support category specific fields, to make best use of them you need to select a category. WooCommerce uses the google taxonomy as it is the most widely accepted form of categorisation."
 msgstr "Los catálogos de Facebook ahora admiten campos específicos de categorías, para sacarles el mejor partido posible tienes que seleccionar una categoría. WooCommerce utiliza la taxonomía google como la más aceptada forma de categorización."
 
-#: includes/Admin/Enhanced_Catalog_Attribute_Fields.php:103
+#: includes/Admin/Enhanced_Catalog_Attribute_Fields.php:124
 msgid "Show advanced options"
 msgstr "Mostrar las opciones avanzadas"
 
@@ -587,14 +592,14 @@ msgstr "Ha habido un error al intentar sincronizar los productos usando la API d
 
 #. translators: %s - string representing data key.
 #. translators: Placeholders: %s - user-friendly error message
-#: includes/Framework/Utilities/BackgroundJobHandler.php:616
+#: includes/Framework/Utilities/BackgroundJobHandler.php:630
 #: includes/Products/Sync/Background.php:64
 msgid "Job data key \"%s\" is not an array"
 msgstr "La clave de datos de la tarea «%s» no es un array"
 
 #. translators: %s - string representing data key.
 #. translators: Placeholders: %s - user-friendly error message
-#: includes/Framework/Utilities/BackgroundJobHandler.php:611
+#: includes/Framework/Utilities/BackgroundJobHandler.php:625
 #: includes/Products/Sync/Background.php:59
 msgid "Job data key \"%s\" not set"
 msgstr "La clave de datos de la tarea «%s» no está establecida"
@@ -741,7 +746,7 @@ msgstr "Sincronizar y mostrar"
 msgid "Facebook sync"
 msgstr "Sincronizar con Facebook"
 
-#: facebook-commerce.php:1969
+#: facebook-commerce.php:1989
 msgid "The plugin is not configured or the Catalog ID is missing."
 msgstr "El plugin no está configurado o falta el ID del catálogo."
 
@@ -796,7 +801,7 @@ msgstr ""
 msgid "Your products will now be resynced to Facebook, this may take some time."
 msgstr "Ahora, tus productos volverán a sincronizarse con Facebook y pueden tardar un rato."
 
-#: facebook-commerce.php:2689
+#: facebook-commerce.php:2709
 msgid "Facebook for WooCommerce error:"
 msgstr "Error de Facebook for WooCommerce:"
 
@@ -816,25 +821,25 @@ msgstr "Activar el modo de depuración"
 msgid "Debug"
 msgstr "Depurar"
 
-#: facebook-commerce.php:2005
+#: facebook-commerce.php:2025
 msgid "We've detected that your Facebook Product Catalog is no longer valid. This may happen if it was deleted, but could also be a temporary error. If the error persists, please click Manage connection > Advanced Options > Remove and setup the plugin again."
 msgstr "Hemos detectado que tu catálogo de productos de Facebook ya no es válido. Esto puede ocurrir si ha sido borrado, pero también podría ser un error temporal. Si el error persiste, por favor, haz clic en «Gestionar la conexión > Opciones avanzadas > Eliminar» y configura de nuevo el plugin."
 
-#: facebook-commerce.php:1989
+#: facebook-commerce.php:2009
 msgid "A product sync is in progress. Please wait until the sync finishes before starting a new one."
 msgstr "Está en progreso una sincronización de productos. Por favor, espera hasta que la sincronización finalice antes de iniciar otra."
 
-#: facebook-commerce.php:1964
+#: facebook-commerce.php:1984
 msgid "Product sync is disabled."
 msgstr "La sincronización de productos está desactivada."
 
 #. translators: Placeholders %s - error message
-#: facebook-commerce.php:1945
+#: facebook-commerce.php:1965
 msgid "There was an error trying to sync the products to Facebook. %s"
 msgstr "Ha habido un error al intentar sincronizar los productos con Facebook. %s"
 
 #. translators: Placeholders %1$s - original error message from Facebook API
-#: facebook-commerce.php:2924
+#: facebook-commerce.php:2944
 msgid "There was an issue connecting to the Facebook API: %s"
 msgstr "Ha habido un problema al conectar con la API de Facebook: %s"
 
@@ -866,11 +871,11 @@ msgstr "Sincronización de los productos"
 msgid "Pixel"
 msgstr "Píxel"
 
-#: facebook-commerce.php:1938
+#: facebook-commerce.php:1958
 msgid "Please click Manage connection > Advanced Options > Update Token to refresh your connection to Facebook."
 msgstr "Por favor, haz clic en «Gestionar la conexión > Opciones avanzadas > Actualizar el token» para refrescar tu conexión con Facebook."
 
-#: facebook-commerce.php:1938
+#: facebook-commerce.php:1958
 msgid "Your connection has expired."
 msgstr "Tu conexión ha caducado."
 
@@ -884,7 +889,7 @@ msgstr "Gestionar la conexión"
 msgid "Connection"
 msgstr "Conexión"
 
-#: facebook-commerce.php:2377
+#: facebook-commerce.php:2397
 msgid "Hi! We're here to answer any questions you may have."
 msgstr "¡Hola! Estamos aquí para responder cualquier pregunta que puedas tener."
 
@@ -952,7 +957,7 @@ msgid "Enable product sync"
 msgstr "Activar la sincronización de productos"
 
 #. translators: %1$s is referring to facebook product group id.
-#: facebook-commerce.php:1253
+#: facebook-commerce.php:1273
 msgid "Nothing to update for product group for %1$s"
 msgstr "No hay nada que actualizar para el grupo de productos para %1$s"
 

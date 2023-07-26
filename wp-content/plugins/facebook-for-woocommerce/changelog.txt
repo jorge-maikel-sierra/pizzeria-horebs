@@ -1,5 +1,19 @@
 *** Facebook for WooCommerce Changelog ***
 
+= 3.0.29 - 2023-07-18 =
+* Fix - Corrects backlink to 'Go to Facebook Product Sets' in success notice on Edit Facebook Product Sets page.
+* Tweak - Removes duplicate code.
+
+= 3.0.28 - 2023-07-13 =
+* Add - Priority to enhanced catalog attributes and display as per priority.
+* Fix - Woo category synced as Google Product category.
+
+= 3.0.27 - 2023-07-05 =
+* Fix - Products are deleted from facebook once changed to draft.
+
+= 3.0.26 - 2023-06-28 =
+* Tweak - WC 7.9 compatibility.
+
 = 3.0.25 - 2023-06-13 =
 * Fix - Fatal error when Facebook.net returns an empty response.
 * Fix - PHP Warning caused by array_filter() call.
