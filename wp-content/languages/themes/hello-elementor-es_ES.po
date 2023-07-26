@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Hello Elementor package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-03-27 17:05:37+0000\n"
+"PO-Revision-Date: 2023-07-05 07:07:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,8 +13,8 @@ msgstr ""
 
 #. Description of the theme
 #, gp-priority: high
-msgid "A plain-vanilla & lightweight theme for Elementor page builder"
-msgstr "Un tema nativo y ligero para el maquetador de páginas Elementor"
+msgid "A lightweight and minimalist WordPress theme for Elementor page builder."
+msgstr "Un tema WordPress minimalista y ligero para el maquetador de páginas Elementor."
 
 #. Theme Name of the theme
 #, gp-priority: high
@@ -28,7 +28,7 @@ msgstr "Hello Elementor"
 msgid "Go to <a href=\"%s\">Site Identity</a> to manage your site's title"
 msgstr "Ve a <a href=\"%s\">Identidad del sitio</a> para gestionar el título de tu sitio"
 
-#: includes/admin-functions.php:142
+#: includes/admin-functions.php:139
 msgid "Explore Elementor Page Builder Plugin"
 msgstr "Explora el plugin Elementor Page Builder"
 
@@ -316,11 +316,6 @@ msgstr "Cabecera y pie de página del tema Hello"
 msgid "Start Here"
 msgstr "Empieza aquí"
 
-#: includes/customizer/elementor-upsell.php:76
-#: includes/customizer/elementor-upsell.php:84
-msgid "Create cross-site Header and Footer using Elementor & Hello theme."
-msgstr "Crear una cabecera y un pie de página para todo el sitio usando Elementor y el tema Hello."
-
 #: includes/customizer/elementor-upsell.php:75
 #: includes/customizer/elementor-upsell.php:83
 msgid "Set Your Header &amp; Footer"
@@ -341,6 +336,8 @@ msgstr "Instalar y activar"
 
 #: includes/customizer/elementor-upsell.php:43
 #: includes/customizer/elementor-upsell.php:60
+#: includes/customizer/elementor-upsell.php:76
+#: includes/customizer/elementor-upsell.php:84
 msgid "Create a cross-site Header and Footer using Elementor & Hello theme."
 msgstr "Crear una cabecera y un pie de página para todo el sitio usando Elementor y el tema Hello."
 
@@ -348,7 +345,7 @@ msgstr "Crear una cabecera y un pie de página para todo el sitio usando Element
 msgid "Header &amp; Footer"
 msgstr "Cabecera y pie de página"
 
-#: includes/admin-functions.php:136
+#: includes/admin-functions.php:133
 msgid "Get Elementor"
 msgstr "Obtener Elementor"
 
@@ -362,7 +359,7 @@ msgstr "Pie de página"
 msgid "Header"
 msgstr "Cabecera"
 
-#: includes/admin-functions.php:140
+#: includes/admin-functions.php:137
 msgid "Thanks for installing the Hello Theme!"
 msgstr "¡Gracias por instalar el tema Hello!"
 
@@ -389,20 +386,20 @@ msgid "One Response"
 msgstr "Un comentario"
 
 #. Translators: HTML arrow
-#: template-parts/archive.php:50 template-parts/search.php:55
+#: template-parts/archive.php:51 template-parts/search.php:57
 msgid "newer %s"
 msgstr "siguientes %s"
 
 #. Translators: HTML arrow
-#: template-parts/archive.php:48 template-parts/search.php:53
+#: template-parts/archive.php:49 template-parts/search.php:55
 msgid "%s older"
 msgstr "%s anteriores"
 
-#: template-parts/search.php:41
+#: template-parts/search.php:43
 msgid "It seems we can't find what you're looking for."
 msgstr "Parece que no podemos encontrar lo que estás buscando."
 
-#: template-parts/search.php:16
+#: template-parts/search.php:17
 msgid "Search results for: "
 msgstr "Resultados de la búsqueda de: "
 
@@ -411,15 +408,15 @@ msgstr "Resultados de la búsqueda de: "
 msgid "Home"
 msgstr "Inicio"
 
-#: template-parts/single.php:25
+#: template-parts/single.php:27
 msgid "Tagged "
 msgstr "Etiquetado "
 
-#: template-parts/404.php:19
+#: template-parts/404.php:21
 msgid "It looks like nothing was found at this location."
 msgstr "Parece que no se ha encontrado nada en esta ubicación."
 
-#: template-parts/404.php:15
+#: template-parts/404.php:16
 msgid "The page can&rsquo;t be found."
 msgstr "No se ha podido encontrar la página."
 

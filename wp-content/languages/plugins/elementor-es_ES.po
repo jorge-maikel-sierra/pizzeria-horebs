@@ -2,11 +2,7 @@
 # This file is distributed under the same license as the Plugins - Elementor Website Builder &#8211; More than Just a Page Builder - Stable (latest release) package.
 msgid ""
 msgstr ""
-<<<<<<< HEAD
-"PO-Revision-Date: 2023-06-19 16:05:23+0000\n"
-=======
 "PO-Revision-Date: 2023-06-27 17:55:44+0000\n"
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -130,11 +126,7 @@ msgid "Panels"
 msgstr "Paneles"
 
 #: includes/controls/gallery.php:83 includes/controls/gallery.php:85
-<<<<<<< HEAD
-#: assets/js/editor.js:13658
-=======
 #: assets/js/editor.js:13678
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Clear gallery"
 msgstr "Vaciar galería"
 
@@ -194,11 +186,7 @@ msgstr "Cerrar el navegador"
 msgid "Close structure"
 msgstr "Cerrar la estructura"
 
-<<<<<<< HEAD
-#: includes/editor-templates/navigator.php:16 assets/js/editor.js:34204
-=======
 #: includes/editor-templates/navigator.php:16 assets/js/editor.js:34257
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Expand all elements"
 msgstr "Mostrar todos los elementos"
 
@@ -617,11 +605,7 @@ msgstr "ELimina todo el contenido y los ajustes del sitio que venían con \"%1$s
 #. Translators: %s is the current item index.
 #: modules/nested-accordion/widgets/nested-accordion.php:69
 #: modules/nested-elements/base/widget-nested-base.php:45
-<<<<<<< HEAD
-#: assets/js/editor.js:24395
-=======
 #: assets/js/editor.js:24448
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Item #%d"
 msgstr "Elemento %d"
 
@@ -780,15 +764,9 @@ msgstr "Actualizar ahora"
 #: core/admin/admin.php:631 core/role-manager/role-manager.php:161
 #: includes/editor-templates/panel.php:313
 #: modules/promotions/admin-menu-items/go-pro-promotion-item.php:24
-<<<<<<< HEAD
-#: assets/js/ai-admin.js:720 assets/js/ai-admin.js:729
-#: assets/js/ai-admin.js:1220 assets/js/ai.js:903 assets/js/ai.js:912
-#: assets/js/ai.js:1403 assets/js/app-packages.js:5947 assets/js/editor.js:6498
-=======
 #: assets/js/ai-admin.js:727 assets/js/ai-admin.js:735
 #: assets/js/ai-admin.js:1230 assets/js/ai.js:910 assets/js/ai.js:918
 #: assets/js/ai.js:1413 assets/js/app-packages.js:5947 assets/js/editor.js:6498
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 #: assets/js/notes.js:153
 #: assets/js/onboarding.2da315965610a6ac2448.bundle.js:763
 #: assets/js/styleguide.js:196
@@ -828,11 +806,7 @@ msgstr "Para conseguir un contenedor de altura completa, utiliza %s."
 
 #: includes/elements/container.php:68 includes/elements/container.php:374
 #: modules/library/documents/container.php:52 assets/js/editor.js:9971
-<<<<<<< HEAD
-#: assets/js/editor.js:38230
-=======
 #: assets/js/editor.js:38283
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Container"
 msgstr "Contenedor"
 
@@ -848,11 +822,7 @@ msgstr "Exclusión"
 msgid "Difference"
 msgstr "Diferencia"
 
-<<<<<<< HEAD
-#: includes/editor-templates/global.php:34 assets/js/editor.js:32225
-=======
 #: includes/editor-templates/global.php:34 assets/js/editor.js:32278
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Add New Container"
 msgstr "Añadir nuevo contenedor"
 
@@ -1201,15 +1171,6 @@ msgstr "Color del trazo"
 msgid "Text Stroke"
 msgstr "Trazo del texto"
 
-<<<<<<< HEAD
-#: includes/admin-templates/beta-tester.php:53 assets/js/ai-admin.js:2913
-#: assets/js/ai-admin.js:6514 assets/js/ai.js:3208 assets/js/ai.js:6809
-msgid "Privacy Policy"
-msgstr "Política de privacidad"
-
-#: includes/admin-templates/beta-tester.php:48 assets/js/ai-admin.js:2909
-#: assets/js/ai-admin.js:6510 assets/js/ai.js:3204 assets/js/ai.js:6805
-=======
 #: includes/admin-templates/beta-tester.php:53 assets/js/ai-admin.js:2923
 #: assets/js/ai-admin.js:6522 assets/js/ai.js:3218 assets/js/ai.js:6817
 msgid "Privacy Policy"
@@ -1217,7 +1178,6 @@ msgstr "Política de privacidad"
 
 #: includes/admin-templates/beta-tester.php:48 assets/js/ai-admin.js:2919
 #: assets/js/ai-admin.js:6518 assets/js/ai.js:3214 assets/js/ai.js:6813
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Terms of Service"
 msgstr "Condiciones del servicio"
 
@@ -1426,11 +1386,7 @@ msgid "It seems like your site doesn't have any active Kit. The active Kit inclu
 msgstr "Parece que tu sitio no tiene ningún kit activo. El kit activo incluye todos los ajustes de tu sitio. Al volver a crear tu kit, podrás empezar a editar de nuevo los ajustes de tu sitio."
 
 #: includes/settings/tools.php:383 includes/settings/tools.php:386
-<<<<<<< HEAD
-#: assets/js/editor.js:28008
-=======
 #: assets/js/editor.js:28061
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Recreate Kit"
 msgstr "Crear de nuevo el kit"
 
@@ -1476,11 +1432,7 @@ msgid "Submissions"
 msgstr "Envíos"
 
 #: includes/editor-templates/panel.php:286
-<<<<<<< HEAD
-#: includes/editor-templates/panel.php:288 assets/js/editor.js:12916
-=======
 #: includes/editor-templates/panel.php:288 assets/js/editor.js:12936
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Color Sampler"
 msgstr "Muestrario de colores"
 
@@ -1753,11 +1705,7 @@ msgstr "Exportar un kit de plantillas"
 msgid "Design sites faster with a template kit that contains some or all components of a complete site, like templates, content & site settings.%1$sYou can import a kit and apply it to your site, or export the elements from this site to be used anywhere else. %2$s"
 msgstr "Diseña sitios más rápidamente con un conjunto de plantillas que contiene algunos o todos los componentes de un sitio completo, como plantillas, contenido y ajustes del sitio.%1$sPuedes importar un conjunto y aplicarlo a tu sitio o exportar los elementos de este sitio para usarlos en cualquier otro lugar. %2$s"
 
-<<<<<<< HEAD
-#: app/modules/import-export/module.php:129 core/admin/admin-notices.php:538
-=======
 #: app/modules/import-export/module.php:129 core/admin/admin-notices.php:368
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 #: core/editor/editor.php:618 assets/js/app.js:8619
 #: assets/js/kit-library.3dff2fd14c0324c37675.bundle.js:3386
 msgid "Learn more"
@@ -2072,11 +2020,7 @@ msgstr "Añade un nuevo tipo de contenido de Elementor que permite crear al inst
 #: modules/landing-pages/documents/landing-page.php:54
 #: modules/landing-pages/module.php:47 modules/landing-pages/module.php:138
 #: modules/landing-pages/module.php:269 modules/landing-pages/module.php:281
-<<<<<<< HEAD
-#: assets/js/app.js:11307 assets/js/editor.js:50391
-=======
 #: assets/js/app.js:11307 assets/js/editor.js:50579
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Landing Pages"
 msgstr "Páginas de destino"
 
@@ -2148,22 +2092,14 @@ msgstr "Advertencia: esto restablecerá tus fuentes y colores globales actuales 
 msgid "Rerun Update Script"
 msgstr "Volver a ejecutar el script de actualización"
 
-<<<<<<< HEAD
-#: core/upgrade/elementor-3-re-migrate-globals.php:60 assets/js/admin.js:1696
-=======
 #: core/upgrade/elementor-3-re-migrate-globals.php:60 assets/js/admin.js:2212
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Migrate to v3.0"
 msgstr "Migrar a v3.0"
 
 #: core/kits/documents/tabs/global-colors.php:24
 #: core/kits/documents/tabs/global-colors.php:43
 #: assets/js/9901e5ed764a3348e6e0.bundle.js:175 assets/js/app.js:11315
-<<<<<<< HEAD
-#: assets/js/editor.js:45982
-=======
 #: assets/js/editor.js:46170
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Global Colors"
 msgstr "Colores globales"
 
@@ -2229,32 +2165,19 @@ msgid "Heads up, Please backup before upgrade!"
 msgstr "¡Atención, haz una copia de seguridad antes de actualizar!"
 
 #: core/settings/editor-preferences/model.php:38
-<<<<<<< HEAD
-#: includes/editor-templates/hotkeys.php:156 assets/js/editor.js:37031
-=======
 #: includes/editor-templates/hotkeys.php:156 assets/js/editor.js:37084
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 #: assets/js/packages/editor-app-bar.js:1087
 msgid "User Preferences"
 msgstr "Preferencias del usuario"
 
 #: core/kits/manager.php:429 includes/editor-templates/hotkeys.php:118
-<<<<<<< HEAD
-#: assets/js/app.js:11313 assets/js/app.js:11794 assets/js/editor.js:45931
-#: assets/js/editor.js:45935 assets/js/editor.js:45945
-=======
 #: assets/js/app.js:11313 assets/js/app.js:11794 assets/js/editor.js:46119
 #: assets/js/editor.js:46123 assets/js/editor.js:46133
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 #: assets/js/packages/editor-app-bar.js:1014
 msgid "Site Settings"
 msgstr "Ajustes del sitio"
 
-<<<<<<< HEAD
-#: modules/nested-tabs/widgets/nested-tabs.php:334 assets/js/editor.js:46354
-=======
 #: modules/nested-tabs/widgets/nested-tabs.php:334 assets/js/editor.js:46542
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Additional Settings"
 msgstr "Ajustes adicionales"
 
@@ -2348,11 +2271,7 @@ msgstr "Conoce Elementor viendo nuestra serie de vídeos «Primeros pasos». Te 
 
 #: includes/settings/settings.php:326 assets/js/admin.js:282
 #: assets/js/admin.js:289 assets/js/common.js:2090 assets/js/common.js:2097
-<<<<<<< HEAD
-#: assets/js/editor.js:39074 assets/js/editor.js:39081
-=======
 #: assets/js/editor.js:39127 assets/js/editor.js:39134
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Enable Unfiltered File Uploads"
 msgstr "Permitir la subida de archivos sin filtrar"
 
@@ -2457,19 +2376,11 @@ msgid "%s Widget"
 msgstr "Widget %s"
 
 #: core/experiments/manager.php:140 includes/editor-templates/global.php:29
-<<<<<<< HEAD
-#: assets/js/ai-admin.js:4253 assets/js/ai-admin.js:4408
-#: assets/js/ai-admin.js:4583 assets/js/ai-admin.js:4886
-#: assets/js/ai-admin.js:5194 assets/js/ai.js:4548 assets/js/ai.js:4703
-#: assets/js/ai.js:4878 assets/js/ai.js:5181 assets/js/ai.js:5489
-#: assets/js/app.js:8190 assets/js/editor.js:46243
-=======
 #: assets/js/ai-admin.js:4261 assets/js/ai-admin.js:4416
 #: assets/js/ai-admin.js:4591 assets/js/ai-admin.js:4894
 #: assets/js/ai-admin.js:5202 assets/js/ai.js:4556 assets/js/ai.js:4711
 #: assets/js/ai.js:4886 assets/js/ai.js:5189 assets/js/ai.js:5497
 #: assets/js/app.js:8190 assets/js/editor.js:46431
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Back"
 msgstr "Volver"
 
@@ -3138,11 +3049,7 @@ msgstr "Ventanas emergentes"
 #: app/modules/site-editor/module.php:31
 #: core/common/modules/finder/categories/general.php:72
 #: includes/template-library/sources/local.php:1705
-<<<<<<< HEAD
-#: assets/js/app-packages.js:6016 assets/js/editor.js:45956
-=======
 #: assets/js/app-packages.js:6016 assets/js/editor.js:46144
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 #: assets/js/packages/editor-app-bar.js:1066
 msgid "Theme Builder"
 msgstr "Maquetador de temas"
@@ -3293,11 +3200,7 @@ msgid "Type to find anything in Elementor"
 msgstr "Teclea para encontrar lo que sea en Elementor"
 
 #: includes/editor-templates/hotkeys.php:102 assets/js/admin-top-bar.js:124
-<<<<<<< HEAD
-#: assets/js/common.js:4704 assets/js/editor.js:37043
-=======
 #: assets/js/common.js:4704 assets/js/editor.js:37096
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 #: assets/js/packages/editor-app-bar.js:863
 msgid "Finder"
 msgstr "Buscador"
@@ -3319,11 +3222,7 @@ msgid "Homepage"
 msgstr "Página de inicio"
 
 #: core/common/modules/finder/categories/create.php:27
-<<<<<<< HEAD
-#: assets/js/editor.js:44493
-=======
 #: assets/js/editor.js:44681
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Create"
 msgstr "Crear"
 
@@ -3342,12 +3241,8 @@ msgstr "Conectado correctamente."
 #: core/common/modules/connect/apps/connect.php:11
 #: core/common/modules/connect/connect-menu-item.php:24
 #: core/common/modules/connect/connect-menu-item.php:28
-<<<<<<< HEAD
-#: assets/js/ai-admin.js:2923 assets/js/ai.js:3218
-=======
 #: assets/js/ai-admin.js:719 assets/js/ai-admin.js:2933 assets/js/ai.js:902
 #: assets/js/ai.js:3228
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Connect"
 msgstr "Conectar"
 
@@ -3403,11 +3298,7 @@ msgstr "Crea tu primera página"
 msgid "Getting Started"
 msgstr "Primeros pasos"
 
-<<<<<<< HEAD
-#: includes/widgets/inner-section.php:35 assets/js/editor.js:27139
-=======
 #: includes/widgets/inner-section.php:35 assets/js/editor.js:27192
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Inner Section"
 msgstr "Sección interior"
 
@@ -3426,11 +3317,7 @@ msgstr "Vacío"
 #: includes/editor-templates/hotkeys.php:129
 #: includes/editor-templates/navigator.php:21
 #: includes/editor-templates/panel.php:88
-<<<<<<< HEAD
-#: includes/editor-templates/panel.php:94 assets/js/editor.js:30671
-=======
 #: includes/editor-templates/panel.php:94 assets/js/editor.js:30724
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Navigator"
 msgstr "Navigator"
 
@@ -3480,13 +3367,8 @@ msgid "Congrats!"
 msgstr "¡Enhorabuena!"
 
 #: core/kits/documents/tabs/settings-lightbox.php:76 includes/frontend.php:1390
-<<<<<<< HEAD
-#: includes/widgets/google-maps.php:149 assets/js/ai-admin.js:5086
-#: assets/js/ai-admin.js:5095 assets/js/ai.js:5381 assets/js/ai.js:5390
-=======
 #: includes/widgets/google-maps.php:149 assets/js/ai-admin.js:5094
 #: assets/js/ai-admin.js:5103 assets/js/ai.js:5389 assets/js/ai.js:5398
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Zoom"
 msgstr "Zoom"
 
@@ -3557,11 +3439,7 @@ msgstr "Pro"
 msgid "Blend Mode"
 msgstr "Modo de fusión"
 
-<<<<<<< HEAD
-#: includes/editor-templates/hotkeys.php:42 assets/js/editor.js:29773
-=======
 #: includes/editor-templates/hotkeys.php:42 assets/js/editor.js:29826
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Copy"
 msgstr "Copiar"
 
@@ -3622,11 +3500,7 @@ msgstr "Tengo Elementor Pro"
 msgid "Elementor Debugger"
 msgstr "Depurador de Elementor"
 
-<<<<<<< HEAD
-#: core/admin/admin.php:227 assets/js/admin.js:1509 assets/js/gutenberg.js:109
-=======
 #: core/admin/admin.php:227 assets/js/admin.js:2025 assets/js/gutenberg.js:109
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Back to WordPress Editor"
 msgstr "Volver al editor de WordPress"
 
@@ -3934,11 +3808,7 @@ msgstr "¡Hurra! Tu %s está en directo."
 msgid "Published"
 msgstr "Publicada"
 
-<<<<<<< HEAD
-#: core/common/modules/finder/template.php:19 assets/js/editor.js:10724
-=======
 #: core/common/modules/finder/template.php:19 assets/js/editor.js:10744
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 #: assets/js/kit-library.3dff2fd14c0324c37675.bundle.js:1871
 msgid "No Results Found"
 msgstr "Ningún resultado"
@@ -4025,13 +3895,8 @@ msgid "Remove"
 msgstr "Eliminar"
 
 #: includes/editor-templates/hotkeys.php:74
-<<<<<<< HEAD
-#: includes/editor-templates/repeater.php:21 assets/js/editor.js:29758
-#: assets/js/editor.js:49062
-=======
 #: includes/editor-templates/repeater.php:21 assets/js/editor.js:29811
 #: assets/js/editor.js:49250
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Duplicate"
 msgstr "Duplicar"
 
@@ -4040,21 +3905,12 @@ msgid "Drag & Drop"
 msgstr "Arrastrar y soltar"
 
 #: includes/editor-templates/panel.php:151
-<<<<<<< HEAD
-#: includes/editor-templates/panel.php:153 assets/js/editor.js:35424
-msgid "Hide Panel"
-msgstr "Ocultar panel"
-
-#: includes/editor-templates/panel.php:143 assets/js/editor.js:32216
-#: assets/js/editor.js:32676 assets/js/packages/editor-app-bar.js:665
-=======
 #: includes/editor-templates/panel.php:153 assets/js/editor.js:35477
 msgid "Hide Panel"
 msgstr "Ocultar panel"
 
 #: includes/editor-templates/panel.php:143 assets/js/editor.js:32269
 #: assets/js/editor.js:32729 assets/js/packages/editor-app-bar.js:665
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Save as Template"
 msgstr "Guardar como plantilla"
 
@@ -4070,11 +3926,7 @@ msgstr "Guardar borrador"
 msgid "Save Options"
 msgstr "Guardar opciones"
 
-<<<<<<< HEAD
-#: includes/editor-templates/panel.php:119 assets/js/editor.js:24779
-=======
 #: includes/editor-templates/panel.php:119 assets/js/editor.js:24832
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 #: assets/js/packages/editor-app-bar.js:764
 msgid "Publish"
 msgstr "Publicar"
@@ -4213,31 +4065,19 @@ msgid "Switch to Revisions tab for older versions"
 msgstr "Cambiar a la pestaña de revisiones para las versiones anteriores"
 
 #: modules/history/views/history-panel-template.php:10
-<<<<<<< HEAD
-#: assets/js/editor.js:48789
-=======
 #: assets/js/editor.js:48977
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Revisions"
 msgstr "Revisiones"
 
 #: includes/editor-templates/hotkeys.php:19
 #: includes/editor-templates/templates.php:124
-<<<<<<< HEAD
-#: modules/history/views/history-panel-template.php:9 assets/js/editor.js:48786
-=======
 #: modules/history/views/history-panel-template.php:9 assets/js/editor.js:48974
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Actions"
 msgstr "Acciones"
 
 #: includes/editor-templates/hotkeys.php:147
 #: includes/editor-templates/panel.php:97
-<<<<<<< HEAD
-#: includes/editor-templates/panel.php:99 assets/js/editor.js:49386
-=======
 #: includes/editor-templates/panel.php:99 assets/js/editor.js:49574
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 #: assets/js/packages/editor-app-bar.js:907
 msgid "History"
 msgstr "Historial"
@@ -4329,11 +4169,7 @@ msgid "Sets the default space between widgets (Default: 20px)"
 msgstr "Establece el espacio por defecto entre widgets (por defecto 20px)"
 
 #: includes/rollback.php:165 includes/settings/tools.php:150
-<<<<<<< HEAD
-#: includes/settings/tools.php:323 assets/js/admin.js:1680
-=======
 #: includes/settings/tools.php:323 assets/js/admin.js:2196
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Rollback to Previous Version"
 msgstr "Volver a una versión anterior"
 
@@ -4422,11 +4258,7 @@ msgstr "Para diagnosticar problemas de conflicto de configuración de servidor."
 #: modules/nested-tabs/widgets/nested-tabs.php:345
 #: modules/safe-mode/module.php:48 assets/js/admin.js:282
 #: assets/js/app-packages.js:2937 assets/js/app.js:4257
-<<<<<<< HEAD
-#: assets/js/common.js:2090 assets/js/editor.js:39074
-=======
 #: assets/js/common.js:2090 assets/js/editor.js:39127
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Enable"
 msgstr "Activar"
 
@@ -4468,11 +4300,7 @@ msgstr "Seleccionar"
 msgid "Paste Style"
 msgstr "Pegar estilo"
 
-<<<<<<< HEAD
-#: core/common/modules/finder/categories/edit.php:118 assets/js/editor.js:18172
-=======
 #: core/common/modules/finder/categories/edit.php:118 assets/js/editor.js:18225
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Template"
 msgstr "Plantilla"
 
@@ -4530,11 +4358,7 @@ msgid "Coming Soon"
 msgstr "Próximamente"
 
 #: core/kits/documents/kit.php:169 includes/maintenance-mode.php:215
-<<<<<<< HEAD
-#: assets/js/editor.js:49061
-=======
 #: assets/js/editor.js:49249
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Disabled"
 msgstr "Desactivado"
 
@@ -5090,13 +4914,8 @@ msgid "Back to Library"
 msgstr "Volver a la biblioteca"
 
 #: includes/editor-templates/templates.php:176
-<<<<<<< HEAD
-#: includes/editor-templates/templates.php:200 assets/js/ai-admin.js:2994
-#: assets/js/ai.js:3289 assets/js/editor.js:8258
-=======
 #: includes/editor-templates/templates.php:200 assets/js/ai-admin.js:3004
 #: assets/js/ai.js:3299 assets/js/editor.js:8258
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Insert"
 msgstr "Insertar"
 
@@ -5112,11 +4931,7 @@ msgstr "Biblioteca"
 #: assets/js/app-packages.js:4097 assets/js/app-packages.js:4618
 #: assets/js/app.js:3202 assets/js/app.js:5317 assets/js/app.js:5720
 #: assets/js/app.js:7854 assets/js/app.js:8686 assets/js/app.js:12173
-<<<<<<< HEAD
-#: assets/js/editor.js:46246 assets/js/import-export-admin.js:328
-=======
 #: assets/js/editor.js:46434 assets/js/import-export-admin.js:328
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Close"
 msgstr "Cerrar"
 
@@ -5140,13 +4955,7 @@ msgid "If you want to modify the source code of your theme, we recommend using a
 msgstr "Si quieres modificar el código fuente de tu tema, te recomendamos utilizar un <a href=\"%s\">tema hijo</a>."
 
 #: app/modules/import-export/module.php:148
-<<<<<<< HEAD
-#: app/modules/import-export/module.php:160 core/admin/admin-notices.php:330
-#: core/admin/admin-notices.php:371 core/admin/admin-notices.php:413
-#: core/admin/admin-notices.php:455 core/admin/admin-notices.php:497
-=======
 #: app/modules/import-export/module.php:160 core/admin/admin-notices.php:327
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 #: core/experiments/manager.php:322 core/experiments/manager.php:337
 #: core/experiments/manager.php:352 core/experiments/manager.php:367
 #: core/experiments/manager.php:379 core/experiments/manager.php:391
@@ -5157,15 +4966,9 @@ msgstr "Si quieres modificar el código fuente de tu tema, te recomendamos utili
 #: assets/js/app-packages.js:2808 assets/js/app-packages.js:5787
 #: assets/js/app-packages.js:5896 assets/js/app.js:4128 assets/js/app.js:8138
 #: assets/js/app.js:9277 assets/js/app.js:10715 assets/js/app.js:11025
-<<<<<<< HEAD
-#: assets/js/app.js:11071 assets/js/app.js:12172 assets/js/editor.js:13961
-#: assets/js/editor.js:27635 assets/js/editor.js:27666
-#: assets/js/editor.js:39607
-=======
 #: assets/js/app.js:11071 assets/js/app.js:12172 assets/js/editor.js:13981
 #: assets/js/editor.js:27688 assets/js/editor.js:27719
 #: assets/js/editor.js:39660
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 #: assets/js/kit-library.3dff2fd14c0324c37675.bundle.js:3731
 msgid "Learn More"
 msgstr "Aprende más"
@@ -5173,11 +4976,7 @@ msgstr "Aprende más"
 #: core/kits/documents/tabs/global-typography.php:28
 #: core/kits/documents/tabs/global-typography.php:47
 #: assets/js/9901e5ed764a3348e6e0.bundle.js:224 assets/js/app.js:11315
-<<<<<<< HEAD
-#: assets/js/editor.js:45991
-=======
 #: assets/js/editor.js:46179
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Global Fonts"
 msgstr "Fuentes globales"
 
@@ -5383,15 +5182,9 @@ msgstr "Existe una nueva versión de Elementor Page Builder disponible. <a href=
 msgid "Custom URL"
 msgstr "URL personalizada"
 
-<<<<<<< HEAD
-#: includes/editor-templates/hotkeys.php:50 assets/js/editor.js:29785
-#: assets/js/editor.js:31745 assets/js/editor.js:41107
-#: assets/js/editor.js:42099
-=======
 #: includes/editor-templates/hotkeys.php:50 assets/js/editor.js:29838
 #: assets/js/editor.js:31798 assets/js/editor.js:41160
 #: assets/js/editor.js:42152
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Paste"
 msgstr "Pegar"
 
@@ -5400,11 +5193,7 @@ msgstr "Pegar"
 #: includes/elements/section.php:553 includes/widgets/accordion.php:312
 #: includes/widgets/accordion.php:477 includes/widgets/common.php:680
 #: includes/widgets/toggle.php:339 includes/widgets/toggle.php:496
-<<<<<<< HEAD
-#: assets/js/ai-admin.js:3261 assets/js/ai.js:3556
-=======
 #: assets/js/ai-admin.js:3271 assets/js/ai.js:3566
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Background"
 msgstr "Fondo"
 
@@ -5620,15 +5409,9 @@ msgstr "El listado de fuentes utilizadas si la fuente seleccionada no está disp
 msgid "Form"
 msgstr "Formulario"
 
-<<<<<<< HEAD
-#: includes/editor-templates/panel-elements.php:10 assets/js/editor.js:18818
-#: assets/js/editor.js:20862 assets/js/editor.js:21293
-#: assets/js/editor.js:36192 assets/js/packages/editor-app-bar.js:799
-=======
 #: includes/editor-templates/panel-elements.php:10 assets/js/editor.js:18871
 #: assets/js/editor.js:20915 assets/js/editor.js:21346
 #: assets/js/editor.js:36245 assets/js/packages/editor-app-bar.js:799
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Elements"
 msgstr "Elementos"
 
@@ -5638,11 +5421,7 @@ msgstr "Elementos"
 #: includes/editor-templates/responsive-bar.php:61
 #: includes/managers/controls.php:322 includes/settings/settings.php:192
 #: includes/settings/settings.php:387 modules/usage/settings-reporter.php:13
-<<<<<<< HEAD
-#: assets/js/editor.js:9244 assets/js/editor.js:37027 assets/js/editor.js:46370
-=======
 #: assets/js/editor.js:9244 assets/js/editor.js:37080 assets/js/editor.js:46558
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Settings"
 msgstr "Ajustes"
 
@@ -5901,13 +5680,8 @@ msgid "Primary Color"
 msgstr "Color principal"
 
 #: includes/widgets/icon-box.php:127 includes/widgets/icon.php:142
-<<<<<<< HEAD
-#: includes/widgets/social-icons.php:262 assets/js/ai-admin.js:3311
-#: assets/js/ai.js:3606
-=======
 #: includes/widgets/social-icons.php:262 assets/js/ai-admin.js:3321
 #: assets/js/ai.js:3616
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Square"
 msgstr "Cuadrado"
 
@@ -6110,13 +5884,8 @@ msgstr "Brecha"
 #: modules/shapes/widgets/text-path.php:491
 #: modules/shapes/widgets/text-path.php:511
 #: modules/shapes/widgets/text-path.php:556
-<<<<<<< HEAD
-#: modules/shapes/widgets/text-path.php:576 assets/js/editor.js:46507
-#: assets/js/editor.js:46550
-=======
 #: modules/shapes/widgets/text-path.php:576 assets/js/editor.js:46695
 #: assets/js/editor.js:46738
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Color"
 msgstr "Color"
 
@@ -6293,19 +6062,11 @@ msgid "Button"
 msgstr "Botón"
 
 #: core/common/modules/finder/categories/edit.php:30
-<<<<<<< HEAD
-#: includes/controls/popover-toggle.php:68 assets/js/ai-admin.js:5022
-#: assets/js/ai-admin.js:5100 assets/js/ai-admin.js:5109
-#: assets/js/ai-admin.js:5206 assets/js/ai-admin.js:5923 assets/js/ai.js:5317
-#: assets/js/ai.js:5395 assets/js/ai.js:5404 assets/js/ai.js:5501
-#: assets/js/ai.js:6218
-=======
 #: includes/controls/popover-toggle.php:68 assets/js/ai-admin.js:5030
 #: assets/js/ai-admin.js:5108 assets/js/ai-admin.js:5117
 #: assets/js/ai-admin.js:5214 assets/js/ai-admin.js:5931 assets/js/ai.js:5325
 #: assets/js/ai.js:5403 assets/js/ai.js:5412 assets/js/ai.js:5509
 #: assets/js/ai.js:6226
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Edit"
 msgstr "Editar"
 
@@ -6734,11 +6495,7 @@ msgstr "Ancho"
 #: includes/elements/column.php:113 includes/elements/container.php:1297
 #: includes/elements/section.php:227 includes/managers/controls.php:321
 #: includes/managers/elements.php:281 includes/widgets/common.php:175
-<<<<<<< HEAD
-#: includes/widgets/icon-list.php:95 assets/js/editor.js:36009
-=======
 #: includes/widgets/icon-list.php:95 assets/js/editor.js:36062
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Layout"
 msgstr "Disposición"
 
@@ -6832,13 +6589,8 @@ msgstr "Color de texto"
 #: core/kits/documents/tabs/theme-style-typography.php:19
 #: core/kits/documents/tabs/theme-style-typography.php:38
 #: core/schemes/typography.php:64 includes/elements/column.php:647
-<<<<<<< HEAD
-#: includes/elements/section.php:1104 assets/js/editor-modules.js:1546
-#: assets/js/editor.js:41778
-=======
 #: includes/elements/section.php:1104 assets/js/editor-modules.js:1439
 #: assets/js/editor.js:41831
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Typography"
 msgstr "Tipografía"
 
@@ -6861,11 +6613,7 @@ msgstr "Sección"
 #: includes/editor-templates/navigator.php:20
 #: includes/editor-templates/panel.php:87
 #: includes/editor-templates/panel.php:93 includes/elements/section.php:531
-<<<<<<< HEAD
-#: includes/elements/section.php:539 assets/js/editor.js:30671
-=======
 #: includes/elements/section.php:539 assets/js/editor.js:30724
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 #: assets/js/packages/editor-app-bar.js:1042
 msgid "Structure"
 msgstr "Estructura"
@@ -6880,22 +6628,13 @@ msgstr "Adaptabilidad"
 #: core/dynamic-tags/tag.php:88 includes/elements/column.php:737
 #: includes/elements/section.php:1193 includes/managers/controls.php:319
 #: includes/settings/settings.php:296 assets/js/editor.js:9250
-<<<<<<< HEAD
-#: assets/js/editor.js:36006
-=======
 #: assets/js/editor.js:36059
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Advanced"
 msgstr "Avanzado"
 
 #: includes/managers/controls.php:318 includes/widgets/divider.php:363
-<<<<<<< HEAD
-#: includes/widgets/icon-list.php:276 assets/js/ai-admin.js:3823
-#: assets/js/ai.js:4118 assets/js/editor.js:9247 assets/js/editor.js:36003
-=======
 #: includes/widgets/icon-list.php:276 assets/js/ai-admin.js:3831
 #: assets/js/ai.js:4126 assets/js/editor.js:9247 assets/js/editor.js:36056
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Style"
 msgstr "Estilo"
 
@@ -6906,11 +6645,7 @@ msgstr "Estilo"
 #: includes/widgets/testimonial.php:95 includes/widgets/testimonial.php:224
 #: includes/widgets/toggle.php:123 includes/widgets/toggle.php:488
 #: modules/nested-tabs/widgets/nested-tabs.php:964 assets/js/app.js:11305
-<<<<<<< HEAD
-#: assets/js/app.js:11798 assets/js/editor.js:36000
-=======
 #: assets/js/app.js:11798 assets/js/editor.js:36053
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Content"
 msgstr "Contenido"
 
@@ -6939,21 +6674,13 @@ msgstr "Paleta de colores"
 #: core/schemes/base-ui.php:119 includes/controls/image-dimensions.php:102
 #: includes/editor-templates/panel.php:175
 #: modules/history/views/revisions-panel-template.php:14
-<<<<<<< HEAD
-#: assets/js/editor.js:9878 assets/js/editor.js:37100
-=======
 #: assets/js/editor.js:9878 assets/js/editor.js:37153
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Apply"
 msgstr "Aplicar"
 
 #: core/schemes/base-ui.php:115
 #: modules/history/views/revisions-panel-template.php:11
-<<<<<<< HEAD
-#: assets/js/editor.js:5007 assets/js/editor.js:43750
-=======
 #: assets/js/editor.js:5007 assets/js/editor.js:43938
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Discard"
 msgstr "Descartar"
 
@@ -6972,11 +6699,7 @@ msgstr "Previsualizar"
 #: includes/editor-templates/templates.php:19
 #: includes/editor-templates/templates.php:217
 #: includes/editor-templates/templates.php:228 assets/js/editor.js:5006
-<<<<<<< HEAD
-#: assets/js/editor.js:43749 assets/js/kit-elements-defaults-editor.js:615
-=======
 #: assets/js/editor.js:43937 assets/js/kit-elements-defaults-editor.js:615
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Save"
 msgstr "Guardar"
 
@@ -7063,13 +6786,8 @@ msgstr "Añadir elemento"
 #: core/kits/views/trash-kit-confirmation.php:30
 #: includes/editor-templates/hotkeys.php:67
 #: includes/editor-templates/templates.php:185 assets/js/editor.js:10105
-<<<<<<< HEAD
-#: assets/js/editor.js:27357 assets/js/editor.js:29850
-#: assets/js/editor.js:46560 assets/js/import-export-admin.js:287
-=======
 #: assets/js/editor.js:27410 assets/js/editor.js:29903
 #: assets/js/editor.js:46748 assets/js/import-export-admin.js:287
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Delete"
 msgstr "Borrar"
 
@@ -7083,11 +6801,7 @@ msgstr "Selecciona el icono"
 #: includes/widgets/common.php:1014 includes/widgets/image-carousel.php:703
 #: includes/widgets/image-gallery.php:201 includes/widgets/social-icons.php:190
 #: includes/widgets/social-icons.php:348 modules/shapes/module.php:29
-<<<<<<< HEAD
-#: assets/js/editor.js:44319
-=======
 #: assets/js/editor.js:44507
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Custom"
 msgstr "Personalizado"
 
@@ -7196,21 +6910,12 @@ msgstr "Continuo"
 #: includes/widgets/image-carousel.php:349
 #: includes/widgets/image-gallery.php:134 includes/widgets/image.php:162
 #: includes/widgets/image.php:193 includes/widgets/video.php:534
-<<<<<<< HEAD
-#: modules/nested-tabs/widgets/nested-tabs.php:360 assets/js/ai-admin.js:3247
-#: assets/js/ai-admin.js:3253 assets/js/ai-admin.js:3263
-#: assets/js/ai-admin.js:3274 assets/js/ai-admin.js:3290
-#: assets/js/ai-admin.js:3301 assets/js/ai.js:3542 assets/js/ai.js:3548
-#: assets/js/ai.js:3558 assets/js/ai.js:3569 assets/js/ai.js:3585
-#: assets/js/ai.js:3596
-=======
 #: modules/nested-tabs/widgets/nested-tabs.php:360 assets/js/ai-admin.js:3257
 #: assets/js/ai-admin.js:3263 assets/js/ai-admin.js:3273
 #: assets/js/ai-admin.js:3284 assets/js/ai-admin.js:3300
 #: assets/js/ai-admin.js:3311 assets/js/ai.js:3552 assets/js/ai.js:3558
 #: assets/js/ai.js:3568 assets/js/ai.js:3579 assets/js/ai.js:3595
 #: assets/js/ai.js:3606
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "None"
 msgstr "Ninguno"
 
@@ -7502,13 +7207,8 @@ msgstr "Arriba"
 #: includes/widgets/text-editor.php:131 includes/widgets/text-editor.php:266
 #: includes/widgets/traits/button-trait.php:74
 #: modules/page-templates/module.php:296
-<<<<<<< HEAD
-#: modules/shapes/widgets/text-path.php:187 assets/js/editor.js:44311
-#: assets/js/editor.js:44322
-=======
 #: modules/shapes/widgets/text-path.php:187 assets/js/editor.js:44499
 #: assets/js/editor.js:44510
->>>>>>> 55f8656ef19fd490559d0b1118e8b6aeb1655a73
 msgid "Default"
 msgstr "Por defecto"
 

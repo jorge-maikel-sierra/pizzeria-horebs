@@ -1,0 +1,49 @@
+# Translation of Plugins - Block List Updater - Stable (latest release) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - Block List Updater - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2021-04-04 06:34:02+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/3.0.0-alpha.2\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - Block List Updater - Stable (latest release)\n"
+
+#: inc/class-blacklist-updater.php:212
+msgid "Support"
+msgstr "Soporte"
+
+#: inc/class-blacklist-updater.php:211
+msgid "Donate"
+msgstr "Donar"
+
+#: inc/class-blacklist-updater.php:204
+msgid "No check for a new block list scheduled"
+msgstr "No hay verificación de una nueva lista de bloqueo programado"
+
+#. translators: %s: time until next check
+#: inc/class-blacklist-updater.php:200
+msgid "Next check for a new block list in %s"
+msgstr "A continuación, comprueba si hay una nueva lista de bloqueo en %s"
+
+#. Author URI of the plugin
+msgid "https://pluginkollektiv.org"
+msgstr "https://pluginkollektiv.org"
+
+#. Author of the plugin
+msgid "pluginkollektiv"
+msgstr "pluginkollektiv"
+
+#. Description of the plugin
+msgid "Automatic updating of the <a href='options-discussion.php'>comment block list</a> in WordPress with antispam keys from <a href='https://github.com/splorp/wordpress-comment-blacklist' target='_blank'>GitHub</a>."
+msgstr "Actualización automática de la <a href='options-discussion.php'>lista de bloqueo de comentarios</a> en WordPress con claves antispam de <a href='https://github.com/splorp/wordpress-comment-blacklist' target='_blank'>GitHub</a>."
+
+#. Plugin URI of the plugin
+msgid "https://wordpress.org/plugins/blacklist-updater/"
+msgstr "https://es.wordpress.org/plugins/blacklist-updater/"
+
+#. Plugin Name of the plugin
+msgid "Block List Updater"
+msgstr "Block List Updater"
