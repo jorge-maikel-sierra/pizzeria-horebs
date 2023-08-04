@@ -61,3 +61,6 @@ readme.html
 
 # eliminacion de cache
 wp-content/advanced-cache.php
+
+# Eliminacion de archivo .ddev
+.ddev
