@@ -1,66 +1,9 @@
-# Ignorar los directorios de subida de archivos de WordPress
-wp-content/uploads/
-
-# Ignorar los archivos de caché de WordPress
-wp-content/cache/
-wp-content/upgrade/
-wp-content/wflogs/
 
 # Ignorar archivos de configuración específicos del servidor
 wp-config.php
 
 # Ignorar el archivo de registro de errores de PHP
 error_log
-
-# Eliminacion del archivo readme.txt
-readme.txt
-
-# known large file types
-*.hqx
-*.bin
-*.exe
-*.dll
-*.deb
-*.dmg
-*.iso
-*.img
-*.msi
-*.msp
-*.msm
-*.mid
-*.midi
-*.kar
-*.mp3
-*.ogg
-*.m4a
-*.ra
-*.3gpp
-*.3gp
-*.mp4
-*.mpeg
-*.mpg
-*.mov
-*.webm
-*.flv
-*.m4v
-*.mng
-*.asx
-*.asf
-*.wmv
-*.avi
-*.zip
-*.tar
-*.tgz
-*.gz
-
-# Eliminacion del readme.html
-readme.html
-
-# eliminacion de archivos .htaccess
-.htaccess
-
-# eliminacion de cache
-wp-content/advanced-cache.php
 
 # Eliminacion de archivo .ddev
 .ddev
