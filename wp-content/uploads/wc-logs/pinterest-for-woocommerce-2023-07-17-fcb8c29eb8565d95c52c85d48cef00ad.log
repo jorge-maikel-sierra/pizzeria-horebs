@@ -1,3 +1,0 @@
-2023-07-17T03:12:37+00:00 ERROR Solicitud de GET: https://api.pinterest.com/v3/commerce/product_pin_merchants/1504079599072/
-Código de estado: 1
-Respuesta del API: cURL error 28: Connection timeout after 10001 ms

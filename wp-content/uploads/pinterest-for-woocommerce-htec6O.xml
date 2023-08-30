@@ -65,7 +65,7 @@
 			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/pizza_jamon.jpg]]></g:image_link>
 			<g:availability>in stock</g:availability>
 			<g:price>40000COP</g:price>
-			<sale_price>30000COP</sale_price>
+			<sale_price>35000COP</sale_price>
 			<g:mpn>PJQ-G-8432</g:mpn>
 			<g:shipping>
 				<g:country>CO</g:country>
@@ -83,7 +83,7 @@
 			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/pizza_jamon.jpg]]></g:image_link>
 			<g:availability>in stock</g:availability>
 			<g:price>27000COP</g:price>
-			<sale_price>21000COP</sale_price>
+			<sale_price>25000COP</sale_price>
 			<g:mpn>PJQ-M-8342</g:mpn>
 			<g:shipping>
 				<g:country>CO</g:country>
@@ -280,13 +280,12 @@
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-cuatro-estaciones/?attribute_pa_tamano-de-la-pizza=grande]]></link>
 			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/cuatro-estaciones-1.jpg]]></g:image_link>
 			<g:availability>in stock</g:availability>
-			<g:price>45500COP</g:price>
-			<sale_price>38000COP</sale_price>
+			<g:price>40000COP</g:price>
 			<g:mpn>PCE-G-6521</g:mpn>
 			<g:shipping>
 				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
+				<g:service>Envío gratuito</g:service>
+				<g:price>0.00 COP</g:price>
 			</g:shipping>
 		</item>
 		<item>
@@ -299,7 +298,6 @@
 			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/cuatro-estaciones-1.jpg]]></g:image_link>
 			<g:availability>in stock</g:availability>
 			<g:price>30000COP</g:price>
-			<sale_price>25000COP</sale_price>
 			<g:mpn>PCE-M-3847</g:mpn>
 			<g:shipping>
 				<g:country>CO</g:country>
@@ -316,8 +314,7 @@
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-cuatro-estaciones/?attribute_pa_tamano-de-la-pizza=personal]]></link>
 			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/cuatro-estaciones-1.jpg]]></g:image_link>
 			<g:availability>in stock</g:availability>
-			<g:price>18000COP</g:price>
-			<sale_price>15000COP</sale_price>
+			<g:price>20000COP</g:price>
 			<g:mpn>PCE-P-4360</g:mpn>
 			<g:shipping>
 				<g:country>CO</g:country>
@@ -335,7 +332,6 @@
 			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/pizzeria-horebs-special-post-1.jpg]]></g:image_link>
 			<g:availability>in stock</g:availability>
 			<g:price>55000COP</g:price>
-			<sale_price>42000COP</sale_price>
 			<g:mpn>PHE-G-2997</g:mpn>
 			<g:shipping>
 				<g:country>CO</g:country>
@@ -352,13 +348,12 @@
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-horebs-especial/?attribute_pa_tamano-de-la-pizza=mediana]]></link>
 			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/pizzeria-horebs-special-post-1.jpg]]></g:image_link>
 			<g:availability>in stock</g:availability>
-			<g:price>35000COP</g:price>
-			<sale_price>29000COP</sale_price>
+			<g:price>40000COP</g:price>
 			<g:mpn>PHE-M-2488</g:mpn>
 			<g:shipping>
 				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
+				<g:service>Envío gratuito</g:service>
+				<g:price>0.00 COP</g:price>
 			</g:shipping>
 		</item>
 		<item>
@@ -388,13 +383,12 @@
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-pollo-champinon/?attribute_pa_tamano-de-la-pizza=grande]]></link>
 			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/pollo-champinon-1.jpg]]></g:image_link>
 			<g:availability>in stock</g:availability>
-			<g:price>39000COP</g:price>
-			<sale_price>33000COP</sale_price>
+			<g:price>40000COP</g:price>
 			<g:mpn>PPC-G-1373</g:mpn>
 			<g:shipping>
 				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
+				<g:service>Envío gratuito</g:service>
+				<g:price>0.00 COP</g:price>
 			</g:shipping>
 		</item>
 		<item>
@@ -406,8 +400,7 @@
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-pollo-champinon/?attribute_pa_tamano-de-la-pizza=mediana]]></link>
 			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/pollo-champinon-1.jpg]]></g:image_link>
 			<g:availability>in stock</g:availability>
-			<g:price>29000COP</g:price>
-			<sale_price>23000COP</sale_price>
+			<g:price>30000COP</g:price>
 			<g:mpn>PPC-M-4595</g:mpn>
 			<g:shipping>
 				<g:country>CO</g:country>
@@ -424,8 +417,7 @@
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-pollo-champinon/?attribute_pa_tamano-de-la-pizza=personal]]></link>
 			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/pollo-champinon-1.jpg]]></g:image_link>
 			<g:availability>in stock</g:availability>
-			<g:price>19000COP</g:price>
-			<sale_price>12000COP</sale_price>
+			<g:price>18000COP</g:price>
 			<g:mpn>PPC-P-4956</g:mpn>
 			<g:shipping>
 				<g:country>CO</g:country>
@@ -442,13 +434,12 @@
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-hawaiana/?attribute_pa_tamano-de-la-pizza=grande]]></link>
 			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/hawaiana-1-1.jpg]]></g:image_link>
 			<g:availability>in stock</g:availability>
-			<g:price>38000COP</g:price>
-			<sale_price>33000COP</sale_price>
+			<g:price>40000COP</g:price>
 			<g:mpn>PH-G-9545</g:mpn>
 			<g:shipping>
 				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
+				<g:service>Envío gratuito</g:service>
+				<g:price>0.00 COP</g:price>
 			</g:shipping>
 		</item>
 		<item>
@@ -460,8 +451,7 @@
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-hawaiana/?attribute_pa_tamano-de-la-pizza=mediana]]></link>
 			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/hawaiana-1-1.jpg]]></g:image_link>
 			<g:availability>in stock</g:availability>
-			<g:price>27000COP</g:price>
-			<sale_price>22000COP</sale_price>
+			<g:price>28000COP</g:price>
 			<g:mpn>PH-M-4442</g:mpn>
 			<g:shipping>
 				<g:country>CO</g:country>
@@ -550,13 +540,12 @@
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-jamon-pollo/?attribute_pa_tamano-de-la-pizza=grande]]></link>
 			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/jamon-pollo-1.jpg]]></g:image_link>
 			<g:availability>in stock</g:availability>
-			<g:price>38000COP</g:price>
-			<sale_price>33000COP</sale_price>
+			<g:price>40000COP</g:price>
 			<g:mpn>PJP-G-4351</g:mpn>
 			<g:shipping>
 				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
+				<g:service>Envío gratuito</g:service>
+				<g:price>0.00 COP</g:price>
 			</g:shipping>
 		</item>
 		<item>
@@ -568,8 +557,7 @@
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-jamon-pollo/?attribute_pa_tamano-de-la-pizza=mediana]]></link>
 			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/jamon-pollo-1.jpg]]></g:image_link>
 			<g:availability>in stock</g:availability>
-			<g:price>29000COP</g:price>
-			<sale_price>22000COP</sale_price>
+			<g:price>28000COP</g:price>
 			<g:mpn>PJP-M-8505</g:mpn>
 			<g:shipping>
 				<g:country>CO</g:country>
@@ -587,7 +575,6 @@
 			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/jamon-pollo-1.jpg]]></g:image_link>
 			<g:availability>in stock</g:availability>
 			<g:price>17000COP</g:price>
-			<sale_price>12000COP</sale_price>
 			<g:mpn>PJP-P-4876</g:mpn>
 			<g:shipping>
 				<g:country>CO</g:country>
@@ -940,8 +927,8 @@
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-italiana/?attribute_pa_tamano-de-la-pizza=grande]]></link>
 			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/italiana.jpg]]></g:image_link>
 			<g:availability>in stock</g:availability>
-			<g:price>50000COP</g:price>
-			<sale_price>40000COP</sale_price>
+			<g:price>60000COP</g:price>
+			<sale_price>49999COP</sale_price>
 			<g:mpn>PI-G-1263</g:mpn>
 			<g:shipping>
 				<g:country>CO</g:country>
@@ -958,8 +945,8 @@
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-italiana/?attribute_pa_tamano-de-la-pizza=mediana]]></link>
 			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/italiana.jpg]]></g:image_link>
 			<g:availability>in stock</g:availability>
-			<g:price>35000COP</g:price>
-			<sale_price>30000COP</sale_price>
+			<g:price>39900COP</g:price>
+			<sale_price>35000COP</sale_price>
 			<g:mpn>PI-M-7056</g:mpn>
 			<g:shipping>
 				<g:country>CO</g:country>
@@ -976,8 +963,8 @@
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-italiana/?attribute_pa_tamano-de-la-pizza=personal]]></link>
 			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/italiana.jpg]]></g:image_link>
 			<g:availability>in stock</g:availability>
-			<g:price>20000COP</g:price>
-			<sale_price>18000COP</sale_price>
+			<g:price>29000COP</g:price>
+			<sale_price>23000COP</sale_price>
 			<g:mpn>PI-P-1705</g:mpn>
 			<g:shipping>
 				<g:country>CO</g:country>
@@ -994,7 +981,7 @@
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-borde-de-queso/?attribute_pa_tamano-de-la-pizza=grande]]></link>
 			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/borde-de-queso-1.jpg]]></g:image_link>
 			<g:availability>in stock</g:availability>
-			<g:price>40000COP</g:price>
+			<g:price>55000COP</g:price>
 			<g:mpn>PBQ-G-4701</g:mpn>
 			<g:shipping>
 				<g:country>CO</g:country>
@@ -1011,12 +998,12 @@
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-borde-de-queso/?attribute_pa_tamano-de-la-pizza=mediana]]></link>
 			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/borde-de-queso-1.jpg]]></g:image_link>
 			<g:availability>in stock</g:availability>
-			<g:price>28000COP</g:price>
+			<g:price>40000COP</g:price>
 			<g:mpn>PBQ-M-2834</g:mpn>
 			<g:shipping>
 				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
+				<g:service>Envío gratuito</g:service>
+				<g:price>0.00 COP</g:price>
 			</g:shipping>
 		</item>
 		<item>
@@ -1028,7 +1015,7 @@
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-borde-de-queso/?attribute_pa_tamano-de-la-pizza=personal]]></link>
 			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/borde-de-queso-1.jpg]]></g:image_link>
 			<g:availability>in stock</g:availability>
-			<g:price>15000COP</g:price>
+			<g:price>25000COP</g:price>
 			<g:mpn>PBQ-P-8360</g:mpn>
 			<g:shipping>
 				<g:country>CO</g:country>
