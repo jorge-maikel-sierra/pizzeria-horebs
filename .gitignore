@@ -7,3 +7,9 @@ error_log
 
 # Eliminacion de archivo .ddev
 .ddev
+
+# Ignorar archivos .sql
+*.sql
+
+# Ignorar archivos .log
+*.log

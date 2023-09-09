@@ -1,0 +1,754 @@
+2023-09-08T00:12:24+00:00 INFO Array
+(
+    [Webhook Delivery] => Array
+        (
+            [Delivery ID] => b464a2a6b33f63108704738c84a0aebe
+            [Date] => 8 Sep, 2023 @ 0:12
+            [URL] => https://pizzeriahorebs.com/wp-admin/options-general.php?page=webhooks
+            [Duration] => 0.24557
+            [Request] => Array
+                (
+                    [Method] => POST
+                    [Headers] => Array
+                        (
+                            [User-Agent] => WooCommerce/7.9.0 Hookshot (WordPress/6.2.2)
+                            [Content-Type] => application/json
+                            [X-WC-Webhook-Source] => https://pizzeriahorebs.com/
+                            [X-WC-Webhook-Topic] => action.woocommerce_payment_complete
+                            [X-WC-Webhook-Resource] => action
+                            [X-WC-Webhook-Event] => woocommerce_payment_complete
+                            [X-WC-Webhook-Signature] => F8pUS1D+LGxy4qcAB0Cy2/t05KjQH5FPb4WlKw6EB7c=
+                            [X-WC-Webhook-ID] => 1
+                            [X-WC-Webhook-Delivery-ID] => b464a2a6b33f63108704738c84a0aebe
+                        )
+
+                )
+
+            [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+            [Response] => Array
+                (
+                    [Code] => 302
+                    [Message] => Found
+                    [Headers] => WpOrg\Requests\Utility\CaseInsensitiveDictionary Object
+                        (
+                            [data:protected] => Array
+                                (
+                                    [x-powered-by] => PHP/8.1.18
+                                    [expires] => Wed, 11 Jan 1984 05:00:00 GMT
+                                    [cache-control] => no-cache, no-store, must-revalidate, max-age=0
+                                    [x-redirect-by] => WordPress
+                                    [location] => https://pizzeriahorebs.com/wp-login.php?redirect_to=https%3A%2F%2Fpizzeriahorebs.com%2Fwp-admin%2Foptions-general.php%3Fpage%3Dwebhooks&reauth=1
+                                    [content-type] => text/html; charset=UTF-8
+                                    [content-length] => 0
+                                    [date] => Fri, 08 Sep 2023 00:12:24 GMT
+                                    [server] => LiteSpeed
+                                    [platform] => hostinger
+                                    [content-security-policy] => upgrade-insecure-requests
+                                    [alt-svc] => h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, h3-Q050=":443"; ma=2592000, h3-Q046=":443"; ma=2592000, h3-Q043=":443"; ma=2592000, quic=":443"; ma=2592000; v="43,46"
+                                )
+
+                        )
+
+                    [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+                )
+
+        )
+
+)
+
+2023-09-08T00:28:31+00:00 INFO Array
+(
+    [Webhook Delivery] => Array
+        (
+            [Delivery ID] => 6f28e9e7b4297177e3400ca3dcaaf40a
+            [Date] => 8 Sep, 2023 @ 0:28
+            [URL] => https://pizzeriahorebs.com/wp-admin/options-general.php?page=webhooks
+            [Duration] => 0.21373
+            [Request] => Array
+                (
+                    [Method] => POST
+                    [Headers] => Array
+                        (
+                            [User-Agent] => WooCommerce/7.9.0 Hookshot (WordPress/6.2.2)
+                            [Content-Type] => application/json
+                            [X-WC-Webhook-Source] => https://pizzeriahorebs.com/
+                            [X-WC-Webhook-Topic] => action.woocommerce_payment_complete
+                            [X-WC-Webhook-Resource] => action
+                            [X-WC-Webhook-Event] => woocommerce_payment_complete
+                            [X-WC-Webhook-Signature] => Zn8AnzH0T5x4aNqlILeAyByV2xyEWRSKsrzT+2AwDkQ=
+                            [X-WC-Webhook-ID] => 1
+                            [X-WC-Webhook-Delivery-ID] => 6f28e9e7b4297177e3400ca3dcaaf40a
+                        )
+
+                )
+
+            [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+            [Response] => Array
+                (
+                    [Code] => 302
+                    [Message] => Found
+                    [Headers] => WpOrg\Requests\Utility\CaseInsensitiveDictionary Object
+                        (
+                            [data:protected] => Array
+                                (
+                                    [x-powered-by] => PHP/8.1.18
+                                    [expires] => Wed, 11 Jan 1984 05:00:00 GMT
+                                    [cache-control] => no-cache, no-store, must-revalidate, max-age=0
+                                    [x-redirect-by] => WordPress
+                                    [location] => https://pizzeriahorebs.com/wp-login.php?redirect_to=https%3A%2F%2Fpizzeriahorebs.com%2Fwp-admin%2Foptions-general.php%3Fpage%3Dwebhooks&reauth=1
+                                    [content-type] => text/html; charset=UTF-8
+                                    [content-length] => 0
+                                    [date] => Fri, 08 Sep 2023 00:28:31 GMT
+                                    [server] => LiteSpeed
+                                    [platform] => hostinger
+                                    [content-security-policy] => upgrade-insecure-requests
+                                    [alt-svc] => h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, h3-Q050=":443"; ma=2592000, h3-Q046=":443"; ma=2592000, h3-Q043=":443"; ma=2592000, quic=":443"; ma=2592000; v="43,46"
+                                )
+
+                        )
+
+                    [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+                )
+
+        )
+
+)
+
+2023-09-08T00:29:44+00:00 INFO Array
+(
+    [Webhook Delivery] => Array
+        (
+            [Delivery ID] => 4e74dbbebed1a9bbe14d79dcd2ec98df
+            [Date] => 8 Sep, 2023 @ 0:29
+            [URL] => https://pizzeriahorebs.com/wp-admin/options-general.php?page=webhooks
+            [Duration] => 0.30521
+            [Request] => Array
+                (
+                    [Method] => POST
+                    [Headers] => Array
+                        (
+                            [User-Agent] => WooCommerce/7.9.0 Hookshot (WordPress/6.2.2)
+                            [Content-Type] => application/json
+                            [X-WC-Webhook-Source] => https://pizzeriahorebs.com/
+                            [X-WC-Webhook-Topic] => action.woocommerce_payment_complete
+                            [X-WC-Webhook-Resource] => action
+                            [X-WC-Webhook-Event] => woocommerce_payment_complete
+                            [X-WC-Webhook-Signature] => OteOepTAa8KMdzsiGX47sHH8agoo+tXVqKg5xOUT1Ho=
+                            [X-WC-Webhook-ID] => 1
+                            [X-WC-Webhook-Delivery-ID] => 4e74dbbebed1a9bbe14d79dcd2ec98df
+                        )
+
+                )
+
+            [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+            [Response] => Array
+                (
+                    [Code] => 302
+                    [Message] => Found
+                    [Headers] => WpOrg\Requests\Utility\CaseInsensitiveDictionary Object
+                        (
+                            [data:protected] => Array
+                                (
+                                    [x-powered-by] => PHP/8.1.18
+                                    [expires] => Wed, 11 Jan 1984 05:00:00 GMT
+                                    [cache-control] => no-cache, no-store, must-revalidate, max-age=0
+                                    [x-redirect-by] => WordPress
+                                    [location] => https://pizzeriahorebs.com/wp-login.php?redirect_to=https%3A%2F%2Fpizzeriahorebs.com%2Fwp-admin%2Foptions-general.php%3Fpage%3Dwebhooks&reauth=1
+                                    [content-type] => text/html; charset=UTF-8
+                                    [content-length] => 0
+                                    [date] => Fri, 08 Sep 2023 00:29:44 GMT
+                                    [server] => LiteSpeed
+                                    [platform] => hostinger
+                                    [content-security-policy] => upgrade-insecure-requests
+                                    [alt-svc] => h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, h3-Q050=":443"; ma=2592000, h3-Q046=":443"; ma=2592000, h3-Q043=":443"; ma=2592000, quic=":443"; ma=2592000; v="43,46"
+                                )
+
+                        )
+
+                    [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+                )
+
+        )
+
+)
+
+2023-09-08T00:34:23+00:00 INFO Array
+(
+    [Webhook Delivery] => Array
+        (
+            [Delivery ID] => 686c15ce684253a3c1e2f4e06dfa58dd
+            [Date] => 8 Sep, 2023 @ 0:34
+            [URL] => https://pizzeriahorebs.com/wp-admin/options-general.php?page=webhooks
+            [Duration] => 0.23227
+            [Request] => Array
+                (
+                    [Method] => POST
+                    [Headers] => Array
+                        (
+                            [User-Agent] => WooCommerce/7.9.0 Hookshot (WordPress/6.2.2)
+                            [Content-Type] => application/json
+                            [X-WC-Webhook-Source] => https://pizzeriahorebs.com/
+                            [X-WC-Webhook-Topic] => action.woocommerce_payment_complete
+                            [X-WC-Webhook-Resource] => action
+                            [X-WC-Webhook-Event] => woocommerce_payment_complete
+                            [X-WC-Webhook-Signature] => jS1kZMvb6ybBVlinM32UAxUnyzDz+QsQTiDirm8Tvnw=
+                            [X-WC-Webhook-ID] => 1
+                            [X-WC-Webhook-Delivery-ID] => 686c15ce684253a3c1e2f4e06dfa58dd
+                        )
+
+                )
+
+            [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+            [Response] => Array
+                (
+                    [Code] => 302
+                    [Message] => Found
+                    [Headers] => WpOrg\Requests\Utility\CaseInsensitiveDictionary Object
+                        (
+                            [data:protected] => Array
+                                (
+                                    [x-powered-by] => PHP/8.1.18
+                                    [expires] => Wed, 11 Jan 1984 05:00:00 GMT
+                                    [cache-control] => no-cache, no-store, must-revalidate, max-age=0
+                                    [x-redirect-by] => WordPress
+                                    [location] => https://pizzeriahorebs.com/wp-login.php?redirect_to=https%3A%2F%2Fpizzeriahorebs.com%2Fwp-admin%2Foptions-general.php%3Fpage%3Dwebhooks&reauth=1
+                                    [content-type] => text/html; charset=UTF-8
+                                    [content-length] => 0
+                                    [date] => Fri, 08 Sep 2023 00:34:23 GMT
+                                    [server] => LiteSpeed
+                                    [platform] => hostinger
+                                    [content-security-policy] => upgrade-insecure-requests
+                                    [alt-svc] => h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, h3-Q050=":443"; ma=2592000, h3-Q046=":443"; ma=2592000, h3-Q043=":443"; ma=2592000, quic=":443"; ma=2592000; v="43,46"
+                                )
+
+                        )
+
+                    [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+                )
+
+        )
+
+)
+
+2023-09-08T01:35:45+00:00 INFO Array
+(
+    [Webhook Delivery] => Array
+        (
+            [Delivery ID] => 10caf1fb7de014fcb9cff344d0f970b4
+            [Date] => 8 Sep, 2023 @ 1:35
+            [URL] => https://pizzeriahorebs.com/wp-admin/options-general.php?page=webhooks
+            [Duration] => 0.27181
+            [Request] => Array
+                (
+                    [Method] => POST
+                    [Headers] => Array
+                        (
+                            [User-Agent] => WooCommerce/7.9.0 Hookshot (WordPress/6.2.2)
+                            [Content-Type] => application/json
+                            [X-WC-Webhook-Source] => https://pizzeriahorebs.com/
+                            [X-WC-Webhook-Topic] => action.woocommerce_payment_complete
+                            [X-WC-Webhook-Resource] => action
+                            [X-WC-Webhook-Event] => woocommerce_payment_complete
+                            [X-WC-Webhook-Signature] => T0kK3huUuj1wuj6sNIy8AXPzxeYlB1Npot+z/SA8tXs=
+                            [X-WC-Webhook-ID] => 1
+                            [X-WC-Webhook-Delivery-ID] => 10caf1fb7de014fcb9cff344d0f970b4
+                        )
+
+                )
+
+            [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+            [Response] => Array
+                (
+                    [Code] => 302
+                    [Message] => Found
+                    [Headers] => WpOrg\Requests\Utility\CaseInsensitiveDictionary Object
+                        (
+                            [data:protected] => Array
+                                (
+                                    [x-powered-by] => PHP/8.1.18
+                                    [expires] => Wed, 11 Jan 1984 05:00:00 GMT
+                                    [cache-control] => no-cache, no-store, must-revalidate, max-age=0
+                                    [x-redirect-by] => WordPress
+                                    [location] => https://pizzeriahorebs.com/wp-login.php?redirect_to=https%3A%2F%2Fpizzeriahorebs.com%2Fwp-admin%2Foptions-general.php%3Fpage%3Dwebhooks&reauth=1
+                                    [content-type] => text/html; charset=UTF-8
+                                    [content-length] => 0
+                                    [date] => Fri, 08 Sep 2023 01:35:45 GMT
+                                    [server] => LiteSpeed
+                                    [platform] => hostinger
+                                    [content-security-policy] => upgrade-insecure-requests
+                                    [alt-svc] => h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, h3-Q050=":443"; ma=2592000, h3-Q046=":443"; ma=2592000, h3-Q043=":443"; ma=2592000, quic=":443"; ma=2592000; v="43,46"
+                                )
+
+                        )
+
+                    [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+                )
+
+        )
+
+)
+
+2023-09-08T01:49:44+00:00 INFO Array
+(
+    [Webhook Delivery] => Array
+        (
+            [Delivery ID] => eb70ea24255005d63f69b7c442c62c8b
+            [Date] => 8 Sep, 2023 @ 1:49
+            [URL] => https://pizzeriahorebs.com/wp-admin/options-general.php?page=webhooks
+            [Duration] => 0.33595
+            [Request] => Array
+                (
+                    [Method] => POST
+                    [Headers] => Array
+                        (
+                            [User-Agent] => WooCommerce/7.9.0 Hookshot (WordPress/6.2.2)
+                            [Content-Type] => application/json
+                            [X-WC-Webhook-Source] => https://pizzeriahorebs.com/
+                            [X-WC-Webhook-Topic] => action.woocommerce_payment_complete
+                            [X-WC-Webhook-Resource] => action
+                            [X-WC-Webhook-Event] => woocommerce_payment_complete
+                            [X-WC-Webhook-Signature] => wqWGJRjNHeTs4kp2wMGtkqClEIiNSIHODLsvIHymKxQ=
+                            [X-WC-Webhook-ID] => 1
+                            [X-WC-Webhook-Delivery-ID] => eb70ea24255005d63f69b7c442c62c8b
+                        )
+
+                )
+
+            [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+            [Response] => Array
+                (
+                    [Code] => 302
+                    [Message] => Found
+                    [Headers] => WpOrg\Requests\Utility\CaseInsensitiveDictionary Object
+                        (
+                            [data:protected] => Array
+                                (
+                                    [x-powered-by] => PHP/8.1.18
+                                    [expires] => Wed, 11 Jan 1984 05:00:00 GMT
+                                    [cache-control] => no-cache, no-store, must-revalidate, max-age=0
+                                    [x-redirect-by] => WordPress
+                                    [location] => https://pizzeriahorebs.com/wp-login.php?redirect_to=https%3A%2F%2Fpizzeriahorebs.com%2Fwp-admin%2Foptions-general.php%3Fpage%3Dwebhooks&reauth=1
+                                    [content-type] => text/html; charset=UTF-8
+                                    [content-length] => 0
+                                    [date] => Fri, 08 Sep 2023 01:49:44 GMT
+                                    [server] => LiteSpeed
+                                    [platform] => hostinger
+                                    [content-security-policy] => upgrade-insecure-requests
+                                    [alt-svc] => h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, h3-Q050=":443"; ma=2592000, h3-Q046=":443"; ma=2592000, h3-Q043=":443"; ma=2592000, quic=":443"; ma=2592000; v="43,46"
+                                )
+
+                        )
+
+                    [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+                )
+
+        )
+
+)
+
+2023-09-08T02:29:44+00:00 INFO Array
+(
+    [Webhook Delivery] => Array
+        (
+            [Delivery ID] => 6c27f2d1147e5a8afd6516474dda8c36
+            [Date] => 8 Sep, 2023 @ 2:29
+            [URL] => https://pizzeriahorebs.com/wp-admin/options-general.php?page=webhooks
+            [Duration] => 0.26627
+            [Request] => Array
+                (
+                    [Method] => POST
+                    [Headers] => Array
+                        (
+                            [User-Agent] => WooCommerce/7.9.0 Hookshot (WordPress/6.2.2)
+                            [Content-Type] => application/json
+                            [X-WC-Webhook-Source] => https://pizzeriahorebs.com/
+                            [X-WC-Webhook-Topic] => action.woocommerce_payment_complete
+                            [X-WC-Webhook-Resource] => action
+                            [X-WC-Webhook-Event] => woocommerce_payment_complete
+                            [X-WC-Webhook-Signature] => 7uppZNRDK14vGdtAzLqGBQuAQ57WwFnU1vEB6vfqAl0=
+                            [X-WC-Webhook-ID] => 1
+                            [X-WC-Webhook-Delivery-ID] => 6c27f2d1147e5a8afd6516474dda8c36
+                        )
+
+                )
+
+            [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+            [Response] => Array
+                (
+                    [Code] => 302
+                    [Message] => Found
+                    [Headers] => WpOrg\Requests\Utility\CaseInsensitiveDictionary Object
+                        (
+                            [data:protected] => Array
+                                (
+                                    [x-powered-by] => PHP/8.1.18
+                                    [expires] => Wed, 11 Jan 1984 05:00:00 GMT
+                                    [cache-control] => no-cache, no-store, must-revalidate, max-age=0
+                                    [x-redirect-by] => WordPress
+                                    [location] => https://pizzeriahorebs.com/wp-login.php?redirect_to=https%3A%2F%2Fpizzeriahorebs.com%2Fwp-admin%2Foptions-general.php%3Fpage%3Dwebhooks&reauth=1
+                                    [content-type] => text/html; charset=UTF-8
+                                    [content-length] => 0
+                                    [date] => Fri, 08 Sep 2023 02:29:44 GMT
+                                    [server] => LiteSpeed
+                                    [platform] => hostinger
+                                    [content-security-policy] => upgrade-insecure-requests
+                                    [alt-svc] => h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, h3-Q050=":443"; ma=2592000, h3-Q046=":443"; ma=2592000, h3-Q043=":443"; ma=2592000, quic=":443"; ma=2592000; v="43,46"
+                                )
+
+                        )
+
+                    [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+                )
+
+        )
+
+)
+
+2023-09-08T02:40:44+00:00 INFO Array
+(
+    [Webhook Delivery] => Array
+        (
+            [Delivery ID] => 50ca5469a594f6d43d5d77730e4ed7b5
+            [Date] => 8 Sep, 2023 @ 2:40
+            [URL] => https://pizzeriahorebs.com/wp-admin/options-general.php?page=webhooks
+            [Duration] => 0.22027
+            [Request] => Array
+                (
+                    [Method] => POST
+                    [Headers] => Array
+                        (
+                            [User-Agent] => WooCommerce/7.9.0 Hookshot (WordPress/6.2.2)
+                            [Content-Type] => application/json
+                            [X-WC-Webhook-Source] => https://pizzeriahorebs.com/
+                            [X-WC-Webhook-Topic] => action.woocommerce_payment_complete
+                            [X-WC-Webhook-Resource] => action
+                            [X-WC-Webhook-Event] => woocommerce_payment_complete
+                            [X-WC-Webhook-Signature] => gOrfwj5u2cqs9QAQs6xzKM39ZRuQqNCeO8D5W7/Q3Rw=
+                            [X-WC-Webhook-ID] => 1
+                            [X-WC-Webhook-Delivery-ID] => 50ca5469a594f6d43d5d77730e4ed7b5
+                        )
+
+                )
+
+            [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+            [Response] => Array
+                (
+                    [Code] => 302
+                    [Message] => Found
+                    [Headers] => WpOrg\Requests\Utility\CaseInsensitiveDictionary Object
+                        (
+                            [data:protected] => Array
+                                (
+                                    [x-powered-by] => PHP/8.1.18
+                                    [expires] => Wed, 11 Jan 1984 05:00:00 GMT
+                                    [cache-control] => no-cache, no-store, must-revalidate, max-age=0
+                                    [x-redirect-by] => WordPress
+                                    [location] => https://pizzeriahorebs.com/wp-login.php?redirect_to=https%3A%2F%2Fpizzeriahorebs.com%2Fwp-admin%2Foptions-general.php%3Fpage%3Dwebhooks&reauth=1
+                                    [content-type] => text/html; charset=UTF-8
+                                    [content-length] => 0
+                                    [date] => Fri, 08 Sep 2023 02:40:43 GMT
+                                    [server] => LiteSpeed
+                                    [platform] => hostinger
+                                    [content-security-policy] => upgrade-insecure-requests
+                                    [alt-svc] => h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, h3-Q050=":443"; ma=2592000, h3-Q046=":443"; ma=2592000, h3-Q043=":443"; ma=2592000, quic=":443"; ma=2592000; v="43,46"
+                                )
+
+                        )
+
+                    [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+                )
+
+        )
+
+)
+
+2023-09-08T03:21:13+00:00 INFO Array
+(
+    [Webhook Delivery] => Array
+        (
+            [Delivery ID] => 507b6c5f381cc486d6260ad1f9e7dd4b
+            [Date] => 8 Sep, 2023 @ 3:21
+            [URL] => https://pizzeriahorebs.com/wp-admin/options-general.php?page=webhooks
+            [Duration] => 0.23751
+            [Request] => Array
+                (
+                    [Method] => POST
+                    [Headers] => Array
+                        (
+                            [User-Agent] => WooCommerce/7.9.0 Hookshot (WordPress/6.2.2)
+                            [Content-Type] => application/json
+                            [X-WC-Webhook-Source] => https://pizzeriahorebs.com/
+                            [X-WC-Webhook-Topic] => action.woocommerce_payment_complete
+                            [X-WC-Webhook-Resource] => action
+                            [X-WC-Webhook-Event] => woocommerce_payment_complete
+                            [X-WC-Webhook-Signature] => 7CNde9IyfnQixG8c76Rb2KVm1nDPT41FbDUTemmdOLo=
+                            [X-WC-Webhook-ID] => 1
+                            [X-WC-Webhook-Delivery-ID] => 507b6c5f381cc486d6260ad1f9e7dd4b
+                        )
+
+                )
+
+            [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+            [Response] => Array
+                (
+                    [Code] => 302
+                    [Message] => Found
+                    [Headers] => WpOrg\Requests\Utility\CaseInsensitiveDictionary Object
+                        (
+                            [data:protected] => Array
+                                (
+                                    [x-powered-by] => PHP/8.1.18
+                                    [expires] => Wed, 11 Jan 1984 05:00:00 GMT
+                                    [cache-control] => no-cache, no-store, must-revalidate, max-age=0
+                                    [x-redirect-by] => WordPress
+                                    [location] => https://pizzeriahorebs.com/wp-login.php?redirect_to=https%3A%2F%2Fpizzeriahorebs.com%2Fwp-admin%2Foptions-general.php%3Fpage%3Dwebhooks&reauth=1
+                                    [content-type] => text/html; charset=UTF-8
+                                    [content-length] => 0
+                                    [date] => Fri, 08 Sep 2023 03:21:13 GMT
+                                    [server] => LiteSpeed
+                                    [platform] => hostinger
+                                    [content-security-policy] => upgrade-insecure-requests
+                                    [alt-svc] => h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, h3-Q050=":443"; ma=2592000, h3-Q046=":443"; ma=2592000, h3-Q043=":443"; ma=2592000, quic=":443"; ma=2592000; v="43,46"
+                                )
+
+                        )
+
+                    [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+                )
+
+        )
+
+)
+
+2023-09-08T22:49:56+00:00 INFO Array
+(
+    [Webhook Delivery] => Array
+        (
+            [Delivery ID] => 6d75dfdfae1ce1590e519a1cee697e75
+            [Date] => 8 Sep, 2023 @ 22:49
+            [URL] => https://pizzeriahorebs.com/wp-admin/options-general.php?page=webhooks
+            [Duration] => 0.24136
+            [Request] => Array
+                (
+                    [Method] => POST
+                    [Headers] => Array
+                        (
+                            [User-Agent] => WooCommerce/7.9.0 Hookshot (WordPress/6.2.2)
+                            [Content-Type] => application/json
+                            [X-WC-Webhook-Source] => https://pizzeriahorebs.com/
+                            [X-WC-Webhook-Topic] => action.woocommerce_payment_complete
+                            [X-WC-Webhook-Resource] => action
+                            [X-WC-Webhook-Event] => woocommerce_payment_complete
+                            [X-WC-Webhook-Signature] => cTXe/sksxxWG2lrfgLNFwslSO8IxwpG3D7fQIpmhCog=
+                            [X-WC-Webhook-ID] => 1
+                            [X-WC-Webhook-Delivery-ID] => 6d75dfdfae1ce1590e519a1cee697e75
+                        )
+
+                )
+
+            [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+            [Response] => Array
+                (
+                    [Code] => 302
+                    [Message] => Found
+                    [Headers] => WpOrg\Requests\Utility\CaseInsensitiveDictionary Object
+                        (
+                            [data:protected] => Array
+                                (
+                                    [x-powered-by] => PHP/8.1.18
+                                    [expires] => Wed, 11 Jan 1984 05:00:00 GMT
+                                    [cache-control] => no-cache, no-store, must-revalidate, max-age=0
+                                    [x-redirect-by] => WordPress
+                                    [location] => https://pizzeriahorebs.com/wp-login.php?redirect_to=https%3A%2F%2Fpizzeriahorebs.com%2Fwp-admin%2Foptions-general.php%3Fpage%3Dwebhooks&reauth=1
+                                    [content-type] => text/html; charset=UTF-8
+                                    [content-length] => 0
+                                    [date] => Fri, 08 Sep 2023 22:49:56 GMT
+                                    [server] => LiteSpeed
+                                    [platform] => hostinger
+                                    [content-security-policy] => upgrade-insecure-requests
+                                    [alt-svc] => h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, h3-Q050=":443"; ma=2592000, h3-Q046=":443"; ma=2592000, h3-Q043=":443"; ma=2592000, quic=":443"; ma=2592000; v="43,46"
+                                )
+
+                        )
+
+                    [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+                )
+
+        )
+
+)
+
+2023-09-08T22:53:33+00:00 INFO Array
+(
+    [Webhook Delivery] => Array
+        (
+            [Delivery ID] => 141639ab35a0dd5244ae9b6ec1b9ed07
+            [Date] => 8 Sep, 2023 @ 22:53
+            [URL] => https://pizzeriahorebs.com/wp-admin/options-general.php?page=webhooks
+            [Duration] => 0.41019
+            [Request] => Array
+                (
+                    [Method] => POST
+                    [Headers] => Array
+                        (
+                            [User-Agent] => WooCommerce/7.9.0 Hookshot (WordPress/6.2.2)
+                            [Content-Type] => application/json
+                            [X-WC-Webhook-Source] => https://pizzeriahorebs.com/
+                            [X-WC-Webhook-Topic] => action.woocommerce_payment_complete
+                            [X-WC-Webhook-Resource] => action
+                            [X-WC-Webhook-Event] => woocommerce_payment_complete
+                            [X-WC-Webhook-Signature] => NHeApA0uoNjwSmhXN1izaHREkyVZ0Y0GxkfvEsa5Jsk=
+                            [X-WC-Webhook-ID] => 1
+                            [X-WC-Webhook-Delivery-ID] => 141639ab35a0dd5244ae9b6ec1b9ed07
+                        )
+
+                )
+
+            [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+            [Response] => Array
+                (
+                    [Code] => 302
+                    [Message] => Found
+                    [Headers] => WpOrg\Requests\Utility\CaseInsensitiveDictionary Object
+                        (
+                            [data:protected] => Array
+                                (
+                                    [x-powered-by] => PHP/8.1.18
+                                    [expires] => Wed, 11 Jan 1984 05:00:00 GMT
+                                    [cache-control] => no-cache, no-store, must-revalidate, max-age=0
+                                    [x-redirect-by] => WordPress
+                                    [location] => https://pizzeriahorebs.com/wp-login.php?redirect_to=https%3A%2F%2Fpizzeriahorebs.com%2Fwp-admin%2Foptions-general.php%3Fpage%3Dwebhooks&reauth=1
+                                    [content-type] => text/html; charset=UTF-8
+                                    [content-length] => 0
+                                    [date] => Fri, 08 Sep 2023 22:53:33 GMT
+                                    [server] => LiteSpeed
+                                    [platform] => hostinger
+                                    [content-security-policy] => upgrade-insecure-requests
+                                    [alt-svc] => h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, h3-Q050=":443"; ma=2592000, h3-Q046=":443"; ma=2592000, h3-Q043=":443"; ma=2592000, quic=":443"; ma=2592000; v="43,46"
+                                )
+
+                        )
+
+                    [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+                )
+
+        )
+
+)
+
+2023-09-08T22:56:23+00:00 INFO Array
+(
+    [Webhook Delivery] => Array
+        (
+            [Delivery ID] => 5c86e02951a6285c163bb99a067efa86
+            [Date] => 8 Sep, 2023 @ 22:56
+            [URL] => https://pizzeriahorebs.com/wp-admin/options-general.php?page=webhooks
+            [Duration] => 0.24332
+            [Request] => Array
+                (
+                    [Method] => POST
+                    [Headers] => Array
+                        (
+                            [User-Agent] => WooCommerce/7.9.0 Hookshot (WordPress/6.2.2)
+                            [Content-Type] => application/json
+                            [X-WC-Webhook-Source] => https://pizzeriahorebs.com/
+                            [X-WC-Webhook-Topic] => action.woocommerce_payment_complete
+                            [X-WC-Webhook-Resource] => action
+                            [X-WC-Webhook-Event] => woocommerce_payment_complete
+                            [X-WC-Webhook-Signature] => UR2uPsiRLPSMxlKP84L5sRtpce8mZYGh3NnqohY134k=
+                            [X-WC-Webhook-ID] => 1
+                            [X-WC-Webhook-Delivery-ID] => 5c86e02951a6285c163bb99a067efa86
+                        )
+
+                )
+
+            [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+            [Response] => Array
+                (
+                    [Code] => 302
+                    [Message] => Found
+                    [Headers] => WpOrg\Requests\Utility\CaseInsensitiveDictionary Object
+                        (
+                            [data:protected] => Array
+                                (
+                                    [x-powered-by] => PHP/8.1.18
+                                    [expires] => Wed, 11 Jan 1984 05:00:00 GMT
+                                    [cache-control] => no-cache, no-store, must-revalidate, max-age=0
+                                    [x-redirect-by] => WordPress
+                                    [location] => https://pizzeriahorebs.com/wp-login.php?redirect_to=https%3A%2F%2Fpizzeriahorebs.com%2Fwp-admin%2Foptions-general.php%3Fpage%3Dwebhooks&reauth=1
+                                    [content-type] => text/html; charset=UTF-8
+                                    [content-length] => 0
+                                    [date] => Fri, 08 Sep 2023 22:56:23 GMT
+                                    [server] => LiteSpeed
+                                    [platform] => hostinger
+                                    [content-security-policy] => upgrade-insecure-requests
+                                    [alt-svc] => h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, h3-Q050=":443"; ma=2592000, h3-Q046=":443"; ma=2592000, h3-Q043=":443"; ma=2592000, quic=":443"; ma=2592000; v="43,46"
+                                )
+
+                        )
+
+                    [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+                )
+
+        )
+
+)
+
+2023-09-08T23:33:54+00:00 INFO Array
+(
+    [Webhook Delivery] => Array
+        (
+            [Delivery ID] => 134c81a69b92ea5eac73839c83850324
+            [Date] => 8 Sep, 2023 @ 23:33
+            [URL] => https://pizzeriahorebs.com/wp-admin/options-general.php?page=webhooks
+            [Duration] => 0.32023
+            [Request] => Array
+                (
+                    [Method] => POST
+                    [Headers] => Array
+                        (
+                            [User-Agent] => WooCommerce/7.9.0 Hookshot (WordPress/6.2.2)
+                            [Content-Type] => application/json
+                            [X-WC-Webhook-Source] => https://pizzeriahorebs.com/
+                            [X-WC-Webhook-Topic] => action.woocommerce_payment_complete
+                            [X-WC-Webhook-Resource] => action
+                            [X-WC-Webhook-Event] => woocommerce_payment_complete
+                            [X-WC-Webhook-Signature] => VuJFeLib/wQqhtHomk3302U5jCdb8PrfG5DZJYovfZc=
+                            [X-WC-Webhook-ID] => 1
+                            [X-WC-Webhook-Delivery-ID] => 134c81a69b92ea5eac73839c83850324
+                        )
+
+                )
+
+            [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+            [Response] => Array
+                (
+                    [Code] => 302
+                    [Message] => Found
+                    [Headers] => WpOrg\Requests\Utility\CaseInsensitiveDictionary Object
+                        (
+                            [data:protected] => Array
+                                (
+                                    [x-powered-by] => PHP/8.1.18
+                                    [expires] => Wed, 11 Jan 1984 05:00:00 GMT
+                                    [cache-control] => no-cache, no-store, must-revalidate, max-age=0
+                                    [x-redirect-by] => WordPress
+                                    [location] => https://pizzeriahorebs.com/wp-login.php?redirect_to=https%3A%2F%2Fpizzeriahorebs.com%2Fwp-admin%2Foptions-general.php%3Fpage%3Dwebhooks&reauth=1
+                                    [content-type] => text/html; charset=UTF-8
+                                    [content-length] => 0
+                                    [date] => Fri, 08 Sep 2023 23:33:54 GMT
+                                    [server] => LiteSpeed
+                                    [platform] => hostinger
+                                    [content-security-policy] => upgrade-insecure-requests
+                                    [alt-svc] => h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, h3-Q050=":443"; ma=2592000, h3-Q046=":443"; ma=2592000, h3-Q043=":443"; ma=2592000, quic=":443"; ma=2592000; v="43,46"
+                                )
+
+                        )
+
+                    [Body] => Webhook body is not logged unless WP_DEBUG mode is turned on. This is to avoid the storing of personal data in the logs.
+                )
+
+        )
+
+)
+

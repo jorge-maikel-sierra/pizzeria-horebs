@@ -1,0 +1,1554 @@
+09-02-2023 @ 21:01:16 - [process_cancel_order_meta_box_actions]: cancelling payments for 
+09-02-2023 @ 21:01:16 - [process_cancel_order_meta_box_actions]: no payments or credentials invalid
+09-03-2023 @ 15:58:08 - [process_payment]: POST Custom: {
+    "amount": "139000",
+    "currency_ratio": "1",
+    "paymentMethodId": "visa",
+    "checkout_type": "custom",
+    "installments": "1",
+    "session_id": "armor.2ea25d51a0952541991e79c4d9e68a224cdeb0edd9ed08b3de98d5466e548769457fb148d72dddefa7fee603f068b72c707692a4940ba4db6a617a65c66307b84f8ce672e3fe99d4dbd1bec9fbc8fb68d0332928010600d3aa00fa6d5a1d2cff.90380b06b3d5340265e7248e6a48ffef"
+}
+09-03-2023 @ 15:58:08 - [process_payment]: preparing to get response of custom checkout.
+09-03-2023 @ 15:58:08 - [get_transaction]: Payment: {
+    "date_of_expiration": null,
+    "operation_type": null,
+    "issuer_id": null,
+    "payment_method_id": "visa",
+    "description": "Pizza horebs especial x 1, Pizza jamón pollo x 1, Pizza Pepperoni x 1",
+    "sponsor_id": 208687643,
+    "counter_currency": null,
+    "shipping_amount": null,
+    "store_id": null,
+    "payer": {
+        "entity_type": null,
+        "type": null,
+        "id": null,
+        "email": "danielapop90@hotmail.com",
+        "identification": {
+            "type": null,
+            "number": null
+        },
+        "first_name": null,
+        "last_name": null,
+        "operator_id": null,
+        "address": {
+            "street_name": null,
+            "street_number": null,
+            "neighborhood": null,
+            "city": null,
+            "federal_unit": null,
+            "zip_code": null
+        }
+    },
+    "metadata": {
+        "platform": "bo2hnr2ic4p001kbgpt0",
+        "platform_version": "7.9.0",
+        "module_version": "6.9.3",
+        "php_version": "8.1.18",
+        "site_id": "mco",
+        "sponsor_id": 208687643,
+        "collector": "167706913",
+        "test_mode": false,
+        "details": "",
+        "basic_settings": {
+            "enabled": "no",
+            "currency_conversion": "yes",
+            "installments": "1",
+            "method": "redirect",
+            "auto_return": "yes",
+            "binary_mode": "no",
+            "ex_payments_visa": "yes",
+            "ex_payments_amex": "yes",
+            "ex_payments_master": "yes",
+            "ex_payments_diners": "yes",
+            "ex_payments_codensa": "yes",
+            "ex_payments_debvisa": "yes",
+            "ex_payments_debmaster": "yes",
+            "ex_payments_efecty": "no",
+            "ex_payments_pse": "yes",
+            "gateway_discount_checkbox": "no",
+            "commission_checkbox": "no",
+            "checkbox_checkout_test_mode": "yes",
+            "checkout_credential_prod": "deprecated"
+        },
+        "custom_settings": {
+            "enabled": "yes",
+            "currency_conversion": "yes",
+            "wallet_button": "no",
+            "coupon_mode": "no",
+            "binary_mode": "no",
+            "gateway_discount_checkbox": "no",
+            "commission_checkbox": "no",
+            "checkbox_checkout_test_mode": "yes",
+            "checkout_credential_prod": "deprecated"
+        },
+        "ticket_settings": [],
+        "pix_settings": [],
+        "credits_settings": [],
+        "seller_website": "https:\/\/pizzeriahorebs.com",
+        "billing_address": {
+            "zip_code": "",
+            "street_name": "Carrera 8, Calle 18",
+            "city_name": "",
+            "state_name": "",
+            "country_name": ""
+        },
+        "user": {
+            "registered_user": "no",
+            "user_email": null,
+            "user_registration_date": null
+        },
+        "checkout": "custom",
+        "checkout_type": "credit_card"
+    },
+    "additional_info": {
+        "ip_address": null,
+        "referral_url": null,
+        "drop_shipping": null,
+        "delivery_promise": null,
+        "contrated_plan": null,
+        "items": [
+            {
+                "id": 179,
+                "title": "Pizza horebs especial x 1",
+                "description": "div-classcLjAic-LMRCfc-data-hveidCA8QAA-data-ved2ahUKEwjFmfaWx_DqAhVxQt8KHSlkCIcQ04gCKAB6BAgPEAA-div-classLuVEUc-B03h3d-P6OZi-V14nKc-ptcLIOszQJu__wholepage-card-wp-ms-data-hveidCA8QAQ-div-classUDZeY-OTFaAf",
+                "picture_url": "https:\/\/pizzeriahorebs.com\/wp-content\/uploads\/2023\/04\/pizzeria-horebs-special-post-1.jpg",
+                "category_id": "others",
+                "quantity": 1,
+                "unit_price": 55000
+            },
+            {
+                "id": 202,
+                "title": "Pizza jamón pollo x 1",
+                "description": "Pizza-jamon-pollo-sabias-que-el-40-de-nuestros-clientes-prefieren-esta-como-su-primera-pizza-cuando-no-conocen-el-negocio-te-invito-a-que-la-pruebes-y-si-te-gusta-me-lo-digas-en-los-comentarios.-Tiene-ingredientes-como",
+                "picture_url": "https:\/\/pizzeriahorebs.com\/wp-content\/uploads\/2023\/04\/jamon-pollo-1.jpg",
+                "category_id": "others",
+                "quantity": 1,
+                "unit_price": 40000
+            },
+            {
+                "id": 208,
+                "title": "Pizza Pepperoni x 1",
+                "description": "Nuestra-pizza-de-pepperoni-es-una-deliciosa-combinacion-de-ingredientes-cuidadosamente-seleccionados-para-ofrecerte-una-experiencia-de-pizza-inigualable.-Tiene-ingredientes-como-ul-liMasa-delgada.li-liSalsa-de",
+                "picture_url": "https:\/\/pizzeriahorebs.com\/wp-content\/uploads\/2023\/04\/pepperoni-4-1.jpg",
+                "category_id": "others",
+                "quantity": 1,
+                "unit_price": 40000
+            },
+            {
+                "id": null,
+                "title": "Precio fijo",
+                "description": "Servicio de envío utilizado por la tienda.",
+                "picture_url": null,
+                "category_id": "others",
+                "quantity": 1,
+                "unit_price": 4000
+            }
+        ],
+        "payer": {
+            "first_name": "Daniela",
+            "last_name": "Alarza Acosta",
+            "registration_date": null,
+            "registered_user": null,
+            "device_id": null,
+            "platform_email": null,
+            "register_updated_at": null,
+            "user_email": null,
+            "authentication_type": null,
+            "last_purchase": null,
+            "address": {
+                "street_name": "Carrera 8, Calle 18 \/   ",
+                "zip_code": "",
+                "city": null,
+                "country": null,
+                "state": null,
+                "number": null,
+                "complement": null,
+                "apartment": null,
+                "floor": null
+            },
+            "phone": {
+                "number": "+573233131605",
+                "area_code": null
+            },
+            "mobile": {
+                "number": null,
+                "area_code": null
+            },
+            "identification": {
+                "type": null,
+                "number": null
+            }
+        },
+        "seller": {
+            "id": null,
+            "registration_date": null,
+            "business_type": null,
+            "status": null,
+            "store_id": null,
+            "user_platform_mail": null,
+            "email": null,
+            "collector": null,
+            "website": null,
+            "platform_url": null,
+            "referral_url": null,
+            "register_updated_at": null,
+            "document": null,
+            "name": null,
+            "hired_plan": null,
+            "identification": {
+                "type": null,
+                "number": null
+            },
+            "phone": {
+                "number": null,
+                "area_code": null
+            },
+            "address": {
+                "street_name": null,
+                "zip_code": null,
+                "city": null,
+                "country": null,
+                "state": null,
+                "number": null,
+                "complement": null,
+                "apartment": null,
+                "floor": null
+            }
+        },
+        "shipments": {
+            "delivery_promise": null,
+            "drop_shipping": null,
+            "local_pickup": null,
+            "express_shipment": null,
+            "safety": null,
+            "withdrawn": null,
+            "tracking": {
+                "code": null,
+                "status": null
+            },
+            "receiver_address": {
+                "street_name": "Carrera 8, Calle 18 San Francisco de Asis   ",
+                "zip_code": "",
+                "city": null,
+                "country": null,
+                "state": null,
+                "number": null,
+                "complement": null,
+                "apartment": "San Francisco de Asis",
+                "floor": null
+            }
+        }
+    },
+    "external_reference": "PH-3333",
+    "transaction_amount": 139000,
+    "coupon_amount": null,
+    "differential_pricing_id": null,
+    "installments": 1,
+    "transaction_details": {
+        "financial_institution": null,
+        "bank_transfer_id": null,
+        "transaction_id": null
+    },
+    "binary_mode": false,
+    "statement_descriptor": "Mercado Pago",
+    "notification_url": "https:\/\/pizzeriahorebs.com\/wc-api\/WC_WooMercadoPago_Custom_Gateway\/?source_news=webhooks",
+    "processing_mode": null,
+    "merchant_account_id": null,
+    "point_of_interaction": {
+        "type": null,
+        "sub_type": null,
+        "linked_to": null,
+        "application_data": {
+            "name": null,
+            "version": null
+        },
+        "transaction_data": {
+            "bank_info": {
+                "origin_bank_id": null
+            }
+        }
+    },
+    "brand_id": null,
+    "reserve_id": null,
+    "collector": null,
+    "callback_url": null,
+    "application_fee": null,
+    "campaign_id": null,
+    "capture": null,
+    "coupon_code": null
+}
+09-03-2023 @ 15:58:09 - [create_payment]: Payment created: {
+    "id": 63140511160,
+    "date_created": "2023-09-03T16:58:08.746-04:00",
+    "date_approved": null,
+    "date_last_updated": "2023-09-03T16:58:08.746-04:00",
+    "date_of_expiration": null,
+    "money_release_date": null,
+    "operation_type": "regular_payment",
+    "issuer_id": "205",
+    "payment_method_id": "visa",
+    "payment_type_id": "credit_card",
+    "status": "rejected",
+    "status_detail": "cc_rejected_high_risk",
+    "currency_id": "COP",
+    "description": "Pizza horebs especial x 1, Pizza jamón pollo x 1, Pizza Pepperoni x 1",
+    "live_mode": true,
+    "sponsor_id": "208687643",
+    "authorization_code": null,
+    "money_release_schema": null,
+    "taxes_amount": 0,
+    "counter_currency": null,
+    "shipping_amount": 0,
+    "pos_id": null,
+    "store_id": null,
+    "collector_id": 167706913,
+    "payer": {
+        "type": null,
+        "id": "384260547",
+        "operator_id": null,
+        "email": null,
+        "identification": {
+            "type": null,
+            "number": null
+        },
+        "phone": {
+            "area_code": null,
+            "number": null,
+            "extension": null
+        },
+        "first_name": null,
+        "last_name": null,
+        "entity_type": null
+    },
+    "metadata": {
+        "basic_settings": {
+            "ex_payments_codensa": "yes",
+            "checkout_credential_prod": "deprecated",
+            "checkbox_checkout_test_mode": "yes",
+            "method": "redirect",
+            "ex_payments_pse": "yes",
+            "ex_payments_diners": "yes",
+            "ex_payments_amex": "yes",
+            "gateway_discount_checkbox": "no",
+            "enabled": "no",
+            "ex_payments_visa": "yes",
+            "ex_payments_master": "yes",
+            "commission_checkbox": "no",
+            "ex_payments_debmaster": "yes",
+            "currency_conversion": "yes",
+            "installments": "1",
+            "binary_mode": "no",
+            "ex_payments_debvisa": "yes",
+            "auto_return": "yes",
+            "ex_payments_efecty": "no"
+        },
+        "checkout_type": "credit_card",
+        "seller_website": "https:\/\/pizzeriahorebs.com",
+        "php_version": "8.1.18",
+        "billing_address": {
+            "city_name": "",
+            "state_name": "",
+            "country_name": "",
+            "zip_code": "",
+            "street_name": "Carrera 8, Calle 18"
+        },
+        "module_version": "6.9.3",
+        "sponsor_id": 208687643,
+        "platform": "bo2hnr2ic4p001kbgpt0",
+        "collector": "167706913",
+        "ticket_settings": [],
+        "original_notification_url": "https:\/\/pizzeriahorebs.com\/wc-api\/WC_WooMercadoPago_Custom_Gateway\/?source_news=webhooks",
+        "platform_version": "7.9.0",
+        "test_mode": false,
+        "site_id": "mco",
+        "credits_settings": [],
+        "custom_settings": {
+            "wallet_button": "no",
+            "checkout_credential_prod": "deprecated",
+            "commission_checkbox": "no",
+            "checkbox_checkout_test_mode": "yes",
+            "currency_conversion": "yes",
+            "binary_mode": "no",
+            "coupon_mode": "no",
+            "gateway_discount_checkbox": "no",
+            "enabled": "yes"
+        },
+        "pix_settings": [],
+        "details": "",
+        "user": {
+            "user_email": null,
+            "registered_user": "no",
+            "user_registration_date": null
+        },
+        "checkout": "custom"
+    },
+    "additional_info": {
+        "items": [
+            {
+                "id": "179",
+                "title": "Pizza horebs especial x 1",
+                "description": "div-classcLjAic-LMRCfc-data-hveidCA8QAA-data-ved2ahUKEwjFmfaWx_DqAhVxQt8KHSlkCIcQ04gCKAB6BAgPEAA-div-classLuVEUc-B03h3d-P6OZi-V14nKc-ptcLIOszQJu__wholepage-card-wp-ms-data-hveidCA8QAQ-div-classUDZeY-OTFaAf",
+                "picture_url": "https:\/\/pizzeriahorebs.com\/wp-content\/uploads\/2023\/04\/pizzeria-horebs-special-post-1.jpg",
+                "category_id": "others",
+                "quantity": "1",
+                "unit_price": "55000"
+            },
+            {
+                "id": "202",
+                "title": "Pizza jamón pollo x 1",
+                "description": "Pizza-jamon-pollo-sabias-que-el-40-de-nuestros-clientes-prefieren-esta-como-su-primera-pizza-cuando-no-conocen-el-negocio-te-invito-a-que-la-pruebes-y-si-te-gusta-me-lo-digas-en-los-comentarios.-Tiene-ingredientes-como",
+                "picture_url": "https:\/\/pizzeriahorebs.com\/wp-content\/uploads\/2023\/04\/jamon-pollo-1.jpg",
+                "category_id": "others",
+                "quantity": "1",
+                "unit_price": "40000"
+            },
+            {
+                "id": "208",
+                "title": "Pizza Pepperoni x 1",
+                "description": "Nuestra-pizza-de-pepperoni-es-una-deliciosa-combinacion-de-ingredientes-cuidadosamente-seleccionados-para-ofrecerte-una-experiencia-de-pizza-inigualable.-Tiene-ingredientes-como-ul-liMasa-delgada.li-liSalsa-de",
+                "picture_url": "https:\/\/pizzeriahorebs.com\/wp-content\/uploads\/2023\/04\/pepperoni-4-1.jpg",
+                "category_id": "others",
+                "quantity": "1",
+                "unit_price": "40000"
+            },
+            {
+                "id": null,
+                "title": "Precio fijo",
+                "description": "Servicio de envío utilizado por la tienda.",
+                "picture_url": null,
+                "category_id": "others",
+                "quantity": "1",
+                "unit_price": "4000"
+            }
+        ],
+        "payer": {
+            "phone": {
+                "number": "+573233131605"
+            },
+            "address": {
+                "street_name": "Carrera 8, Calle 18 \/   "
+            },
+            "first_name": "Daniela",
+            "last_name": "Alarza Acosta"
+        },
+        "shipments": {
+            "receiver_address": {
+                "street_name": "Carrera 8, Calle 18 San Francisco de Asis   ",
+                "apartment": "San Francisco de Asis"
+            }
+        },
+        "tracking_id": "platform:v1-whitelabel,so:ALL,type:N\/A,security:none",
+        "available_balance": null,
+        "nsu_processadora": null,
+        "authentication_code": null
+    },
+    "barcode": null,
+    "external_reference": "PH-3333",
+    "transaction_amount": 139000,
+    "transaction_amount_refunded": 0,
+    "coupon_amount": 0,
+    "differential_pricing_id": null,
+    "deduction_schema": "PROACTIVE_3",
+    "transaction_details": {
+        "payment_method_reference_id": null,
+        "acquirer_reference": null,
+        "net_received_amount": 0,
+        "total_paid_amount": 139000,
+        "overpaid_amount": 0,
+        "external_resource_url": null,
+        "installment_amount": 139000,
+        "financial_institution": null,
+        "payable_deferral_period": null
+    },
+    "fee_details": [],
+    "captured": true,
+    "binary_mode": false,
+    "call_for_authorize_id": null,
+    "statement_descriptor": null,
+    "installments": 1,
+    "card": {
+        "id": null,
+        "first_six_digits": "416598",
+        "last_four_digits": "3158",
+        "bin": "41659837",
+        "expiration_month": 9,
+        "expiration_year": 2028,
+        "date_created": "2023-09-03T16:58:08.000-04:00",
+        "date_last_updated": "2023-09-03T16:58:08.000-04:00",
+        "cardholder": {
+            "name": "Online Winkel",
+            "identification": {
+                "number": "35189",
+                "type": "Otro"
+            }
+        }
+    },
+    "notification_url": "http:\/\/internal.mercadopago.com\/v1\/bifrost\/payment-notification\/webhook\/production?source_news=webhooks&notify_all=false",
+    "processing_mode": "aggregator",
+    "merchant_account_id": null,
+    "acquirer": "banco_bogota",
+    "merchant_number": null,
+    "acquirer_reconciliation": [],
+    "point_of_interaction": {
+        "type": "UNSPECIFIED",
+        "business_info": {
+            "unit": "online_payments",
+            "sub_unit": "woocommerce"
+        }
+    },
+    "brand_id": null,
+    "build_version": "3.14.1",
+    "charges_details": [
+        {
+            "id": "63140511160-001",
+            "name": "mercadopago_fee",
+            "type": "fee",
+            "accounts": {
+                "from": "collector",
+                "to": "mp"
+            },
+            "client_id": 0,
+            "date_created": "2023-09-03T16:58:08.767-04:00",
+            "last_updated": "2023-09-03T16:58:08.767-04:00",
+            "amounts": {
+                "original": 5566.8,
+                "refunded": 0
+            },
+            "metadata": [],
+            "reserve_id": null,
+            "refund_charges": []
+        },
+        {
+            "id": "63140511160-002",
+            "name": "tax_withholding-ica_bogota",
+            "type": "tax",
+            "accounts": {
+                "from": "collector",
+                "to": "mp"
+            },
+            "client_id": 0,
+            "date_created": "2023-09-03T16:58:08.870-04:00",
+            "last_updated": "2023-09-03T16:58:08.870-04:00",
+            "amounts": {
+                "original": 575.46,
+                "refunded": 0
+            },
+            "metadata": {
+                "tax_id": 75590017158,
+                "mov_type": "expense",
+                "mov_detail": "tax_withholding",
+                "mov_financial_entity": "ica_bogota",
+                "user_id": 167706913,
+                "tax_status": "applied"
+            },
+            "reserve_id": null,
+            "refund_charges": []
+        },
+        {
+            "id": "63140511160-003",
+            "name": "tax_withholding-fuente",
+            "type": "tax",
+            "accounts": {
+                "from": "collector",
+                "to": "mp"
+            },
+            "client_id": 0,
+            "date_created": "2023-09-03T16:58:08.870-04:00",
+            "last_updated": "2023-09-03T16:58:08.870-04:00",
+            "amounts": {
+                "original": 2085,
+                "refunded": 0
+            },
+            "metadata": {
+                "tax_id": 75590017160,
+                "mov_type": "expense",
+                "mov_detail": "tax_withholding",
+                "mov_financial_entity": "fuente",
+                "user_id": 167706913,
+                "tax_status": "applied"
+            },
+            "reserve_id": null,
+            "refund_charges": []
+        }
+    ],
+    "corporation_id": null,
+    "financing_group": null,
+    "integrator_id": null,
+    "marketplace_owner": null,
+    "money_release_status": "pending",
+    "payment_method": {
+        "id": "visa",
+        "type": "credit_card",
+        "issuer_id": "205",
+        "data": {
+            "routing_data": {
+                "merchant_account_id": "17764762"
+            }
+        }
+    },
+    "platform_id": "bo2hnr2ic4p001kbgpt0",
+    "refunds": [],
+    "three_ds_info": null
+}
+09-03-2023 @ 15:58:10 - [check_ipn_response]: received _get content: {
+    "source_news": "webhooks"
+}
+09-03-2023 @ 15:58:10 - [check_ipn_response]: Receiving Core Notification with ID: P-63140511160
+09-03-2023 @ 15:58:10 - [successful_request]: starting to process  update...
+09-03-2023 @ 15:58:10 - [successful_request]: updating metadata and status with data: {
+    "notification_id": "P-63140511160",
+    "notification_url": "https:\/\/pizzeriahorebs.com\/wc-api\/WC_WooMercadoPago_Custom_Gateway\/?source_news=webhooks",
+    "status": "rejected",
+    "transaction_id": "63140511160",
+    "transaction_type": "payment",
+    "platform_id": "bo2hnr2ic4p001kbgpt0",
+    "external_reference": "PH-3333",
+    "preference_id": "",
+    "transaction_amount": 139000,
+    "total_paid": 0,
+    "total_approved": 0,
+    "total_pending": 0,
+    "total_refunded": 0,
+    "total_rejected": 139000,
+    "total_cancelled": 0,
+    "total_charged_back": 0,
+    "multiple_payment_transaction_id": "",
+    "payments_metadata": {
+        "basic_settings": {
+            "auto_return": "yes",
+            "binary_mode": "no",
+            "checkbox_checkout_test_mode": "yes",
+            "checkout_credential_prod": "deprecated",
+            "commission_checkbox": "no",
+            "currency_conversion": "yes",
+            "enabled": "no",
+            "ex_payments_amex": "yes",
+            "ex_payments_codensa": "yes",
+            "ex_payments_debmaster": "yes",
+            "ex_payments_debvisa": "yes",
+            "ex_payments_diners": "yes",
+            "ex_payments_efecty": "no",
+            "ex_payments_master": "yes",
+            "ex_payments_pse": "yes",
+            "ex_payments_visa": "yes",
+            "gateway_discount_checkbox": "no",
+            "installments": "1",
+            "method": "redirect"
+        },
+        "billing_address": {
+            "city_name": "",
+            "country_name": "",
+            "state_name": "",
+            "street_name": "Carrera 8, Calle 18",
+            "zip_code": ""
+        },
+        "checkout": "custom",
+        "checkout_type": "credit_card",
+        "collector": "167706913",
+        "credits_settings": [],
+        "custom_settings": {
+            "binary_mode": "no",
+            "checkbox_checkout_test_mode": "yes",
+            "checkout_credential_prod": "deprecated",
+            "commission_checkbox": "no",
+            "coupon_mode": "no",
+            "currency_conversion": "yes",
+            "enabled": "yes",
+            "gateway_discount_checkbox": "no",
+            "wallet_button": "no"
+        },
+        "details": "",
+        "module_version": "6.9.3",
+        "original_notification_url": "https:\/\/pizzeriahorebs.com\/wc-api\/WC_WooMercadoPago_Custom_Gateway\/?source_news=webhooks",
+        "php_version": "8.1.18",
+        "pix_settings": [],
+        "platform": "bo2hnr2ic4p001kbgpt0",
+        "platform_version": "7.9.0",
+        "seller_website": "https:\/\/pizzeriahorebs.com",
+        "site_id": "mco",
+        "sponsor_id": 208687643,
+        "test_mode": false,
+        "ticket_settings": [],
+        "user": {
+            "registered_user": "no",
+            "user_email": null,
+            "user_registration_date": null
+        }
+    },
+    "payments_details": [
+        {
+            "id": 63140511160,
+            "payment_method_id": "visa",
+            "payment_method_info": {
+                "barcode_content": "",
+                "external_resource_url": "",
+                "payment_method_reference_id": "",
+                "date_of_expiration": "",
+                "last_four_digits": "3158",
+                "qr_code_base64": "",
+                "qr_code": "",
+                "installments": 1,
+                "installment_rate": 0,
+                "installment_amount": 139000,
+                "charges_details": [
+                    {
+                        "id": "63140511160-001",
+                        "name": "mercadopago_fee",
+                        "type": "fee",
+                        "accounts": {
+                            "from": "collector",
+                            "to": "mp"
+                        },
+                        "client_id": 0,
+                        "date_created": "2023-09-03T16:58:08.000-04:00",
+                        "last_updated": "2023-09-03T16:58:08.000-04:00",
+                        "amounts": {
+                            "original": 5566.8,
+                            "refunded": 0
+                        },
+                        "metadata": [],
+                        "reserve_id": 0,
+                        "refund_charges": []
+                    },
+                    {
+                        "id": "63140511160-002",
+                        "name": "tax_withholding-ica_bogota",
+                        "type": "tax",
+                        "accounts": {
+                            "from": "collector",
+                            "to": "mp"
+                        },
+                        "client_id": 0,
+                        "date_created": "2023-09-03T16:58:08.000-04:00",
+                        "last_updated": "2023-09-03T16:58:08.000-04:00",
+                        "amounts": {
+                            "original": 575.46,
+                            "refunded": 0
+                        },
+                        "metadata": {
+                            "mov_detail": "tax_withholding",
+                            "mov_financial_entity": "ica_bogota",
+                            "mov_type": "expense",
+                            "tax_id": 75590017158,
+                            "tax_status": "applied",
+                            "user_id": 167706913
+                        },
+                        "reserve_id": 0,
+                        "refund_charges": []
+                    },
+                    {
+                        "id": "63140511160-003",
+                        "name": "tax_withholding-fuente",
+                        "type": "tax",
+                        "accounts": {
+                            "from": "collector",
+                            "to": "mp"
+                        },
+                        "client_id": 0,
+                        "date_created": "2023-09-03T16:58:08.000-04:00",
+                        "last_updated": "2023-09-03T16:58:08.000-04:00",
+                        "amounts": {
+                            "original": 2085,
+                            "refunded": 0
+                        },
+                        "metadata": {
+                            "mov_detail": "tax_withholding",
+                            "mov_financial_entity": "fuente",
+                            "mov_type": "expense",
+                            "tax_id": 75590017160,
+                            "tax_status": "applied",
+                            "user_id": 167706913
+                        },
+                        "reserve_id": 0,
+                        "refund_charges": []
+                    }
+                ]
+            },
+            "payment_type_id": "credit_card",
+            "total_amount": 139000,
+            "paid_amount": 139000,
+            "shipping_cost": 0,
+            "coupon_amount": 0,
+            "status": "rejected",
+            "status_detail": "cc_rejected_high_risk"
+        }
+    ]
+}
+09-03-2023 @ 15:58:10 - [successful_request]: Changing order status to: failed
+09-03-2023 @ 16:25:32 - [process_payment]: POST Custom: {
+    "amount": "139000",
+    "currency_ratio": "1",
+    "paymentMethodId": "visa",
+    "checkout_type": "custom",
+    "installments": "1",
+    "session_id": "armor.f8967ef683047c9a822802fe3fb327225858c896a2afc50e401c706baa6105c077ae236c1a9d22c5898c4fa296864317ec7ec92cf4dc06036c8662ecccbf5e9d4da7ae12d2dd473a0927e7e8308ea405d8f4d5c72b6cca73d16e84b787d3a1c2.3e3a5e8eb403545ec94f2838a7576e28"
+}
+09-03-2023 @ 16:25:32 - [process_payment]: preparing to get response of custom checkout.
+09-03-2023 @ 16:25:32 - [get_transaction]: Payment: {
+    "date_of_expiration": null,
+    "operation_type": null,
+    "issuer_id": null,
+    "payment_method_id": "visa",
+    "description": "Pizza horebs especial x 1, Pizza jamón pollo x 1, Pizza Pepperoni x 1",
+    "sponsor_id": 208687643,
+    "counter_currency": null,
+    "shipping_amount": null,
+    "store_id": null,
+    "payer": {
+        "entity_type": null,
+        "type": null,
+        "id": null,
+        "email": "danielapop90@hotmail.com",
+        "identification": {
+            "type": null,
+            "number": null
+        },
+        "first_name": null,
+        "last_name": null,
+        "operator_id": null,
+        "address": {
+            "street_name": null,
+            "street_number": null,
+            "neighborhood": null,
+            "city": null,
+            "federal_unit": null,
+            "zip_code": null
+        }
+    },
+    "metadata": {
+        "platform": "bo2hnr2ic4p001kbgpt0",
+        "platform_version": "7.9.0",
+        "module_version": "6.9.3",
+        "php_version": "8.1.18",
+        "site_id": "mco",
+        "sponsor_id": 208687643,
+        "collector": "167706913",
+        "test_mode": false,
+        "details": "",
+        "basic_settings": {
+            "enabled": "no",
+            "currency_conversion": "yes",
+            "installments": "1",
+            "method": "redirect",
+            "auto_return": "yes",
+            "binary_mode": "no",
+            "ex_payments_visa": "yes",
+            "ex_payments_amex": "yes",
+            "ex_payments_master": "yes",
+            "ex_payments_diners": "yes",
+            "ex_payments_codensa": "yes",
+            "ex_payments_debvisa": "yes",
+            "ex_payments_debmaster": "yes",
+            "ex_payments_efecty": "no",
+            "ex_payments_pse": "yes",
+            "gateway_discount_checkbox": "no",
+            "commission_checkbox": "no",
+            "checkbox_checkout_test_mode": "yes",
+            "checkout_credential_prod": "deprecated"
+        },
+        "custom_settings": {
+            "enabled": "yes",
+            "currency_conversion": "yes",
+            "wallet_button": "no",
+            "coupon_mode": "no",
+            "binary_mode": "no",
+            "gateway_discount_checkbox": "no",
+            "commission_checkbox": "no",
+            "checkbox_checkout_test_mode": "yes",
+            "checkout_credential_prod": "deprecated"
+        },
+        "ticket_settings": [],
+        "pix_settings": [],
+        "credits_settings": [],
+        "seller_website": "https:\/\/pizzeriahorebs.com",
+        "billing_address": {
+            "zip_code": "",
+            "street_name": "Carrera 8, Calle 18",
+            "city_name": "",
+            "state_name": "",
+            "country_name": ""
+        },
+        "user": {
+            "registered_user": "no",
+            "user_email": null,
+            "user_registration_date": null
+        },
+        "checkout": "custom",
+        "checkout_type": "credit_card"
+    },
+    "additional_info": {
+        "ip_address": null,
+        "referral_url": null,
+        "drop_shipping": null,
+        "delivery_promise": null,
+        "contrated_plan": null,
+        "items": [
+            {
+                "id": 179,
+                "title": "Pizza horebs especial x 1",
+                "description": "div-classcLjAic-LMRCfc-data-hveidCA8QAA-data-ved2ahUKEwjFmfaWx_DqAhVxQt8KHSlkCIcQ04gCKAB6BAgPEAA-div-classLuVEUc-B03h3d-P6OZi-V14nKc-ptcLIOszQJu__wholepage-card-wp-ms-data-hveidCA8QAQ-div-classUDZeY-OTFaAf",
+                "picture_url": "https:\/\/pizzeriahorebs.com\/wp-content\/uploads\/2023\/04\/pizzeria-horebs-special-post-1.jpg",
+                "category_id": "others",
+                "quantity": 1,
+                "unit_price": 55000
+            },
+            {
+                "id": 202,
+                "title": "Pizza jamón pollo x 1",
+                "description": "Pizza-jamon-pollo-sabias-que-el-40-de-nuestros-clientes-prefieren-esta-como-su-primera-pizza-cuando-no-conocen-el-negocio-te-invito-a-que-la-pruebes-y-si-te-gusta-me-lo-digas-en-los-comentarios.-Tiene-ingredientes-como",
+                "picture_url": "https:\/\/pizzeriahorebs.com\/wp-content\/uploads\/2023\/04\/jamon-pollo-1.jpg",
+                "category_id": "others",
+                "quantity": 1,
+                "unit_price": 40000
+            },
+            {
+                "id": 208,
+                "title": "Pizza Pepperoni x 1",
+                "description": "Nuestra-pizza-de-pepperoni-es-una-deliciosa-combinacion-de-ingredientes-cuidadosamente-seleccionados-para-ofrecerte-una-experiencia-de-pizza-inigualable.-Tiene-ingredientes-como-ul-liMasa-delgada.li-liSalsa-de",
+                "picture_url": "https:\/\/pizzeriahorebs.com\/wp-content\/uploads\/2023\/04\/pepperoni-4-1.jpg",
+                "category_id": "others",
+                "quantity": 1,
+                "unit_price": 40000
+            },
+            {
+                "id": null,
+                "title": "Precio fijo",
+                "description": "Servicio de envío utilizado por la tienda.",
+                "picture_url": null,
+                "category_id": "others",
+                "quantity": 1,
+                "unit_price": 4000
+            }
+        ],
+        "payer": {
+            "first_name": "Daniela",
+            "last_name": "Alarza Acosta",
+            "registration_date": null,
+            "registered_user": null,
+            "device_id": null,
+            "platform_email": null,
+            "register_updated_at": null,
+            "user_email": null,
+            "authentication_type": null,
+            "last_purchase": null,
+            "address": {
+                "street_name": "Carrera 8, Calle 18 \/   ",
+                "zip_code": "",
+                "city": null,
+                "country": null,
+                "state": null,
+                "number": null,
+                "complement": null,
+                "apartment": null,
+                "floor": null
+            },
+            "phone": {
+                "number": "+573233131605",
+                "area_code": null
+            },
+            "mobile": {
+                "number": null,
+                "area_code": null
+            },
+            "identification": {
+                "type": null,
+                "number": null
+            }
+        },
+        "seller": {
+            "id": null,
+            "registration_date": null,
+            "business_type": null,
+            "status": null,
+            "store_id": null,
+            "user_platform_mail": null,
+            "email": null,
+            "collector": null,
+            "website": null,
+            "platform_url": null,
+            "referral_url": null,
+            "register_updated_at": null,
+            "document": null,
+            "name": null,
+            "hired_plan": null,
+            "identification": {
+                "type": null,
+                "number": null
+            },
+            "phone": {
+                "number": null,
+                "area_code": null
+            },
+            "address": {
+                "street_name": null,
+                "zip_code": null,
+                "city": null,
+                "country": null,
+                "state": null,
+                "number": null,
+                "complement": null,
+                "apartment": null,
+                "floor": null
+            }
+        },
+        "shipments": {
+            "delivery_promise": null,
+            "drop_shipping": null,
+            "local_pickup": null,
+            "express_shipment": null,
+            "safety": null,
+            "withdrawn": null,
+            "tracking": {
+                "code": null,
+                "status": null
+            },
+            "receiver_address": {
+                "street_name": "Carrera 8, Calle 18 San Francisco de Asis   ",
+                "zip_code": "",
+                "city": null,
+                "country": null,
+                "state": null,
+                "number": null,
+                "complement": null,
+                "apartment": "San Francisco de Asis",
+                "floor": null
+            }
+        }
+    },
+    "external_reference": "PH-3333",
+    "transaction_amount": 139000,
+    "coupon_amount": null,
+    "differential_pricing_id": null,
+    "installments": 1,
+    "transaction_details": {
+        "financial_institution": null,
+        "bank_transfer_id": null,
+        "transaction_id": null
+    },
+    "binary_mode": false,
+    "statement_descriptor": "Mercado Pago",
+    "notification_url": "https:\/\/pizzeriahorebs.com\/wc-api\/WC_WooMercadoPago_Custom_Gateway\/?source_news=webhooks",
+    "processing_mode": null,
+    "merchant_account_id": null,
+    "point_of_interaction": {
+        "type": null,
+        "sub_type": null,
+        "linked_to": null,
+        "application_data": {
+            "name": null,
+            "version": null
+        },
+        "transaction_data": {
+            "bank_info": {
+                "origin_bank_id": null
+            }
+        }
+    },
+    "brand_id": null,
+    "reserve_id": null,
+    "collector": null,
+    "callback_url": null,
+    "application_fee": null,
+    "campaign_id": null,
+    "capture": null,
+    "coupon_code": null
+}
+09-03-2023 @ 16:25:34 - [create_payment]: Payment created: {
+    "id": 63004017873,
+    "date_created": "2023-09-03T17:25:33.353-04:00",
+    "date_approved": null,
+    "date_last_updated": "2023-09-03T17:25:33.353-04:00",
+    "date_of_expiration": null,
+    "money_release_date": null,
+    "operation_type": "regular_payment",
+    "issuer_id": "205",
+    "payment_method_id": "visa",
+    "payment_type_id": "credit_card",
+    "status": "rejected",
+    "status_detail": "cc_rejected_high_risk",
+    "currency_id": "COP",
+    "description": "Pizza horebs especial x 1, Pizza jamón pollo x 1, Pizza Pepperoni x 1",
+    "live_mode": true,
+    "sponsor_id": "208687643",
+    "authorization_code": null,
+    "money_release_schema": null,
+    "taxes_amount": 0,
+    "counter_currency": null,
+    "shipping_amount": 0,
+    "pos_id": null,
+    "store_id": null,
+    "collector_id": 167706913,
+    "payer": {
+        "type": null,
+        "id": "384260547",
+        "operator_id": null,
+        "email": null,
+        "identification": {
+            "type": null,
+            "number": null
+        },
+        "phone": {
+            "area_code": null,
+            "number": null,
+            "extension": null
+        },
+        "first_name": null,
+        "last_name": null,
+        "entity_type": null
+    },
+    "metadata": {
+        "basic_settings": {
+            "ex_payments_codensa": "yes",
+            "checkout_credential_prod": "deprecated",
+            "checkbox_checkout_test_mode": "yes",
+            "method": "redirect",
+            "ex_payments_pse": "yes",
+            "ex_payments_diners": "yes",
+            "ex_payments_amex": "yes",
+            "gateway_discount_checkbox": "no",
+            "enabled": "no",
+            "ex_payments_visa": "yes",
+            "ex_payments_master": "yes",
+            "commission_checkbox": "no",
+            "ex_payments_debmaster": "yes",
+            "currency_conversion": "yes",
+            "installments": "1",
+            "binary_mode": "no",
+            "ex_payments_debvisa": "yes",
+            "auto_return": "yes",
+            "ex_payments_efecty": "no"
+        },
+        "checkout_type": "credit_card",
+        "seller_website": "https:\/\/pizzeriahorebs.com",
+        "php_version": "8.1.18",
+        "billing_address": {
+            "city_name": "",
+            "state_name": "",
+            "country_name": "",
+            "zip_code": "",
+            "street_name": "Carrera 8, Calle 18"
+        },
+        "module_version": "6.9.3",
+        "sponsor_id": 208687643,
+        "platform": "bo2hnr2ic4p001kbgpt0",
+        "collector": "167706913",
+        "ticket_settings": [],
+        "original_notification_url": "https:\/\/pizzeriahorebs.com\/wc-api\/WC_WooMercadoPago_Custom_Gateway\/?source_news=webhooks",
+        "platform_version": "7.9.0",
+        "test_mode": false,
+        "site_id": "mco",
+        "credits_settings": [],
+        "custom_settings": {
+            "wallet_button": "no",
+            "checkout_credential_prod": "deprecated",
+            "commission_checkbox": "no",
+            "checkbox_checkout_test_mode": "yes",
+            "currency_conversion": "yes",
+            "binary_mode": "no",
+            "coupon_mode": "no",
+            "gateway_discount_checkbox": "no",
+            "enabled": "yes"
+        },
+        "pix_settings": [],
+        "details": "",
+        "user": {
+            "user_email": null,
+            "registered_user": "no",
+            "user_registration_date": null
+        },
+        "checkout": "custom"
+    },
+    "additional_info": {
+        "items": [
+            {
+                "id": "179",
+                "title": "Pizza horebs especial x 1",
+                "description": "div-classcLjAic-LMRCfc-data-hveidCA8QAA-data-ved2ahUKEwjFmfaWx_DqAhVxQt8KHSlkCIcQ04gCKAB6BAgPEAA-div-classLuVEUc-B03h3d-P6OZi-V14nKc-ptcLIOszQJu__wholepage-card-wp-ms-data-hveidCA8QAQ-div-classUDZeY-OTFaAf",
+                "picture_url": "https:\/\/pizzeriahorebs.com\/wp-content\/uploads\/2023\/04\/pizzeria-horebs-special-post-1.jpg",
+                "category_id": "others",
+                "quantity": "1",
+                "unit_price": "55000"
+            },
+            {
+                "id": "202",
+                "title": "Pizza jamón pollo x 1",
+                "description": "Pizza-jamon-pollo-sabias-que-el-40-de-nuestros-clientes-prefieren-esta-como-su-primera-pizza-cuando-no-conocen-el-negocio-te-invito-a-que-la-pruebes-y-si-te-gusta-me-lo-digas-en-los-comentarios.-Tiene-ingredientes-como",
+                "picture_url": "https:\/\/pizzeriahorebs.com\/wp-content\/uploads\/2023\/04\/jamon-pollo-1.jpg",
+                "category_id": "others",
+                "quantity": "1",
+                "unit_price": "40000"
+            },
+            {
+                "id": "208",
+                "title": "Pizza Pepperoni x 1",
+                "description": "Nuestra-pizza-de-pepperoni-es-una-deliciosa-combinacion-de-ingredientes-cuidadosamente-seleccionados-para-ofrecerte-una-experiencia-de-pizza-inigualable.-Tiene-ingredientes-como-ul-liMasa-delgada.li-liSalsa-de",
+                "picture_url": "https:\/\/pizzeriahorebs.com\/wp-content\/uploads\/2023\/04\/pepperoni-4-1.jpg",
+                "category_id": "others",
+                "quantity": "1",
+                "unit_price": "40000"
+            },
+            {
+                "id": null,
+                "title": "Precio fijo",
+                "description": "Servicio de envío utilizado por la tienda.",
+                "picture_url": null,
+                "category_id": "others",
+                "quantity": "1",
+                "unit_price": "4000"
+            }
+        ],
+        "payer": {
+            "phone": {
+                "number": "+573233131605"
+            },
+            "address": {
+                "street_name": "Carrera 8, Calle 18 \/   "
+            },
+            "first_name": "Daniela",
+            "last_name": "Alarza Acosta"
+        },
+        "shipments": {
+            "receiver_address": {
+                "street_name": "Carrera 8, Calle 18 San Francisco de Asis   ",
+                "apartment": "San Francisco de Asis"
+            }
+        },
+        "tracking_id": "platform:v1-whitelabel,so:ALL,type:N\/A,security:none",
+        "available_balance": null,
+        "nsu_processadora": null,
+        "authentication_code": null
+    },
+    "barcode": null,
+    "external_reference": "PH-3333",
+    "transaction_amount": 139000,
+    "transaction_amount_refunded": 0,
+    "coupon_amount": 0,
+    "differential_pricing_id": null,
+    "deduction_schema": "PROACTIVE_3",
+    "transaction_details": {
+        "payment_method_reference_id": null,
+        "acquirer_reference": null,
+        "net_received_amount": 0,
+        "total_paid_amount": 139000,
+        "overpaid_amount": 0,
+        "external_resource_url": null,
+        "installment_amount": 139000,
+        "financial_institution": null,
+        "payable_deferral_period": null
+    },
+    "fee_details": [],
+    "captured": true,
+    "binary_mode": false,
+    "call_for_authorize_id": null,
+    "statement_descriptor": null,
+    "installments": 1,
+    "card": {
+        "id": null,
+        "first_six_digits": "416598",
+        "last_four_digits": "6702",
+        "bin": "41659837",
+        "expiration_month": 6,
+        "expiration_year": 2026,
+        "date_created": "2023-09-03T17:25:33.000-04:00",
+        "date_last_updated": "2023-09-03T17:25:33.000-04:00",
+        "cardholder": {
+            "name": "Jan-Willem Potgieter",
+            "identification": {
+                "number": "92326",
+                "type": "CE"
+            }
+        }
+    },
+    "notification_url": "http:\/\/internal.mercadopago.com\/v1\/bifrost\/payment-notification\/webhook\/production?source_news=webhooks&notify_all=false",
+    "processing_mode": "aggregator",
+    "merchant_account_id": null,
+    "acquirer": "banco_bogota",
+    "merchant_number": null,
+    "acquirer_reconciliation": [],
+    "point_of_interaction": {
+        "type": "UNSPECIFIED",
+        "business_info": {
+            "unit": "online_payments",
+            "sub_unit": "woocommerce"
+        }
+    },
+    "brand_id": null,
+    "build_version": "3.14.1",
+    "charges_details": [
+        {
+            "id": "63004017873-001",
+            "name": "mercadopago_fee",
+            "type": "fee",
+            "accounts": {
+                "from": "collector",
+                "to": "mp"
+            },
+            "client_id": 0,
+            "date_created": "2023-09-03T17:25:33.356-04:00",
+            "last_updated": "2023-09-03T17:25:33.356-04:00",
+            "amounts": {
+                "original": 5566.8,
+                "refunded": 0
+            },
+            "metadata": [],
+            "reserve_id": null,
+            "refund_charges": []
+        },
+        {
+            "id": "63004017873-002",
+            "name": "tax_withholding-ica_bogota",
+            "type": "tax",
+            "accounts": {
+                "from": "collector",
+                "to": "mp"
+            },
+            "client_id": 0,
+            "date_created": "2023-09-03T17:25:33.422-04:00",
+            "last_updated": "2023-09-03T17:25:33.422-04:00",
+            "amounts": {
+                "original": 575.46,
+                "refunded": 0
+            },
+            "metadata": {
+                "tax_id": 75590631034,
+                "mov_type": "expense",
+                "mov_detail": "tax_withholding",
+                "mov_financial_entity": "ica_bogota",
+                "user_id": 167706913,
+                "tax_status": "applied"
+            },
+            "reserve_id": null,
+            "refund_charges": []
+        },
+        {
+            "id": "63004017873-003",
+            "name": "tax_withholding-fuente",
+            "type": "tax",
+            "accounts": {
+                "from": "collector",
+                "to": "mp"
+            },
+            "client_id": 0,
+            "date_created": "2023-09-03T17:25:33.422-04:00",
+            "last_updated": "2023-09-03T17:25:33.422-04:00",
+            "amounts": {
+                "original": 2085,
+                "refunded": 0
+            },
+            "metadata": {
+                "tax_id": 75590631036,
+                "mov_type": "expense",
+                "mov_detail": "tax_withholding",
+                "mov_financial_entity": "fuente",
+                "user_id": 167706913,
+                "tax_status": "applied"
+            },
+            "reserve_id": null,
+            "refund_charges": []
+        }
+    ],
+    "corporation_id": null,
+    "financing_group": null,
+    "integrator_id": null,
+    "marketplace_owner": null,
+    "money_release_status": "pending",
+    "payment_method": {
+        "id": "visa",
+        "type": "credit_card",
+        "issuer_id": "205",
+        "data": {
+            "routing_data": {
+                "merchant_account_id": "17764762"
+            }
+        }
+    },
+    "platform_id": "bo2hnr2ic4p001kbgpt0",
+    "refunds": [],
+    "three_ds_info": null
+}
+09-03-2023 @ 16:25:34 - [check_ipn_response]: received _get content: {
+    "source_news": "webhooks"
+}
+09-03-2023 @ 16:25:34 - [check_ipn_response]: Receiving Core Notification with ID: P-63004017873
+09-03-2023 @ 16:25:35 - [successful_request]: starting to process  update...
+09-03-2023 @ 16:25:35 - [successful_request]: updating metadata and status with data: {
+    "notification_id": "P-63004017873",
+    "notification_url": "https:\/\/pizzeriahorebs.com\/wc-api\/WC_WooMercadoPago_Custom_Gateway\/?source_news=webhooks",
+    "status": "rejected",
+    "transaction_id": "63004017873",
+    "transaction_type": "payment",
+    "platform_id": "bo2hnr2ic4p001kbgpt0",
+    "external_reference": "PH-3333",
+    "preference_id": "",
+    "transaction_amount": 139000,
+    "total_paid": 0,
+    "total_approved": 0,
+    "total_pending": 0,
+    "total_refunded": 0,
+    "total_rejected": 139000,
+    "total_cancelled": 0,
+    "total_charged_back": 0,
+    "multiple_payment_transaction_id": "",
+    "payments_metadata": {
+        "basic_settings": {
+            "auto_return": "yes",
+            "binary_mode": "no",
+            "checkbox_checkout_test_mode": "yes",
+            "checkout_credential_prod": "deprecated",
+            "commission_checkbox": "no",
+            "currency_conversion": "yes",
+            "enabled": "no",
+            "ex_payments_amex": "yes",
+            "ex_payments_codensa": "yes",
+            "ex_payments_debmaster": "yes",
+            "ex_payments_debvisa": "yes",
+            "ex_payments_diners": "yes",
+            "ex_payments_efecty": "no",
+            "ex_payments_master": "yes",
+            "ex_payments_pse": "yes",
+            "ex_payments_visa": "yes",
+            "gateway_discount_checkbox": "no",
+            "installments": "1",
+            "method": "redirect"
+        },
+        "billing_address": {
+            "city_name": "",
+            "country_name": "",
+            "state_name": "",
+            "street_name": "Carrera 8, Calle 18",
+            "zip_code": ""
+        },
+        "checkout": "custom",
+        "checkout_type": "credit_card",
+        "collector": "167706913",
+        "credits_settings": [],
+        "custom_settings": {
+            "binary_mode": "no",
+            "checkbox_checkout_test_mode": "yes",
+            "checkout_credential_prod": "deprecated",
+            "commission_checkbox": "no",
+            "coupon_mode": "no",
+            "currency_conversion": "yes",
+            "enabled": "yes",
+            "gateway_discount_checkbox": "no",
+            "wallet_button": "no"
+        },
+        "details": "",
+        "module_version": "6.9.3",
+        "original_notification_url": "https:\/\/pizzeriahorebs.com\/wc-api\/WC_WooMercadoPago_Custom_Gateway\/?source_news=webhooks",
+        "php_version": "8.1.18",
+        "pix_settings": [],
+        "platform": "bo2hnr2ic4p001kbgpt0",
+        "platform_version": "7.9.0",
+        "seller_website": "https:\/\/pizzeriahorebs.com",
+        "site_id": "mco",
+        "sponsor_id": 208687643,
+        "test_mode": false,
+        "ticket_settings": [],
+        "user": {
+            "registered_user": "no",
+            "user_email": null,
+            "user_registration_date": null
+        }
+    },
+    "payments_details": [
+        {
+            "id": 63004017873,
+            "payment_method_id": "visa",
+            "payment_method_info": {
+                "barcode_content": "",
+                "external_resource_url": "",
+                "payment_method_reference_id": "",
+                "date_of_expiration": "",
+                "last_four_digits": "6702",
+                "qr_code_base64": "",
+                "qr_code": "",
+                "installments": 1,
+                "installment_rate": 0,
+                "installment_amount": 139000,
+                "charges_details": [
+                    {
+                        "id": "63004017873-001",
+                        "name": "mercadopago_fee",
+                        "type": "fee",
+                        "accounts": {
+                            "from": "collector",
+                            "to": "mp"
+                        },
+                        "client_id": 0,
+                        "date_created": "2023-09-03T17:25:33.000-04:00",
+                        "last_updated": "2023-09-03T17:25:33.000-04:00",
+                        "amounts": {
+                            "original": 5566.8,
+                            "refunded": 0
+                        },
+                        "metadata": [],
+                        "reserve_id": 0,
+                        "refund_charges": []
+                    },
+                    {
+                        "id": "63004017873-002",
+                        "name": "tax_withholding-ica_bogota",
+                        "type": "tax",
+                        "accounts": {
+                            "from": "collector",
+                            "to": "mp"
+                        },
+                        "client_id": 0,
+                        "date_created": "2023-09-03T17:25:33.000-04:00",
+                        "last_updated": "2023-09-03T17:25:33.000-04:00",
+                        "amounts": {
+                            "original": 575.46,
+                            "refunded": 0
+                        },
+                        "metadata": {
+                            "mov_detail": "tax_withholding",
+                            "mov_financial_entity": "ica_bogota",
+                            "mov_type": "expense",
+                            "tax_id": 75590631034,
+                            "tax_status": "applied",
+                            "user_id": 167706913
+                        },
+                        "reserve_id": 0,
+                        "refund_charges": []
+                    },
+                    {
+                        "id": "63004017873-003",
+                        "name": "tax_withholding-fuente",
+                        "type": "tax",
+                        "accounts": {
+                            "from": "collector",
+                            "to": "mp"
+                        },
+                        "client_id": 0,
+                        "date_created": "2023-09-03T17:25:33.000-04:00",
+                        "last_updated": "2023-09-03T17:25:33.000-04:00",
+                        "amounts": {
+                            "original": 2085,
+                            "refunded": 0
+                        },
+                        "metadata": {
+                            "mov_detail": "tax_withholding",
+                            "mov_financial_entity": "fuente",
+                            "mov_type": "expense",
+                            "tax_id": 75590631036,
+                            "tax_status": "applied",
+                            "user_id": 167706913
+                        },
+                        "reserve_id": 0,
+                        "refund_charges": []
+                    }
+                ]
+            },
+            "payment_type_id": "credit_card",
+            "total_amount": 139000,
+            "paid_amount": 139000,
+            "shipping_cost": 0,
+            "coupon_amount": 0,
+            "status": "rejected",
+            "status_detail": "cc_rejected_high_risk"
+        }
+    ]
+}
+09-03-2023 @ 16:25:35 - [successful_request]: Changing order status to: failed
