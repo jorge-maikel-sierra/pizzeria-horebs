@@ -106,6 +106,12 @@ class WC_Facebookcommerce extends WooCommerce\Facebook\Framework\Plugin {
 	/** @var WooCommerce\Facebook\ExternalVersionUpdate */
 	private $external_version_update;
 
+	/** @var WooCommerce\Facebook\Feed\FeedConfigurationDetection instance. */
+	private $configuration_detection;
+
+	/** @var WooCommerce\Facebook\Products\FBCategories instance. */
+	private $fb_categories;
+
 	/**
 	 * The Debug tools instance.
 	 *
@@ -128,6 +134,23 @@ class WC_Facebookcommerce extends WooCommerce\Facebook\Framework\Plugin {
 		$this->init_admin();
 	}
 
+	/**
+	 * __get method for backward compatibility.
+	 *
+	 * @param string $key property name
+	 * @return mixed
+	 * @since 3.0.32
+	 */
+	public function __get( $key ) {
+		// Add warning for private properties.
+		if ( in_array( $key, array( 'configuration_detection', 'fb_categories' ), true ) ) {
+			/* translators: %s property name. */
+			_doing_it_wrong( __FUNCTION__, sprintf( esc_html__( 'The %s property is private and should not be accessed outside its class.', 'facebook-for-woocommerce' ), esc_html( $key ) ), '3.0.32' );
+			return $this->$key;
+		}
+
+		return null;
+	}
 
 	/**
 	 * Initializes the plugin.
@@ -376,7 +399,8 @@ class WC_Facebookcommerce extends WooCommerce\Facebook\Framework\Plugin {
 				'separate_items_with_commas' => sprintf( esc_html__( 'Separate %s with commas', 'facebook-for-woocommerce' ), $plural ),
 				// translators: Text label
 				'choose_from_most_used'      => sprintf( esc_html__( 'Choose from the most used %s', 'facebook-for-woocommerce' ), $plural ),
-				'back_to_items'              => sprintf( esc_html__( 'Go to %s', 'facebook-for-woocommerce' ), $plural ),
+				// translators: Backlink item label
+				'back_to_items'              => sprintf( esc_html__( '&larr; Go to %s', 'facebook-for-woocommerce' ), $plural ),
 			),
 			'hierarchical'      => true,
 			'public'            => true,
@@ -686,7 +710,7 @@ class WC_Facebookcommerce extends WooCommerce\Facebook\Framework\Plugin {
 	 * @return string
 	 */
 	public function get_documentation_url() {
-		return 'https://docs.woocommerce.com/document/facebook-for-woocommerce/';
+		return 'https://woo.com/document/facebook-for-woocommerce/';
 	}
 
 
@@ -710,7 +734,7 @@ class WC_Facebookcommerce extends WooCommerce\Facebook\Framework\Plugin {
 	 * @return string
 	 */
 	public function get_sales_page_url() {
-		return 'https://woocommerce.com/products/facebook/';
+		return 'https://woo.com/products/facebook/';
 	}
 
 

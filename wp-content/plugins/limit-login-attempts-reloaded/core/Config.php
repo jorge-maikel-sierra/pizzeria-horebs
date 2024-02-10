@@ -36,6 +36,9 @@ class Config {
 		/* Notify on lockout. Values: '', 'log', 'email', 'log,email' */
 		'lockout_notify'     => 'email',
 
+        /* strong account policies */
+        'checklist'         => false,
+
 		/* If notify by email, do so after this number of lockouts */
 		'notify_email_after' => 3,
 
@@ -50,6 +53,7 @@ class Config {
 		'active_app'               => 'local',
 		'app_config'               => '',
 		'show_top_level_menu_item' => true,
+		'show_top_bar_menu_item'   => true,
 		'hide_dashboard_widget'    => false,
 		'show_warning_badge'       => true,
 		'onboarding_popup_shown'   => false,
@@ -61,15 +65,25 @@ class Config {
 		'auto_update_choice'    => null,
 	);
 
+	private static $disable_autoload_options = array(
+		'lockouts',
+		'logged',
+		'retries',
+		'retries_valid',
+		'retries_stats'
+	);
+
 	private static $prefix = 'limit_login_';
 
 	private static $use_local_options = true;
 
-	public static function get_default_options() {
+	public static function get_default_options()
+	{
 		return self::$default_options || array();
 	}
 
-	public static function use_local_options( $value ) {
+	public static function use_local_options( $value )
+	{
 		self::$use_local_options = $value;
 	}
 
@@ -122,7 +136,7 @@ class Config {
 	public static function update( $option_name, $value ) {
 		$func = self::$use_local_options ? 'update_option' : 'update_site_option';
 
-		return $func( self::format_option_name( $option_name ), $value );
+		return $func( self::format_option_name( $option_name ), $value, self::is_autoload( $option_name ) );
 	}
 
 	/**
@@ -134,7 +148,7 @@ class Config {
 	public static function add( $option_name, $value ) {
 		$func = self::$use_local_options ? 'add_option' : 'add_site_option';
 
-		return $func( self::format_option_name( $option_name ), $value, '', 'no' );
+		return $func( self::format_option_name( $option_name ), $value, '', self::is_autoload( $option_name ) );
 	}
 
 	/**
@@ -183,5 +197,14 @@ class Config {
 		if ( $client_type != LLA_DIRECT_ADDR && $client_type != LLA_PROXY_ADDR ) {
 			self::update( 'client_type', LLA_DIRECT_ADDR );
 		}
+	}
+
+	/**
+	 * @param $option_name
+	 *
+	 * @return string
+	 */
+	private static function is_autoload( $option_name ) {
+		return in_array( trim( $option_name ), self::$disable_autoload_options ) ? 'no' : 'yes';
 	}
 }

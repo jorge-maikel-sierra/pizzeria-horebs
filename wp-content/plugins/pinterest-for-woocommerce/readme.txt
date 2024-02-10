@@ -2,9 +2,9 @@
 Contributors: automattic, pinterest, woocommerce
 Tags: woocommerce, pinterest, advertise
 Requires at least: 5.6
-Tested up to: 6.2
+Tested up to: 6.4
 Requires PHP: 7.3
-Stable tag: 1.3.6
+Stable tag: 1.3.20
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -67,7 +67,7 @@ Pinterest is a visual discovery engine people use to find inspiration for their 
 * PHP version 7.3 or greater (PHP 7.4 or greater is recommended)
 * MySQL version 5.6 or greater
 
-Visit the [WooCommerce server requirements documentation](https://docs.woocommerce.com/document/server-requirements/) for a detailed list of server requirements.
+Visit the [WooCommerce server requirements documentation](https://woo.com/document/server-requirements/) for a detailed list of server requirements.
 
 = Automatic installation =
 
@@ -87,9 +87,65 @@ Bugs should be reported in the [Pinterest for WooCommerce repository](https://gi
 
 Yes you can! Join in on our [GitHub repository](https://github.com/woocommerce/pinterest-for-woocommerce/) :)
 
-Release and roadmap notes available on the [WooCommerce Developers Blog](hhttps://developer.woocommerce.com/)
+Release and roadmap notes available on the [WooCommerce Developers Blog](https://developer.woo.com/)
 
 == Changelog ==
+
+= 1.3.20 - 2024-01-12 =
+* Fix - Use proper redeem code format.
+
+= 1.3.19 - 2024-01-09 =
+* Tweak - Changed minimum WC version to 6.3.
+* Tweak - WC 8.5 compatibility.
+
+= 1.3.18 - 2023-12-27 =
+* Fix - Pinterest duplicated notices.
+* Fix - Product Editor transient notice shift.
+* Fix - Wrong feed generation items counter.
+
+= 1.3.17 - 2023-12-19 =
+* Dev - Update Woo.com developer blog URLs.
+* Update - promo code for 2024.
+
+= 1.3.16 - 2023-12-13 =
+* Tweak - Make sure `feed_location` has a full URL.
+
+= 1.3.15 - 2023-11-28 =
+* Add - Compatibility with the Cart and Checkout blocks.
+
+= 1.3.14 - 2023-11-14 =
+* Tweak - Add Pinterest businesses API exception handling.
+
+= 1.3.13 - 2023-11-07 =
+* Fix - Doc - Use new Woo.com domain.
+* Tweak - WC 8.3 compatibility.
+* Tweak - WP 6.4 compatibility.
+
+= 1.3.12 - 2023-10-19 =
+* Dev - Add phpcs on changed files only.
+
+= 1.3.11 - 2023-10-10 =
+* Dev - automate merging trunk to develop after a release.
+* Tweak - WC 8.2 compatibility.
+
+= 1.3.10 - 2023-09-12 =
+* Dev - Updates PHPUnit version, unit tests, and matrix in git workflow for PHP8.2 compatibility.
+
+= 1.3.9 - 2023-09-05 =
+* Add - Adds logic to dynamically display spend requirement and credits given based on store currency.
+* Fix -  Uninstall procedure.
+* Tweak - WC 8.1 compatibility.
+
+= 1.3.8 - 2023-08-15 =
+* Fix - Caching of API calls.
+* Fix - Make add to cart events independent from WooCommerce archive page settings.
+
+= 1.3.7 - 2023-08-09 =
+* Tweak - Don't fetch the allowed countries list when not connected.
+* Tweak - Increase allowed countries cache lifetime to two days.
+* Tweak - WC 8.0 compatibility.
+* Tweak - WP 6.3 compatibility.
+* Update - Add missing countries to the allowed countries list.
 
 = 1.3.6 - 2023-07-25 =
 * Dev - Add release preparation GH workflow.

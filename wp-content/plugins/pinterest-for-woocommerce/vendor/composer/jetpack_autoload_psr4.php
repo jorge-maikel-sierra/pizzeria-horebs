@@ -7,11 +7,11 @@ $baseDir   = dirname($vendorDir);
 
 return array(
 	'Defuse\\Crypto\\' => array(
-		'version' => '2.3.1.0',
+		'version' => '2.4.0.0',
 		'path'    => array( $vendorDir . '/defuse/php-encryption/src' )
 	),
 	'Automattic\\WooCommerce\\Pinterest\\' => array(
-		'version' => 'dev-release/1.3.6',
+		'version' => 'dev-release/1.3.20',
 		'path'    => array( $baseDir . '/src' )
 	),
 	'Automattic\\WooCommerce\\ActionSchedulerJobFramework\\' => array(
@@ -19,7 +19,7 @@ return array(
 		'path'    => array( $vendorDir . '/woocommerce/action-scheduler-job-framework/src' )
 	),
 	'Automattic\\Jetpack\\Autoloader\\' => array(
-		'version' => '2.10.12.0',
+		'version' => '2.12.0',
 		'path'    => array( $vendorDir . '/automattic/jetpack-autoloader/src' )
 	),
 );
