@@ -17,21 +17,21 @@ class WPSEO_Local_Endpoint_Locations implements WPSEO_Endpoint {
 	 *
 	 * @var string
 	 */
-	const REST_NAMESPACE = 'yoast/v1';
+	public const REST_NAMESPACE = 'yoast/v1';
 
 	/**
 	 * REST API endpoint name.
 	 *
 	 * @var string
 	 */
-	const ENDPOINT_RETRIEVE = 'wpseo_locations';
+	public const ENDPOINT_RETRIEVE = 'wpseo_locations';
 
 	/**
 	 * End-user capability required for the endpoint to give a response.
 	 *
 	 * @var string
 	 */
-	const CAPABILITY_RETRIEVE = 'read';
+	public const CAPABILITY_RETRIEVE = 'read';
 
 	/**
 	 * Constructs the WPSEO_Local_Endpoint_Locations class and sets the service to use.
@@ -41,6 +41,8 @@ class WPSEO_Local_Endpoint_Locations implements WPSEO_Endpoint {
 
 	/**
 	 * Registers the REST routes that are available on the endpoint.
+	 *
+	 * @return void
 	 */
 	public function register() {
 		$args = [

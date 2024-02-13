@@ -105,6 +105,8 @@ abstract class Import_Export implements Initializer_Interface, Integration_Inter
 
 	/**
 	 * Set the WPSEO Upload Dir
+	 *
+	 * @return void
 	 */
 	private function set_upload_dir() {
 		$wp_upload_dir          = \wp_upload_dir();
@@ -113,6 +115,8 @@ abstract class Import_Export implements Initializer_Interface, Integration_Inter
 
 	/**
 	 * Display admin notices.
+	 *
+	 * @return void
 	 */
 	public function show_notices() {
 		foreach ( $this->messages as $message ) {

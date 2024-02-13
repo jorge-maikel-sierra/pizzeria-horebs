@@ -250,6 +250,19 @@ class Webhooks {
 			$options = Options::init();
 			$mailer  = $provider->get_mailer_name();
 
+			if ( isset( $data[ $mailer ] ) ) {
+				$non_settings_keys = [
+					'webhooks_setup',
+					'additional_message_streams', // postmark.
+				];
+
+				foreach ( $non_settings_keys as $key ) {
+					if ( isset( $data[ $mailer ][ $key ] ) ) {
+						unset( $data[ $mailer ][ $key ] );
+					}
+				}
+			}
+
 			if (
 				(
 					$page_slug === 'settings' || $page_slug === 'setup-wizard' &&
@@ -346,7 +359,7 @@ class Webhooks {
 	 */
 	public function subscribe_ajax() {
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( wp_mail_smtp()->get_capability_manage_options() ) ) {
 			wp_send_json_error( esc_html__( 'You don\'t have the capability to perform this action.', 'wp-mail-smtp-pro' ) );
 		}
 
@@ -393,7 +406,7 @@ class Webhooks {
 	 */
 	public function unsubscribe_ajax() {
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( wp_mail_smtp()->get_capability_manage_options() ) ) {
 			wp_die( esc_html__( 'You don\'t have the capability to perform this action.', 'wp-mail-smtp-pro' ) );
 		}
 

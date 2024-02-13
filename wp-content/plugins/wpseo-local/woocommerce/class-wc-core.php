@@ -24,6 +24,8 @@ class Yoast_WCSEO_Local_Core extends WPSEO_Local_Core {
 	 *
 	 * @param array $old_option_value Old value of the option.
 	 * @param array $new_option_value New value for the option.
+	 *
+	 * @return void
 	 */
 	public function maybe_flush_shipping_transients( $old_option_value, $new_option_value ) {
 		$old_value_exists = array_key_exists( 'use_multiple_locations', $old_option_value );

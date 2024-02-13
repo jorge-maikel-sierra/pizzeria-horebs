@@ -128,7 +128,12 @@ class WPSEO_Show_Locations_By_Category extends WP_Widget {
 		echo '
 					<option value=""> -- ', esc_html__( 'Select a category', 'yoast-local-seo' ), ' -- </option>';
 
-		$categories = get_terms( 'wpseo_locations_category', [ 'hide_empty' => false ] );
+		$categories = get_terms(
+			[
+				'taxonomy'   => 'wpseo_locations_category',
+				'hide_empty' => false,
+			]
+		);
 
 		foreach ( $categories as $category ) {
 			printf(

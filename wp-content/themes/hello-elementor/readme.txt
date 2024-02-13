@@ -1,23 +1,23 @@
 === Hello Elementor ===
 
-Contributors: elemntor, KingYes, ariel.k, jzaltzberg, mati1000, bainternet
-Requires at least: 5.9
-Tested up to: 6.2
-Stable tag: 2.8.1
-Version: 2.8.1
-Requires PHP: 7.0
+Contributors: elemntor, KingYes, ariel.k, bainternet
+Requires at least: 6.0
+Tested up to: 6.4
+Stable tag: 3.0.1
+Version: 3.0.1
+Requires PHP: 7.3
 License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-A lightweight and minimalist WordPress theme for Elementor page builder.
+A lightweight and minimalist WordPress theme for Elementor site builder.
 
 == Description ==
 
-Hello Elementor is a lightweight and minimalist WordPress theme that was built specifically to work seamlessly with the Elementor page builder plugin. The theme is free, open-source, and designed for users who want a flexible, easy-to-use, and customizable website.
+Hello Elementor is a lightweight and minimalist WordPress theme that was built specifically to work seamlessly with the Elementor site builder plugin. The theme is free, open-source, and designed for users who want a flexible, easy-to-use, and customizable website.
 
 The theme's main focus is on providing a solid foundation for users to build their own unique designs using the Elementor drag-and-drop site builder. It is optimized for speed and performance, and its simplicity and flexibility make it a great choice for both beginners and experienced website designers.
 
-The theme supports common WordPress features which can be extended using a child-theme. In addition, there are several ways to add custom styles. It can be done from **Elementor**, from the WordPress customizer, using a child-theme, or with an external plugin. To customize the theme further, visit [Elementor developers docs](https://developers.elementor.com/docs/hello-elementor-theme/).
+The theme supports common WordPress features which can be extended using a child-theme. In addition, there are several ways to add custom styles. It can be done from **Elementor**, using a child-theme, or with an external plugin. To customize the theme further, visit [Elementor developers docs](https://developers.elementor.com/docs/hello-elementor-theme/).
 
 == Copyright ==
 
@@ -35,6 +35,35 @@ License: CC0 1.0 Universal (CC0 1.0)
 Source: https://stocksnap.io/photo/4B83RD7BV9
 
 == Changelog ==
+
+= 3.0.1 - 2024-01-24 =
+* Fix: Harden security for admin notice dismiss button
+* Fix: Add `alt` attribute to all the images in the dashboard
+
+= 3.0.0 - 2023-12-26 =
+* New: Option to disable cross-site header & footer
+* Tweak: Update `Requires PHP 7.3`
+* Tweak: Update `Tested up to 6.4`
+* Tweak: Move cross-site header & footer styles to a separate CSS file
+* Tweak: Don't load `header-footer.min.css` when disabling header & footer
+* Tweak: Don't load `hello-frontend.min.js` when disabling header & footer
+* Tweak: Replace jQuery code with vanilla JS in the frontend
+* Tweak: Replace jQuery code with vanilla JS in WordPress admin
+* Tweak: Remove unused JS code from the frontend
+* Tweak: Remove unused CSS code from the editor
+* Tweak: Remove unnecessary `role` attributes from HTML landmark elements
+* Tweak: Link from Elementor Site Settings to Hello Theme Settings
+* Fix: Dynamic script version for better caching
+
+= 2.9.0 - 2023-10-25 =
+* New: Introducing the new settings page for the theme
+* New: Option to disable description meta tag
+* New: Option to disable skip link
+* New: Option to disable page title
+* New: Option to unregister Hello style.css
+* New: Option to unregister Hello theme.css
+* Tweak: Update `Requires at least 6.0`
+* Tweak: Update `Tested up to 6.3`
 
 = 2.8.1 - 2023-07-05 =
 * Tweak: Added additional CSS selectors to apply RTL on comments
@@ -98,7 +127,7 @@ Source: https://stocksnap.io/photo/4B83RD7BV9
 * Fix: Fatal error when kit doesn't exist or needs to be recreated ([#175](https://github.com/elementor/hello-theme/issues/175))
 
 = 2.5.0 - 2022-01-26 =
-* Tweak: Added keyboard navigation to Hello theme menus
+* Tweak: Added keyboard navigation to Hello Elementor theme menus
 * Tweak: Added Skip Links and `#content` for the main wrapper for better accessibility ([#133](https://github.com/elementor/hello-theme/issues/133))
 * Tweak: Added underline for text links in Post Content for better accessibility
 * Tweak: Removed `outline: none` from inputs for better accessibility
@@ -107,11 +136,11 @@ Source: https://stocksnap.io/photo/4B83RD7BV9
 = 2.4.2 - 2021-12-20 =
 * Tweak: Use HTTPS in XFN profile link to prevent mixed content error ([Topic](https://wordpress.org/support/topic/url-scheme-in-xfn-profile-link/))
 * Tweak: Remove comments in `style.min.css` output ([#179](https://github.com/elementor/hello-theme/issues/179))
-* Tweak: Promoted Hello Theme Header & Footer experiment status to Stable
+* Tweak: Promoted Hello Elementor theme Header & Footer experiment status to Stable
 * Tweak: Added compatibility for upcoming WordPress version 5.9
 
 = 2.4.1 - 2021-07-07 =
-* Fix: Hello Theme Header & Footer experiment should be inactive for existing sites
+* Fix: Hello Elementor theme Header & Footer experiment should be inactive for existing sites
 
 = 2.4.0 - 2021-06-29 =
 * New: Introducing Header and Footer site elements as an Elementor Experiment
@@ -133,7 +162,7 @@ Source: https://stocksnap.io/photo/4B83RD7BV9
 
 = 2.2.2 - 2019-12-23 =
 * Fix: Conflicts with minifier `cssnano` and CSS animations (Props [@CeliaRozalenM](https://github.com/CeliaRozalenM))
-* Fix: Max-width propety is missing in `_archive.scss` (Props [@redpik](https://github.com/redpik))
+* Fix: Max-width property is missing in `_archive.scss` (Props [@redpik](https://github.com/redpik))
 
 = 2.2.1 - 2019-09-10 =
 * Tweak: Added max width to `wp-caption` ([#91](https://github.com/elementor/hello-theme/issues/91))
@@ -173,7 +202,7 @@ Source: https://stocksnap.io/photo/4B83RD7BV9
 * Fix: Minified `style.css` for better optimization
 
 = 2.0.5 - 2019-05-21 =
-* New: Inroducing [Hello Theme Child](https://github.com/elementor/hello-theme-child)
+* New: Introducing [Hello Theme Child](https://github.com/elementor/hello-theme-child)
 * Tweak: Enqueue only parent theme stylesheet
 * Tweak: Added admin notice box for recommending Elementor plugin
 
@@ -184,7 +213,7 @@ Source: https://stocksnap.io/photo/4B83RD7BV9
 * Tweak: Removed `accessibility-ready` tag
 
 = 2.0.2 - 2019-05-13 =
-* Tweak: Added `hello_elementor_content_width` filter, as per WordePress best practice
+* Tweak: Added `hello_elementor_content_width` filter, as per WordPress best practice
 
 = 2.0.1 - 2019-05-12 =
 * Tweak: Updated theme screenshot (following comment by WP Theme Review team)

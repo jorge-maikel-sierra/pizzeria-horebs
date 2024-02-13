@@ -11,7 +11,6 @@ use Yoast\WP\Local\Conditionals\No_Conditionals;
 use Yoast\WP\Local\PostType\PostType;
 use Yoast\WP\SEO\Context\Meta_Tags_Context;
 use Yoast\WP\SEO\Initializers\Initializer_Interface;
-use Yoast\WP\SEO\Surfaces\Values\Meta;
 
 /**
  * Class Locations_Repository
@@ -215,6 +214,8 @@ class Locations_Repository implements Initializer_Interface {
 
 	/**
 	 * The init function for the Locations_Repository class.
+	 *
+	 * @return void
 	 */
 	public function initialize() {
 		$this->local_options = \get_option( 'wpseo_local' );
@@ -630,7 +631,7 @@ class Locations_Repository implements Initializer_Interface {
 	public function cb_postmeta_postal( $location_id ) {
 		$is_postal_address = \get_post_meta( $location_id, '_wpseo_is_postal_address', true );
 
-		return $is_postal_address == '1';
+		return $is_postal_address === '1';
 	}
 
 	/**
@@ -712,7 +713,7 @@ class Locations_Repository implements Initializer_Interface {
 		$logo = \get_post_meta( $location_id, '_wpseo_business_location_logo', true );
 
 		if ( empty( $logo ) && ! \is_admin() ) {
-			$logo = $this->cb_options_logo( $this->wpseo_options );
+			$logo = $this->cb_options_logo();
 		}
 
 		// Check if a number is returned. If not, get the ID from the src, otherwise, simply return the ID.
@@ -763,7 +764,7 @@ class Locations_Repository implements Initializer_Interface {
 			$company_name = WPSEO_Options::get( 'company_name' );
 		}
 
-		return isset( $company_name ) ? $company_name : '';
+		return ( $company_name ?? '' );
 	}
 
 	/**
@@ -850,14 +851,16 @@ class Locations_Repository implements Initializer_Interface {
 	}
 
 	/**
-	 * @return false|string Return ID of the company logo.
+	 * Retrieves the company logo ID.
+	 *
+	 * @return int|string ID of the company logo or an empty string.
 	 */
 	public function cb_options_logo() {
-		if ( isset( $this->wpseo_options['company_logo'] ) && \filter_var( $this->wpseo_options['company_logo'], \FILTER_VALIDATE_URL ) ) {
-			return \yoast_wpseo_local_get_attachment_id_from_src( $this->wpseo_options['company_logo'] );
+		$wpseo_titles = \get_option( 'wpseo_titles' );
+		if ( ! isset( $wpseo_titles['company_logo_id'] ) ) {
+			return '';
 		}
-
-		return '';
+		return $wpseo_titles['company_logo_id'];
 	}
 
 	/**

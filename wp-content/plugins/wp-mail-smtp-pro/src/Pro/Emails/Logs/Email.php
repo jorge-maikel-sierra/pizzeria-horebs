@@ -2,7 +2,10 @@
 
 namespace WPMailSMTP\Pro\Emails\Logs;
 
+use WPMailSMTP\Helpers\Helpers;
 use WPMailSMTP\WP;
+use Exception;
+use DateTime;
 
 /**
  * Class Email represents single email log entry.
@@ -443,8 +446,9 @@ class Email {
 	 *
 	 * @since 1.5.0
 	 * @since 2.6.0 Added UTC timezone.
+	 * @since 3.8.0 Handle cases where `$this->date_sent` is a `DateTime` object.
 	 *
-	 * @return \DateTime
+	 * @return DateTime
 	 * @throws \Exception Emits exception on incorrect date.
 	 */
 	public function get_date_sent() {
@@ -453,7 +457,8 @@ class Email {
 		$date     = false;
 
 		if ( ! empty( $this->date_sent ) ) {
-			$date = \DateTime::createFromFormat( WP::datetime_mysql_format(), $this->date_sent, $timezone );
+			$date_sent_string = is_a( $this->date_sent, DateTime::class ) ? $this->date_sent->format( WP::datetime_mysql_format() ) : $this->date_sent;
+			$date             = DateTime::createFromFormat( WP::datetime_mysql_format(), $date_sent_string, $timezone );
 		}
 
 		if ( $date === false ) {
@@ -624,7 +629,11 @@ class Email {
 	 */
 	public function set_subject( $subject ) {
 
-		$this->subject = substr( wp_kses( $subject, [] ), 0, 191 );
+		if ( ! function_exists( 'mb_substr' ) ) {
+			Helpers::include_mbstring_polyfill();
+		}
+
+		$this->subject = mb_substr( wp_kses( $subject, [] ), 0, 191 );
 
 		return $this;
 	}
@@ -860,6 +869,22 @@ class Email {
 	}
 
 	/**
+	 * Set the initiator name.
+	 *
+	 * @since 3.8.0
+	 *
+	 * @param string $name Initiator name.
+	 *
+	 * @return Email
+	 */
+	public function set_initiator_name( $name ) {
+
+		$this->initiator_name = $name;
+
+		return $this;
+	}
+
+	/**
 	 * Set parent ID.
 	 *
 	 * @since 3.7.0
@@ -1040,6 +1065,18 @@ class Email {
 	}
 
 	/**
+	 * Whether the email is waiting for delivery verification.
+	 *
+	 * @since 3.9.0
+	 *
+	 * @return bool
+	 */
+	public function is_waiting_for_delivery_verification() {
+
+		return $this->get_status() === self::STATUS_WAITING;
+	}
+
+	/**
 	 * Whether the email sending has failed.
 	 *
 	 * @since 2.5.0
@@ -1073,5 +1110,26 @@ class Email {
 	public function has_error() {
 
 		return ! empty( $this->get_error_text() );
+	}
+
+	/**
+	 * If the email is a test.
+	 *
+	 * @since 3.10.0
+	 *
+	 * @return bool
+	 */
+	public function is_test() {
+
+		$mailer_type = $this->get_header( 'X-Mailer-Type' );
+
+		return in_array(
+			$mailer_type,
+			[
+				'WPMailSMTP/Admin/Test',
+				'WPMailSMTP/Admin/SetupWizard/Test',
+			],
+			true
+		);
 	}
 }

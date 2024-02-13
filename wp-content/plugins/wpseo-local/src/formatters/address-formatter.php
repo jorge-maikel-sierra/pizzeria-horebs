@@ -58,10 +58,10 @@ if ( ! \class_exists( Address_Formatter::class ) ) {
 		public function get_address_format( $address_format, $address_details ) {
 			$output = '';
 
-			$show_logo          = isset( $address_details['show_logo'] ) ? $address_details['show_logo'] : false;
-			$hide_business_name = isset( $address_details['hide_business_name'] ) ? $address_details['hide_business_name'] : '';
+			$show_logo          = ( $address_details['show_logo'] ?? false );
+			$hide_business_name = ( $address_details['hide_business_name'] ?? '' );
 			$business_address   = $address_details['business_address'];
-			$business_address_2 = ( isset( $address_details['business_address_2'] ) ? $address_details['business_address_2'] : '' );
+			$business_address_2 = ( $address_details['business_address_2'] ?? '' );
 			$oneline            = $address_details['oneline'];
 			$business_zipcode   = $address_details['business_zipcode'];
 			$business_city      = $address_details['business_city'];
@@ -153,7 +153,7 @@ if ( ! \class_exists( Address_Formatter::class ) ) {
 					$output .= ( ( $oneline ) ? ', ' : '' );
 
 					if ( $use_tags ) {
-						$output .= '<' . $tag_name . ' class="street-address">' . $business_address . '</' . $tag_name . '>';
+						$output .= '<' . $tag_name . ' class="street-address">' . \esc_html( $business_address ) . '</' . $tag_name . '>';
 					}
 					else {
 						$output .= \esc_html( $business_address );
@@ -164,7 +164,7 @@ if ( ! \class_exists( Address_Formatter::class ) ) {
 					$output .= ( ( $oneline ) ? ', ' : '' );
 
 					if ( $use_tags ) {
-						$output .= '<' . $tag_name . ' class="street-address">' . $business_address_2 . '</' . $tag_name . '>';
+						$output .= '<' . $tag_name . ' class="street-address">' . \esc_html( $business_address_2 ) . '</' . $tag_name . '>';
 					}
 					else {
 						$output .= \esc_html( $business_address_2 );

@@ -3,13 +3,15 @@
  * @package WPSEO_Local\Frontend\Schema
  */
 
+use Yoast\WP\SEO\Context\Meta_Tags_Context;
+
 /**
  * Class WPSEO_Local_JSON_LD.
  *
  * Manages the Schema.
  *
- * @property WPSEO_Schema_Context $context A value object with context variables.
- * @property array                $options Local SEO options.
+ * @property Meta_Tags_Context $context A value object with context variables.
+ * @property array             $options Local SEO options.
  */
 class WPSEO_Local_Schema {
 
@@ -23,7 +25,7 @@ class WPSEO_Local_Schema {
 	/**
 	 * A value object with context variables.
 	 *
-	 * @var WPSEO_Schema_Context
+	 * @var Meta_Tags_Context
 	 */
 	private $context;
 
@@ -39,12 +41,12 @@ class WPSEO_Local_Schema {
 	/**
 	 * Adds the graph pieces to the Schema Graph.
 	 *
-	 * @param array                $pieces  Array of Graph pieces.
-	 * @param WPSEO_Schema_Context $context A value object with context variables.
+	 * @param array             $pieces  Array of Graph pieces.
+	 * @param Meta_Tags_Context $context A value object with context variables.
 	 *
 	 * @return array Array of Graph pieces.
 	 */
-	public function add_graph_piece( $pieces, WPSEO_Schema_Context $context ) {
+	public function add_graph_piece( $pieces, Meta_Tags_Context $context ) {
 		$this->context = $context;
 
 		$pieces[] = new WPSEO_Local_Postal_Address( $context );

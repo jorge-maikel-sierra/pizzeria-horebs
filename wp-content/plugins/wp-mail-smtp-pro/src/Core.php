@@ -6,6 +6,7 @@ use WPMailSMTP\Admin\AdminBarMenu;
 use WPMailSMTP\Admin\DashboardWidget;
 use WPMailSMTP\Admin\DebugEvents\DebugEvents;
 use WPMailSMTP\Admin\Notifications;
+use WPMailSMTP\Helpers\Helpers;
 use WPMailSMTP\Tasks\Meta;
 use WPMailSMTP\UsageTracking\UsageTracking;
 use WPMailSMTP\Compatibility\Compatibility;
@@ -174,7 +175,7 @@ class Core {
 		}
 
 		// Plugin admin area notices. Display to "admins" only.
-		if ( current_user_can( 'manage_options' ) ) {
+		if ( current_user_can( wp_mail_smtp()->get_capability_manage_options() ) ) {
 			add_action( 'admin_notices', array( '\WPMailSMTP\WP', 'display_admin_notices' ) );
 			add_action( 'admin_notices', array( $this, 'display_general_notices' ) );
 
@@ -198,10 +199,6 @@ class Core {
 		$is_allowed = true;
 
 		if ( ! is_readable( $this->plugin_path . '/src/Pro/Pro.php' ) ) {
-			$is_allowed = false;
-		}
-
-		if ( version_compare( phpversion(), '5.6', '<' ) ) {
 			$is_allowed = false;
 		}
 
@@ -429,52 +426,7 @@ class Core {
 	 *
 	 * @since 1.0.0
 	 */
-	public function init_notifications() {
-
-		// Old PHP version notification.
-		if (
-			version_compare( phpversion(), '5.6', '<' ) &&
-			is_super_admin() &&
-			(
-				isset( $GLOBALS['pagenow'] ) &&
-				$GLOBALS['pagenow'] === 'index.php'
-			)
-		) {
-			WP::add_admin_notice(
-				sprintf(
-					wp_kses( /* translators: %1$s - WP Mail SMTP plugin name; %2$s - WPMailSMTP.com URL to a related doc. */
-						__( 'Your site is running an outdated version of PHP that is no longer supported and may cause issues with %1$s. <a href="%2$s" target="_blank" rel="noopener noreferrer">Read more</a> for additional information.', 'wp-mail-smtp' ),
-						array(
-							'a' => array(
-								'href'   => array(),
-								'target' => array(),
-								'rel'    => array(),
-							),
-						)
-					),
-					'<strong>WP Mail SMTP</strong>',
-					// phpcs:ignore WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound
-					esc_url( wp_mail_smtp()->get_utm_url( 'https://wpmailsmtp.com/docs/supported-php-versions-for-wp-mail-smtp/', [ 'medium' => 'Admin Notice', 'content' => 'Upgrade PHP Recommendation' ] ) )
-				) .
-				'<br><br><em>' .
-				wp_kses(
-					__( '<strong>Please Note:</strong> Support for PHP 5.5 will be discontinued in 2021. After this, if no further action is taken, WP Mail SMTP functionality will be disabled.', 'wp-mail-smtp' ),
-					array(
-						'strong' => array(),
-						'em'     => array(),
-					)
-				) .
-				'</em>',
-				WP::ADMIN_NOTICE_ERROR,
-				false
-			);
-		}
-
-		// Awesome Motive Notifications.
-		if ( Options::init()->get( 'general', 'am_notifications_hidden' ) ) {
-			return;
-		}
-	}
+	public function init_notifications() { }
 
 	/**
 	 * Display all debug mail-delivery related notices.
@@ -657,7 +609,7 @@ class Core {
 	public function detect_conflicts() {
 
 		// Display only for those who can actually deactivate plugins.
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( wp_mail_smtp()->get_capability_manage_options() ) ) {
 			return;
 		}
 
@@ -735,6 +687,8 @@ class Core {
 			$activated[ $license_type ] = time();
 			update_option( 'wp_mail_smtp_activated', $activated );
 		}
+
+		set_transient( 'wp_mail_smtp_just_activated', true, 60 );
 
 		// Add transient to trigger redirect to the Setup Wizard.
 		set_transient( 'wp_mail_smtp_activation_redirect', true, 30 );
@@ -829,6 +783,7 @@ class Core {
 		$medium   = 'plugin-settings';
 		$campaign = $this->is_pro() ? 'plugin' : 'liteplugin';
 		$content  = 'general';
+		$locale   = get_user_locale();
 
 		if ( is_array( $utm ) ) {
 			if ( isset( $utm['source'] ) ) {
@@ -843,6 +798,9 @@ class Core {
 			if ( isset( $utm['content'] ) ) {
 				$content = $utm['content'];
 			}
+			if ( isset( $utm['locale'] ) ) {
+				$locale = $utm['locale'];
+			}
 		} elseif ( is_string( $utm ) ) {
 			$content = $utm;
 		}
@@ -851,6 +809,7 @@ class Core {
 			'utm_source'   => esc_attr( rawurlencode( $source ) ),
 			'utm_medium'   => esc_attr( rawurlencode( $medium ) ),
 			'utm_campaign' => esc_attr( rawurlencode( $campaign ) ),
+			'utm_locale'   => esc_attr( sanitize_key( $locale ) ),
 		];
 
 		if ( ! empty( $content ) ) {
@@ -1386,5 +1345,24 @@ class Core {
 		} catch ( Exception $e ) {
 			return;
 		}
+	}
+
+	/**
+	 * Get the default capability to manage everything for WP Mail SMTP.
+	 *
+	 * @since 3.11.0
+	 *
+	 * @return string
+	 */
+	public function get_capability_manage_options() {
+
+		/**
+		 * Filters the default capability to manage everything for WP Mail SMTP.
+		 *
+		 * @since 3.11.0
+		 *
+		 * @param string $capability The default capability to manage everything for WP Mail SMTP.
+		 */
+		return apply_filters( 'wp_mail_smtp_core_get_capability_manage_options', 'manage_options' );
 	}
 }

@@ -6,11 +6,11 @@
  * @since   4.0
  */
 
-use Yoast\WP\SEO\Presenters\Admin\Help_Link_Presenter;
-use Yoast\WP\Local\Repositories\Api_Keys_Repository;
-use Yoast\WP\Local\PostType\PostType;
 use Yoast\WP\Local\Builders\Locations_Repository_Builder;
+use Yoast\WP\Local\PostType\PostType;
+use Yoast\WP\Local\Repositories\Api_Keys_Repository;
 use Yoast\WP\Local\Repositories\Business_Types_Repository;
+use Yoast\WP\SEO\Presenters\Admin\Help_Link_Presenter;
 
 if ( ! defined( 'WPSEO_LOCAL_VERSION' ) ) {
 	header( 'Status: 403 Forbidden' );
@@ -84,6 +84,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_General_Settings' ) ) {
 
 		/**
 		 * Fetches data required for multiple locations select to allow user to select a primary location
+		 *
+		 * @return void
 		 */
 		public function multiple_locations_location_data() {
 			$locations_repository_builder = new Locations_Repository_Builder();
@@ -106,6 +108,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_General_Settings' ) ) {
 
 		/**
 		 * Get wpseo_local options.
+		 *
+		 * @return void
 		 */
 		private function get_options() {
 			$this->options = get_option( 'wpseo_local' );
@@ -113,6 +117,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_General_Settings' ) ) {
 
 		/**
 		 * Get the API key set in Local SEO Options.
+		 *
+		 * @return void
 		 */
 		private function get_api_key() {
 			$this->api_key = $this->api_repository->get_api_key( 'browser' );
@@ -145,6 +151,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_General_Settings' ) ) {
 
 		/**
 		 * Add local config action.
+		 *
+		 * @return void
 		 */
 		public function local_config() {
 			do_action( 'wpseo_local_config' );
@@ -152,6 +160,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_General_Settings' ) ) {
 
 		/**
 		 * Introductory copy before starting about the multiple locations settings.
+		 *
+		 * @return void
 		 */
 		public function introductory_copy() {
 			WPSEO_Local_Admin_Page::section_before( 'introductory-copy' );
@@ -172,10 +182,11 @@ if ( ! class_exists( 'WPSEO_Local_Admin_General_Settings' ) ) {
 
 		/**
 		 * Multiple locations checkbox.
+		 *
+		 * @return void
 		 */
 		public function multiple_locations() {
 			WPSEO_Local_Admin_Page::section_before( 'select-multiple-locations' );
-			//WPSEO_Local_Admin_Wrappers::checkbox( 'use_multiple_locations', '', __( 'Use multiple locations', 'yoast-local-seo' ) );
 
 			Yoast_Form::get_instance()->light_switch(
 				'use_multiple_locations',
@@ -205,6 +216,7 @@ if ( ! class_exists( 'WPSEO_Local_Admin_General_Settings' ) ) {
 			$flattened_business_types = $business_types_repo->get_business_types();
 			$business_types_help      = new WPSEO_Local_Admin_Help_Panel(
 				'business_types_help',
+				/* translators: Hidden accessibility text. */
 				__( 'Help with: Business types', 'yoast-local-seo' ),
 				sprintf(
 				/* translators: 1: HTML <a> open tag; 2: <a> close tag. */
@@ -217,6 +229,7 @@ if ( ! class_exists( 'WPSEO_Local_Admin_General_Settings' ) ) {
 
 			$price_indication_help = new WPSEO_Local_Admin_Help_Panel(
 				'price_indication_help',
+				/* translators: Hidden accessibility text. */
 				__( 'Help with: Price indication', 'yoast-local-seo' ),
 				esc_html__( 'Select the price indication of your business, where $ is cheap and $$$$$ is expensive.', 'yoast-local-seo' ),
 				'has-wrapper'
@@ -224,6 +237,7 @@ if ( ! class_exists( 'WPSEO_Local_Admin_General_Settings' ) ) {
 
 			$area_served_help = new WPSEO_Local_Admin_Help_Panel(
 				'area_served_help',
+				/* translators: Hidden accessibility text. */
 				__( 'Help with: Area served', 'yoast-local-seo' ),
 				esc_html__( 'The geographic area where a service or offered item is provided.', 'yoast-local-seo' ),
 				'has-wrapper'
@@ -419,20 +433,18 @@ if ( ! class_exists( 'WPSEO_Local_Admin_General_Settings' ) ) {
 			if ( ! empty( $company_name ) || ! empty( $company_logo ) ) {
 
 				printf(
-				/* translators: 1: HTML <a> open tag; 2: <a> close tag; 3: "Yoast SEO". */
-					esc_html__( 'You can change your current company name and logo within the general settings of the Search Appearance of %3$s. %1$sGo to the settings%2$s.', 'yoast-local-seo' ),
-					'<a href="' . esc_url( admin_url( 'admin.php?page=wpseo_titles#top#general' ) ) . '">',
-					'</a>',
-					'Yoast SEO'
+				/* translators: 1: HTML <a> open tag; 2: <a> close tag. */
+					esc_html__( 'You can change your current Organization name and logo in the %1$sSite representation%2$s settings.', 'yoast-local-seo' ),
+					'<a href="' . esc_url( admin_url( 'admin.php?page=wpseo_page_settings#/site-representation' ) ) . '">',
+					'</a>'
 				);
 			}
 			else {
 				printf(
-				/* translators: 1: HTML <a> open tag; 2: <a> close tag; 3: "Yoast SEO". */
-					esc_html__( 'You can set up your company name and logo within the general settings of the Search Appearance of %3$s. %1$sChange your company settings%2$s.', 'yoast-local-seo' ),
-					'<a href="' . esc_url( admin_url( 'admin.php?page=wpseo_titles#top#general' ) ) . '">',
-					'</a>',
-					'Yoast SEO'
+				/* translators: 1: HTML <a> open tag; 2: <a> close tag. */
+					esc_html__( 'You can set up your Organization name and logo in the %1$sSite representation%2$s settings.', 'yoast-local-seo' ),
+					'<a href="' . esc_url( admin_url( 'admin.php?page=wpseo_page_settings#/site-representation' ) ) . '">',
+					'</a>'
 				);
 			}
 			echo '</p>';
@@ -541,6 +553,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_General_Settings' ) ) {
 
 		/**
 		 * Show the dropdown to select an address format.
+		 *
+		 * @return void
 		 */
 		public function address_format() {
 			WPSEO_Local_Admin_Page::section_before( 'wpseo-local-address-format' );
@@ -561,13 +575,15 @@ if ( ! class_exists( 'WPSEO_Local_Admin_General_Settings' ) ) {
 				$select_options
 			);
 
-			/* translators: %s extends to <a href="mailto:pluginsupport@yoast.com">pluginsupport@yoast.com</a> */
-			echo '<p style="border:none;">' . sprintf( esc_html__( 'A lot of countries have their own address format. Please choose one that matches yours. If you have something completely different, please let us know via %s.', 'yoast-local-seo' ), '<a href="mailto:pluginsupport@yoast.com">pluginsupport@yoast.com</a>' ) . '</p>';
+			/* translators: %s extends to <a href="mailto:support@yoast.com">support@yoast.com</a> */
+			echo '<p style="border:none;">' . sprintf( esc_html__( 'A lot of countries have their own address format. Please choose one that matches yours. If you have something completely different, please let us know via %s.', 'yoast-local-seo' ), '<a href="mailto:support@yoast.com">support@yoast.com</a>' ) . '</p>';
 			WPSEO_Local_Admin_Page::section_after(); // End wpseo-local-address-format section.
 		}
 
 		/**
 		 * Add a hidden input field to save the local pickup setting in.
+		 *
+		 * @return void
 		 */
 		public function woocommerce_setting() {
 			WPSEO_Local_Admin_Wrappers::hidden( 'woocommerce_local_pickup_setting' );

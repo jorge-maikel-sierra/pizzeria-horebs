@@ -3,11 +3,14 @@
 namespace Yoast\WP\Local\Builders;
 
 use Yoast\WP\Local\PostType\PostType;
-use Yoast\WP\Local\Repositories\Options_Repository;
 use Yoast\WP\Local\Repositories\Locations_Repository;
+use Yoast\WP\Local\Repositories\Options_Repository;
 
 class Locations_Repository_Builder {
 
+	/**
+	 * @var Locations_Repository
+	 */
 	private $locations_repository;
 
 	public function __construct() {
@@ -21,8 +24,7 @@ class Locations_Repository_Builder {
 		$this->locations_repository->initialize();
 	}
 
-	public function get_locations_repository(  ) {
+	public function get_locations_repository() {
 		return $this->locations_repository;
 	}
-
 }

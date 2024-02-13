@@ -66,6 +66,8 @@ if ( ! class_exists( 'WPSEO_Local_Opening_Hours_Repository' ) ) {
 
 		/**
 		 * Runs default actions when instantiating the class.
+		 *
+		 * @return void
 		 */
 		public function run() {
 			$this->set_days();
@@ -84,6 +86,8 @@ if ( ! class_exists( 'WPSEO_Local_Opening_Hours_Repository' ) ) {
 
 		/**
 		 * Set property Days.
+		 *
+		 * @return void
 		 */
 		private function set_days() {
 			$day_labels = [
@@ -157,9 +161,9 @@ if ( ! class_exists( 'WPSEO_Local_Opening_Hours_Repository' ) ) {
 			$is_overridden = false;
 
 			if ( $this->options->use_shared_opening_hours() ) {
-				$is_overridden = \get_post_meta( $post_id, '_wpseo_opening_hours_' . $day . '_override', true );
+				$is_overridden = get_post_meta( $post_id, '_wpseo_opening_hours_' . $day . '_override', true );
 
-				$opening_hours = $this->apply_shared_hours_properties( $day, $opening_hours, \wpseo_check_falses( $is_overridden ) );
+				$opening_hours = $this->apply_shared_hours_properties( $day, $opening_hours, wpseo_check_falses( $is_overridden ) );
 			}
 
 			$use_multiple_times = $this->use_multiple_opening_hours( $post_id );
@@ -270,7 +274,7 @@ if ( ! class_exists( 'WPSEO_Local_Opening_Hours_Repository' ) ) {
 			$result     = [];
 
 			foreach ( $this->hours_keys as $key ) {
-				$result[ $key ] = \get_post_meta( $post_id, $field_name . $key, true );
+				$result[ $key ] = get_post_meta( $post_id, $field_name . $key, true );
 			}
 
 			return $result;
@@ -303,7 +307,7 @@ if ( ! class_exists( 'WPSEO_Local_Opening_Hours_Repository' ) ) {
 			$result = [];
 
 			foreach ( $this->toggle_keys as $key ) {
-				$result[ $key ] = \get_post_meta( $post_id, '_wpseo_' . $key, true );
+				$result[ $key ] = get_post_meta( $post_id, '_wpseo_' . $key, true );
 			}
 
 			return $result;
@@ -360,14 +364,14 @@ if ( ! class_exists( 'WPSEO_Local_Opening_Hours_Repository' ) ) {
 			}
 
 			// Loop through opening hours and remove empty ones.
-			$opening_hours = \array_filter(
+			$opening_hours = array_filter(
 				$opening_hours,
 				static function ( $value ) {
 					return ! empty( $value );
 				}
 			);
 
-			return \array_merge( $opening_hours, $this->get_shared_opening_hours_for_day( $day ) );
+			return array_merge( $opening_hours, $this->get_shared_opening_hours_for_day( $day ) );
 		}
 
 		/**
@@ -382,7 +386,7 @@ if ( ! class_exists( 'WPSEO_Local_Opening_Hours_Repository' ) ) {
 			$shared = $this->get_shared_opening_toggles();
 
 			foreach ( $toggle_properties as $key => $value ) {
-				$is_overridden = \get_post_meta( $location_id, '_wpseo_' . $key . '_override', true );
+				$is_overridden = get_post_meta( $location_id, '_wpseo_' . $key . '_override', true );
 
 				if ( ! $is_overridden && ( empty( $value ) || $value === 'off' ) ) {
 					$toggle_properties[ $key ] = $shared[ $key ];
@@ -444,8 +448,8 @@ if ( ! class_exists( 'WPSEO_Local_Opening_Hours_Repository' ) ) {
 		 */
 		protected function use_multiple_opening_hours( $location_id ) {
 			// Check for multiple opening hours.
-			$use_multiple_times_meta     = \get_post_meta( $location_id, '_wpseo_multiple_opening_hours', true );
-			$use_multiple_times_override = \get_post_meta( $location_id, '_wpseo_multiple_opening_hours', true ) === 'on';
+			$use_multiple_times_meta     = get_post_meta( $location_id, '_wpseo_multiple_opening_hours', true );
+			$use_multiple_times_override = get_post_meta( $location_id, '_wpseo_multiple_opening_hours', true ) === 'on';
 
 			if ( ! $this->options->use_shared_opening_hours() ) {
 				return $use_multiple_times_meta;

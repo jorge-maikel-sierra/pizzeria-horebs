@@ -28,7 +28,6 @@ function wc_template_redirect() {
 
 	// When on the checkout with an empty cart, redirect to cart page.
 	if ( is_page( wc_get_page_id( 'checkout' ) ) && wc_get_page_id( 'checkout' ) !== wc_get_page_id( 'cart' ) && WC()->cart->is_empty() && empty( $wp->query_vars['order-pay'] ) && ! isset( $wp->query_vars['order-received'] ) && ! is_customize_preview() && apply_filters( 'woocommerce_checkout_redirect_empty_cart', true ) ) {
-		wc_add_notice( __( 'Checkout is not available whilst your cart is empty.', 'woocommerce' ), 'notice' );
 		wp_safe_redirect( wc_get_cart_url() );
 		exit;
 
@@ -339,6 +338,12 @@ function wc_body_class( $classes ) {
 		}
 	}
 
+	if ( wc_current_theme_is_fse_theme() ) {
+
+		$classes[] = 'woocommerce-uses-block-theme';
+
+	}
+
 	if ( wc_block_theme_has_styles_for_element( 'button' ) ) {
 
 		$classes[] = 'woocommerce-block-theme-has-button-styles';
@@ -358,8 +363,9 @@ function wc_body_class( $classes ) {
  * @since 3.4.0
  */
 function wc_no_js() {
+	$type_attr = current_theme_supports( 'html5', 'script' ) ? '' : " type='text/javascript'";
 	?>
-	<script type="text/javascript">
+	<script<?php echo $type_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 		(function () {
 			var c = document.body.className;
 			c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
@@ -2338,7 +2344,7 @@ if ( ! function_exists( 'woocommerce_breadcrumb' ) ) {
 				'woocommerce_breadcrumb_defaults',
 				array(
 					'delimiter'   => '&nbsp;&#47;&nbsp;',
-					'wrap_before' => '<nav class="woocommerce-breadcrumb">',
+					'wrap_before' => '<nav class="woocommerce-breadcrumb" aria-label="Breadcrumb">',
 					'wrap_after'  => '</nav>',
 					'before'      => '',
 					'after'       => '',
@@ -2718,10 +2724,30 @@ if ( ! function_exists( 'woocommerce_order_details_table' ) ) {
 			return;
 		}
 
+		$order = wc_get_order( $order_id );
+
+		if ( ! $order ) {
+			return;
+		}
+
 		wc_get_template(
 			'order/order-details.php',
 			array(
-				'order_id' => $order_id,
+				'order_id'       => $order_id,
+				/**
+				 * Determines if the order downloads table should be shown (in the context of the order details
+				 * template).
+				 *
+				 * By default, this is true if the order has at least one dowloadable items and download is permitted
+				 * (which is partly determined by the order status). For special cases, though, this can be overridden
+				 * and the downloads table can be forced to render (or forced not to render).
+				 *
+				 * @since 8.5.0
+				 *
+				 * @param bool     $show_downloads If the downloads table should be shown.
+				 * @param WC_Order $order          The related order.
+				 */
+				'show_downloads' => apply_filters( 'woocommerce_order_downloads_table_show_downloads', ( $order->has_downloadable_item() && $order->is_download_permitted() ), $order ),
 			)
 		);
 	}
@@ -3295,7 +3321,7 @@ if ( ! function_exists( 'woocommerce_account_edit_address' ) ) {
 	/**
 	 * My Account > Edit address template.
 	 *
-	 * @param string $type Address type.
+	 * @param string $type Type of address; 'billing' or 'shipping'.
 	 */
 	function woocommerce_account_edit_address( $type ) {
 		$type = wc_edit_address_i18n( sanitize_title( $type ), true );
@@ -3696,10 +3722,28 @@ function wc_logout_url( $redirect = '' ) {
  * @since 3.1.0
  */
 function wc_empty_cart_message() {
-	$message = wp_kses_post( apply_filters( 'wc_empty_cart_message', __( 'Your cart is currently empty.', 'woocommerce' ) ) ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
-	$notice  = wc_print_notice( $message, 'notice', array(), true );
-	$notice  = str_replace( 'class="woocommerce-info"', 'class="cart-empty woocommerce-info"', $notice );
-	echo $notice; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	$notice = wc_print_notice(
+		wp_kses_post(
+			/**
+			 * Filter empty cart message text.
+			 *
+			 * @since 3.1.0
+			 * @param string $message Default empty cart message.
+			 * @return string
+			 */
+			apply_filters( 'wc_empty_cart_message', __( 'Your cart is currently empty.', 'woocommerce' ) )
+		),
+		'notice',
+		array(),
+		true
+	);
+
+	// This adds the cart-empty classname to the notice to preserve backwards compatibility (for styling purposes etc).
+	$notice = str_replace( 'class="woocommerce-info"', 'class="cart-empty woocommerce-info"', $notice );
+
+	// Return the notice within a consistent wrapper element. This is targetted by some scripts such as cart.js.
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo '<div class="wc-empty-cart-message">' . $notice . '</div>';
 }
 
 /**

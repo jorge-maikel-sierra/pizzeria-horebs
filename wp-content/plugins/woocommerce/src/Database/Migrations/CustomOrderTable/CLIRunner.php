@@ -4,7 +4,9 @@ namespace Automattic\WooCommerce\DataBase\Migrations\CustomOrderTable;
 
 use Automattic\WooCommerce\Internal\DataStores\Orders\CustomOrdersTableController;
 use Automattic\WooCommerce\Internal\DataStores\Orders\DataSynchronizer;
+use Automattic\WooCommerce\Internal\DataStores\Orders\LegacyDataHandler;
 use Automattic\WooCommerce\Internal\DataStores\Orders\OrdersTableDataStore;
+use Automattic\WooCommerce\Internal\Features\FeaturesController;
 use WP_CLI;
 
 /**
@@ -60,6 +62,9 @@ class CLIRunner {
 		WP_CLI::add_command( 'wc cot migrate', array( $this, 'migrate' ) );
 		WP_CLI::add_command( 'wc cot sync', array( $this, 'sync' ) );
 		WP_CLI::add_command( 'wc cot verify_cot_data', array( $this, 'verify_cot_data' ) );
+		WP_CLI::add_command( 'wc cot enable', array( $this, 'enable' ) );
+		WP_CLI::add_command( 'wc cot disable', array( $this, 'disable' ) );
+		WP_CLI::add_command( 'wc hpos cleanup', array( $this, 'cleanup_post_data' ) );
 	}
 
 	/**
@@ -70,7 +75,7 @@ class CLIRunner {
 	 * @return bool Whether the COT feature is enabled.
 	 */
 	private function is_enabled( $log = true ) : bool {
-		if ( ! $this->controller->is_feature_visible() ) {
+		if ( ! $this->controller->custom_orders_table_usage_is_enabled() ) {
 			if ( $log ) {
 				WP_CLI::log(
 					sprintf(
@@ -82,14 +87,7 @@ class CLIRunner {
 			}
 		}
 
-		return $this->controller->is_feature_visible();
-	}
-
-	/**
-	 * Helper method to log warning that feature is not yet production ready.
-	 */
-	private function log_production_warning() {
-		WP_CLI::log( __( 'This feature is not production ready yet. Make sure you are not running these commands in your production environment.', 'woocommerce' ) );
+		return $this->controller->custom_orders_table_usage_is_enabled();
 	}
 
 	/**
@@ -106,10 +104,6 @@ class CLIRunner {
 	 * @return int The number of orders to be migrated.*
 	 */
 	public function count_unmigrated( $args = array(), $assoc_args = array() ) : int {
-		if ( ! $this->is_enabled() ) {
-			return 0;
-		}
-
 		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		$order_count = $this->synchronizer->get_current_orders_pending_sync_count();
 
@@ -156,9 +150,14 @@ class CLIRunner {
 	 * @param array $assoc_args Associative arguments (options) passed to the command.
 	 */
 	public function sync( $args = array(), $assoc_args = array() ) {
-		$this->log_production_warning();
-		if ( ! $this->is_enabled() ) {
-			return;
+		if ( ! $this->synchronizer->check_orders_table_exists() ) {
+			WP_CLI::warning( __( 'Custom order tables does not exist, creating...', 'woocommerce' ) );
+			$this->synchronizer->create_database_tables();
+			if ( $this->synchronizer->check_orders_table_exists() ) {
+				WP_CLI::success( __( 'Custom order tables were created successfully.', 'woocommerce' ) );
+			} else {
+				WP_CLI::error( __( 'Custom order tables could not be created.', 'woocommerce' ) );
+			}
 		}
 
 		$order_count = $this->count_unmigrated();
@@ -244,6 +243,7 @@ class CLIRunner {
 	}
 
 	/**
+	 * [Deprecated] Use `wp wc cot sync` instead.
 	 * Copy order data into the postmeta table.
 	 *
 	 * Note that this could dramatically increase the size of your postmeta table, but is recommended
@@ -266,7 +266,6 @@ class CLIRunner {
 	 * @param array $assoc_args Associative arguments (options) passed to the command.
 	 */
 	public function migrate( $args = array(), $assoc_args = array() ) {
-		$this->log_production_warning();
 		WP_CLI::log( __( 'Migrate command is deprecated. Please use `sync` instead.', 'woocommerce' ) );
 	}
 
@@ -319,8 +318,9 @@ class CLIRunner {
 	 */
 	public function verify_cot_data( $args = array(), $assoc_args = array() ) {
 		global $wpdb;
-		$this->log_production_warning();
-		if ( ! $this->is_enabled() ) {
+
+		if ( ! $this->synchronizer->check_orders_table_exists() ) {
+			WP_CLI::error( __( 'Orders table does not exist.', 'woocommerce' ) );
 			return;
 		}
 
@@ -407,8 +407,7 @@ class CLIRunner {
 			$total_time += $batch_total_time;
 
 			if ( $verbose && count( $failed_ids_in_current_batch ) > 0 ) {
-				// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r -- This is a CLI command and debugging code is intended.
-				$errors = print_r( $failed_ids_in_current_batch, true );
+				$errors = wp_json_encode( $failed_ids_in_current_batch, JSON_PRETTY_PRINT );
 				WP_CLI::warning(
 					sprintf(
 					/* Translators: %1$d is number of errors and %2$s is the formatted array of order IDs. */
@@ -433,8 +432,7 @@ class CLIRunner {
 					$errors_in_remigrate_batch = $this->post_to_cot_migrator->verify_migrated_orders( $failed_ids );
 					$errors_in_remigrate_batch = $this->verify_meta_data( $failed_ids, $errors_in_remigrate_batch );
 					if ( count( $errors_in_remigrate_batch ) > 0 ) {
-						// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r -- This is a CLI command and debugging code is intended.
-						$formatted_errors = print_r( $errors_in_remigrate_batch, true );
+						$formatted_errors = wp_json_encode( $errors_in_remigrate_batch, JSON_PRETTY_PRINT );
 						WP_CLI::warning(
 							sprintf(
 							/* Translators: %1$d is number of errors and %2$s is the formatted array of order IDs. */
@@ -496,8 +494,7 @@ class CLIRunner {
 				)
 			);
 		} else {
-			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r -- This is a CLI command and debugging code is intended.
-			$errors = print_r( $failed_ids, true );
+			$errors = wp_json_encode( $failed_ids, JSON_PRETTY_PRINT );
 
 			return WP_CLI::error(
 				sprintf(
@@ -586,11 +583,20 @@ class CLIRunner {
 	 * @return array Failed IDs with meta details.
 	 */
 	private function verify_meta_data( array $order_ids, array $failed_ids ) : array {
+		$meta_keys_to_ignore = array(
+			'_paid_date', // This has been deprecated and replaced by '_date_paid' in the CPT datastore.
+			'_completed_date', // This has been deprecated and replaced by '_date_completed' in the CPT datastore.
+			'_edit_lock',
+		);
+
 		global $wpdb;
 		if ( ! count( $order_ids ) ) {
 			return array();
 		}
-		$excluded_columns             = $this->post_to_cot_migrator->get_migrated_meta_keys();
+		$excluded_columns             = array_merge(
+			$this->post_to_cot_migrator->get_migrated_meta_keys(),
+			$meta_keys_to_ignore
+		);
 		$excluded_columns_placeholder = implode( ', ', array_fill( 0, count( $excluded_columns ), '%s' ) );
 		$order_ids_placeholder        = implode( ', ', array_fill( 0, count( $order_ids ), '%d' ) );
 		$meta_table                   = OrdersTableDataStore::get_meta_table_name();
@@ -672,6 +678,285 @@ ORDER BY $meta_table.order_id ASC, $meta_table.meta_key ASC;
 			$clubbed_data[ $row['entity_id'] ][ $row['meta_key'] ][] = $row['meta_value'];
 		}
 		return $clubbed_data;
+	}
+
+	/**
+	 * Set custom order tables (HPOS) to authoritative if: 1). HPOS and posts tables are in sync, or, 2). This is a new shop (in this case also create tables). Additionally, all installed WC plugins should be compatible.
+	 *
+	 * ## OPTIONS
+	 *
+	 * [--for-new-shop]
+	 * : Enable only if this is a new shop, irrespective of whether tables are in sync.
+	 * ---
+	 * default: false
+	 * ---
+	 *
+	 * [--with-sync]
+	 * : Also enables sync (if it's currently not enabled).
+	 * ---
+	 * default: false
+	 * ---
+	 *
+	 * ### EXAMPLES
+	 *
+	 *      # Enable HPOS on new shops.
+	 *      wp wc cot enable --for-new-shop
+	 *
+	 * @param array $args Positional arguments passed to the command.
+	 * @param array $assoc_args Associative arguments (options) passed to the command.
+	 *
+	 * @return void
+	 */
+	public function enable( array $args = array(), array $assoc_args = array() ) {
+		$assoc_args = wp_parse_args(
+			$assoc_args,
+			array(
+				'for-new-shop' => false,
+				'with-sync'    => false,
+			)
+		);
+
+		$enable_hpos = true;
+		WP_CLI::log( __( 'Running pre-enable checks...', 'woocommerce' ) );
+
+		$is_new_shop = \WC_Install::is_new_install();
+		if ( $assoc_args['for-new-shop'] && ! $is_new_shop ) {
+			WP_CLI::error( __( '[Failed] This is not a new shop, but --for-new-shop flag was passed.', 'woocommerce' ) );
+		}
+
+		/** Feature controller instance @var FeaturesController $feature_controller */
+		$feature_controller = wc_get_container()->get( FeaturesController::class );
+		$plugin_info        = $feature_controller->get_compatible_plugins_for_feature( 'custom_order_tables', true );
+		if ( count( array_merge( $plugin_info['uncertain'], $plugin_info['incompatible'] ) ) > 0 ) {
+			WP_CLI::warning( __( '[Failed] Some installed plugins are incompatible. Please review the plugins by going to WooCommerce > Settings > Advanced > Features and see the "Order data storage" section.', 'woocommerce' ) );
+			$enable_hpos = false;
+		}
+
+		/** DataSynchronizer instance @var DataSynchronizer $data_synchronizer */
+		$data_synchronizer = wc_get_container()->get( DataSynchronizer::class );
+		$pending_orders    = $data_synchronizer->get_total_pending_count();
+		$table_exists      = $data_synchronizer->check_orders_table_exists();
+
+		if ( ! $table_exists ) {
+			WP_CLI::warning( __( 'Orders table does not exist. Creating...', 'woocommerce' ) );
+			if ( $is_new_shop || 0 === $pending_orders ) {
+				$data_synchronizer->create_database_tables();
+				if ( $data_synchronizer->check_orders_table_exists() ) {
+					WP_CLI::log( __( 'Orders table created.', 'woocommerce' ) );
+					$table_exists = true;
+				} else {
+					WP_CLI::warning( __( '[Failed] Orders table could not be created.', 'woocommerce' ) );
+					$enable_hpos = false;
+				}
+			} else {
+				WP_CLI::warning( __( '[Failed] The orders table does not exist and this is not a new shop. Please create the table by going to WooCommerce > Settings > Advanced > Features and enabling sync.', 'woocommerce' ) );
+				$enable_hpos = false;
+			}
+		}
+
+		if ( $pending_orders > 0 ) {
+			WP_CLI::warning(
+				sprintf(
+					// translators: %s is the command to run (wp wc cot sync).
+					__( '[Failed] There are orders pending sync. Please run `%s` to sync pending orders.', 'woocommerce' ),
+					'wp wc cot sync',
+				)
+			);
+			$enable_hpos = false;
+		}
+
+		if ( $assoc_args['with-sync'] && $table_exists ) {
+			if ( $data_synchronizer->data_sync_is_enabled() ) {
+				WP_CLI::warning( __( 'Sync is already enabled.', 'woocommerce' ) );
+			} else {
+				$feature_controller->change_feature_enable( DataSynchronizer::ORDERS_DATA_SYNC_ENABLED_OPTION, true );
+				WP_CLI::success( __( 'Sync enabled.', 'woocommerce' ) );
+			}
+		}
+
+		if ( ! $enable_hpos ) {
+			WP_CLI::error( __( 'HPOS pre-checks failed, please see the errors above', 'woocommerce' ) );
+			return;
+		}
+
+		/** CustomOrdersTableController instance @var CustomOrdersTableController $cot_status */
+		$cot_status = wc_get_container()->get( CustomOrdersTableController::class );
+		if ( $cot_status->custom_orders_table_usage_is_enabled() ) {
+			WP_CLI::warning( __( 'HPOS is already enabled.', 'woocommerce' ) );
+		} else {
+			$feature_controller->change_feature_enable( 'custom_order_tables', true );
+			if ( $cot_status->custom_orders_table_usage_is_enabled() ) {
+				WP_CLI::success( __( 'HPOS enabled.', 'woocommerce' ) );
+			} else {
+				WP_CLI::error( __( 'HPOS could not be enabled.', 'woocommerce' ) );
+			}
+		}
+	}
+
+	/**
+	 * Disables custom order tables (HPOS) and posts to authoritative if HPOS and post tables are in sync.
+	 *
+	 * ## OPTIONS
+	 *
+	 * [--with-sync]
+	 * : Also disables sync (if it's currently enabled).
+	 * ---
+	 * default: false
+	 * ---
+	 *
+	 * ### EXAMPLES
+	 *
+	 *  # Disable HPOS.
+	 *  wp wc cot disable
+	 *
+	 * @param array $args Positional arguments passed to the command.
+	 * @param array $assoc_args Associative arguments (options) passed to the command.
+	 */
+	public function disable( $args, $assoc_args ) {
+		$assoc_args = wp_parse_args(
+			$assoc_args,
+			array(
+				'with-sync' => false,
+			)
+		);
+
+		WP_CLI::log( __( 'Running pre-disable checks...', 'woocommerce' ) );
+
+		/** DataSynchronizer instance @var DataSynchronizer $data_synchronizer */
+		$data_synchronizer = wc_get_container()->get( DataSynchronizer::class );
+		$pending_orders    = $data_synchronizer->get_total_pending_count();
+		if ( $pending_orders > 0 ) {
+			return WP_CLI::error(
+				sprintf(
+					// translators: %s is the command to run (wp wc cot sync).
+					__( '[Failed] There are orders pending sync. Please run `%s` to sync pending orders.', 'woocommerce' ),
+					'wp wc cot sync',
+				)
+			);
+		}
+
+		/** FeaturesController instance @var FeaturesController $feature_controller */
+		$feature_controller = wc_get_container()->get( FeaturesController::class );
+
+		/** CustomOrdersTableController instance @var CustomOrdersTableController $cot_status */
+		$cot_status = wc_get_container()->get( CustomOrdersTableController::class );
+		if ( ! $cot_status->custom_orders_table_usage_is_enabled() ) {
+			WP_CLI::warning( __( 'HPOS is already disabled.', 'woocommerce' ) );
+		} else {
+			$feature_controller->change_feature_enable( 'custom_order_tables', false );
+			if ( $cot_status->custom_orders_table_usage_is_enabled() ) {
+				return WP_CLI::warning( __( 'HPOS could not be disabled.', 'woocommerce' ) );
+			} else {
+				WP_CLI::success( __( 'HPOS disabled.', 'woocommerce' ) );
+			}
+		}
+
+		if ( $assoc_args['with-sync'] ) {
+			if ( ! $data_synchronizer->data_sync_is_enabled() ) {
+				return WP_CLI::warning( __( 'Sync is already disabled.', 'woocommerce' ) );
+			}
+			$feature_controller->change_feature_enable( DataSynchronizer::ORDERS_DATA_SYNC_ENABLED_OPTION, false );
+			if ( $data_synchronizer->data_sync_is_enabled() ) {
+				return WP_CLI::warning( __( 'Sync could not be disabled.', 'woocommerce' ) );
+			} else {
+				WP_CLI::success( __( 'Sync disabled.', 'woocommerce' ) );
+			}
+		}
+	}
+
+	/**
+	 * When HPOS is enabled, this command lets you remove redundant data from the postmeta table for migrated orders.
+	 *
+	 * ## OPTIONS
+	 *
+	 * <all|id|range>...
+	 * : ID or range of orders to clean up.
+	 *
+	 * [--batch-size=<batch-size>]
+	 * : Number of orders to process per batch. Applies only to cleaning up of 'all' orders.
+	 * ---
+	 * default: 500
+	 * ---
+	 *
+	 * [--force]
+	 * : When true, post meta will be cleaned up even if the post appears to have been updated more recently than the order.
+	 * ---
+	 * default: false
+	 * ---
+	 *
+	 * ## EXAMPLES
+	 *
+	 *    # Cleanup post data for order 314.
+	 *    $ wp wc hpos cleanup 314
+	 *
+	 *    # Cleanup postmeta for orders with IDs betweeen 10 and 100 and order 314.
+	 *    $ wp wc hpos cleanup 10-100 314
+	 *
+	 *    # Cleanup postmeta for all orders.
+	 *    wp wc hpos cleanup all
+	 *
+	 *    # Cleanup postmeta for all orders with a batch size of 200 (instead of the default 500).
+	 *    wp wc hpos cleanup all --batch-size=200
+	 *
+	 * @param array $args       Positional arguments passed to the command.
+	 * @param array $assoc_args Associative arguments (options) passed to the command.
+	 * @return void
+	 */
+	public function cleanup_post_data( array $args = array(), array $assoc_args = array() ) {
+		if ( ! $this->synchronizer->custom_orders_table_is_authoritative() || $this->synchronizer->data_sync_is_enabled() ) {
+			WP_CLI::error( __( 'Cleanup can only be performed when HPOS is active and compatibility mode is disabled.', 'woocommerce' ) );
+		}
+		$handler = wc_get_container()->get( LegacyDataHandler::class );
+
+		$all_orders  = 'all' === $args[0];
+		$force       = (bool) ( $assoc_args['force'] ?? false );
+		$q_order_ids = $all_orders ? array() : $args;
+		$q_limit     = $all_orders ? absint( $assoc_args['batch-size'] ?? 500 ) : 0; // Limit per batch.
+
+		$order_count = $handler->count_orders_for_cleanup( $q_order_ids );
+		if ( ! $order_count ) {
+			WP_CLI::warning( __( 'No orders to cleanup.', 'woocommerce' ) );
+			return;
+		}
+
+		$progress = WP_CLI\Utils\make_progress_bar( __( 'HPOS cleanup', 'woocommerce' ), $order_count );
+		$count    = 0;
+
+		// translators: %d is the number of orders to clean up.
+		WP_CLI::log( sprintf( _n( 'Starting cleanup for %d order...', 'Starting cleanup for %d orders...', $order_count, 'woocommerce' ), $order_count ) );
+
+		do {
+			$order_ids = $handler->get_orders_for_cleanup( $q_order_ids, $q_limit );
+
+			foreach ( $order_ids as $order_id ) {
+				try {
+					$handler->cleanup_post_data( $order_id, $force );
+					$count++;
+
+					// translators: %d is an order ID.
+					WP_CLI::debug( sprintf( __( 'Cleanup completed for order %d.', 'woocommerce' ), $order_id ) );
+				} catch ( \Exception $e ) {
+					// translators: %1$d is an order ID, %2$s is an error message.
+					WP_CLI::warning( sprintf( __( 'An error occurred while cleaning up order %1$d: %2$s', 'woocommerce' ), $order_id, $e->getMessage() ) );
+				}
+
+				$progress->tick();
+			}
+
+			if ( ! $all_orders ) {
+				break;
+			}
+		} while ( $order_ids );
+
+		$progress->finish();
+
+		WP_CLI::success(
+			sprintf(
+				// translators: %d is the number of orders that were cleaned up.
+				_n( 'Cleanup completed for %d order.', 'Cleanup completed for %d orders.', $count, 'woocommerce' ),
+				$count
+			)
+		);
 	}
 
 }

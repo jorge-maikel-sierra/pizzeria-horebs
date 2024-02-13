@@ -59,6 +59,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_Woocommerce_Settings' ) ) {
 
 		/**
 		 * Create tab content for API Settings.
+		 *
+		 * @return void
 		 */
 		public function tab_content() {
 			echo '<p>';

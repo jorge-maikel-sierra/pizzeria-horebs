@@ -53,6 +53,8 @@ class Import extends Import_Export {
 
 	/**
 	 * Register hooks and filters
+	 *
+	 * @return void
 	 */
 	public function register_hooks() {
 		parent::register_hooks();
@@ -62,6 +64,8 @@ class Import extends Import_Export {
 
 	/**
 	 * Handle the import of the uploaded .csv file.
+	 *
+	 * @return void
 	 */
 	public function handle_csv_import() {
 		if ( ! isset( $_POST['csv-import'] )
@@ -198,8 +202,8 @@ class Import extends Import_Export {
 			// Create standard post data.
 			$current_post                 = [];
 			$current_post['ID']           = '';
-			$current_post['post_title']   = isset( $location['name'] ) ? $location['name'] : '';
-			$current_post['post_content'] = isset( $location['description'] ) ? $location['description'] : '';
+			$current_post['post_title']   = ( $location['name'] ?? '' );
+			$current_post['post_content'] = ( $location['description'] ?? '' );
 			$current_post['post_status']  = 'publish';
 			$current_post['post_type']    = $this->post_type->get_post_type();
 
@@ -394,6 +398,8 @@ class Import extends Import_Export {
 
 	/**
 	 * Builds the HTML for the import form.
+	 *
+	 * @return void
 	 */
 	public function import_html() {
 		echo '<h2>' . \esc_html__( 'Import', 'yoast-local-seo' ) . '</h2>';

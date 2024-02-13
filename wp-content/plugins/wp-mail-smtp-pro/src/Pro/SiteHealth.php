@@ -2,7 +2,9 @@
 
 namespace WPMailSMTP\Pro;
 
+use WPMailSMTP\Helpers\Helpers;
 use WPMailSMTP\Pro\Emails\Logs\EmailsCollection;
+use WPMailSMTP\SiteHealth as SiteHealthLite;
 
 /**
  * Class SiteHealth adds the plugin status and information to the WP Site Health admin page.
@@ -74,6 +76,10 @@ class SiteHealth {
 	 */
 	public function register_pro_debug_information( $debug_info ) {
 
+		if ( ! isset( $debug_info[ SiteHealthLite::DEBUG_INFO_SLUG ] ) ) {
+			return $debug_info;
+		}
+
 		$pro_fields = [];
 
 		// Install date.
@@ -94,8 +100,8 @@ class SiteHealth {
 			);
 		}
 
-		$debug_info[ \WPMailSMTP\SiteHealth::DEBUG_INFO_SLUG ]['fields'] = array_merge(
-			$debug_info[ \WPMailSMTP\SiteHealth::DEBUG_INFO_SLUG ]['fields'],
+		$debug_info[ SiteHealthLite::DEBUG_INFO_SLUG ]['fields'] = array_merge(
+			$debug_info[ SiteHealthLite::DEBUG_INFO_SLUG ]['fields'],
 			$pro_fields
 		);
 
@@ -120,7 +126,7 @@ class SiteHealth {
 			'status'      => 'good',
 			'badge'       => array(
 				'label' => wp_mail_smtp()->get_site_health()->get_label(),
-				'color' => \WPMailSMTP\SiteHealth::BADGE_COLOR,
+				'color' => SiteHealthLite::BADGE_COLOR,
 			),
 			'description' => '',
 			'actions'     => sprintf(
@@ -162,7 +168,7 @@ class SiteHealth {
 			'status'      => 'good',
 			'badge'       => array(
 				'label' => wp_mail_smtp()->get_site_health()->get_label(),
-				'color' => \WPMailSMTP\SiteHealth::BADGE_COLOR,
+				'color' => SiteHealthLite::BADGE_COLOR,
 			),
 			'description' => sprintf(
 				'<p>%s</p>',
@@ -173,7 +179,15 @@ class SiteHealth {
 		);
 
 		// Send dummy timestamp data to prevent issues with some cURL configurations which don't allow empty requests.
-		$response = wp_remote_post( self::CONNECTION_PING_URL, [ 'body' => [ 'timestamp' => time() ] ] );
+		$response = wp_remote_post(
+			self::CONNECTION_PING_URL,
+			[
+				'user-agent' => Helpers::get_default_user_agent(),
+				'body'       => [
+					'timestamp' => time(),
+				],
+			]
+		);
 
 		if ( wp_remote_retrieve_response_code( $response ) !== 200 ) {
 			$result['status']         = 'critical';

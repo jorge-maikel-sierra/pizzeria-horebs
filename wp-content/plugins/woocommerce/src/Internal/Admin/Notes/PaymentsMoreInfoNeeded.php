@@ -63,16 +63,16 @@ class PaymentsMoreInfoNeeded {
 		if ( ! self::should_display_note() ) {
 			return;
 		}
-		$content = __( 'We recently asked you if you wanted more information about WooCommerce Payments. Run your business and manage your payments in one place with the solution built and supported by WooCommerce.', 'woocommerce' );
+		$content = __( 'We recently asked you if you wanted more information about WooPayments. Run your business and manage your payments in one place with the solution built and supported by WooCommerce.', 'woocommerce' );
 
 		$note = new Note();
-		$note->set_title( __( 'Payments made simple with WooCommerce Payments', 'woocommerce' ) );
+		$note->set_title( __( 'Payments made simple with WooPayments', 'woocommerce' ) );
 		$note->set_content( $content );
 		$note->set_content_data( (object) array() );
 		$note->set_type( Note::E_WC_ADMIN_NOTE_INFORMATIONAL );
 		$note->set_name( self::NOTE_NAME );
 		$note->set_source( 'woocommerce-admin' );
-		$note->add_action( 'learn-more', __( 'Learn more here', 'woocommerce' ), 'https://woocommerce.com/payments/' );
+		$note->add_action( 'learn-more', __( 'Learn more here', 'woocommerce' ), 'https://woo.com/payments/' );
 		return $note;
 	}
 }

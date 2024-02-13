@@ -28,6 +28,8 @@ if ( ! \class_exists( Options_Repository::class ) ) {
 
 		/**
 		 * Initialize Options_Repository.
+		 *
+		 * @return void
 		 */
 		public function initialize() {
 			$this->options = \get_option( 'wpseo_local' );
@@ -96,7 +98,7 @@ if ( ! \class_exists( Options_Repository::class ) ) {
 		 * @return mixed The option or default value if none could be found.
 		 */
 		public function get( $option, $default_value = '' ) {
-			return isset( $this->options[ $option ] ) ? $this->options[ $option ] : $default_value;
+			return ( $this->options[ $option ] ?? $default_value );
 		}
 
 		/**

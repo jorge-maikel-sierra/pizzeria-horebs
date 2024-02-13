@@ -143,17 +143,9 @@ class Admin extends EmailReportsTab {
 		$min = WP::asset_min();
 
 		wp_enqueue_script(
-			'wp-mail-smtp-moment',
-			wp_mail_smtp()->assets_url . '/js/vendor/moment.min.js',
-			[],
-			'2.22.2',
-			true
-		);
-
-		wp_enqueue_script(
 			'wp-mail-smtp-chart',
 			wp_mail_smtp()->assets_url . '/js/vendor/chart.min.js',
-			[ 'wp-mail-smtp-moment' ],
+			[ 'moment' ],
 			'2.9.4.1',
 			true
 		);
@@ -329,6 +321,7 @@ class Admin extends EmailReportsTab {
 				</div>
 
 				<div class="wp-mail-smtp-email-reports__chart-holder">
+					<div class="spinner wp-mail-smtp-hide"></div>
 					<canvas class="wp-mail-smtp-email-reports__chart" id="wp-mail-smtp-email-reports-chart"></canvas>
 				</div>
 			</div>
@@ -340,7 +333,7 @@ class Admin extends EmailReportsTab {
 					<?php
 					echo wp_kses(
 						sprintf( /* translators: %1$d - items count; %2$s - search term. */
-							__( 'Found <strong>%1$d items</strong> where the subject contains <i>%2$s</i>', 'wp-mail-smtp-pro' ),
+							_n( 'Found <strong>%1$d item</strong> where the subject contains <i>%2$s</i>', 'Found <strong>%1$d items</strong> where the subject contains <i>%2$s</i>', count( $this->table->items ), 'wp-mail-smtp-pro' ),
 							count( $this->table->items ),
 							$this->report->get_params( 'search' )
 						),
@@ -391,6 +384,24 @@ class Admin extends EmailReportsTab {
 	private function display_reports_not_installed() {
 
 		$error_message = get_option( Migration::ERROR_OPTION_NAME );
+
+		$create_missing_tables_url = wp_nonce_url(
+			add_query_arg(
+				[
+					'create-missing-db-tables' => 1,
+				],
+				wp_mail_smtp()->get_admin()->get_admin_page_url( Area::SLUG . '-reports' )
+			),
+			Area::SLUG . '-create-missing-db-tables'
+		);
+
+		$contact_support_url = wp_mail_smtp()->get_utm_url(
+			'https://wpmailsmtp.com/account/support/',
+			[
+				'medium'  => 'email-reports',
+				'content' => 'Email Reports not installed correctly',
+			]
+		);
 		?>
 
 		<div class="wp-mail-smtp-reports-note errored">
@@ -398,11 +409,37 @@ class Admin extends EmailReportsTab {
 			<p>
 				<?php
 				if ( ! empty( $error_message ) ) {
-					esc_html_e( 'The database table was not installed correctly. Please contact plugin support to diagnose and fix the issue. Provide them the error message below:', 'wp-mail-smtp-pro' );
+					echo wp_kses(
+						sprintf( /* translators: %1$s - create missing tables link; %2$s - contact support link. */
+							__( 'WP Mail SMTP is using custom database tables for some of its features. In order to work properly, the custom tables should be created, and it seems they are missing. Please try to <a href="%1$s">create the missing DB tables by clicking on this link</a>. If this issue persists, please <a href="%2$s" target="_blank" rel="noopener noreferrer">contact our support</a> and provide the error message bellow:', 'wp-mail-smtp-pro' ),
+							esc_url( $create_missing_tables_url ),
+							esc_url( $contact_support_url )
+						),
+						[
+							'a' => [
+								'href'   => [],
+								'target' => [],
+								'rel'    => [],
+							],
+						]
+					);
 					echo '<br><br>';
 					echo '<code>' . esc_html( $error_message ) . '</code>';
 				} else {
-					esc_html_e( 'For some reason the database table was not installed correctly. Please contact plugin support team to diagnose and fix the issue.', 'wp-mail-smtp-pro' );
+					echo wp_kses(
+						sprintf( /* translators: %1$s - create missing tables link; %2$s - contact support link. */
+							__( 'WP Mail SMTP is using custom database tables for some of its features. In order to work properly, the custom tables should be created, and it seems they are missing. Please try to <a href="%1$s">create the missing DB tables by clicking on this link</a>. If this issue persists, please <a href="%2$s" target="_blank" rel="noopener noreferrer">contact our support</a>.', 'wp-mail-smtp-pro' ),
+							esc_url( $create_missing_tables_url ),
+							esc_url( $contact_support_url )
+						),
+						[
+							'a' => [
+								'href'   => [],
+								'target' => [],
+								'rel'    => [],
+							],
+						]
+					);
 				}
 				?>
 			</p>

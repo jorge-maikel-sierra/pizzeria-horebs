@@ -94,6 +94,8 @@ if ( ! \class_exists( Business_Types_Repository::class ) ) {
 		 *
 		 * @param array $business_types_array Business types array to flatten.
 		 * @param int   $level                Nesting level of the current iteration.
+		 *
+		 * @return void
 		 */
 		private function flatten_business_types_array( array $business_types_array, $level = 0 ) {
 
@@ -120,6 +122,8 @@ if ( ! \class_exists( Business_Types_Repository::class ) ) {
 		 * Populate the business types and apply filters.
 		 *
 		 * Returns early in case the business types have been set.
+		 *
+		 * @return void
 		 */
 		protected function populate_business_types() {
 			if ( $this->business_types !== null ) {

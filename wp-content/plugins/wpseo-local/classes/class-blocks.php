@@ -24,6 +24,8 @@ if ( ! class_exists( 'WPSEO_Local_Blocks' ) ) {
 
 		/**
 		 * The init function for the WPSEO_Local_Blocks class.
+		 *
+		 * @return void
 		 */
 		public function init() {
 			add_action( 'enqueue_block_editor_assets', [ $this, 'register_block_editor_assets' ] );
@@ -40,22 +42,24 @@ if ( ! class_exists( 'WPSEO_Local_Blocks' ) ) {
 			$wordpress_version = YoastSEO()->helpers->wordpress->get_wordpress_version();
 
 			// The 'block_categories' filter has been deprecated in WordPress 5.8 and replaced by 'block_categories_all'.
-			if ( \version_compare( $wordpress_version, '5.8-beta0', '<' ) ) {
-				\add_filter( 'block_categories', [ $this, 'block_category' ] );
+			if ( version_compare( $wordpress_version, '5.8-beta0', '<' ) ) {
+				add_filter( 'block_categories', [ $this, 'block_category' ] );
 			}
 			else {
-				\add_filter( 'block_categories_all', [ $this, 'block_category' ] );
+				add_filter( 'block_categories_all', [ $this, 'block_category' ] );
 			}
 		}
 
 		/**
 		 * Register Block Editor Assets.
+		 *
+		 * @return void
 		 */
 		public function register_block_editor_assets() {
 			/**
 			 * Filter: 'wpseo_enable_structured_data_blocks' - Allows disabling Yoast's schema blocks entirely.
 			 *
-			 * @api bool If false, our structured data blocks won't show.
+			 * @param bool $enabled If false, our structured data blocks won't show.
 			 */
 			$enabled = apply_filters( 'wpseo_enable_structured_data_blocks', true ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- YoastSEO Free hook.
 			if ( ! $enabled ) {
@@ -65,7 +69,6 @@ if ( ! class_exists( 'WPSEO_Local_Blocks' ) ) {
 			$wpseo_asset_manager = new WPSEO_Admin_Asset_Manager();
 			$wpseo_asset_manager->register_assets();
 			$wpseo_asset_manager->enqueue_script( 'api' );
-
 
 			$yoast_seo_local_asset_manager = new WPSEO_Local_Admin_Assets();
 			$yoast_seo_local_asset_manager->register_assets();

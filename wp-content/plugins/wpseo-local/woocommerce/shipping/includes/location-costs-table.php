@@ -35,12 +35,12 @@ $cost_desc = __( 'Enter a cost (excl. tax) or sum, e.g. 10.00 * [qty].', 'yoast-
 					$defaults = $this->resolve_defaults( $location );
 
 					$yoast_local_label_allow = sprintf(
-						/* translators: %s expands to a pickup location title. */
+						/* translators: Hidden accessibility text; %s expands to a pickup location title. */
 						__( 'Allow pickup location: %s', 'yoast-local-seo' ),
 						$location->post_title
 					);
 					$yoast_local_label_costs = sprintf(
-						/* translators: %s expands to a pickup location title. */
+						/* translators: Hidden accessibility text; %s expands to a pickup location title. */
 						__( 'Costs for pickup location: %s', 'yoast-local-seo' ),
 						$location->post_title
 					);

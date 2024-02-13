@@ -19,7 +19,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$formatted_destination    = isset( $formatted_destination ) ? $formatted_destination : WC()->countries->get_formatted_address( $package['destination'], ', ' );
+$formatted_destination    = ( $formatted_destination ?? WC()->countries->get_formatted_address( $package['destination'], ', ' ) );
 $has_calculated_shipping  = ! empty( $has_calculated_shipping );
 $show_shipping_calculator = ! empty( $show_shipping_calculator );
 $calculator_text          = '';
@@ -69,23 +69,19 @@ $radiobuttons             = [];
 						$yoast_seo_subset_ended   = false;
 					}
 				}
-				else {
-
-					// If this is not a local pickup store we may need to end our subset-loop.
-					if ( $yoast_seo_subset_started && ( ! $yoast_seo_subset_ended ) ) {
-
-						// Close the radio-list or the checkbox.
-						if ( $settings['checkout_mode'] !== 'radio' ) {
-							echo '</select><!-- .shipping_method_subset -->';
-						}
-
-						// Close the paren toggler.
-						echo '</li><!-- .parent-toggler -->';
-
-						// Flag that we have ended our subset, and we have not started a new one.
-						$yoast_seo_subset_started = false;
-						$yoast_seo_subset_ended   = true;
+				// If this is not a local pickup store we may need to end our subset-loop.
+				elseif ( $yoast_seo_subset_started && ( ! $yoast_seo_subset_ended ) ) {
+					// Close the radio-list or the checkbox.
+					if ( $settings['checkout_mode'] !== 'radio' ) {
+						echo '</select><!-- .shipping_method_subset -->';
 					}
+
+					// Close the paren toggler.
+					echo '</li><!-- .parent-toggler -->';
+
+					// Flag that we have ended our subset, and we have not started a new one.
+					$yoast_seo_subset_started = false;
+					$yoast_seo_subset_ended   = true;
 				}
 
 				// Show a Local pickup store in a different way then other shipping methods.

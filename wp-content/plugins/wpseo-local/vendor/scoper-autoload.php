@@ -6,39 +6,14 @@ $loader = require_once __DIR__.'/autoload.php';
 
 // Functions whitelisting. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/README.md#functions-whitelisting
-if (!function_exists('add_submenu_page')) {
-    function add_submenu_page() {
-        return \YoastSEO_Vendor\add_submenu_page(...func_get_args());
+if (!function_exists('get_post')) {
+    function get_post() {
+        return \YoastSEO_Vendor\get_post(...func_get_args());
     }
 }
-if (!function_exists('do_action')) {
-    function do_action() {
-        return \YoastSEO_Vendor\do_action(...func_get_args());
-    }
-}
-if (!function_exists('admin_url')) {
-    function admin_url() {
-        return \YoastSEO_Vendor\admin_url(...func_get_args());
-    }
-}
-if (!function_exists('esc_attr')) {
-    function esc_attr() {
-        return \YoastSEO_Vendor\esc_attr(...func_get_args());
-    }
-}
-if (!function_exists('get_the_modified_date')) {
-    function get_the_modified_date() {
-        return \YoastSEO_Vendor\get_the_modified_date(...func_get_args());
-    }
-}
-if (!function_exists('get_current_screen')) {
-    function get_current_screen() {
-        return \YoastSEO_Vendor\get_current_screen(...func_get_args());
-    }
-}
-if (!function_exists('esc_html')) {
-    function esc_html() {
-        return \YoastSEO_Vendor\esc_html(...func_get_args());
+if (!function_exists('remove_action')) {
+    function remove_action() {
+        return \YoastSEO_Vendor\remove_action(...func_get_args());
     }
 }
 if (!function_exists('apply_filters')) {
@@ -46,9 +21,54 @@ if (!function_exists('apply_filters')) {
         return \YoastSEO_Vendor\apply_filters(...func_get_args());
     }
 }
+if (!function_exists('register_rest_route')) {
+    function register_rest_route() {
+        return \YoastSEO_Vendor\register_rest_route(...func_get_args());
+    }
+}
+if (!function_exists('sanitize_text_field')) {
+    function sanitize_text_field() {
+        return \YoastSEO_Vendor\sanitize_text_field(...func_get_args());
+    }
+}
 if (!function_exists('current_user_can')) {
     function current_user_can() {
         return \YoastSEO_Vendor\current_user_can(...func_get_args());
+    }
+}
+if (!function_exists('add_submenu_page')) {
+    function add_submenu_page() {
+        return \YoastSEO_Vendor\add_submenu_page(...func_get_args());
+    }
+}
+if (!function_exists('admin_url')) {
+    function admin_url() {
+        return \YoastSEO_Vendor\admin_url(...func_get_args());
+    }
+}
+if (!function_exists('do_action')) {
+    function do_action() {
+        return \YoastSEO_Vendor\do_action(...func_get_args());
+    }
+}
+if (!function_exists('get_current_screen')) {
+    function get_current_screen() {
+        return \YoastSEO_Vendor\get_current_screen(...func_get_args());
+    }
+}
+if (!function_exists('esc_attr')) {
+    function esc_attr() {
+        return \YoastSEO_Vendor\esc_attr(...func_get_args());
+    }
+}
+if (!function_exists('esc_html')) {
+    function esc_html() {
+        return \YoastSEO_Vendor\esc_html(...func_get_args());
+    }
+}
+if (!function_exists('get_the_modified_date')) {
+    function get_the_modified_date() {
+        return \YoastSEO_Vendor\get_the_modified_date(...func_get_args());
     }
 }
 if (!function_exists('add_meta_box')) {
@@ -86,49 +106,39 @@ if (!function_exists('get_post_type')) {
         return \YoastSEO_Vendor\get_post_type(...func_get_args());
     }
 }
-if (!function_exists('register_rest_route')) {
-    function register_rest_route() {
-        return \YoastSEO_Vendor\register_rest_route(...func_get_args());
+if (!function_exists('add_post_meta')) {
+    function add_post_meta() {
+        return \YoastSEO_Vendor\add_post_meta(...func_get_args());
     }
 }
-if (!function_exists('sanitize_text_field')) {
-    function sanitize_text_field() {
-        return \YoastSEO_Vendor\sanitize_text_field(...func_get_args());
+if (!function_exists('get_post_meta')) {
+    function get_post_meta() {
+        return \YoastSEO_Vendor\get_post_meta(...func_get_args());
     }
 }
-if (!function_exists('get_post')) {
-    function get_post() {
-        return \YoastSEO_Vendor\get_post(...func_get_args());
+if (!function_exists('wp_safe_redirect')) {
+    function wp_safe_redirect() {
+        return \YoastSEO_Vendor\wp_safe_redirect(...func_get_args());
     }
 }
-if (!function_exists('remove_action')) {
-    function remove_action() {
-        return \YoastSEO_Vendor\remove_action(...func_get_args());
+if (!function_exists('get_post_types')) {
+    function get_post_types() {
+        return \YoastSEO_Vendor\get_post_types(...func_get_args());
     }
 }
-if (!function_exists('get_attached_file')) {
-    function get_attached_file() {
-        return \YoastSEO_Vendor\get_attached_file(...func_get_args());
+if (!function_exists('is_singular')) {
+    function is_singular() {
+        return \YoastSEO_Vendor\is_singular(...func_get_args());
     }
 }
-if (!function_exists('get_post_modified_time')) {
-    function get_post_modified_time() {
-        return \YoastSEO_Vendor\get_post_modified_time(...func_get_args());
+if (!function_exists('is_main_query')) {
+    function is_main_query() {
+        return \YoastSEO_Vendor\is_main_query(...func_get_args());
     }
 }
-if (!function_exists('get_permalink')) {
-    function get_permalink() {
-        return \YoastSEO_Vendor\get_permalink(...func_get_args());
-    }
-}
-if (!function_exists('esc_url_raw')) {
-    function esc_url_raw() {
-        return \YoastSEO_Vendor\esc_url_raw(...func_get_args());
-    }
-}
-if (!function_exists('wp_unslash')) {
-    function wp_unslash() {
-        return \YoastSEO_Vendor\wp_unslash(...func_get_args());
+if (!function_exists('post_password_required')) {
+    function post_password_required() {
+        return \YoastSEO_Vendor\post_password_required(...func_get_args());
     }
 }
 if (!function_exists('wp_localize_script')) {
@@ -151,19 +161,19 @@ if (!function_exists('plugin_dir_url')) {
         return \YoastSEO_Vendor\plugin_dir_url(...func_get_args());
     }
 }
-if (!function_exists('is_singular')) {
-    function is_singular() {
-        return \YoastSEO_Vendor\is_singular(...func_get_args());
+if (!function_exists('set_transient')) {
+    function set_transient() {
+        return \YoastSEO_Vendor\set_transient(...func_get_args());
     }
 }
-if (!function_exists('is_main_query')) {
-    function is_main_query() {
-        return \YoastSEO_Vendor\is_main_query(...func_get_args());
+if (!function_exists('get_transient')) {
+    function get_transient() {
+        return \YoastSEO_Vendor\get_transient(...func_get_args());
     }
 }
-if (!function_exists('post_password_required')) {
-    function post_password_required() {
-        return \YoastSEO_Vendor\post_password_required(...func_get_args());
+if (!function_exists('delete_transient')) {
+    function delete_transient() {
+        return \YoastSEO_Vendor\delete_transient(...func_get_args());
     }
 }
 if (!function_exists('esc_html_class')) {
@@ -176,9 +186,24 @@ if (!function_exists('esc_email')) {
         return \YoastSEO_Vendor\esc_email(...func_get_args());
     }
 }
+if (!function_exists('esc_url_raw')) {
+    function esc_url_raw() {
+        return \YoastSEO_Vendor\esc_url_raw(...func_get_args());
+    }
+}
 if (!function_exists('esc_key')) {
     function esc_key() {
         return \YoastSEO_Vendor\esc_key(...func_get_args());
+    }
+}
+if (!function_exists('get_rest_url')) {
+    function get_rest_url() {
+        return \YoastSEO_Vendor\get_rest_url(...func_get_args());
+    }
+}
+if (!function_exists('get_attached_file')) {
+    function get_attached_file() {
+        return \YoastSEO_Vendor\get_attached_file(...func_get_args());
     }
 }
 if (!function_exists('update_option')) {
@@ -196,29 +221,9 @@ if (!function_exists('get_option')) {
         return \YoastSEO_Vendor\get_option(...func_get_args());
     }
 }
-if (!function_exists('add_post_meta')) {
-    function add_post_meta() {
-        return \YoastSEO_Vendor\add_post_meta(...func_get_args());
-    }
-}
-if (!function_exists('get_post_meta')) {
-    function get_post_meta() {
-        return \YoastSEO_Vendor\get_post_meta(...func_get_args());
-    }
-}
-if (!function_exists('get_post_types')) {
-    function get_post_types() {
-        return \YoastSEO_Vendor\get_post_types(...func_get_args());
-    }
-}
-if (!function_exists('wp_safe_redirect')) {
-    function wp_safe_redirect() {
-        return \YoastSEO_Vendor\wp_safe_redirect(...func_get_args());
-    }
-}
-if (!function_exists('get_rest_url')) {
-    function get_rest_url() {
-        return \YoastSEO_Vendor\get_rest_url(...func_get_args());
+if (!function_exists('wp_unslash')) {
+    function wp_unslash() {
+        return \YoastSEO_Vendor\wp_unslash(...func_get_args());
     }
 }
 if (!function_exists('sanitize_html_class')) {
@@ -229,21 +234,6 @@ if (!function_exists('sanitize_html_class')) {
 if (!function_exists('sanitize_email')) {
     function sanitize_email() {
         return \YoastSEO_Vendor\sanitize_email(...func_get_args());
-    }
-}
-if (!function_exists('set_transient')) {
-    function set_transient() {
-        return \YoastSEO_Vendor\set_transient(...func_get_args());
-    }
-}
-if (!function_exists('get_transient')) {
-    function get_transient() {
-        return \YoastSEO_Vendor\get_transient(...func_get_args());
-    }
-}
-if (!function_exists('delete_transient')) {
-    function delete_transient() {
-        return \YoastSEO_Vendor\delete_transient(...func_get_args());
     }
 }
 if (!function_exists('wp_json_encode')) {
@@ -266,6 +256,16 @@ if (!function_exists('wp_remote_retrieve_body')) {
         return \YoastSEO_Vendor\wp_remote_retrieve_body(...func_get_args());
     }
 }
+if (!function_exists('add_filter')) {
+    function add_filter() {
+        return \YoastSEO_Vendor\add_filter(...func_get_args());
+    }
+}
+if (!function_exists('add_action')) {
+    function add_action() {
+        return \YoastSEO_Vendor\add_action(...func_get_args());
+    }
+}
 if (!function_exists('wp_generate_password')) {
     function wp_generate_password() {
         return \YoastSEO_Vendor\wp_generate_password(...func_get_args());
@@ -276,14 +276,14 @@ if (!function_exists('get_site_url')) {
         return \YoastSEO_Vendor\get_site_url(...func_get_args());
     }
 }
-if (!function_exists('add_filter')) {
-    function add_filter() {
-        return \YoastSEO_Vendor\add_filter(...func_get_args());
+if (!function_exists('get_post_modified_time')) {
+    function get_post_modified_time() {
+        return \YoastSEO_Vendor\get_post_modified_time(...func_get_args());
     }
 }
-if (!function_exists('add_action')) {
-    function add_action() {
-        return \YoastSEO_Vendor\add_action(...func_get_args());
+if (!function_exists('get_permalink')) {
+    function get_permalink() {
+        return \YoastSEO_Vendor\get_permalink(...func_get_args());
     }
 }
 

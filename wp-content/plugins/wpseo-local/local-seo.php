@@ -6,17 +6,19 @@
  *
  * @wordpress-plugin
  * Plugin Name: Yoast SEO: Local
- * Version: 14.7
+ * Version: 15.2
  * Plugin URI: http://yoa.st/4fj
  * Description: This Local SEO module adds all the needed functionality to get your site ready for Local Search Optimization
  * Author: Team Yoast and Arjan Snaterse
- * Author URI: http://yoa.st/1uk
+ * Author URI: https://yoa.st/team-yoast-local
  * Text Domain: yoast-local-seo
  * Domain Path: /languages/
+ * Requires at least: 6.3
+ * Requires PHP: 7.2.5
  *
- * WC Tested up to: 7.0
+ * WC Tested up to: 8.5
  *
- * Copyright 2012-2022 Joost de Valk & Arjan Snaterse
+ * Copyright 2012-2024 Joost de Valk & Arjan Snaterse
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,12 +35,14 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+use Yoast\WP\SEO\Conditionals\Third_Party\Elementor_Edit_Conditional;
+
 /*
  * All functionality for fetching location data and creating an KML file with it.
  */
 
 if ( ! defined( 'WPSEO_LOCAL_VERSION' ) ) {
-	define( 'WPSEO_LOCAL_VERSION', '14.7' );
+	define( 'WPSEO_LOCAL_VERSION', '15.2' );
 }
 
 if ( ! defined( 'WPSEO_LOCAL_PATH' ) ) {
@@ -58,6 +62,8 @@ if ( ! function_exists( 'yoast_wpseo_local_deactivate_sibling_plugins' ) ) {
 	 * Deactivate our sibling plugin: "Yoast SEO: Local for WooCommerce", because they may not be active simultaneously
 	 *
 	 * @since 3.3.1
+	 *
+	 * @return void
 	 */
 	function yoast_wpseo_local_deactivate_sibling_plugins() {
 		deactivate_plugins( WPSEO_LOCAL_FILE );
@@ -82,8 +88,9 @@ add_action(
 			require_once WPSEO_LOCAL_PATH . 'vendor/autoload.php';
 		}
 
-		// If you change this version, don't forget to upgrade the required version in the composer.json as well.
-		if ( version_compare( WPSEO_VERSION, '19.10-RC0', '<' ) ) {
+		// If you change this version, changing the version in composer.json is not necessary
+		// since it will be updated automatically.
+		if ( version_compare( WPSEO_VERSION, '21.9-RC0', '<' ) ) {
 			add_action( 'all_admin_notices', 'yoast_wpseo_local_upgrade_error' );
 
 			return;
@@ -108,12 +115,14 @@ if ( ! function_exists( 'wpseo_local_seo_init' ) ) {
 	 * Initialize the Local SEO module on plugins loaded, so WP SEO should have set its constants and loaded its main classes.
 	 *
 	 * @since 0.2
+	 *
+	 * @return void
 	 */
 	function wpseo_local_seo_init() {
 		global $wpseo_local_core;
 
 		if ( class_exists( '\Yoast\WP\SEO\Conditionals\Third_Party\Elementor_Edit_Conditional' ) ) {
-			$elementor_conditional = new \Yoast\WP\SEO\Conditionals\Third_Party\Elementor_Edit_Conditional();
+			$elementor_conditional = new Elementor_Edit_Conditional();
 			if ( $elementor_conditional->is_met() ) {
 				return;
 			}
@@ -151,6 +160,8 @@ if ( ! function_exists( 'wpseo_local_seo_init' ) ) {
 if ( ! function_exists( 'yoast_seo_local_init_woocommerce ' ) ) {
 	/**
 	 * Boots the Local WooCommerce functionality. But first check whether WooCommerce and Yoast: SEO plugins are activated.
+	 *
+	 * @return void
 	 */
 	function yoast_seo_local_init_woocommerce() {
 		if ( class_exists( 'WooCommerce' ) && class_exists( 'WPSEO_Utils' ) ) {
@@ -164,6 +175,8 @@ if ( ! function_exists( 'yoast_seo_local_init_woocommerce ' ) ) {
 if ( ! function_exists( 'wpseo_local_init_rest_api' ) ) {
 	/**
 	 * Loads the rest api endpoints.
+	 *
+	 * @return void
 	 */
 	function wpseo_local_init_rest_api() {
 		// We can't do anything when requirements are not met.
@@ -183,6 +196,8 @@ if ( ! function_exists( 'wpseo_local_seo_init_widgets' ) ) {
 	 * Register all widgets used for Local SEO plugin
 	 *
 	 * @since 3.1
+	 *
+	 * @return void
 	 */
 	function wpseo_local_seo_init_widgets() {
 		$widgets = [
@@ -209,6 +224,8 @@ if ( ! function_exists( 'wpseo_local_missing_error' ) ) {
 	 * Throw an error if Yoast SEO is not installed.
 	 *
 	 * @since 0.2
+	 *
+	 * @return void
 	 */
 	function wpseo_local_missing_error() {
 
@@ -229,6 +246,8 @@ if ( ! function_exists( 'yoast_wpseo_local_upgrade_error' ) ) {
 	 * Throw an error if Yoast SEO is out of date.
 	 *
 	 * @since 1.5.4
+	 *
+	 * @return void
 	 */
 	function yoast_wpseo_local_upgrade_error() {
 		/* translators: %1$s resolves to Yoast SEO, %2$s resolves to Local SEO */
@@ -242,6 +261,8 @@ if ( ! function_exists( 'yoast_wpseo_local_activate' ) ) {
 	 * Run single site / network-wide activation of the plugin.
 	 *
 	 * @param bool $networkwide Whether the plugin is being activated network-wide.
+	 *
+	 * @return void
 	 */
 	function yoast_wpseo_local_activate( $networkwide = false ) {
 		if ( file_exists( WPSEO_LOCAL_PATH . 'vendor/autoload.php' ) ) {
@@ -268,6 +289,8 @@ if ( ! function_exists( 'yoast_wpseo_local_deactivate' ) ) {
 	 * Run single site / network-wide de-activation of the plugin.
 	 *
 	 * @param bool $networkwide Whether the plugin is being de-activated network-wide.
+	 *
+	 * @return void
 	 */
 	function yoast_wpseo_local_deactivate( $networkwide = false ) {
 		if ( ! is_multisite() || ! $networkwide ) {
@@ -304,6 +327,8 @@ if ( ! function_exists( 'yoast_wpseo_local_network_activate_deactivate' ) ) {
 	 * Run network-wide (de-)activation of the plugin
 	 *
 	 * @param bool $activate True for plugin activation, false for de-activation.
+	 *
+	 * @return void
 	 */
 	function yoast_wpseo_local_network_activate_deactivate( $activate = true ) {
 		global $wpdb;
@@ -326,6 +351,8 @@ if ( ! function_exists( 'yoast_wpseo_local_network_activate_deactivate' ) ) {
 if ( ! function_exists( '_yoast_wpseo_local_activate' ) ) {
 	/**
 	 * Runs on activation of the plugin.
+	 *
+	 * @return void
 	 */
 	function _yoast_wpseo_local_activate() {
 		WPSEO_Local_Core::update_sitemap();
@@ -339,6 +366,8 @@ if ( ! function_exists( '_yoast_wpseo_local_activate' ) ) {
 if ( ! function_exists( '_yoast_wpseo_local_deactivate' ) ) {
 	/**
 	 * Runs on deactivation of the plugin.
+	 *
+	 * @return void
 	 */
 	function _yoast_wpseo_local_deactivate() {
 		if ( file_exists( WPSEO_LOCAL_PATH . 'vendor/autoload.php' ) ) {
@@ -364,6 +393,8 @@ if ( ! function_exists( 'yoast_wpseo_local_on_activate_blog' ) ) {
 	 * @see      https://core.trac.wordpress.org/ticket/24205
 	 *
 	 * @param int $blog_id Blog ID.
+	 *
+	 * @return void
 	 */
 	function yoast_wpseo_local_on_activate_blog( $blog_id ) {
 		if ( ! function_exists( 'is_plugin_active_for_network' ) ) {

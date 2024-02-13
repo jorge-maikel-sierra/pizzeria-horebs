@@ -91,6 +91,8 @@ class Export extends Import_Export {
 
 	/**
 	 * Register hooks and filters
+	 *
+	 * @return void
 	 */
 	public function register_hooks() {
 		parent::register_hooks();
@@ -100,6 +102,8 @@ class Export extends Import_Export {
 
 	/**
 	 * Handles the CSV export
+	 *
+	 * @return void
 	 */
 	public function handle_csv_export() {
 		if ( ! isset( $_POST['csv-export'] )
@@ -218,6 +222,8 @@ class Export extends Import_Export {
 	 * Output HTML for exporting WPSEO Local locations as .csv
 	 *
 	 * @since 3.9
+	 *
+	 * @return void
 	 */
 	public function output_export_html() {
 		echo '<h2>' . \esc_html__( 'Export', 'yoast-local-seo' ) . '</h2>';

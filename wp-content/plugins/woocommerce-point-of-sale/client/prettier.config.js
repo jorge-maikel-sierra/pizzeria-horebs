@@ -1,0 +1,28 @@
+/** @type {import('prettier').Config} */
+module.exports = {
+  endOfLine: 'lf',
+  semi: false,
+  singleQuote: true,
+  tabWidth: 2,
+  trailingComma: 'es5',
+  importOrder: [
+    '<TYPES>',
+    '',
+    '^(vue/(.*)$)|^(vue$)',
+    '^(vue-router/(.*)$)|^(vue-router$)',
+    '^(pinia/(.*)$)|^(pinia$)',
+    '^(quasar/(.*)$)|^(quasar$)',
+    '<THIRD_PARTY_MODULES>',
+    '',
+    '^@/(.*)$',
+    '',
+    '^[./]',
+  ],
+  importOrderSeparation: true,
+  importOrderSortSpecifiers: true,
+  importOrderBuiltinModulesToTop: true,
+  importOrderParserPlugins: ['typescript', 'decorators-legacy'],
+  importOrderMergeDuplicateImports: true,
+  importOrderCombineTypeAndValueImports: false,
+  plugins: ['@ianvs/prettier-plugin-sort-imports'],
+}

@@ -8,16 +8,11 @@
 			<description><![CDATA[Tamaño de la pizza: Grande]]></description>
 			<g:product_type>Pizza</g:product_type>
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-margarita/?attribute_pa_tamano-de-la-pizza=grande]]></link>
-			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/Margarita.jpg]]></g:image_link>
+			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/4EE160DC-11DA-49F1-8CB1-3B17530A7CEE.jpeg]]></g:image_link>
 			<g:availability>in stock</g:availability>
 			<g:price>40000COP</g:price>
 			<sale_price>30000COP</sale_price>
 			<g:mpn>PM-G-6713</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>109</g:id>
@@ -26,16 +21,11 @@
 			<description><![CDATA[Tamaño de la pizza: Mediana]]></description>
 			<g:product_type>Pizza</g:product_type>
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-margarita/?attribute_pa_tamano-de-la-pizza=mediana]]></link>
-			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/Margarita.jpg]]></g:image_link>
+			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/4EE160DC-11DA-49F1-8CB1-3B17530A7CEE.jpeg]]></g:image_link>
 			<g:availability>in stock</g:availability>
 			<g:price>25000COP</g:price>
 			<sale_price>20000COP</sale_price>
 			<g:mpn>PM-M-3396</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>110</g:id>
@@ -44,16 +34,11 @@
 			<description><![CDATA[Tamaño de la pizza: Personal]]></description>
 			<g:product_type>Pizza</g:product_type>
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-margarita/?attribute_pa_tamano-de-la-pizza=personal]]></link>
-			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/Margarita.jpg]]></g:image_link>
+			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/4EE160DC-11DA-49F1-8CB1-3B17530A7CEE.jpeg]]></g:image_link>
 			<g:availability>in stock</g:availability>
 			<g:price>16000COP</g:price>
 			<sale_price>10000COP</sale_price>
 			<g:mpn>PM-P-4270</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>137</g:id>
@@ -67,11 +52,6 @@
 			<g:price>40000COP</g:price>
 			<sale_price>35000COP</sale_price>
 			<g:mpn>PJQ-G-8432</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>138</g:id>
@@ -85,11 +65,6 @@
 			<g:price>27000COP</g:price>
 			<sale_price>25000COP</sale_price>
 			<g:mpn>PJQ-M-8342</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>139</g:id>
@@ -102,11 +77,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>13000COP</g:price>
 			<g:mpn>PJQ-P-6783</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>161</g:id>
@@ -120,11 +90,6 @@
 			<g:price>50000COP</g:price>
 			<sale_price>40000COP</sale_price>
 			<g:mpn>PV-G-7756</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Envío gratuito</g:service>
-				<g:price>0.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>162</g:id>
@@ -138,11 +103,6 @@
 			<g:price>30000COP</g:price>
 			<sale_price>25000COP</sale_price>
 			<g:mpn>PV-M-1271</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>163</g:id>
@@ -156,11 +116,6 @@
 			<g:price>19000COP</g:price>
 			<sale_price>15000COP</sale_price>
 			<g:mpn>PV-P-5851</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>166</g:id>
@@ -173,11 +128,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>50000COP</g:price>
 			<g:mpn>PTC-G-6286</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Envío gratuito</g:service>
-				<g:price>0.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>167</g:id>
@@ -190,11 +140,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>35000COP</g:price>
 			<g:mpn>PTC-M-2938</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>168</g:id>
@@ -207,11 +152,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>22000COP</g:price>
 			<g:mpn>PTC-P-7342</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>171</g:id>
@@ -224,11 +164,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>40000COP</g:price>
 			<g:mpn>PR-G-9032</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Envío gratuito</g:service>
-				<g:price>0.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>172</g:id>
@@ -241,11 +176,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>30000COP</g:price>
 			<g:mpn>PR-M-8905</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>173</g:id>
@@ -258,11 +188,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>15000COP</g:price>
 			<g:mpn>PR-P-3712</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>176</g:id>
@@ -275,11 +200,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>40000COP</g:price>
 			<g:mpn>PCE-G-6521</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Envío gratuito</g:service>
-				<g:price>0.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>177</g:id>
@@ -292,11 +212,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>30000COP</g:price>
 			<g:mpn>PCE-M-3847</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>178</g:id>
@@ -309,11 +224,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>20000COP</g:price>
 			<g:mpn>PCE-P-4360</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>181</g:id>
@@ -326,11 +236,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>55000COP</g:price>
 			<g:mpn>PHE-G-2997</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Envío gratuito</g:service>
-				<g:price>0.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>182</g:id>
@@ -343,11 +248,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>40000COP</g:price>
 			<g:mpn>PHE-M-2488</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Envío gratuito</g:service>
-				<g:price>0.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>183</g:id>
@@ -360,11 +260,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>20000COP</g:price>
 			<g:mpn>PHE-P-3263</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>189</g:id>
@@ -377,11 +272,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>40000COP</g:price>
 			<g:mpn>PPC-G-1373</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Envío gratuito</g:service>
-				<g:price>0.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>190</g:id>
@@ -394,11 +284,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>30000COP</g:price>
 			<g:mpn>PPC-M-4595</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>191</g:id>
@@ -411,11 +296,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>18000COP</g:price>
 			<g:mpn>PPC-P-4956</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>194</g:id>
@@ -424,15 +304,10 @@
 			<description><![CDATA[Tamaño de la pizza: Grande]]></description>
 			<g:product_type>Pizza</g:product_type>
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-hawaiana/?attribute_pa_tamano-de-la-pizza=grande]]></link>
-			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/Hawaiana-1-2.jpg]]></g:image_link>
+			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/D3275E7E-2F07-4BE2-98DD-010F53B40A79.jpeg]]></g:image_link>
 			<g:availability>in stock</g:availability>
 			<g:price>40000COP</g:price>
 			<g:mpn>PH-G-9545</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Envío gratuito</g:service>
-				<g:price>0.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>195</g:id>
@@ -441,15 +316,10 @@
 			<description><![CDATA[Tamaño de la pizza: Mediana]]></description>
 			<g:product_type>Pizza</g:product_type>
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-hawaiana/?attribute_pa_tamano-de-la-pizza=mediana]]></link>
-			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/Hawaiana-1-2.jpg]]></g:image_link>
+			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/D3275E7E-2F07-4BE2-98DD-010F53B40A79.jpeg]]></g:image_link>
 			<g:availability>in stock</g:availability>
 			<g:price>28000COP</g:price>
 			<g:mpn>PH-M-4442</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>196</g:id>
@@ -458,16 +328,11 @@
 			<description><![CDATA[Tamaño de la pizza: Personal]]></description>
 			<g:product_type>Pizza</g:product_type>
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-hawaiana/?attribute_pa_tamano-de-la-pizza=personal]]></link>
-			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/Hawaiana-1-2.jpg]]></g:image_link>
+			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/D3275E7E-2F07-4BE2-98DD-010F53B40A79.jpeg]]></g:image_link>
 			<g:availability>in stock</g:availability>
 			<g:price>18000COP</g:price>
 			<sale_price>15000COP</sale_price>
 			<g:mpn>PH-P-2530</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>199</g:id>
@@ -480,11 +345,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>45000COP</g:price>
 			<g:mpn>PJM-G-3731</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Envío gratuito</g:service>
-				<g:price>0.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>200</g:id>
@@ -497,11 +357,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>28000COP</g:price>
 			<g:mpn>PJM-M-6521</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>201</g:id>
@@ -514,11 +369,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>17000COP</g:price>
 			<g:mpn>PJM-P-3981</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>204</g:id>
@@ -527,15 +377,10 @@
 			<description><![CDATA[Tamaño de la pizza: Grande]]></description>
 			<g:product_type>Pizza</g:product_type>
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-jamon-pollo/?attribute_pa_tamano-de-la-pizza=grande]]></link>
-			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/Jamon-pollo-1-1.jpg]]></g:image_link>
+			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/C8F8A0AA-6148-4764-BF58-DAFA989B669E-1.jpeg]]></g:image_link>
 			<g:availability>in stock</g:availability>
 			<g:price>42000COP</g:price>
 			<g:mpn>PJP-G-4351</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Envío gratuito</g:service>
-				<g:price>0.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>205</g:id>
@@ -544,15 +389,10 @@
 			<description><![CDATA[Tamaño de la pizza: Mediana]]></description>
 			<g:product_type>Pizza</g:product_type>
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-jamon-pollo/?attribute_pa_tamano-de-la-pizza=mediana]]></link>
-			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/Jamon-pollo-1-1.jpg]]></g:image_link>
+			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/C8F8A0AA-6148-4764-BF58-DAFA989B669E-1.jpeg]]></g:image_link>
 			<g:availability>in stock</g:availability>
 			<g:price>30000COP</g:price>
 			<g:mpn>PJP-M-8505</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>206</g:id>
@@ -561,15 +401,10 @@
 			<description><![CDATA[Tamaño de la pizza: Personal]]></description>
 			<g:product_type>Pizza</g:product_type>
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-jamon-pollo/?attribute_pa_tamano-de-la-pizza=personal]]></link>
-			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/Jamon-pollo-1-1.jpg]]></g:image_link>
+			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/C8F8A0AA-6148-4764-BF58-DAFA989B669E-1.jpeg]]></g:image_link>
 			<g:availability>in stock</g:availability>
 			<g:price>17000COP</g:price>
 			<g:mpn>PJP-P-4876</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>210</g:id>
@@ -578,16 +413,11 @@
 			<description><![CDATA[Tamaño de la pizza: Grande]]></description>
 			<g:product_type>Pizza</g:product_type>
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-pepperoni/?attribute_pa_tamano-de-la-pizza=grande]]></link>
-			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/09/Pepperoni-1.jpg]]></g:image_link>
+			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/C8F8A0AA-6148-4764-BF58-DAFA989B669E.jpeg]]></g:image_link>
 			<g:availability>in stock</g:availability>
 			<g:price>55000COP</g:price>
 			<sale_price>40000COP</sale_price>
 			<g:mpn>PP-G-2296</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Envío gratuito</g:service>
-				<g:price>0.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>212</g:id>
@@ -596,16 +426,11 @@
 			<description><![CDATA[Tamaño de la pizza: Personal]]></description>
 			<g:product_type>Pizza</g:product_type>
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-pepperoni/?attribute_pa_tamano-de-la-pizza=personal]]></link>
-			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/09/Pepperoni-1.jpg]]></g:image_link>
+			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/C8F8A0AA-6148-4764-BF58-DAFA989B669E.jpeg]]></g:image_link>
 			<g:availability>in stock</g:availability>
 			<g:price>20000COP</g:price>
 			<sale_price>16000COP</sale_price>
 			<g:mpn>PP-P-4145</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>218</g:id>
@@ -619,11 +444,6 @@
 			<g:price>20000COP</g:price>
 			<sale_price>13000COP</sale_price>
 			<g:mpn>PH-4702</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>219</g:id>
@@ -636,11 +456,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>25000COP</g:price>
 			<g:mpn>PHE-8806</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>220</g:id>
@@ -654,11 +469,6 @@
 			<g:price>25000COP</g:price>
 			<sale_price>17000COP</sale_price>
 			<g:mpn>PI-3725</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>221</g:id>
@@ -672,11 +482,6 @@
 			<g:price>18000COP</g:price>
 			<sale_price>13000COP</sale_price>
 			<g:mpn>PJP-2789</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>222</g:id>
@@ -690,11 +495,6 @@
 			<g:price>23000COP</g:price>
 			<sale_price>12000COP</sale_price>
 			<g:mpn>PJQ-3697</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>223</g:id>
@@ -708,11 +508,6 @@
 			<g:price>16000COP</g:price>
 			<sale_price>10000COP</sale_price>
 			<g:mpn>PM-4561</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>224</g:id>
@@ -726,11 +521,6 @@
 			<g:price>19000COP</g:price>
 			<sale_price>14000COP</sale_price>
 			<g:mpn>PP-8536</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>225</g:id>
@@ -744,11 +534,6 @@
 			<g:price>19000COP</g:price>
 			<sale_price>13000COP</sale_price>
 			<g:mpn>PPC-1761</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>226</g:id>
@@ -762,11 +547,6 @@
 			<g:price>19000COP</g:price>
 			<sale_price>13000COP</sale_price>
 			<g:mpn>PPJ-9741</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>227</g:id>
@@ -780,11 +560,6 @@
 			<g:price>20000COP</g:price>
 			<sale_price>16000COP</sale_price>
 			<g:mpn>PTC-2440</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>230</g:id>
@@ -797,11 +572,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>4000COP</g:price>
 			<g:mpn>AC-9613</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>231</g:id>
@@ -814,11 +584,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>8000COP</g:price>
 			<g:mpn>CC-8043</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>232</g:id>
@@ -831,11 +596,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>4000COP</g:price>
 			<g:mpn>CC-P-1075</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>233</g:id>
@@ -848,11 +608,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>4000COP</g:price>
 			<g:mpn>JH-P-9364</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>234</g:id>
@@ -865,11 +620,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>8000COP</g:price>
 			<g:mpn>P-4823</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>235</g:id>
@@ -882,11 +632,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>4000COP</g:price>
 			<g:mpn>S-4341</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>335</g:id>
@@ -895,15 +640,10 @@
 			<description><![CDATA[Tamaño de la pizza: Grande]]></description>
 			<g:product_type>Pizza</g:product_type>
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-italiana/?attribute_pa_tamano-de-la-pizza=grande]]></link>
-			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/Italiana-1.jpg]]></g:image_link>
+			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/8026A3C5-070F-4DD4-AD0B-04760D020203.jpeg]]></g:image_link>
 			<g:availability>in stock</g:availability>
 			<g:price>60000COP</g:price>
 			<g:mpn>PI-G-1263</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Envío gratuito</g:service>
-				<g:price>0.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>336</g:id>
@@ -912,16 +652,11 @@
 			<description><![CDATA[Tamaño de la pizza: Mediana]]></description>
 			<g:product_type>Pizza</g:product_type>
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-italiana/?attribute_pa_tamano-de-la-pizza=mediana]]></link>
-			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/Italiana-1.jpg]]></g:image_link>
+			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/8026A3C5-070F-4DD4-AD0B-04760D020203.jpeg]]></g:image_link>
 			<g:availability>in stock</g:availability>
 			<g:price>39900COP</g:price>
 			<sale_price>35000COP</sale_price>
 			<g:mpn>PI-M-7056</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>337</g:id>
@@ -930,16 +665,11 @@
 			<description><![CDATA[Tamaño de la pizza: Personal]]></description>
 			<g:product_type>Pizza</g:product_type>
 			<link><![CDATA[https://pizzeriahorebs.com/producto/pizza-italiana/?attribute_pa_tamano-de-la-pizza=personal]]></link>
-			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/Italiana-1.jpg]]></g:image_link>
+			<g:image_link><![CDATA[https://pizzeriahorebs.com/wp-content/uploads/2023/04/8026A3C5-070F-4DD4-AD0B-04760D020203.jpeg]]></g:image_link>
 			<g:availability>in stock</g:availability>
 			<g:price>29000COP</g:price>
 			<sale_price>23000COP</sale_price>
 			<g:mpn>PI-P-1705</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>345</g:id>
@@ -952,11 +682,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>55000COP</g:price>
 			<g:mpn>PBQ-G-4701</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Envío gratuito</g:service>
-				<g:price>0.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>346</g:id>
@@ -969,11 +694,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>40000COP</g:price>
 			<g:mpn>PBQ-M-2834</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Envío gratuito</g:service>
-				<g:price>0.00 COP</g:price>
-			</g:shipping>
 		</item>
 		<item>
 			<g:id>347</g:id>
@@ -986,11 +706,6 @@
 			<g:availability>in stock</g:availability>
 			<g:price>25000COP</g:price>
 			<g:mpn>PBQ-P-8360</g:mpn>
-			<g:shipping>
-				<g:country>CO</g:country>
-				<g:service>Precio fijo</g:service>
-				<g:price>4000.00 COP</g:price>
-			</g:shipping>
 		</item>
 	</channel>
 </rss>

@@ -6,15 +6,15 @@
  * @since   1.0
  */
 
+use Yoast\WP\Local\Builders\Locations_Repository_Builder;
+use Yoast\WP\Local\PostType\PostType;
+use Yoast\WP\Local\Repositories\Api_Keys_Repository;
+use Yoast\WP\Local\Repositories\Business_Types_Repository;
+use Yoast\WP\Local\Repositories\Locations_Repository;
 use Yoast\WP\Local\Repositories\Options_Repository;
 use Yoast\WP\Local\Repositories\Timezone_Repository;
 use Yoast\WP\SEO\Presenters\Admin\Alert_Presenter;
 use Yoast\WP\SEO\Presenters\Admin\Light_Switch_Presenter;
-use Yoast\WP\Local\Repositories\Api_Keys_Repository;
-use Yoast\WP\Local\PostType\PostType;
-use Yoast\WP\Local\Repositories\Locations_Repository;
-use Yoast\WP\Local\Builders\Locations_Repository_Builder;
-use Yoast\WP\Local\Repositories\Business_Types_Repository;
 
 if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 
@@ -188,6 +188,8 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 
 		/**
 		 * Set all location ID's to the $locations property.
+		 *
+		 * @return void
 		 */
 		public function set_locations() {
 			$this->locations = $this->locations_repository->get( [], false );
@@ -195,6 +197,8 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 
 		/**
 		 * Set current location ID and meta data local properties.
+		 *
+		 * @return void
 		 */
 		public function set_current_location() {
 			$this->location_id = get_the_ID();
@@ -264,6 +268,8 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 
 		/**
 		 * Set all <options> for the location <select> dropdowns in an array.
+		 *
+		 * @return void
 		 */
 		public function set_location_select_options() {
 			$this->locations_select_options[] = '<option value="">' . esc_html__( 'Select a location', 'yoast-local-seo' ) . '--</option>';
@@ -279,6 +285,8 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 
 		/**
 		 * Set tabs to $tabs property. These tabs can be filtered using wpseo-local-location-meta-tabs.
+		 *
+		 * @return void
 		 */
 		public function set_tabs() {
 			$tabs = [
@@ -321,8 +329,8 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 			}
 
 			if ( ! $include_current_location ) {
-				$current_location_id = \get_the_ID();
-				if ( $current_location_id && \array_key_exists( $current_location_id, $select_options ) ) {
+				$current_location_id = get_the_ID();
+				if ( $current_location_id && array_key_exists( $current_location_id, $select_options ) ) {
 					unset( $select_options[ $current_location_id ] );
 				}
 			}
@@ -332,6 +340,8 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 
 		/**
 		 * Adds metabox for editing screen of the wpseo_locations Custom Post Type.
+		 *
+		 * @return void
 		 */
 		public function add_location_metaboxes() {
 			$post_type_instance = new PostType();
@@ -349,6 +359,8 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 
 		/**
 		 * Add tabs for navigation Location Meta.
+		 *
+		 * @return void
 		 */
 		private function tab_navigation() {
 			echo '<div class="wpseo-local-metabox-menu">';
@@ -374,6 +386,8 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 
 		/**
 		 * Add a panel for each tab.
+		 *
+		 * @return void
 		 */
 		private function tabs_panels() {
 			foreach ( $this->tabs as $key => $tab ) {
@@ -394,12 +408,15 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 
 		/**
 		 * The content for the business info tab.
+		 *
+		 * @return void
 		 */
 		public function business_info_panel_content() {
 			$business_types_repo      = new Business_Types_Repository();
 			$flattened_business_types = $business_types_repo->get_business_types();
 			$business_types_help      = new WPSEO_Local_Admin_Help_Panel(
 				'business_types_help',
+				/* translators: Hidden accessibility text. */
 				__( 'Help with: Business types', 'yoast-local-seo' ),
 				sprintf(
 				/* translators: 1: HTML <a> open tag; 2: <a> close tag. */
@@ -412,6 +429,7 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 
 			$price_indication_help = new WPSEO_Local_Admin_Help_Panel(
 				'price_indication_help',
+				/* translators: Hidden accessibility text. */
 				__( 'Help with: Price indication', 'yoast-local-seo' ),
 				esc_html__( 'Select the price indication of your business, where $ is cheap and $$$$$ is expensive.', 'yoast-local-seo' ),
 				'has-wrapper'
@@ -419,6 +437,7 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 
 			$area_served_help = new WPSEO_Local_Admin_Help_Panel(
 				'area_served_help',
+				/* translators: Hidden accessibility text. */
 				__( 'Help with: Area served', 'yoast-local-seo' ),
 				esc_html__( 'The geographic area where a service or offered item is provided.', 'yoast-local-seo' ),
 				'has-wrapper'
@@ -784,6 +803,8 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 		 * @param bool   $may_override   Determine whether the input should show the overide UI.
 		 * @param bool   $has_overridden The stored value that indicates that the override toggle is enabled for this field.
 		 * @param array  $attr           Extra attributes to add to the select.
+		 *
+		 * @return string
 		 */
 		private function wpseo_local_input_select( $name, $id, $class_attr, $label, $placeholder, $options, $value, $may_override, $has_overridden, $attr = [] ) {
 			$defaults = [
@@ -831,6 +852,8 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 
 		/**
 		 * The content for the opening hours tab.
+		 *
+		 * @return void
 		 */
 		public function opening_hours_panel_content() {
 			$opening_hours_repo = new WPSEO_Local_Opening_Hours_Repository( $this->options_repository );
@@ -861,12 +884,12 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 				);
 			}
 
-			$timezone = \get_post_meta( $this->location_id, '_wpseo_business_timezone', true );
+			$timezone = get_post_meta( $this->location_id, '_wpseo_business_timezone', true );
 
 			// Get timezone value.
 			if ( $this->use_shared_opening_hours ) {
 				// Get shared value and do the merging stuff.
-				$is_overridden = \get_post_meta( $this->location_id, '_wpseo_is_overridden_business_timezone', true );
+				$is_overridden = get_post_meta( $this->location_id, '_wpseo_is_overridden_business_timezone', true );
 
 				if ( empty( $is_overridden ) || ! wpseo_check_falses( $is_overridden ) ) {
 					// For some reason the property is named differently in the options.
@@ -948,6 +971,7 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 
 			$timezone_help = new WPSEO_Local_Admin_Help_Panel(
 				'timezone_help',
+				/* translators: Hidden accessibility text. */
 				__( 'Help with: Timezone', 'yoast-local-seo' ),
 				esc_html__( 'The timezone is used to calculate the “Open now” functionality which can be shown together with your opening hours.', 'yoast-local-seo' ),
 				'has-wrapper'
@@ -957,8 +981,8 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 				'_wpseo_business_timezone',
 				'wpseo_business_timezone',
 				'wpseo-local-toggleable-enabled-state',
-				\esc_html__( 'Timezone', 'yoast-local-seo' ) . $timezone_help->get_button_html(),
-				\esc_attr__( 'Choose a time zone', 'yoast-local-seo' ),
+				esc_html__( 'Timezone', 'yoast-local-seo' ) . $timezone_help->get_button_html(),
+				esc_attr__( 'Choose a time zone', 'yoast-local-seo' ),
 				$options,
 				$timezone,
 				$this->use_shared_opening_hours,
@@ -982,6 +1006,8 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 		 * @param bool  $use_24_hours           Whether to use the 24h format.
 		 * @param bool  $multiple_opening_hours Whether to use multiple opening hours.
 		 * @param bool  $is_disabled            Whether the form elements are disabled.
+		 *
+		 * @return void
 		 */
 		private function wpseo_local_input_opening_hours( $data, $use_24_hours, $multiple_opening_hours, $is_disabled ) {
 			$day_label         = $data['day_label'];
@@ -1097,10 +1123,12 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 
 		/**
 		 * The content for the map settings tab.
+		 *
+		 * @return void
 		 */
 		public function maps_settings_panel_content() {
 			/**
-			 * @var \WPSEO_Local_Core $wpseo_local_core ;
+			 * @var WPSEO_Local_Core $wpseo_local_core ;
 			 */
 			global $wpseo_local_core;
 			$api_key = $this->api_repository->get_api_key( 'browser' );
@@ -1145,6 +1173,8 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 
 		/**
 		 * Builds the metabox for editing screen of the wpseo_locations Custom Post Type
+		 *
+		 * @return void
 		 */
 		public function metabox_locations() {
 			if ( empty( $this->tabs ) ) {
@@ -1211,19 +1241,20 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 
 				// OK, we're authenticated: we need to find and save the data
 				// We'll put it into an array to make it easier to loop though.
-				$locations_meta['_wpseo_business_type']                              = isset( $_POST['_wpseo_business_type'] ) ? sanitize_text_field( $_POST['_wpseo_business_type'] ) : '';
-				$locations_meta['_wpseo_business_type_override']                     = isset( $_POST['_wpseo_business_type_override'] ) ? sanitize_text_field( $_POST['_wpseo_business_type_override'] ) : '';
-				$locations_meta['_wpseo_business_address']                           = isset( $_POST['_wpseo_business_address'] ) ? sanitize_text_field( $_POST['_wpseo_business_address'] ) : '';
-				$locations_meta['_wpseo_business_address_2']                         = isset( $_POST['_wpseo_business_address_2'] ) ? sanitize_text_field( $_POST['_wpseo_business_address_2'] ) : '';
-				$locations_meta['_wpseo_business_city']                              = isset( $_POST['_wpseo_business_city'] ) ? sanitize_text_field( $_POST['_wpseo_business_city'] ) : '';
-				$locations_meta['_wpseo_business_state']                             = isset( $_POST['_wpseo_business_state'] ) ? sanitize_text_field( $_POST['_wpseo_business_state'] ) : '';
-				$locations_meta['_wpseo_business_zipcode']                           = isset( $_POST['_wpseo_business_zipcode'] ) ? sanitize_text_field( $_POST['_wpseo_business_zipcode'] ) : '';
-				$locations_meta['_wpseo_business_country']                           = isset( $_POST['_wpseo_business_country'] ) ? sanitize_text_field( $_POST['_wpseo_business_country'] ) : '';
-				$locations_meta['_wpseo_business_phone']                             = isset( $_POST['_wpseo_business_phone'] ) ? sanitize_text_field( $_POST['_wpseo_business_phone'] ) : '';
-				$locations_meta['_wpseo_business_phone_2nd']                         = isset( $_POST['_wpseo_business_phone_2nd'] ) ? sanitize_text_field( $_POST['_wpseo_business_phone_2nd'] ) : '';
-				$locations_meta['_wpseo_business_fax']                               = isset( $_POST['_wpseo_business_fax'] ) ? sanitize_text_field( $_POST['_wpseo_business_fax'] ) : '';
-				$locations_meta['_wpseo_business_email']                             = isset( $_POST['_wpseo_business_email'] ) ? sanitize_email( $_POST['_wpseo_business_email'] ) : '';
-				$locations_meta['_wpseo_business_location_logo']                     = isset( $_POST['_wpseo_business_location_logo'] ) ? sanitize_text_field( $_POST['_wpseo_business_location_logo'] ) : '';
+				$locations_meta                                  = [];
+				$locations_meta['_wpseo_business_type']          = isset( $_POST['_wpseo_business_type'] ) ? sanitize_text_field( $_POST['_wpseo_business_type'] ) : '';
+				$locations_meta['_wpseo_business_type_override'] = isset( $_POST['_wpseo_business_type_override'] ) ? sanitize_text_field( $_POST['_wpseo_business_type_override'] ) : '';
+				$locations_meta['_wpseo_business_address']       = isset( $_POST['_wpseo_business_address'] ) ? sanitize_text_field( $_POST['_wpseo_business_address'] ) : '';
+				$locations_meta['_wpseo_business_address_2']     = isset( $_POST['_wpseo_business_address_2'] ) ? sanitize_text_field( $_POST['_wpseo_business_address_2'] ) : '';
+				$locations_meta['_wpseo_business_city']          = isset( $_POST['_wpseo_business_city'] ) ? sanitize_text_field( $_POST['_wpseo_business_city'] ) : '';
+				$locations_meta['_wpseo_business_state']         = isset( $_POST['_wpseo_business_state'] ) ? sanitize_text_field( $_POST['_wpseo_business_state'] ) : '';
+				$locations_meta['_wpseo_business_zipcode']       = isset( $_POST['_wpseo_business_zipcode'] ) ? sanitize_text_field( $_POST['_wpseo_business_zipcode'] ) : '';
+				$locations_meta['_wpseo_business_country']       = isset( $_POST['_wpseo_business_country'] ) ? sanitize_text_field( $_POST['_wpseo_business_country'] ) : '';
+				$locations_meta['_wpseo_business_phone']         = isset( $_POST['_wpseo_business_phone'] ) ? sanitize_text_field( $_POST['_wpseo_business_phone'] ) : '';
+				$locations_meta['_wpseo_business_phone_2nd']     = isset( $_POST['_wpseo_business_phone_2nd'] ) ? sanitize_text_field( $_POST['_wpseo_business_phone_2nd'] ) : '';
+				$locations_meta['_wpseo_business_fax']           = isset( $_POST['_wpseo_business_fax'] ) ? sanitize_text_field( $_POST['_wpseo_business_fax'] ) : '';
+				$locations_meta['_wpseo_business_email']         = isset( $_POST['_wpseo_business_email'] ) ? sanitize_email( $_POST['_wpseo_business_email'] ) : '';
+				$locations_meta['_wpseo_business_location_logo'] = isset( $_POST['_wpseo_business_location_logo'] ) ? sanitize_text_field( $_POST['_wpseo_business_location_logo'] ) : '';
 				$locations_meta['_wpseo_business_location_custom_marker']            = $custom_marker;
 				$locations_meta['_wpseo_business_vat_id']                            = isset( $_POST['_wpseo_business_vat_id'] ) ? sanitize_text_field( $_POST['_wpseo_business_vat_id'] ) : '';
 				$locations_meta['_wpseo_business_tax_id']                            = isset( $_POST['_wpseo_business_tax_id'] ) ? sanitize_text_field( $_POST['_wpseo_business_tax_id'] ) : '';
@@ -1275,7 +1306,7 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 					}
 				}
 
-				$locations_meta['_wpseo_business_url'] = ( isset( $_POST['_wpseo_business_url'] ) && $_POST['_wpseo_business_url'] !== '' ) ? sanitize_text_field( $_POST['_wpseo_business_url'] ) : \get_permalink( $post_id );
+				$locations_meta['_wpseo_business_url'] = ( isset( $_POST['_wpseo_business_url'] ) && $_POST['_wpseo_business_url'] !== '' ) ? sanitize_text_field( $_POST['_wpseo_business_url'] ) : get_permalink( $post_id );
 
 				// Put http:// in front of the URL, if it's not there yet.
 				if ( ! preg_match( '~^(?:f|ht)tps?://~i', $locations_meta['_wpseo_business_url'] ) ) {
@@ -1307,6 +1338,8 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 
 		/**
 		 * Register actions for adding media buttons in the editor.
+		 *
+		 * @return void
 		 */
 		public function register_media_buttons() {
 			$current_screen = get_current_screen();
@@ -1445,6 +1478,8 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 
 		/**
 		 * Add buttons to editor to add the shortcodes via a ppup UI.
+		 *
+		 * @return void
 		 */
 		public function add_media_buttons() {
 			// Make sure to don't output white space between these buttons.
@@ -1461,6 +1496,8 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 
 		/**
 		 * Creates the popup HTML for adding the shortcodes.
+		 *
+		 * @return void
 		 */
 		public function add_mce_popup() {
 			// An exception for Beaver Builder.
@@ -1850,8 +1887,10 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 									</option>
 									<?php
 									$categories = get_terms(
-										'wpseo_locations_category',
-										[ 'hide_empty' => false ]
+										[
+											'taxonomy'   => 'wpseo_locations_category',
+											'hide_empty' => false,
+										]
 									);
 
 									foreach ( $categories as $category ) {
@@ -1984,7 +2023,7 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 							</div>
 							<div style="padding:15px;">
 								<input type="button" class="button button-primary"
-									value="<?php esc_html_e( 'Insert map', 'yoast-local-seo' ); ?>"
+									value="<?php esc_attr_e( 'Insert map', 'yoast-local-seo' ); ?>"
 									onclick="WPSEO_InsertMap();" />&nbsp;&nbsp;&nbsp;
 								<a class="button" href="#"
 									onclick="tb_remove(); return false;"><?php esc_html_e( 'Cancel', 'yoast-local-seo' ); ?></a>
@@ -2022,8 +2061,10 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 								</select>
 								<?php
 								$categories = get_terms(
-									'wpseo_locations_category',
-									[ 'hide_empty' => false ]
+									[
+										'taxonomy'   => 'wpseo_locations_category',
+										'hide_empty' => false,
+									]
 								);
 								if ( ! is_wp_error( $categories ) && ! empty( $categories ) ) {
 									?>
@@ -2421,6 +2462,8 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 
 		/**
 		 * Enqueues the pluginstyles.
+		 *
+		 * @return void
 		 */
 		public function enqueue_styles() {
 			$post_type_instance = new PostType();
@@ -2434,6 +2477,8 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 
 		/**
 		 * Enqueues the pluginscripts.
+		 *
+		 * @return void
 		 */
 		public function enqueue_scripts() {
 			$post_type_instance = new PostType();
@@ -2523,7 +2568,7 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 		 * @return mixed The post meta.
 		 */
 		protected function get_location_post_meta( $meta_key ) {
-			return \get_post_meta( $this->location_id, $meta_key, true );
+			return get_post_meta( $this->location_id, $meta_key, true );
 		}
 
 		/**
@@ -2552,9 +2597,9 @@ if ( ! class_exists( 'WPSEO_Local_Metaboxes' ) ) {
 		protected function create_hidden_opening_hours_message() {
 			$content = sprintf(
 			/* translators: %1$s expands to Local SEO, %2$s is a link start tag to the Opening hours tab, %3$s is the link closing tag. */
-				\esc_html__( 'You\'ve chosen to hide opening hours for your locations. You can change this on the %2$sOpening hours tab%3$s of the %1$s settings.', 'yoast-local-seo' ),
+				esc_html__( 'You\'ve chosen to hide opening hours for your locations. You can change this on the %2$sOpening hours tab%3$s of the %1$s settings.', 'yoast-local-seo' ),
 				'Local SEO',
-				'<a href="' . \esc_url( \admin_url( 'admin.php?page=wpseo_local#top#opening_hours' ) ) . '">',
+				'<a href="' . esc_url( admin_url( 'admin.php?page=wpseo_local#top#opening_hours' ) ) . '">',
 				'</a>'
 			);
 

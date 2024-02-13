@@ -5,9 +5,9 @@
  * @package WPSEO_Local\Frontend
  */
 
-use Yoast\WP\Local\Repositories\Options_Repository;
 use Yoast\WP\Local\Builders\Locations_Repository_Builder;
 use Yoast\WP\Local\PostType\PostType;
+use Yoast\WP\Local\Repositories\Options_Repository;
 
 /**
  * Class WPSEO_Show_OpeningHours.
@@ -50,7 +50,7 @@ class WPSEO_Show_OpeningHours extends WP_Widget {
 	 * @return void
 	 */
 	public function widget( $args, $instance ) {
-		$title              = apply_filters( 'widget_title', isset( $instance['title'] ) ? $instance['title'] : '' );
+		$title              = apply_filters( 'widget_title', ( $instance['title'] ?? '' ) );
 		$location_id        = ! empty( $instance['location_id'] ) ? $instance['location_id'] : '';
 		$show_days          = ! empty( $instance['show_days'] ) ? $instance['show_days'] : [];
 		$hide_closed        = ! empty( $instance['hide_closed'] );
@@ -59,7 +59,6 @@ class WPSEO_Show_OpeningHours extends WP_Widget {
 		$post_type_instance = new PostType();
 		$post_type_instance->initialize();
 		$post_type = $post_type_instance->get_post_type();
-
 
 		// Set location ID, since get_post_status() needs an integer as parameter.
 		if ( $location_id === 'current' ) {

@@ -26,6 +26,8 @@ if ( ! \class_exists( Api_Keys_Repository::class ) ) {
 
 		/**
 		 * Initialize Api_Keys_Repository.
+		 *
+		 * @return void
 		 */
 		public function initialize() {
 			$this->options = \get_option( 'wpseo_local' );
