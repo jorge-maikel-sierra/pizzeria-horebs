@@ -14,3 +14,9 @@ wp-config-ddev.php
 # Eliminar archivo .log 
 *.log
 
+pizzeriaHorebsDB
+exports
+export_wp_database_full
+.vscode
+.venv
+pizzeriaHorebsDB
