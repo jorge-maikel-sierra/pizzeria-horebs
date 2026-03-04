@@ -20,3 +20,4 @@ export_wp_database_full
 .vscode
 .venv
 pizzeriaHorebsDB
+analytics/
