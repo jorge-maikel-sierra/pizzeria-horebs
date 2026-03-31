@@ -81,18 +81,41 @@ cd "${PUBLIC_HTML}" || exit 1
 # Guardar el hash actual
 OLD_HEAD=$(git rev-parse HEAD 2>/dev/null)
 
-# Pull (solo fast-forward, nunca merge conflicts)
-PULL_OUTPUT=$(git pull origin main --ff-only 2>&1)
-PULL_EXIT=$?
+# Backup de archivos de producción ANTES del fetch+reset
+[ -f wp-config.php ] && cp wp-config.php /tmp/.wp-config-pre-deploy
+[ -f .htaccess ] && cp .htaccess /tmp/.htaccess-pre-deploy
 
-NEW_HEAD=$(git rev-parse HEAD 2>/dev/null)
+# Fetch + reset --hard (robusto: no falla con untracked files como --ff-only)
+FETCH_OUTPUT=$(git fetch origin main 2>&1)
+FETCH_EXIT=$?
 
-# Si hubo cambios, ejecutar deploy.sh
-if [ "${PULL_EXIT}" -eq 0 ] && [ "${OLD_HEAD}" != "${NEW_HEAD}" ]; then
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] Pull exitoso: ${OLD_HEAD:0:8} → ${NEW_HEAD:0:8}" >> "${LOG_FILE}"
+if [ "${FETCH_EXIT}" -ne 0 ]; then
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] ERROR en git fetch: ${FETCH_OUTPUT}" >> "${LOG_FILE}"
+    rm -f /tmp/.wp-config-pre-deploy /tmp/.htaccess-pre-deploy
+    exit 1
+fi
+
+REMOTE_HEAD=$(git rev-parse origin/main 2>/dev/null)
+
+# Solo actuar si hay cambios nuevos
+if [ "${OLD_HEAD}" != "${REMOTE_HEAD}" ]; then
+    # Reset hard al nuevo commit (sobrescribe todo incluyendo untracked conflicts)
+    RESET_OUTPUT=$(git reset --hard origin/main 2>&1)
+    RESET_EXIT=$?
     
-    # Restaurar wp-config.php si fue eliminado por git
-    if [ ! -f "${PUBLIC_HTML}/wp-config.php" ]; then
+    NEW_HEAD=$(git rev-parse HEAD 2>/dev/null)
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] Deploy: ${OLD_HEAD:0:8} → ${NEW_HEAD:0:8}" >> "${LOG_FILE}"
+    
+    if [ "${RESET_EXIT}" -ne 0 ]; then
+        echo "[$(date '+%Y-%m-%d %H:%M:%S')] ERROR en git reset: ${RESET_OUTPUT}" >> "${LOG_FILE}"
+        exit 1
+    fi
+    
+    # Restaurar wp-config.php (NUNCA debe venir de Git)
+    if [ -f /tmp/.wp-config-pre-deploy ]; then
+        cp /tmp/.wp-config-pre-deploy "${PUBLIC_HTML}/wp-config.php"
+        chmod 600 "${PUBLIC_HTML}/wp-config.php"
+    elif [ ! -f "${PUBLIC_HTML}/wp-config.php" ]; then
         LATEST_CONFIG=$(ls -t "${PUBLIC_HTML}/../deploy-backups"/wp-config.php.* 2>/dev/null | head -1)
         if [ -n "${LATEST_CONFIG}" ]; then
             cp "${LATEST_CONFIG}" "${PUBLIC_HTML}/wp-config.php"
@@ -101,19 +124,27 @@ if [ "${PULL_EXIT}" -eq 0 ] && [ "${OLD_HEAD}" != "${NEW_HEAD}" ]; then
         fi
     fi
     
+    # Restaurar .htaccess de producción (tiene reglas LiteSpeed + redirects)
+    if [ -f "${HOME}/htaccess-prod-backup" ]; then
+        cp "${HOME}/htaccess-prod-backup" "${PUBLIC_HTML}/.htaccess"
+    elif [ -f /tmp/.htaccess-pre-deploy ]; then
+        cp /tmp/.htaccess-pre-deploy "${PUBLIC_HTML}/.htaccess"
+    fi
+    
     # Ejecutar deploy.sh
     if [ -x "${PUBLIC_HTML}/deploy.sh" ]; then
         "${PUBLIC_HTML}/deploy.sh" >> "${LOG_FILE}" 2>&1
-        echo "[$(date '+%Y-%m-%d %H:%M:%S')] deploy.sh ejecutado" >> "${LOG_FILE}"
     else
         chmod +x "${PUBLIC_HTML}/deploy.sh"
         "${PUBLIC_HTML}/deploy.sh" >> "${LOG_FILE}" 2>&1
     fi
     
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] deploy.sh ejecutado" >> "${LOG_FILE}"
     echo "---" >> "${LOG_FILE}"
-elif [ "${PULL_EXIT}" -ne 0 ]; then
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] ERROR en git pull: ${PULL_OUTPUT}" >> "${LOG_FILE}"
 fi
+
+# Limpiar temporales
+rm -f /tmp/.wp-config-pre-deploy /tmp/.htaccess-pre-deploy
 
 # Mantener log manejable (últimas 500 líneas)
 if [ -f "${LOG_FILE}" ] && [ "$(wc -l < "${LOG_FILE}")" -gt 1000 ]; then
