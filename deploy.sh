@@ -124,10 +124,10 @@ log "Permisos actualizados"
 log "Limpiando archivos de desarrollo..."
 
 # Eliminar archivos de desarrollo que Git puede haber traído
+# NOTA: No eliminar archivos trackeados por Git (.github/, README.md) porque
+# causa conflictos en futuros git pull. Solo eliminar archivos sueltos.
 declare -a DEV_FILES=(
     "${PUBLIC_HTML}/.deployignore"
-    "${PUBLIC_HTML}/README.md"
-    "${PUBLIC_HTML}/.github"
 )
 
 for dev_file in "${DEV_FILES[@]}"; do
