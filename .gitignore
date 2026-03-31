@@ -58,9 +58,9 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# ─── Node/Composer (si se usan en desarrollo) ────────────────────────────────
+# ─── Node/Composer (solo en la raíz, NO dentro de plugins/themes) ─────────────
 node_modules/
-vendor/
+/vendor/
 package-lock.json
 composer.lock
 
