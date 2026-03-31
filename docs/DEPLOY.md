@@ -58,72 +58,51 @@
 |---|---|
 | **Repositorio** | `git@github.com:jorge-maikel-sierra/pizzeria-horebs.git` |
 | **Rama** | `main` |
-| **Directorio** | `domains/pizzeriahorebs.com/public_html` |
+| **Directorio** | `domains/pizzeriahorebs.shop/public_html` |
 
-> ⚠️ **NOTA**: Como `pizzeriahorebs.com` es un dominio **addon**, la ruta NO es `public_html` estándar sino `domains/pizzeriahorebs.com/public_html`. Si tu WordPress estuviera en el dominio principal (`pizzeriahorebs.shop`), dejarías el directorio vacío.
+> ⚠️ **NOTA**: WordPress corre en el dominio principal `pizzeriahorebs.shop`. La ruta del repo es `domains/pizzeriahorebs.shop/public_html`. El dominio `pizzeriahorebs.com` redirige a `.shop` vía `.htaccess`.
 
 4. Haz clic en **"Crear"**
 5. Hostinger hará el primer `git clone` automáticamente
 
 > 🔴 **IMPORTANTE**: Hostinger requiere que `public_html` esté **VACÍO** para hacer el clone. Ver el paso 3.1 abajo.
 
-### PASO 3.1 – Vaciar public_html antes del primer clone (CRÍTICO)
+### PASO 3.1 – Primer deploy (método git remote swap)
 
-Hostinger da el error **"Project directory is not empty"** si `public_html` tiene archivos.
-
-**Solución automatizada** (recomendada):
+Si ya hay un WordPress funcionando con un repo Git anterior, el método más seguro es cambiar el remote:
 
 ```bash
 # 1. Conectar vía SSH a Hostinger
-ssh u123456789@tu-ip-hostinger -p 65002
+ssh -p 65002 u613240431@88.223.85.198
 
-# 2. Subir y ejecutar el script de preparación
-# (sube docs/prepare-git-deploy.sh al HOME del servidor vía SFTP o scp)
-chmod +x ~/prepare-git-deploy.sh
-./prepare-git-deploy.sh
+# 2. Ir al directorio de WordPress
+cd ~/domains/pizzeriahorebs.shop/public_html
+
+# 3. Backup de archivos críticos
+cp wp-config.php ~/wp-config-backup
+cp .htaccess ~/htaccess-prod-backup
+
+# 4. Cambiar remote al nuevo repo
+git remote set-url origin git@github.com:jorge-maikel-sierra/pizzeria-horebs.git
+
+# 5. Fetch y reset
+git fetch origin main
+git reset --hard origin/main
+
+# 6. Restaurar archivos de producción
+cp ~/wp-config-backup wp-config.php
+cp ~/htaccess-prod-backup .htaccess
+chmod 600 wp-config.php
+
+# 7. Ejecutar post-deploy
+chmod +x deploy.sh
+./deploy.sh
 ```
 
-El script hace automáticamente:
-1. ✅ Backup completo de `public_html` → `~/pre-git-backup-FECHA/`
-2. ✅ Guarda `wp-config.php`, `uploads/`, `.htaccess` por separado
-3. ✅ Vacía `public_html`
-4. ✅ Crea script de restauración `restore.sh`
-
-**Después del clone de Hostinger:**
-
-```bash
-# Ejecutar restauración (restaura wp-config.php, uploads, permisos)
-~/pre-git-backup-FECHA/restore.sh
-```
-
-**Solución manual** (si prefieres hacerlo a mano):
-
-```bash
-# En Hostinger vía SSH:
-cd ~
-
-# 1. Backup completo
-cp -a public_html public_html_backup_$(date +%Y%m%d)
-
-# 2. Guardar archivos críticos
-mkdir -p ~/restore_files
-cp public_html/wp-config.php ~/restore_files/
-cp -a public_html/wp-content/uploads ~/restore_files/
-
-# 3. Vaciar public_html
-rm -rf public_html/*
-rm -rf public_html/.[!.]*
-
-# 4. Ir a hPanel → Git → Crear repositorio (ahora funcionará)
-
-# 5. Después del clone, restaurar:
-cp ~/restore_files/wp-config.php ~/public_html/
-cp -a ~/restore_files/uploads ~/public_html/wp-content/
-chmod 600 ~/public_html/wp-config.php
-chmod -R 755 ~/public_html/wp-content/uploads
-```
-
-> ⚠️ **El sitio estará caído** desde que vacías `public_html` hasta que completas la restauración. Hazlo en horario de bajo tráfico.
+> ⚠️ **Si public_html está vacío** (hosting nuevo), usa el panel Git de hPanel directamente:
+> 1. Ve a **hPanel → Avanzado → Git → Crear repositorio**
+> 2. Hostinger hará `git clone` automáticamente
+> 3. Después restaura `wp-config.php` y ejecuta `deploy.sh`
 
 ### PASO 4 – Verificar wp-config.php en producción
 
@@ -133,14 +112,17 @@ Después del primer clone, `wp-config.php` **NO estará** (está en `.gitignore`
 
 1. Conéctate vía SSH a Hostinger:
    ```bash
-   ssh u123456789@tu-ip-hostinger -p 65002
+   ssh -p 65002 u613240431@88.223.85.198
    ```
 
 2. Restaura `wp-config.php` desde tu backup:
    ```bash
-   cd ~/public_html
+   cd ~/domains/pizzeriahorebs.shop/public_html
    # Si lo tienes en backup:
-   cp ~/backups/wp-config.php ./wp-config.php
+   cp ~/wp-config-backup ./wp-config.php
+   # O desde backups de deploy:
+   ls -t ~/domains/pizzeriahorebs.shop/deploy-backups/wp-config.php.*
+   cp ~/domains/pizzeriahorebs.shop/deploy-backups/wp-config.php.ULTIMO ./wp-config.php
    chmod 600 wp-config.php
    ```
 
@@ -171,16 +153,16 @@ Después del primer clone, `wp-config.php` **NO estará** (está en `.gitignore`
 Después del primer clone, ejecuta manualmente:
 
 ```bash
-cd ~/public_html
+cd ~/domains/pizzeriahorebs.shop/public_html
 chmod +x deploy.sh
 ./deploy.sh
 ```
 
-Para auto-ejecución en futuros deploys, Hostinger permite configurar un **webhook** o puedes usar un **cron job**:
+Para auto-ejecución en futuros deploys, configura un **cron job** que detecte cambios y ejecute deploy.sh:
 
 ```bash
-# Alternativa: Cron que ejecuta deploy.sh si hay cambios recientes
-*/5 * * * * cd ~/public_html && git log --since="5 minutes ago" --oneline | grep -q . && ./deploy.sh >> /tmp/deploy-cron.log 2>&1
+# Cron que ejecuta deploy.sh si hubo git pull reciente (cada 5 minutos)
+*/5 * * * * cd ~/domains/pizzeriahorebs.shop/public_html && git pull origin main --ff-only 2>/dev/null && git log --since="5 minutes ago" --oneline | grep -q . && ./deploy.sh >> /tmp/deploy-cron.log 2>&1
 ```
 
 ### PASO 6 – Configurar Auto-Deploy (Webhook)
@@ -270,7 +252,7 @@ public_html/                          ← Hostinger clona aquí
 
 ```bash
 # En Hostinger vía SSH:
-cd ~/public_html
+cd ~/domains/pizzeriahorebs.shop/public_html
 
 # Ver commits recientes
 git log --oneline -5
@@ -287,10 +269,10 @@ git push origin main --force
 
 ```bash
 # Restaurar .htaccess
-cp ~/deploy-backups/.htaccess.YYYYMMDD-HHMMSS ~/public_html/.htaccess
+cp ~/domains/pizzeriahorebs.shop/deploy-backups/.htaccess.YYYYMMDD-HHMMSS ~/domains/pizzeriahorebs.shop/public_html/.htaccess
 
 # Restaurar wp-config.php
-cp ~/deploy-backups/wp-config.php.YYYYMMDD-HHMMSS ~/public_html/wp-config.php
+cp ~/domains/pizzeriahorebs.shop/deploy-backups/wp-config.php.YYYYMMDD-HHMMSS ~/domains/pizzeriahorebs.shop/public_html/wp-config.php
 ```
 
 ### Rollback completo (desde backup de Hostinger)
@@ -304,7 +286,7 @@ cp ~/deploy-backups/wp-config.php.YYYYMMDD-HHMMSS ~/public_html/wp-config.php
 
 ### Opción 1: Subdominio en Hostinger
 
-1. Crear subdominio: `staging.pizzeriahoreb.com`
+1. Crear subdominio: `staging.pizzeriahorebs.shop`
 2. Crear rama `staging` en Git
 3. Configurar segundo repo Git en Hostinger apuntando a:
    - Rama: `staging`
@@ -322,7 +304,7 @@ El flujo actual con DDEV ya funciona como staging local:
 
 ## Checklist Post-Deploy
 
-- [ ] El sitio carga correctamente: `https://pizzeriahoreb.com`
+- [ ] El sitio carga correctamente: `https://pizzeriahorebs.shop`
 - [ ] WooCommerce funciona (agregar producto al carrito, checkout)
 - [ ] Mercado Pago responde (hacer prueba de pago)
 - [ ] Las imágenes cargan (uploads/ intacto)
@@ -340,21 +322,25 @@ El flujo actual con DDEV ya funciona como staging local:
 
 ```bash
 # 1. Verificar wp-config.php
-ls -la ~/public_html/wp-config.php
+ls -la ~/domains/pizzeriahorebs.shop/public_html/wp-config.php
 
 # 2. Verificar permisos
-find ~/public_html -type d -exec chmod 755 {} \;
-find ~/public_html -type f -exec chmod 644 {} \;
-chmod 600 ~/public_html/wp-config.php
+cd ~/domains/pizzeriahorebs.shop/public_html
+find . -type d -not -path './.git/*' -exec chmod 755 {} \;
+find . -type f -not -path './.git/*' -exec chmod 644 {} \;
+chmod 600 wp-config.php
 
-# 3. Verificar .htaccess
-cat ~/public_html/.htaccess
+# 3. Verificar .htaccess (debe tener reglas LiteSpeed + redirect)
+wc -l .htaccess  # Debe ser ~600+ líneas, NO ~16
 
-# 4. Activar debug temporalmente
+# 4. Si .htaccess es muy pequeño, restaurar desde backup
+cp ~/htaccess-prod-backup .htaccess
+
+# 5. Activar debug temporalmente
 # En wp-config.php, agregar:
 # define('WP_DEBUG', true);
 # define('WP_DEBUG_LOG', true);
-# Revisar: ~/public_html/wp-content/debug.log
+# Revisar: ~/domains/pizzeriahorebs.shop/public_html/wp-content/debug.log
 ```
 
 ### "Faltan plugins después del deploy"
@@ -368,8 +354,8 @@ Si un plugin no está en Git, debe instalarse manualmente en producción:
 
 ```bash
 # Verificar que uploads existe y tiene permisos
-ls -la ~/public_html/wp-content/uploads/
-chmod -R 755 ~/public_html/wp-content/uploads/
+ls -la ~/domains/pizzeriahorebs.shop/public_html/wp-content/uploads/
+chmod -R 755 ~/domains/pizzeriahorebs.shop/public_html/wp-content/uploads/
 ```
 
 ---
@@ -378,18 +364,18 @@ chmod -R 755 ~/public_html/wp-content/uploads/
 
 ```bash
 # SSH a Hostinger
-ssh u123456789@tu-ip-hostinger -p 65002
+ssh -p 65002 u613240431@88.223.85.198
 
 # Ver estado del repo en producción
-cd ~/public_html && git status
+cd ~/domains/pizzeriahorebs.shop/public_html && git status
 
 # Pull manual (si auto-deploy no funciona)
-cd ~/public_html && git pull origin main
+cd ~/domains/pizzeriahorebs.shop/public_html && git pull origin main --ff-only
 
 # Ejecutar deploy.sh manualmente
-cd ~/public_html && ./deploy.sh
+cd ~/domains/pizzeriahorebs.shop/public_html && ./deploy.sh
 
 # Ver logs de deploy
 ls -la /tmp/pizzeria-horebs-deploy-*
-cat /tmp/pizzeria-horebs-deploy-LATEST.log
+cat /tmp/pizzeria-horebs-deploy-*.log | tail -50
 ```

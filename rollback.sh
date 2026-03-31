@@ -66,6 +66,20 @@ fi
 log "Ejecutando git reset..."
 git reset --hard "${TARGET_COMMIT}"
 
+# Restaurar .htaccess de producción si fue sobrescrito
+HTACCESS_PROD="${HOME}/htaccess-prod-backup"
+if [ -f "${HTACCESS_PROD}" ]; then
+    CURRENT_SIZE=$(stat -c%s "${PUBLIC_HTML}/.htaccess" 2>/dev/null || stat -f%z "${PUBLIC_HTML}/.htaccess" 2>/dev/null || echo "0")
+    PROD_SIZE=$(stat -c%s "${HTACCESS_PROD}" 2>/dev/null || stat -f%z "${HTACCESS_PROD}" 2>/dev/null || echo "0")
+    if [ "${CURRENT_SIZE}" -lt "${PROD_SIZE}" ] 2>/dev/null; then
+        cp "${HTACCESS_PROD}" "${PUBLIC_HTML}/.htaccess"
+        log "🔄 .htaccess de producción restaurado (${PROD_SIZE} bytes)"
+    fi
+elif [ -f "${BACKUP_DIR}/.htaccess.pre-rollback.${TIMESTAMP}" ]; then
+    cp "${BACKUP_DIR}/.htaccess.pre-rollback.${TIMESTAMP}" "${PUBLIC_HTML}/.htaccess"
+    log "🔄 .htaccess restaurado desde backup pre-rollback"
+fi
+
 # Re-ejecutar permisos
 log "Reajustando permisos..."
 find "${PUBLIC_HTML}" -type d -not -path "*/uploads/*" -not -path "*/.git/*" -exec chmod 755 {} \; 2>/dev/null || true

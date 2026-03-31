@@ -56,9 +56,35 @@ if [ -f "${PUBLIC_HTML}/wp-config.php" ]; then
 fi
 
 # Limpiar backups antiguos (mantener últimos 10)
-ls -t "${BACKUP_DIR}"/.htaccess.* 2>/dev/null | tail -n +11 | xargs -r rm -f
-ls -t "${BACKUP_DIR}"/wp-config.php.* 2>/dev/null | tail -n +11 | xargs -r rm -f
+ls -t "${BACKUP_DIR}"/.htaccess.* 2>/dev/null | tail -n +11 | xargs rm -f 2>/dev/null || true
+ls -t "${BACKUP_DIR}"/wp-config.php.* 2>/dev/null | tail -n +11 | xargs rm -f 2>/dev/null || true
 log "Backups antiguos limpiados (se mantienen los últimos 10)"
+
+# ─── PASO 0.5: Restaurar .htaccess de producción ────────────────────────────
+# CRÍTICO: git pull sobrescribe .htaccess con la versión del repo (básica).
+# Producción necesita el .htaccess con reglas de LiteSpeed, redirect .com→.shop, etc.
+# Si existe un backup reciente, restaurarlo automáticamente.
+HTACCESS_PROD="${HOME}/htaccess-prod-backup"
+if [ -f "${HTACCESS_PROD}" ]; then
+    REPO_HTACCESS_SIZE=$(stat -c%s "${PUBLIC_HTML}/.htaccess" 2>/dev/null || stat -f%z "${PUBLIC_HTML}/.htaccess" 2>/dev/null || echo "0")
+    PROD_HTACCESS_SIZE=$(stat -c%s "${HTACCESS_PROD}" 2>/dev/null || stat -f%z "${HTACCESS_PROD}" 2>/dev/null || echo "0")
+    
+    # Si el .htaccess actual es mucho más pequeño que el de producción, fue sobrescrito por Git
+    if [ "${REPO_HTACCESS_SIZE}" -lt "${PROD_HTACCESS_SIZE}" ] 2>/dev/null; then
+        cp "${HTACCESS_PROD}" "${PUBLIC_HTML}/.htaccess"
+        log "🔄 .htaccess restaurado desde backup de producción (${PROD_HTACCESS_SIZE} bytes)"
+    fi
+elif [ -n "$(ls -t "${BACKUP_DIR}"/.htaccess.* 2>/dev/null | head -1)" ]; then
+    # Si no hay htaccess-prod-backup pero sí hay backups de deploy anteriores
+    LATEST_BACKUP=$(ls -t "${BACKUP_DIR}"/.htaccess.* 2>/dev/null | head -1)
+    REPO_HTACCESS_SIZE=$(stat -c%s "${PUBLIC_HTML}/.htaccess" 2>/dev/null || stat -f%z "${PUBLIC_HTML}/.htaccess" 2>/dev/null || echo "0")
+    BACKUP_HTACCESS_SIZE=$(stat -c%s "${LATEST_BACKUP}" 2>/dev/null || stat -f%z "${LATEST_BACKUP}" 2>/dev/null || echo "0")
+    
+    if [ "${REPO_HTACCESS_SIZE}" -lt "${BACKUP_HTACCESS_SIZE}" ] 2>/dev/null; then
+        cp "${LATEST_BACKUP}" "${PUBLIC_HTML}/.htaccess"
+        log "🔄 .htaccess restaurado desde último backup (${BACKUP_HTACCESS_SIZE} bytes)"
+    fi
+fi
 
 # ─── PASO 1: Verificar que wp-config.php existe ─────────────────────────────
 if [ ! -f "${PUBLIC_HTML}/wp-config.php" ]; then
