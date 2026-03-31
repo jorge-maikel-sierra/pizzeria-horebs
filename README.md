@@ -2,7 +2,7 @@
 
 Sitio web de e-commerce de pizzería colombiana, construido con **WordPress + WooCommerce**. Ofrece pedidos online para entrega a domicilio, recoger en local y consumo en el punto de venta.
 
-**URL producción**: [pizzeriahorebs.com](https://pizzeriahorebs.com)  
+**URL producción**: [pizzeriahorebs.com](https://pizzeriahorebs.shop)  
 **URL local (DDEV)**: `https://pizzeria-horebs.ddev.site`
 
 ---
@@ -130,7 +130,7 @@ Requiere exportar `HOSTINGER_API_TOKEN` en tu shell. Ver `docs/mcp-hostinger.md`
 
 ## Creado por
 
-[Jorge Sierra](https://jorgesierra.dev) — [@jorge-maikel-sierra](https://github.com/jorge-maikel-sierra)
+[Jorge Sierra](https://jorge-sierra.dev) — [@jorge-maikel-sierra](https://github.com/jorge-maikel-sierra)
 
 ## Licencia
 
