@@ -7,9 +7,9 @@
  * @todo    CHECK THE @SINCE VERSION NUMBER!!!!!!!!
  */
 
+use Yoast\WP\Local\PostType\PostType;
 use Yoast\WP\SEO\Helpers\Indexable_Helper;
 use Yoast\WP\SEO\Integrations\Watchers\Indexable_Permalink_Watcher;
-use Yoast\WP\Local\PostType\PostType;
 
 if ( ! defined( 'WPSEO_LOCAL_VERSION' ) ) {
 	header( 'Status: 403 Forbidden' );
@@ -39,20 +39,22 @@ if ( ! class_exists( 'WPSEO_Local_Admin_Advanced_Settings' ) ) {
 		 * WPSEO_Local_Admin_API_Settings constructor.
 		 */
 		public function __construct() {
-			$post_type = new Yoast\WP\Local\PostType\PostType();
+			$post_type = new PostType();
 			$post_type->initialize();
 			add_filter( 'wpseo_local_admin_tabs', [ $this, 'create_tab' ] );
 			add_filter( 'wpseo_local_admin_help_center_video', [ $this, 'set_video' ] );
 
-			add_action( 'wpseo_local_admin_' . $this->slug . '_content', [
-				$this,
-				'maybe_show_multiple_location_notification',
-			], 10 );
+			add_action(
+				'wpseo_local_admin_' . $this->slug . '_content',
+				[ $this, 'maybe_show_multiple_location_notification' ],
+				10
+			);
 			if ( $post_type->is_post_type_filtered() ) {
-				add_action( 'wpseo_local_admin_' . $this->slug . '_content', [
-					$this,
-					'post_type_filtered_notification',
-				], 10 );
+				add_action(
+					'wpseo_local_admin_' . $this->slug . '_content',
+					[ $this, 'post_type_filtered_notification' ],
+					10
+				);
 			}
 			if ( ! $post_type->is_post_type_filtered() ) {
 				add_action( 'wpseo_local_admin_' . $this->slug . '_content', [ $this, 'permalinks' ], 10 );
@@ -67,6 +69,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_Advanced_Settings' ) ) {
 		 *
 		 * @param array $old_value The old option value.
 		 * @param array $new_value The new option value.
+		 *
+		 * @return void
 		 */
 		public function reset_indexable_permalinks( $old_value, $new_value ) {
 			if ( $old_value['locations_slug'] === $new_value['locations_slug'] && $old_value['locations_taxo_slug'] === $new_value['locations_taxo_slug'] ) {
@@ -117,6 +121,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_Advanced_Settings' ) ) {
 
 		/**
 		 * If multiple locations are not enabled, show a notification there are more (advanced) settings available if they are activated.
+		 *
+		 * @return void
 		 */
 		public function maybe_show_multiple_location_notification() {
 			WPSEO_Local_Admin_Page::section_before( 'wpseo-local-multiple-locations-notification', 'clear: both; ' . ( ! wpseo_has_multiple_locations() ? '' : 'display: none;' ) );
@@ -128,6 +134,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_Advanced_Settings' ) ) {
 
 		/**
 		 * If multiple locations are not enabled, show a notification there are more (advanced) settings available if they are activated.
+		 *
+		 * @return void
 		 */
 		public function post_type_filtered_notification() {
 			$post_type_instance = new PostType();
@@ -149,6 +157,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_Advanced_Settings' ) ) {
 
 		/**
 		 * Advanced settings section.
+		 *
+		 * @return void
 		 */
 		public function enhanced_search() {
 			WPSEO_Local_Admin_Page::section_before( 'wpseo-local-enhanced', 'clear: both; ' . ( wpseo_has_multiple_locations() ? '' : 'display: none;' ) );
@@ -169,6 +179,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_Advanced_Settings' ) ) {
 
 		/**
 		 * Show the permalink settings when multiple locations is active.
+		 *
+		 * @return void
 		 */
 		public function permalinks() {
 			$base_url = get_site_url();
@@ -220,6 +232,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_Advanced_Settings' ) ) {
 
 		/**
 		 * Show fields to change the admin labels when multiple locations is active.
+		 *
+		 * @return void
 		 */
 		public function admin_labels() {
 			WPSEO_Local_Admin_Page::section_before( 'wpseo-local-admin_labels', 'clear: both; ' . ( wpseo_has_multiple_locations() ? '' : 'display: none;' ) );

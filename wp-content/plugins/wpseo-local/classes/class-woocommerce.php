@@ -5,6 +5,8 @@
  * @package WPSEO_Local
  */
 
+use Automattic\WooCommerce\Utilities\FeaturesUtil;
+
 /**
  * Class: WPSEO_Local_WooCommerce.
  */
@@ -138,6 +140,8 @@ class WPSEO_Local_WooCommerce {
 
 	/**
 	 * Load the plugin text domain.
+	 *
+	 * @return void
 	 */
 	public function load_textdomain_local_seo_woocommerce() {
 		load_plugin_textdomain( 'yoast-local-seo', false, dirname( plugin_basename( WPSEO_LOCAL_FILE ) ) . '/languages' );
@@ -145,6 +149,8 @@ class WPSEO_Local_WooCommerce {
 
 	/**
 	 * Initialize the WooCommerce specific classes.
+	 *
+	 * @return void
 	 */
 	public function init_local_seo_woocommerce() {
 		// Check if WooCommerce is active.
@@ -168,11 +174,6 @@ class WPSEO_Local_WooCommerce {
 				$wpseo_local_woocommerce_shipping = new Yoast_WCSEO_Local_Shipping();
 				$wpseo_local_woocommerce_shipping->init();
 
-				require_once WPSEO_LOCAL_PATH . 'woocommerce/admin/class-wc-transport.php';
-				require_once WPSEO_LOCAL_PATH . 'woocommerce/admin/class-wc-transport-list.php';
-				$wpseo_local_woocommerce_transport = new Yoast_WCSEO_Local_Transport();
-				$wpseo_local_woocommerce_transport->init();
-
 				require_once WPSEO_LOCAL_PATH . 'woocommerce/admin/class-admin-columns.php';
 				require_once WPSEO_LOCAL_PATH . 'woocommerce/emails/class-wc-emails.php';
 				require_once WPSEO_LOCAL_PATH . 'woocommerce/includes/wpseo-local-woocommerce-functions.php';
@@ -193,10 +194,12 @@ class WPSEO_Local_WooCommerce {
 
 	/**
 	 * Declares compatibility with the WooCommerce HPOS feature.
+	 *
+	 * @return void
 	 */
 	public function declare_custom_order_tables_compatibility() {
 		if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
-			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', WPSEO_LOCAL_FILE, true );
+			FeaturesUtil::declare_compatibility( 'custom_order_tables', WPSEO_LOCAL_FILE, true );
 		}
 	}
 
@@ -228,13 +231,15 @@ class WPSEO_Local_WooCommerce {
 
 	/**
 	 * Throw an error if WooCommerce is out of date.
+	 *
+	 * @return void
 	 */
 	public function error_outdated_woocommerce() {
 		$this->admin_message(
 			sprintf(
-				/* translators: %s expands to "Yoast SEO: Local for WooCommerce". */
+				/* translators: %s expands to "Yoast SEO: Local". */
 				__( 'Please upgrade the WooCommerce plugin to the latest version to allow the "%s" plugin to work.', 'yoast-local-seo' ),
-				$this->_plugin_name
+				'Yoast SEO: Local'
 			),
 			'error'
 		);
@@ -245,6 +250,8 @@ class WPSEO_Local_WooCommerce {
 	 *
 	 * @param string $message    Admin message text.
 	 * @param string $class_name CSS class name for the admin notice.
+	 *
+	 * @return void
 	 */
 	private function admin_message( $message, $class_name ) {
 		echo '<div class="' . esc_attr( $class_name ) . '"><p>' . $message . '</p></div>';

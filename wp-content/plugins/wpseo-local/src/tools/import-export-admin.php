@@ -29,6 +29,8 @@ class Import_Export_Admin implements Integration_Interface {
 	 * Creates new import tab
 	 *
 	 * @since 1.3.5
+	 *
+	 * @return void
 	 */
 	public function create_import_tab_header() {
 		echo '<a class="nav-tab" id="local-seo-tab" href="#top#local-seo">Local SEO</a>';
@@ -38,6 +40,8 @@ class Import_Export_Admin implements Integration_Interface {
 	 * Creates content wrapper for Local SEO import tab
 	 *
 	 * @since 1.3.5
+	 *
+	 * @return void
 	 */
 	public function create_import_tab_content_wrapper() {
 		echo '<div id="local-seo" class="wpseotab">';

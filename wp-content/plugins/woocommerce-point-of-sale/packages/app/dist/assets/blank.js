@@ -1,0 +1,1 @@
+import{k as t,aK as n,o as r,m as s,w as e,n as a,aL as _,aM as l,_ as c}from"../index.js";const u=t({name:"AppLayoutBlank",__name:"blank",setup(p){return(f,m)=>{const o=n("router-view");return r(),s(l,{style:{backgroundColor:"#fff"}},{default:e(()=>[a(_,null,{default:e(()=>[a(o)]),_:1})]),_:1})}}}),k=c(u,[["__file","blank.vue"]]);export{k as default};

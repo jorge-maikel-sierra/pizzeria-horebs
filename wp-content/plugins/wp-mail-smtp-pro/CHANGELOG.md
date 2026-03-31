@@ -2,6 +2,108 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.11.1] - 2024-01-23
+### Fixed:
+- Setup Wizard texts.
+- Compatibility for List-Unsubscribe header.
+
+## [3.11.0] - 2023-12-12
+### Added:
+- One-click setup for Gmail mailer (the easiest way to set up Gmail mailer).
+- Filter to customize the capability required for managing the plugin.
+
+### Changed:
+- Hide test tab movement notice for new users.
+- Improved keyboard navigation styles for the Setup Wizard.
+- Removed `WPMailSMTP\Admin\PluginsInstallUpgrader` class and switched to the WordPress Core `Plugin_Upgrader` class.
+
+### Fixed:
+- Fatal error in the Pro Site Health module if the Lite module was not loaded.
+- PHP deprecation notices in the Setup Wizard on WordPress 6.4 and above.
+- PHP deprecation notice for `mb_convert_encoding` function on PHP 8.2 and above.
+
+## [3.10.1] - 2023-11-15
+### Added:
+- Cleanup of duplicate Action Scheduler tasks.
+
+### Fixed:
+- Compatibility issue with Action Scheduler lower than 3.3.0.
+
+## [3.10.0] - 2023-11-07
+### Added:
+- Connection (mailer) selector for single and bulk emails resend.
+- Ability to switch additional connection to the primary connection.
+- Ability to trigger alert when deliverability verification process detects a hard bounce.
+- Allow visibility toggle of the Amazon SES Identities through the PHP constant `WPMS_AMAZONSES_DISPLAY_IDENTITIES`.
+- Filter that allows to use self website Google OAuth redirect URL.
+
+### Changed:
+- Improved plugin settings UI.
+- Replaced our moment.js library with the WP Core's bundled one.
+
+### Fixed:
+- Translation strings on the Dashboard widget.
+- Error when email content failed to be encoded while click link tracking injection.
+- Missing "Delete Connection" link on the single additional connection page for some connections.
+
+## [3.9.0] - 2023-08-29
+### Added:
+- Pro plugin translations for: Spanish (Spain), German, Portuguese (Brazil), Italian, French, Japanese, Polish, Dutch, Russian, Turkish.
+- Email Log: ability to manually re-check email delivery status.
+- Alerts: ability to test alerts.
+
+### Changed:
+- Moved the Email Test tab from the settings page to the tools page.
+- Improved the dashboard widget settings' user experience.
+- Removed Sendinblue SDK library because it was deprecated.
+- Updated AWS SDK library to 3.277.11.
+- Mailgun API instructions and webhooks verification process.
+
+### Fixed:
+- Debug Event details popup scrolling.
+- Email logs import from the WP Mail Logging plugin caused by long non-English subjects.
+- Conflict with other plugins (Alt Manager) that made the WP Plugins install page unusable.
+- Fixed: Missed email sending debug log for the Brevo mailer.
+
+## [3.8.2] - 2023-07-18
+### Changed:
+- Improved notifications formatting and styles.
+- Sendinblue rebranded to Brevo.
+- Updated Action Scheduler library to 3.6.1.
+
+### Fixed:
+- Explicitly set "Content-Type" header for the HTML test email.
+
+## [3.8.1] - 2023-06-23
+### Fixed:
+- Print email log headers data security issue.
+
+## [3.8.0] - 2023-04-25
+### IMPORTANT
+- Support for PHP 5.6, 7.0, and 7.1 has been discontinued. If you are running one of those versions, you MUST upgrade PHP before installing or upgrading to WP Mail SMTP v3.8. Failure to do that will disable WP Mail SMTP functionality.
+
+### Added:
+- New Zoho region: Japan.
+- Email Log Importer for the WP Mail Logging plugin.
+- Ability to search email logs by specific error message or source.
+
+### Changed:
+- Email Reports default order. New default order by total.
+- Updated Moment.js library to 2.29.4.
+- Removed unneeded sodium_compat library.
+- Improved Email Reports page user experience.
+
+### Fixed:
+- Email Reports date dropdown style in Firefox browser.
+- Pro plugin deactivating on WP Multisite installation (network level) if lite plugin is active on a subsite.
+- Email address with apostrophes in the Email Test page.
+- License-related notices displayed for non-admin users.
+- Review request notice display on subsites admin area in WP Multisite installation.
+- Email logs attachments and tracking data remove on scheduled email logs cleanup.
+- Email Alerts sending when "Do Not Send" option is enabled.
+- Redirection to Setup Wizard on multisite installations with the global network-wide option enabled after plugin activation on the subsite.
+- Setup Wizard playing UA anthem for certain WP sites.
+
 ## [3.7.0] - 2022-12-13
 ### Added:
 - Backup Connection. Allows to set a Backup Connection which will send the email, if the Primary Connection fails.

@@ -17,7 +17,7 @@ class WPSEO_Local_Admin_Assets extends WPSEO_Admin_Asset_Manager {
 	 *
 	 * @var string
 	 */
-	const PREFIX = 'wp-seo-local-';
+	public const PREFIX = 'wp-seo-local-';
 
 	/**
 	 * Child constructor for WPSEO_Local_Admin_Assets
@@ -50,6 +50,7 @@ class WPSEO_Local_Admin_Assets extends WPSEO_Admin_Asset_Manager {
 			'name'      => 'google-maps',
 			'src'       => $this->get_google_maps_url(),
 			'in_footer' => true,
+			'deps'      => [ 'jquery', self::PREFIX . 'commons-bundle', self::PREFIX . 'frontend' ],
 		];
 		$scripts['seo-locations']        = [
 			'name'      => 'seo-locations',
@@ -162,6 +163,7 @@ class WPSEO_Local_Admin_Assets extends WPSEO_Admin_Asset_Manager {
 		if ( ! empty( $api_key ) ) {
 			$query_args['key'] = $api_key;
 		}
+		$query_args['callback'] = 'wpseo_map_init';
 
 		// Load Maps API script.
 		$locale = get_locale();
@@ -187,7 +189,7 @@ class WPSEO_Local_Admin_Assets extends WPSEO_Admin_Asset_Manager {
 		}
 
 		if ( ! isset( $language ) ) {
-			$language = ( isset( $locale[1] ) ? $locale[1] : $locale[0] );
+			$language = ( $locale[1] ?? $locale[0] );
 		}
 
 		if ( isset( $language ) ) {
@@ -216,7 +218,7 @@ class WPSEO_Local_Admin_Assets extends WPSEO_Admin_Asset_Manager {
 	protected function load_select2_scripts() {
 		$scripts          = [];
 		$select2_language = 'en';
-		$user_locale      = \get_user_locale();
+		$user_locale      = get_user_locale();
 		$language         = WPSEO_Language_Utils::get_language( $user_locale );
 
 		if ( file_exists( WPSEO_LOCAL_PATH . "js/dist/select2/i18n/{$user_locale}.js" ) ) {

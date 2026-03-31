@@ -38,15 +38,18 @@ class Helpers {
 			if ( ! empty( $users ) ) {
 				foreach ( $users as $user_name => $info ) {
 
-					if ( is_array( $info ) ) { // For new plugin version
+					if ( is_array( $info ) && ! empty( $info['date'] ) && ! empty( $info['counter'] ) ) { // For new plugin version
 						$new_log[ $info['date'] ] = array(
 							'ip'       => $ip,
 							'username' => $user_name,
 							'counter'  => $info['counter'],
-							'gateway'  => ( isset( $info['gateway'] ) ) ? $info['gateway'] : '-',
+							'gateway'  => isset( $info['gateway'] ) ? $info['gateway'] : '-',
 							'unlocked' => ! empty( $info['unlocked'] ),
 						);
-					} else { // For old plugin version
+						continue;
+					}
+
+					if ( ! is_array( $info ) ) { // For old plugin version
 						$new_log[0] = array(
 							'ip'       => $ip,
 							'username' => $user_name,
@@ -55,10 +58,8 @@ class Helpers {
 							'unlocked' => false,
 						);
 					}
-
 				}
 			}
-
 		}
 
 		krsort( $new_log );
@@ -76,6 +77,18 @@ class Helpers {
 		asort( $countries );
 
 		return $countries;
+	}
+
+	public static function get_continent_list() {
+
+		if ( ! ( $continent = require LLA_PLUGIN_DIR . '/resources/continent.php' ) ) {
+
+			return array();
+		}
+
+		asort( $continent );
+
+		return $continent;
 	}
 
 	/**
@@ -119,9 +132,34 @@ class Helpers {
 		return $content;
 	}
 
+	// Solution prevents double quotes problem in json string
+	public static function sanitize_stripslashes_deep( $value )
+	{
+		if ( is_array( $value ) ) {
+			return array_map( [self::class, 'sanitize_stripslashes_deep'], $value );
+		}
+
+		if ( is_bool( $value ) || is_null( $value ) ) {
+			return $value;
+		}
+
+		return sanitize_textarea_field( stripslashes( (string)$value ) );
+	}
+
+
 	public static function is_auto_update_enabled() {
 		$auto_update_plugins = get_site_option( 'auto_update_plugins' );
 		return is_array( $auto_update_plugins ) && in_array( LLA_PLUGIN_BASENAME, $auto_update_plugins );
+	}
+
+	public static function is_block_automatic_update_disabled() {
+
+        if ( ( defined( 'DISALLOW_FILE_MODS' ) && DISALLOW_FILE_MODS )
+            || ( defined( 'DOING_CRON' ) && DOING_CRON ) ) {
+            return true;
+        }
+
+        return apply_filters( 'automatic_updater_disabled', false ) || ! apply_filters( 'auto_update_plugin', true, 10, 2 );
 	}
 
 	public static function get_wordpress_version() {
@@ -354,5 +392,9 @@ class Helpers {
 		if( file_exists( $logo_path ) ) {
 			$phpmailer->AddEmbeddedImage( $logo_path, 'logo' );
 		}
+	}
+
+	public static function wp_locale() {
+		return str_replace( '_', '-', get_locale() );
 	}
 }

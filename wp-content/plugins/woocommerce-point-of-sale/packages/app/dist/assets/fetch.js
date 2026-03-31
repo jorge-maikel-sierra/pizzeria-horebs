@@ -1,0 +1,1 @@
+import{b as o,f as i,d as c,j as e}from"../index.js";const g=o(()=>{const s=String(i("id")),r=c("wp","rest_url");e.use(e.createRootURLMiddleware(r)),e.use((t,a)=>a({...t,parse:!1,headers:{...t.headers,"Access-Control-Allow-Origin":"*","X-POS-ID":s}}))});export{g as default};

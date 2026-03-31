@@ -1,14 +1,14 @@
 <?php
 /**
  * Plugin Name: Block List Updater
- * Description: Automatic updating of the <a href='options-discussion.php'>comment block list</a> in WordPress with antispam keys from <a href='https://github.com/splorp/wordpress-comment-blacklist' target='_blank'>GitHub</a>.
+ * Description: Automatic updating of the comment block list in WordPress with antispam keys from "Comment Blocklist for WordPress" (on GitHub).
  * Author:      pluginkollektiv
  * Author URI:  https://pluginkollektiv.org
  * Plugin URI:  https://wordpress.org/plugins/blacklist-updater/
  * Text Domain: blacklist-updater
  * License:     GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html für
- * Version:     1.0.0
+ * Version:     1.0.1
  *
  * @package BlockListUpdater
  */
@@ -98,12 +98,10 @@ spl_autoload_register( 'blacklist_updater_autoload' );
  */
 function blacklist_updater_autoload( $class ) {
 	if ( in_array( $class, array( 'Blacklist_Updater' ) ) ) {
-		require_once(
-			sprintf(
-				'%s/inc/class-%s.php',
-				dirname( __FILE__ ),
-				strtolower( str_replace( '_', '-', $class ) )
-			)
+		require_once sprintf(
+			'%s/inc/class-%s.php',
+			dirname( __FILE__ ),
+			strtolower( str_replace( '_', '-', $class ) )
 		);
 	}
 }

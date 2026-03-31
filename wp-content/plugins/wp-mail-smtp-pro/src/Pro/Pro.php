@@ -6,14 +6,17 @@ use WPMailSMTP\Debug;
 use WPMailSMTP\Options;
 use WPMailSMTP\Pro\AdditionalConnections\AdditionalConnections;
 use WPMailSMTP\Pro\Admin\DashboardWidget;
+use WPMailSMTP\Pro\Admin\PluginsList;
 use WPMailSMTP\Pro\Alerts\Alerts;
 use WPMailSMTP\Pro\Alerts\Loader as AlertsLoader;
 use WPMailSMTP\Pro\BackupConnections\BackupConnections;
 use WPMailSMTP\Pro\Emails\Logs\Attachments\Attachments;
 use WPMailSMTP\Pro\Emails\Logs\EmailsCollection;
+use WPMailSMTP\Pro\Emails\Logs\Importers\Importers;
 use WPMailSMTP\Pro\Emails\Logs\Logs;
 use WPMailSMTP\Pro\Emails\Logs\Reports\Reports;
 use WPMailSMTP\Pro\Emails\Logs\Tracking\Tracking;
+use WPMailSMTP\Pro\Emails\TestEmail;
 use WPMailSMTP\Pro\Providers\AmazonSES\Options as SESOptions;
 use WPMailSMTP\Pro\SmartRouting\SmartRouting;
 use WPMailSMTP\WP;
@@ -69,6 +72,7 @@ class Pro {
 	 * Initialize the main Pro logic.
 	 *
 	 * @since 1.5.0
+	 * @since 3.11.0 Init SiteHealth module only in admin context.
 	 */
 	public function init() {
 
@@ -100,9 +104,14 @@ class Pro {
 		$this->get_logs();
 		$this->get_providers();
 		$this->get_license();
-		$this->get_site_health()->init();
 		$this->get_additional_connections();
 		$this->get_backup_connections();
+		$this->get_importers();
+		$this->get_translations();
+
+		if ( is_admin() ) {
+			$this->get_site_health()->init();
+		}
 
 		if ( current_user_can( $this->get_logs()->get_manage_capability() ) ) {
 			$this->get_logs_export()->init();
@@ -113,6 +122,12 @@ class Pro {
 
 		// Initialize smart routing.
 		( new SmartRouting() )->hooks();
+
+		// Initialize Plugins List.
+		( new PluginsList() )->hooks();
+
+		// Initialize test email.
+		( new TestEmail() )->hooks();
 
 		// Usage tracking hooks.
 		add_filter( 'wp_mail_smtp_usage_tracking_get_data', [ $this, 'usage_tracking_get_data' ] );
@@ -401,6 +416,60 @@ class Pro {
 	}
 
 	/**
+	 * Load the Importers functionality.
+	 *
+	 * @since 3.8.0
+	 *
+	 * @return Importers
+	 */
+	public function get_importers() {
+
+		static $importers;
+
+		if ( ! isset( $importers ) ) {
+			/**
+			 * Filter the Importers object.
+			 *
+			 * @since 3.8.0
+			 *
+			 * @param Importers $importers The Importers object.
+			 */
+			$importers = apply_filters( 'wp_mail_smtp_pro_get_importers', new Importers() );
+		}
+
+		return $importers;
+	}
+
+	/**
+	 * Load the Pro Translations functionality.
+	 *
+	 * @since 3.9.0
+	 *
+	 * @return Translations
+	 */
+	public function get_translations() {
+
+		static $translations;
+
+		if ( ! isset( $translations ) ) {
+			/**
+			 * Filter the Translations object.
+			 *
+			 * @since 3.9.0
+			 *
+			 * @param Translations $translations The Translations object.
+			 */
+			$translations = apply_filters( 'wp_mail_smtp_pro_get_translations', new Translations() );
+
+			if ( method_exists( $translations, 'hooks' ) ) {
+				$translations->hooks();
+			}
+		}
+
+		return $translations;
+	}
+
+	/**
 	 * Adds WP Mail SMTP (Lite) to the update checklist of installed plugins, to check for new translations.
 	 *
 	 * @since 1.6.0
@@ -519,14 +588,20 @@ class Pro {
 	 */
 	public function add_plugin_action_link( $links ) {
 
-		$custom['settings'] = sprintf(
-			'<a href="%s" aria-label="%s">%s</a>',
-			esc_url( wp_mail_smtp()->get_admin()->get_admin_page_url() ),
-			esc_attr__( 'Go to WP Mail SMTP Settings page', 'wp-mail-smtp-pro' ),
-			esc_html__( 'Settings', 'wp-mail-smtp-pro' )
-		);
+		/*
+		 * Add "Settings" links in almost all cases, except if in Multisite setup
+		 * and network-wide option is enabled.
+		 */
+		if ( ! WP::use_global_plugin_settings() ) {
+			$custom['wp-mail-smtp-settings'] = sprintf(
+				'<a href="%s" aria-label="%s">%s</a>',
+				esc_url( wp_mail_smtp()->get_admin()->get_admin_page_url() ),
+				esc_attr__( 'Go to WP Mail SMTP Settings page', 'wp-mail-smtp-pro' ),
+				esc_html__( 'Settings', 'wp-mail-smtp-pro' )
+			);
+		}
 
-		$custom['support'] = sprintf(
+		$custom['wp-mail-smtp-support'] = sprintf(
 			'<a href="%1$s" target="_blank" aria-label="%2$s" rel="noopener noreferrer">%3$s</a>',
 			// phpcs:ignore WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound
 			esc_url( wp_mail_smtp()->get_utm_url( 'https://wpmailsmtp.com/account/support/', [ 'medium' => 'all-plugins', 'content' => 'Support' ] ) ),
@@ -534,7 +609,7 @@ class Pro {
 			esc_html__( 'Support', 'wp-mail-smtp-pro' )
 		);
 
-		$custom['docs'] = sprintf(
+		$custom['wp-mail-smtp-docs'] = sprintf(
 			'<a href="%1$s" target="_blank" aria-label="%2$s" rel="noopener noreferrer">%3$s</a>',
 			// phpcs:ignore WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound
 			esc_url( wp_mail_smtp()->get_utm_url( 'https://wpmailsmtp.com/docs/', [ 'medium' => 'all-plugins', 'content' => 'Documentation' ] ) ),
@@ -551,6 +626,7 @@ class Pro {
 	 * @since 2.1.0
 	 * @since 2.1.2 Add EmailLogMigration4 task.
 	 * @since 2.2.0 Add EmailLogMigration5 task.
+	 * @since 3.8.0 Add EmailLogMigration11 task.
 	 *
 	 * @param array $tasks Action Scheduler tasks to be registered.
 	 *
@@ -565,6 +641,7 @@ class Pro {
 				\WPMailSMTP\Pro\Tasks\EmailLogCleanupTask::class,
 				\WPMailSMTP\Pro\Tasks\Migrations\EmailLogMigration4::class,
 				\WPMailSMTP\Pro\Tasks\Migrations\EmailLogMigration5::class,
+				\WPMailSMTP\Pro\Tasks\Migrations\EmailLogMigration11::class,
 				\WPMailSMTP\Pro\Tasks\Logs\Sendlayer\VerifySentStatusTask::class,
 				\WPMailSMTP\Pro\Tasks\Logs\Mailgun\VerifySentStatusTask::class,
 				\WPMailSMTP\Pro\Tasks\Logs\Sendinblue\VerifySentStatusTask::class,
@@ -573,7 +650,9 @@ class Pro {
 				\WPMailSMTP\Pro\Tasks\Logs\SparkPost\VerifySentStatusTask::class,
 				\WPMailSMTP\Pro\Tasks\Logs\ExportCleanupTask::class,
 				\WPMailSMTP\Pro\Tasks\Logs\ResendTask::class,
+				\WPMailSMTP\Pro\Tasks\Logs\BulkVerifySentStatusTask::class,
 				\WPMailSMTP\Pro\Tasks\NotifierTask::class,
+				\WPMailSMTP\Pro\Tasks\LicenseCheckTask::class,
 			]
 		);
 		// phpcs:enable WPForms.PHP.BackSlash.UseShortSyntax
@@ -617,7 +696,7 @@ class Pro {
 			return;
 		}
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( wp_mail_smtp()->get_capability_manage_options() ) ) {
 			return;
 		}
 
@@ -673,6 +752,13 @@ class Pro {
 					WP::ADMIN_NOTICE_ERROR
 				);
 				break;
+
+			case 'google_one_click_setup_unsuccessful_oauth':
+				WP::add_admin_notice(
+					esc_html__( 'There was an error while processing the authentication request.', 'wp-mail-smtp-pro' ),
+					WP::ADMIN_NOTICE_ERROR
+				);
+				break;
 		}
 
 		switch ( $success ) {
@@ -686,6 +772,13 @@ class Pro {
 			case 'zoho_site_linked':
 				WP::add_admin_notice(
 					esc_html__( 'You have successfully linked the current site with your Zoho Mail API project. Now you can start sending emails through Zoho Mail.', 'wp-mail-smtp-pro' ),
+					WP::ADMIN_NOTICE_SUCCESS
+				);
+				break;
+
+			case 'google_one_click_setup_site_linked':
+				WP::add_admin_notice(
+					esc_html__( 'You have successfully connected your site with your Gmail account. This site will now send emails via your Gmail account.', 'wp-mail-smtp-pro' ),
 					WP::ADMIN_NOTICE_SUCCESS
 				);
 				break;
@@ -859,6 +952,7 @@ class Pro {
 	 * This data is passed via `wp_localize_script` before the Vue app is initialized.
 	 *
 	 * @since 2.6.0
+	 * @since 3.11.0 Handle WPMS_AMAZONSES_DISPLAY_IDENTITIES constant.
 	 *
 	 * @param array $data The default mailer options data.
 	 *
@@ -866,18 +960,25 @@ class Pro {
 	 */
 	public function setup_wizard_prepare_mailer_options( $data ) {
 
-		if ( key_exists( 'amazonses', $data ) && empty( $data['amazonses']['disabled'] ) ) {
-			$amazon_regions   = \WPMailSMTP\Pro\Providers\AmazonSES\Auth::get_regions_names();
-			$prepared_regions = [];
+		if ( key_exists( 'amazonses', $data ) ) {
+			if ( empty( $data['amazonses']['disabled'] ) ) {
+				$amazon_regions   = \WPMailSMTP\Pro\Providers\AmazonSES\Auth::get_regions_names();
+				$prepared_regions = [];
 
-			foreach ( $amazon_regions as $value => $label ) {
-				$prepared_regions[] = [
-					'label' => $label,
-					'value' => $value,
-				];
+				foreach ( $amazon_regions as $value => $label ) {
+					$prepared_regions[] = [
+						'label' => $label,
+						'value' => $value,
+					];
+				}
+
+				$data['amazonses']['region_options'] = $prepared_regions;
 			}
 
-			$data['amazonses']['region_options'] = $prepared_regions;
+			$data['amazonses']['display_identities'] = (
+				! defined( 'WPMS_AMAZONSES_DISPLAY_IDENTITIES' ) ||
+				WPMS_AMAZONSES_DISPLAY_IDENTITIES === true
+			);
 		}
 
 		if ( key_exists( 'outlook', $data ) && empty( $data['outlook']['disabled'] ) ) {
@@ -915,7 +1016,7 @@ class Pro {
 
 		check_ajax_referer( 'wpms-admin-nonce', 'nonce' );
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( wp_mail_smtp()->get_capability_manage_options() ) ) {
 			wp_send_json_error();
 		}
 
@@ -959,7 +1060,7 @@ class Pro {
 
 		check_ajax_referer( 'wpms-admin-nonce', 'nonce' );
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( wp_mail_smtp()->get_capability_manage_options() ) ) {
 			wp_send_json_error();
 		}
 
@@ -1048,7 +1149,7 @@ class Pro {
 
 		check_ajax_referer( 'wpms-admin-nonce', 'nonce' );
 
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( wp_mail_smtp()->get_capability_manage_options() ) ) {
 			wp_send_json_error( esc_html__( 'You don\'t have the permission to perform this action.', 'wp-mail-smtp-pro' ) );
 		}
 

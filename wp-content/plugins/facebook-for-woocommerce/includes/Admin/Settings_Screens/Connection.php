@@ -159,16 +159,23 @@ class Connection extends Abstract_Settings_Screen {
 		);
 
 		// if the catalog ID is set, update the URL and try to get its name for display
-		if ( $catalog_id = $static_items['catalog']['value'] ) {
-
-			$static_items['catalog']['url'] = "https://facebook.com/products/catalogs/{$catalog_id}";
-
+		$catalog_id = $static_items['catalog']['value'];
+		if ( !empty( $catalog_id ) ) {
+			$static_items['catalog']['url'] = "https://www.facebook.com/commerce/catalogs/{$catalog_id}/products/";
 			try {
 				$response = facebook_for_woocommerce()->get_api()->get_catalog( $catalog_id );
 				if ( $name = $response->name ) {
 					$static_items['catalog']['value'] = $name;
 				}
 			} catch ( ApiException $exception ) {
+				// Log the exception with additional information
+				facebook_for_woocommerce()->log(
+					sprintf(
+						'Connection failed for catalog %s: %s ',
+						$catalog_id,
+						$exception->getMessage(),
+					)
+				);
 			}
 		}
 
@@ -326,7 +333,10 @@ class Connection extends Abstract_Settings_Screen {
 				'title'    => __( 'Enable debug mode', 'facebook-for-woocommerce' ),
 				'type'     => 'checkbox',
 				'desc'     => __( 'Log plugin events for debugging.', 'facebook-for-woocommerce' ),
-				'desc_tip' => __( 'Only enable this if you are experiencing problems with the plugin.', 'facebook-for-woocommerce' ),
+				/**
+				 * Translators: %s URL to the documentation page.
+				 */
+				'desc_tip' => sprintf( __( 'Only enable this if you are experiencing problems with the plugin. <a href="%s" target="_blank">Learn more</a>.', 'facebook-for-woocommerce' ), 'https://woocommerce.com/document/facebook-for-woocommerce/#debug-tools' ),
 				'default'  => 'no',
 			),
 
@@ -335,7 +345,10 @@ class Connection extends Abstract_Settings_Screen {
 				'title'    => __( 'Experimental! Enable new style feed generation', 'facebook-for-woocommerce' ),
 				'type'     => 'checkbox',
 				'desc'     => __( 'Use new, memory improved, feed generation process.', 'facebook-for-woocommerce' ),
-				'desc_tip' => __( 'Experimental feature. Only enable this if you are experiencing problems with feed generation. This is an experimental feature in testing phase.', 'facebook-for-woocommerce' ),
+				/**
+				 * Translators: %s URL to the documentation page.
+				 */
+				'desc_tip' => sprintf( __( 'This is an experimental feature in testing phase. Only enable this if you are experiencing problems with feed generation. <a href="%s" target="_blank">Learn more</a>.', 'facebook-for-woocommerce' ), 'https://woocommerce.com/document/facebook-for-woocommerce/#feed-generation' ),
 				'default'  => 'no',
 			),
 

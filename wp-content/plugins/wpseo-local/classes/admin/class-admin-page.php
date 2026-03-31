@@ -47,6 +47,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_Page' ) ) {
 
 		/**
 		 * Apply filters on array holding the tabs.
+		 *
+		 * @return void
 		 */
 		public function set_tabs() {
 			self::$tabs = apply_filters( 'wpseo_local_admin_tabs', self::$tabs );
@@ -54,6 +56,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_Page' ) ) {
 
 		/**
 		 * Build the WPSEO Local Admin page.
+		 *
+		 * @return void
 		 */
 		public static function build_page() {
 			// Admin header.
@@ -69,6 +73,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_Page' ) ) {
 
 		/**
 		 * Function to create tabs for general and API settings.
+		 *
+		 * @return void
 		 */
 		private static function create_tabs() {
 			echo '<h2 class="nav-tab-wrapper" id="wpseo-tabs">';
@@ -88,6 +94,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_Page' ) ) {
 
 		/**
 		 * Add content to the admin tabs.
+		 *
+		 * @return void
 		 */
 		private static function tab_content() {
 			foreach ( self::$tabs as $slug => $titles ) {
@@ -95,10 +103,10 @@ if ( ! class_exists( 'WPSEO_Local_Admin_Page' ) ) {
 
 				do_action( 'Yoast\WP\Local\before_option_content_' . $slug );
 
-				self::section_before( 'local-' . $slug, null, 'yoastbox paper tab-block search-appearance' );
+				self::section_before( 'local-' . $slug, null, 'yoastbox paper tab-block local-seo-settings' );
 				self::section_before( 'local-' . $slug . '-container', null, 'paper-container' );
 				do_action( 'wpseo_local_admin_' . $slug . '_before_title', $slug );
-				echo '<h2>' . esc_attr( $titles['content_title'] ) . '</h2>';
+				echo '<h2>' . esc_html( $titles['content_title'] ) . '</h2>';
 				do_action( 'wpseo_local_admin_' . $slug . '_content', $slug );
 				self::section_after();
 				self::section_after();
@@ -114,6 +122,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_Page' ) ) {
 		 * @param string $id            ID of the section.
 		 * @param string $style         Styling for the section.
 		 * @param string $section_class Class names for the section.
+		 *
+		 * @return void
 		 */
 		public static function section_before( $id = '', $style = '', $section_class = '' ) {
 			echo '<div' . ( isset( $id ) ? ' id="' . $id . '"' : '' ) . '' . ( ! empty( $style ) ? ' style="' . $style . '"' : '' ) . '' . ( ! empty( $section_class ) ? ' class="' . $section_class . '"' : '' ) . '>';
@@ -121,6 +131,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_Page' ) ) {
 
 		/**
 		 * Use this function to close a section.
+		 *
+		 * @return void
 		 */
 		public static function section_after() {
 			echo '</div>';

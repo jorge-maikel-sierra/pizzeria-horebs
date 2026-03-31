@@ -30,6 +30,9 @@ class Cached_Container extends Container
             'yoast\\wp\\local\\conditionals\\multiple_locations_conditional' => 'Yoast\\WP\\Local\\Conditionals\\Multiple_Locations_Conditional',
             'yoast\\wp\\local\\formatters\\address_formatter' => 'Yoast\\WP\\Local\\Formatters\\Address_Formatter',
             'yoast\\wp\\local\\integrations\\front_end_integration' => 'Yoast\\WP\\Local\\Integrations\\Front_End_Integration',
+            'yoast\\wp\\local\\integrations\\local_pickup_notification' => 'Yoast\\WP\\Local\\Integrations\\Local_Pickup_Notification',
+            'yoast\\wp\\local\\integrations\\multiple_locations_watcher' => 'Yoast\\WP\\Local\\Integrations\\Multiple_Locations_Watcher',
+            'yoast\\wp\\local\\integrations\\translationspress' => 'Yoast\\WP\\Local\\Integrations\\TranslationsPress',
             'yoast\\wp\\local\\posttype\\posttype' => 'Yoast\\WP\\Local\\PostType\\PostType',
             'yoast\\wp\\local\\repositories\\api_keys_repository' => 'Yoast\\WP\\Local\\Repositories\\Api_Keys_Repository',
             'yoast\\wp\\local\\repositories\\business_types_repository' => 'Yoast\\WP\\Local\\Repositories\\Business_Types_Repository',
@@ -39,9 +42,14 @@ class Cached_Container extends Container
             'yoast\\wp\\local\\tools\\export' => 'Yoast\\WP\\Local\\Tools\\Export',
             'yoast\\wp\\local\\tools\\import' => 'Yoast\\WP\\Local\\Tools\\Import',
             'yoast\\wp\\local\\tools\\import_export_admin' => 'Yoast\\WP\\Local\\Tools\\Import_Export_Admin',
+            'yoast\\wp\\seo\\helpers\\capability_helper' => 'Yoast\\WP\\SEO\\Helpers\\Capability_Helper',
+            'yoast\\wp\\seo\\helpers\\date_helper' => 'Yoast\\WP\\SEO\\Helpers\\Date_Helper',
             'yoast\\wp\\seo\\loader' => 'Yoast\\WP\\SEO\\Loader',
             'yoast\\wp\\seo\\surfaces\\classes_surface' => 'Yoast\\WP\\SEO\\Surfaces\\Classes_Surface',
             'yoast\\wp\\seo\\surfaces\\helpers_surface' => 'Yoast\\WP\\SEO\\Surfaces\\Helpers_Surface',
+            'yoast\\wp\\seo\\surfaces\\open_graph_helpers_surface' => 'Yoast\\WP\\SEO\\Surfaces\\Open_Graph_Helpers_Surface',
+            'yoast\\wp\\seo\\surfaces\\schema_helpers_surface' => 'Yoast\\WP\\SEO\\Surfaces\\Schema_Helpers_Surface',
+            'yoast\\wp\\seo\\surfaces\\twitter_helpers_surface' => 'Yoast\\WP\\SEO\\Surfaces\\Twitter_Helpers_Surface',
             'yoastseo_vendor\\symfony\\component\\dependencyinjection\\containerinterface' => 'YoastSEO_Vendor\\YoastSEO_Vendor\\Symfony\\Component\\DependencyInjection\\ContainerInterface',
         ];
         $this->methodMap = [
@@ -50,6 +58,9 @@ class Cached_Container extends Container
             'Yoast\\WP\\Local\\Conditionals\\Multiple_Locations_Conditional' => 'getMultipleLocationsConditionalService',
             'Yoast\\WP\\Local\\Formatters\\Address_Formatter' => 'getAddressFormatterService',
             'Yoast\\WP\\Local\\Integrations\\Front_End_Integration' => 'getFrontEndIntegrationService',
+            'Yoast\\WP\\Local\\Integrations\\Local_Pickup_Notification' => 'getLocalPickupNotificationService',
+            'Yoast\\WP\\Local\\Integrations\\Multiple_Locations_Watcher' => 'getMultipleLocationsWatcherService',
+            'Yoast\\WP\\Local\\Integrations\\TranslationsPress' => 'getTranslationsPressService',
             'Yoast\\WP\\Local\\PostType\\PostType' => 'getPostTypeService',
             'Yoast\\WP\\Local\\Repositories\\Api_Keys_Repository' => 'getApiKeysRepositoryService',
             'Yoast\\WP\\Local\\Repositories\\Business_Types_Repository' => 'getBusinessTypesRepositoryService',
@@ -59,9 +70,14 @@ class Cached_Container extends Container
             'Yoast\\WP\\Local\\Tools\\Export' => 'getExportService',
             'Yoast\\WP\\Local\\Tools\\Import' => 'getImportService',
             'Yoast\\WP\\Local\\Tools\\Import_Export_Admin' => 'getImportExportAdminService',
+            'Yoast\\WP\\SEO\\Helpers\\Capability_Helper' => 'getCapabilityHelperService',
+            'Yoast\\WP\\SEO\\Helpers\\Date_Helper' => 'getDateHelperService',
             'Yoast\\WP\\SEO\\Loader' => 'getLoaderService',
             'Yoast\\WP\\SEO\\Surfaces\\Classes_Surface' => 'getClassesSurfaceService',
             'Yoast\\WP\\SEO\\Surfaces\\Helpers_Surface' => 'getHelpersSurfaceService',
+            'Yoast\\WP\\SEO\\Surfaces\\Open_Graph_Helpers_Surface' => 'getOpenGraphHelpersSurfaceService',
+            'Yoast\\WP\\SEO\\Surfaces\\Schema_Helpers_Surface' => 'getSchemaHelpersSurfaceService',
+            'Yoast\\WP\\SEO\\Surfaces\\Twitter_Helpers_Surface' => 'getTwitterHelpersSurfaceService',
             'wp_query' => 'getWpQueryService',
             'wpdb' => 'getWpdbService',
         ];
@@ -81,9 +97,6 @@ class Cached_Container extends Container
             'Psr\\Container\\ContainerInterface' => true,
             'YoastSEO_Vendor\\Symfony\\Component\\DependencyInjection\\ContainerInterface' => true,
             'YoastSEO_Vendor\\YoastSEO_Vendor\\Symfony\\Component\\DependencyInjection\\ContainerInterface' => true,
-            'autowired.Yoast\\WP\\SEO\\Surfaces\\Open_Graph_Helpers_Surface' => true,
-            'autowired.Yoast\\WP\\SEO\\Surfaces\\Schema_Helpers_Surface' => true,
-            'autowired.Yoast\\WP\\SEO\\Surfaces\\Twitter_Helpers_Surface' => true,
             'wp_query' => true,
             'wpdb' => true,
         ];
@@ -154,6 +167,36 @@ class Cached_Container extends Container
     protected function getFrontEndIntegrationService()
     {
         return $this->services['Yoast\\WP\\Local\\Integrations\\Front_End_Integration'] = new \Yoast\WP\Local\Integrations\Front_End_Integration(${($_ = isset($this->services['Yoast\\WP\\Local\\Repositories\\Locations_Repository']) ? $this->services['Yoast\\WP\\Local\\Repositories\\Locations_Repository'] : $this->getLocationsRepositoryService()) && false ?: '_'}, ${($_ = isset($this->services['Yoast\\WP\\Local\\PostType\\PostType']) ? $this->services['Yoast\\WP\\Local\\PostType\\PostType'] : ($this->services['Yoast\\WP\\Local\\PostType\\PostType'] = new \Yoast\WP\Local\PostType\PostType())) && false ?: '_'});
+    }
+
+    /**
+     * Gets the public 'Yoast\WP\Local\Integrations\Local_Pickup_Notification' shared autowired service.
+     *
+     * @return \Yoast\WP\Local\Integrations\Local_Pickup_Notification
+     */
+    protected function getLocalPickupNotificationService()
+    {
+        return $this->services['Yoast\\WP\\Local\\Integrations\\Local_Pickup_Notification'] = new \Yoast\WP\Local\Integrations\Local_Pickup_Notification(${($_ = isset($this->services['Yoast\\WP\\SEO\\Helpers\\Capability_Helper']) ? $this->services['Yoast\\WP\\SEO\\Helpers\\Capability_Helper'] : ($this->services['Yoast\\WP\\SEO\\Helpers\\Capability_Helper'] = new \Yoast\WP\SEO\Helpers\Capability_Helper())) && false ?: '_'});
+    }
+
+    /**
+     * Gets the public 'Yoast\WP\Local\Integrations\Multiple_Locations_Watcher' shared autowired service.
+     *
+     * @return \Yoast\WP\Local\Integrations\Multiple_Locations_Watcher
+     */
+    protected function getMultipleLocationsWatcherService()
+    {
+        return $this->services['Yoast\\WP\\Local\\Integrations\\Multiple_Locations_Watcher'] = new \Yoast\WP\Local\Integrations\Multiple_Locations_Watcher();
+    }
+
+    /**
+     * Gets the public 'Yoast\WP\Local\Integrations\TranslationsPress' shared autowired service.
+     *
+     * @return \Yoast\WP\Local\Integrations\TranslationsPress
+     */
+    protected function getTranslationsPressService()
+    {
+        return $this->services['Yoast\\WP\\Local\\Integrations\\TranslationsPress'] = new \Yoast\WP\Local\Integrations\TranslationsPress(${($_ = isset($this->services['Yoast\\WP\\SEO\\Helpers\\Date_Helper']) ? $this->services['Yoast\\WP\\SEO\\Helpers\\Date_Helper'] : ($this->services['Yoast\\WP\\SEO\\Helpers\\Date_Helper'] = new \Yoast\WP\SEO\Helpers\Date_Helper())) && false ?: '_'});
     }
 
     /**
@@ -247,6 +290,26 @@ class Cached_Container extends Container
     }
 
     /**
+     * Gets the public 'Yoast\WP\SEO\Helpers\Capability_Helper' shared autowired service.
+     *
+     * @return \Yoast\WP\SEO\Helpers\Capability_Helper
+     */
+    protected function getCapabilityHelperService()
+    {
+        return $this->services['Yoast\\WP\\SEO\\Helpers\\Capability_Helper'] = new \Yoast\WP\SEO\Helpers\Capability_Helper();
+    }
+
+    /**
+     * Gets the public 'Yoast\WP\SEO\Helpers\Date_Helper' shared autowired service.
+     *
+     * @return \Yoast\WP\SEO\Helpers\Date_Helper
+     */
+    protected function getDateHelperService()
+    {
+        return $this->services['Yoast\\WP\\SEO\\Helpers\\Date_Helper'] = new \Yoast\WP\SEO\Helpers\Date_Helper();
+    }
+
+    /**
      * Gets the public 'Yoast\WP\SEO\Loader' shared autowired service.
      *
      * @return \Yoast\WP\SEO\Loader
@@ -256,6 +319,9 @@ class Cached_Container extends Container
         $this->services['Yoast\\WP\\SEO\\Loader'] = $instance = new \Yoast\WP\SEO\Loader($this);
 
         $instance->register_integration('Yoast\\WP\\Local\\Integrations\\Front_End_Integration');
+        $instance->register_integration('Yoast\\WP\\Local\\Integrations\\Local_Pickup_Notification');
+        $instance->register_integration('Yoast\\WP\\Local\\Integrations\\Multiple_Locations_Watcher');
+        $instance->register_integration('Yoast\\WP\\Local\\Integrations\\TranslationsPress');
         $instance->register_initializer('Yoast\\WP\\Local\\PostType\\PostType');
         $instance->register_initializer('Yoast\\WP\\Local\\Repositories\\Api_Keys_Repository');
         $instance->register_initializer('Yoast\\WP\\Local\\Repositories\\Locations_Repository');
@@ -287,7 +353,37 @@ class Cached_Container extends Container
      */
     protected function getHelpersSurfaceService()
     {
-        return $this->services['Yoast\\WP\\SEO\\Surfaces\\Helpers_Surface'] = new \Yoast\WP\SEO\Surfaces\Helpers_Surface($this, new \Yoast\WP\SEO\Surfaces\Open_Graph_Helpers_Surface($this), new \Yoast\WP\SEO\Surfaces\Schema_Helpers_Surface($this), new \Yoast\WP\SEO\Surfaces\Twitter_Helpers_Surface($this));
+        return $this->services['Yoast\\WP\\SEO\\Surfaces\\Helpers_Surface'] = new \Yoast\WP\SEO\Surfaces\Helpers_Surface($this, ${($_ = isset($this->services['Yoast\\WP\\SEO\\Surfaces\\Open_Graph_Helpers_Surface']) ? $this->services['Yoast\\WP\\SEO\\Surfaces\\Open_Graph_Helpers_Surface'] : ($this->services['Yoast\\WP\\SEO\\Surfaces\\Open_Graph_Helpers_Surface'] = new \Yoast\WP\SEO\Surfaces\Open_Graph_Helpers_Surface($this))) && false ?: '_'}, ${($_ = isset($this->services['Yoast\\WP\\SEO\\Surfaces\\Schema_Helpers_Surface']) ? $this->services['Yoast\\WP\\SEO\\Surfaces\\Schema_Helpers_Surface'] : ($this->services['Yoast\\WP\\SEO\\Surfaces\\Schema_Helpers_Surface'] = new \Yoast\WP\SEO\Surfaces\Schema_Helpers_Surface($this))) && false ?: '_'}, ${($_ = isset($this->services['Yoast\\WP\\SEO\\Surfaces\\Twitter_Helpers_Surface']) ? $this->services['Yoast\\WP\\SEO\\Surfaces\\Twitter_Helpers_Surface'] : ($this->services['Yoast\\WP\\SEO\\Surfaces\\Twitter_Helpers_Surface'] = new \Yoast\WP\SEO\Surfaces\Twitter_Helpers_Surface($this))) && false ?: '_'});
+    }
+
+    /**
+     * Gets the public 'Yoast\WP\SEO\Surfaces\Open_Graph_Helpers_Surface' shared autowired service.
+     *
+     * @return \Yoast\WP\SEO\Surfaces\Open_Graph_Helpers_Surface
+     */
+    protected function getOpenGraphHelpersSurfaceService()
+    {
+        return $this->services['Yoast\\WP\\SEO\\Surfaces\\Open_Graph_Helpers_Surface'] = new \Yoast\WP\SEO\Surfaces\Open_Graph_Helpers_Surface($this);
+    }
+
+    /**
+     * Gets the public 'Yoast\WP\SEO\Surfaces\Schema_Helpers_Surface' shared autowired service.
+     *
+     * @return \Yoast\WP\SEO\Surfaces\Schema_Helpers_Surface
+     */
+    protected function getSchemaHelpersSurfaceService()
+    {
+        return $this->services['Yoast\\WP\\SEO\\Surfaces\\Schema_Helpers_Surface'] = new \Yoast\WP\SEO\Surfaces\Schema_Helpers_Surface($this);
+    }
+
+    /**
+     * Gets the public 'Yoast\WP\SEO\Surfaces\Twitter_Helpers_Surface' shared autowired service.
+     *
+     * @return \Yoast\WP\SEO\Surfaces\Twitter_Helpers_Surface
+     */
+    protected function getTwitterHelpersSurfaceService()
+    {
+        return $this->services['Yoast\\WP\\SEO\\Surfaces\\Twitter_Helpers_Surface'] = new \Yoast\WP\SEO\Surfaces\Twitter_Helpers_Surface($this);
     }
 
     /**

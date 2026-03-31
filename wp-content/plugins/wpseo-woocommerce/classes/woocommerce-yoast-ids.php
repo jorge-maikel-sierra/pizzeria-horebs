@@ -49,7 +49,7 @@ class WPSEO_WooCommerce_Yoast_Ids {
 		echo '<div>';
 		$is_left = true;
 		foreach ( $this->global_identifier_types as $type => $label ) {
-			$value = isset( $variation_values[ $type ] ) ? $variation_values[ $type ] : '';
+			$value = ( $variation_values[ $type ] ?? '' );
 			$this->input_field_for_identifier( $variation->ID, $type, $label, $value, $is_left );
 			$is_left = ! $is_left;
 		}
@@ -69,7 +69,7 @@ class WPSEO_WooCommerce_Yoast_Ids {
 		foreach ( $this->global_identifier_types as $key => $label ) {
 			// Ignoring nonce verification as we do that in save_data function.
 			// phpcs:ignore WordPress.Security.NonceVerification.Missing
-			$values[ $key ] = isset( $_POST['yoast_seo_variation'][ $variation_id ][ $key ] ) ? \sanitize_text_field( \wp_unslash( $_POST['yoast_seo_variation'][ $variation_id ][ $key ] ) ) : '';
+			$values[ $key ] = isset( $_POST['yoast_seo_variation'][ $variation_id ][ $key ] ) ? sanitize_text_field( wp_unslash( $_POST['yoast_seo_variation'][ $variation_id ][ $key ] ) ) : '';
 		}
 
 		return $values;
@@ -86,8 +86,8 @@ class WPSEO_WooCommerce_Yoast_Ids {
 		if ( ! isset( $_POST['_wpnonce_yoast_seo_woo_gids'] ) ) {
 			return false;
 		}
-		$nonce = \sanitize_text_field( \wp_unslash( $_POST['_wpnonce_yoast_seo_woo_gids'] ) );
-		if ( ! \wp_verify_nonce( $nonce, 'yoast_woo_seo_variation_identifiers' ) ) {
+		$nonce = sanitize_text_field( wp_unslash( $_POST['_wpnonce_yoast_seo_woo_gids'] ) );
+		if ( ! wp_verify_nonce( $nonce, 'yoast_woo_seo_variation_identifiers' ) ) {
 			return false;
 		}
 

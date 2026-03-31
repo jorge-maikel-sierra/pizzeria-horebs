@@ -1,0 +1,94 @@
+name: "CI – Validar antes de deploy"
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: "Validar PHP y archivos críticos"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.1"
+          tools: php-parallel-lint/php-parallel-lint
+
+      - name: Lint PHP – Tema hello-elementor-child
+        run: |
+          echo "🔍 Verificando sintaxis PHP del tema hijo..."
+          php-parallel-lint --exclude vendor wp-content/themes/hello-elementor-child/
+
+      - name: Lint PHP – Tema kiosko
+        run: |
+          echo "🔍 Verificando sintaxis PHP del tema kiosko..."
+          php-parallel-lint --exclude vendor wp-content/themes/kiosko/
+
+      - name: Lint PHP – Plugin kiosko
+        run: |
+          echo "🔍 Verificando sintaxis PHP del plugin kiosko..."
+          php-parallel-lint --exclude vendor wp-content/plugins/kiosko/
+
+      - name: Verificar archivos críticos existen
+        run: |
+          echo "📋 Verificando archivos críticos..."
+          files=(
+            "index.php"
+            "wp-load.php"
+            "wp-settings.php"
+            "wp-blog-header.php"
+            "wp-content/themes/hello-elementor-child/functions.php"
+            "wp-content/themes/hello-elementor-child/style.css"
+            "wp-content/themes/kiosko/style.css"
+            "wp-content/plugins/kiosko/functions.php"
+            "deploy.sh"
+          )
+          
+          all_ok=true
+          for f in "${files[@]}"; do
+            if [ -f "$f" ]; then
+              echo "  ✅ $f"
+            else
+              echo "  ❌ FALTANTE: $f"
+              all_ok=false
+            fi
+          done
+          
+          if [ "$all_ok" = false ]; then
+            echo "::error::Faltan archivos críticos para el deploy"
+            exit 1
+          fi
+          echo "✅ Todos los archivos críticos presentes"
+
+      - name: Verificar que wp-config.php NO está en el repo
+        run: |
+          if [ -f "wp-config.php" ]; then
+            echo "::error::wp-config.php está en el repositorio. ¡PELIGRO! Debe estar en .gitignore"
+            exit 1
+          fi
+          echo "✅ wp-config.php correctamente excluido del repo"
+
+      - name: Verificar que uploads/ NO está en el repo
+        run: |
+          if [ -d "wp-content/uploads" ]; then
+            echo "::error::wp-content/uploads/ está en el repositorio. ¡Debe estar en .gitignore!"
+            exit 1
+          fi
+          echo "✅ wp-content/uploads/ correctamente excluido del repo"
+
+      - name: Resumen
+        run: |
+          echo ""
+          echo "═══════════════════════════════════════════"
+          echo "✅ Validación completa — listo para deploy"
+          echo "═══════════════════════════════════════════"
+          echo ""
+          echo "Tras el merge/push a main, Hostinger"
+          echo "hará pull automático en public_html."

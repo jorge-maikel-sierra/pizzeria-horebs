@@ -32,7 +32,7 @@ if ( ! class_exists( 'WPSEO_Local_Search' ) ) {
 		/**
 		 * Holds the global wpdb variable.
 		 *
-		 * @var \wpdb
+		 * @var wpdb
 		 */
 		private $wpdb;
 
@@ -50,6 +50,8 @@ if ( ! class_exists( 'WPSEO_Local_Search' ) ) {
 
 		/**
 		 * Run all the needed actions.
+		 *
+		 * @return void
 		 */
 		public function run() {
 			add_action( 'pre_get_posts', [ $this, 'enhance_search' ] );
@@ -61,6 +63,8 @@ if ( ! class_exists( 'WPSEO_Local_Search' ) ) {
 
 		/**
 		 * Enhance the WordPress search to search in WPSEO Local locations meta data.
+		 *
+		 * @return void
 		 */
 		public function enhance_search() {
 			if ( is_search() && $this->is_enhanced_search_enabled() && ! is_admin() && ( ! isset( $_GET['post_type'] ) || $_GET['post_type'] === $this->local_post_type ) ) {
@@ -149,6 +153,8 @@ if ( ! class_exists( 'WPSEO_Local_Search' ) ) {
 
 		/**
 		 * Set the default fields to search in.
+		 *
+		 * @return void
 		 */
 		private function set_search_fields() {
 			$this->search_fields = [ '_wpseo_business_address', '_wpseo_business_city', '_wpseo_business_zipcode' ];

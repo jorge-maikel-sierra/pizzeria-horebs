@@ -16,7 +16,6 @@ require_once WPSEO_LOCAL_PATH . 'woocommerce/emails/abstract-wc-email.php';
  * A custom Ready for Pickup Order WooCommerce Email class.
  *
  * @since 0.1
- * @extends \WPSEO_Local_WooCommerce_Email
  */
 class WC_Email_ReadyForPickup_Order extends WPSEO_Local_WooCommerce_Email {
 

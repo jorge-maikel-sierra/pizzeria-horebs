@@ -35,6 +35,8 @@ abstract class WPSEO_Local_WooCommerce_Email extends WC_Email {
 	 *
 	 * @since 0.1
 	 * @param int $order_id Order ID.
+	 *
+	 * @return void
 	 */
 	public function trigger( $order_id ) {
 
@@ -104,6 +106,8 @@ abstract class WPSEO_Local_WooCommerce_Email extends WC_Email {
 	 * Initialize Settings Form Fields.
 	 *
 	 * @since 2.0
+	 *
+	 * @return void
 	 */
 	public function init_form_fields() {
 

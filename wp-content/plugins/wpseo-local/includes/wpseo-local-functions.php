@@ -5,14 +5,14 @@
  * @package WPSEO_Local\Frontend
  */
 
-use Yoast\WP\Local\Repositories\Options_Repository;
-use Yoast\WP\SEO\Helpers\Indexable_Helper;
-use Yoast\WP\SEO\Integrations\Watchers\Indexable_Permalink_Watcher;
-use Yoast\WP\SEO\Repositories\Indexable_Repository;
-use Yoast\WP\Local\Repositories\Timezone_Repository;
 use Yoast\WP\Local\Builders\Locations_Repository_Builder;
 use Yoast\WP\Local\Formatters\Address_Formatter;
 use Yoast\WP\Local\PostType\PostType;
+use Yoast\WP\Local\Repositories\Options_Repository;
+use Yoast\WP\Local\Repositories\Timezone_Repository;
+use Yoast\WP\SEO\Helpers\Indexable_Helper;
+use Yoast\WP\SEO\Integrations\Watchers\Indexable_Permalink_Watcher;
+use Yoast\WP\SEO\Repositories\Indexable_Repository;
 
 /**
  * Address shortcode handler
@@ -132,19 +132,20 @@ function wpseo_local_show_address( $atts ) {
 	foreach ( $locations as $location ) {
 		$tag_title_open  = '';
 		$tag_title_close = '';
+
 		if ( ! $atts['oneline'] ) {
+
 			if ( ! $atts['from_widget'] ) {
 				$tag_name        = apply_filters( 'wpseo_local_location_title_tag_name', 'h3' );
 				$tag_title_open  = '<' . esc_html( $tag_name ) . '>';
 				$tag_title_close = '</' . esc_html( $tag_name ) . '>';
 			}
-			else {
-				if ( $atts['from_widget'] && $atts['widget_title'] === '' ) {
-					$tag_title_open  = $atts['before_title'];
-					$tag_title_close = $atts['after_title'];
-				}
+			elseif ( $atts['from_widget'] && $atts['widget_title'] === '' ) {
+				$tag_title_open  = wp_kses_post( $atts['before_title'] );
+				$tag_title_close = wp_kses_post( $atts['after_title'] );
 			}
 		}
+
 		$container_id = 'wpseo_location-' . esc_attr( $atts['id'] );
 		$output       = '<div id="' . $container_id . '" class="wpseo-location">';
 
@@ -158,7 +159,7 @@ function wpseo_local_show_address( $atts ) {
 			$post_type = $post_type_instance->get_post_type();
 
 			$pt_object = get_post_type_object( $post_type );
-			$output    .= $tag_title_open . ( ( $atts['from_sl'] && $pt_object->public ) ? '<a href="' . esc_url( $location['business_url'] ) . '">' : '' ) . '<span class="wpseo-business-name">' . esc_html( $location['business_name'] ) . '</span>' . ( ( $atts['from_sl'] ) ? '</a>' : '' ) . $tag_title_close;
+			$output   .= $tag_title_open . ( ( $atts['from_sl'] && $pt_object->public ) ? '<a href="' . esc_url( $location['business_url'] ) . '">' : '' ) . '<span class="wpseo-business-name">' . esc_html( $location['business_name'] ) . '</span>' . ( ( $atts['from_sl'] ) ? '</a>' : '' ) . $tag_title_close;
 		}
 
 		if ( $atts['show_logo'] && ! empty( $location['business_logo'] ) && is_numeric( $location['business_logo'] ) ) {
@@ -205,7 +206,7 @@ function wpseo_local_show_address( $atts ) {
 			}
 		}
 
-		$output         .= '</' . ( ( $atts['oneline'] ) ? 'span' : 'div' ) . '>';
+		$output        .= '</' . ( ( $atts['oneline'] ) ? 'span' : 'div' ) . '>';
 		$details_output = '';
 
 		foreach ( $business_contact_details as $order => $details ) {
@@ -261,7 +262,7 @@ function wpseo_local_show_address( $atts ) {
 
 		$output .= $details_output;
 		if ( $atts['show_opening_hours'] ) {
-			$args   = [
+			$args    = [
 				'id'          => ( wpseo_has_multiple_locations() ) ? $atts['id'] : '',
 				'hide_closed' => $atts['hide_closed'],
 			];
@@ -393,7 +394,7 @@ function wpseo_local_show_map( $atts ) {
 	$lats               = [];
 	$longs              = [];
 	$all_categories     = [];
-	$location_array_str = '';
+	$location_array_str = [];
 	$map                = '';
 
 	// Backwards compatibility for scrollable / zoomable functions.
@@ -447,10 +448,8 @@ function wpseo_local_show_map( $atts ) {
 	if ( $atts['zoom'] === true ) {
 		$atts['zoom'] = 1;
 	}
-	else {
-		if ( $atts['zoom'] === false ) {
-			$atts['zoom'] = 0;
-		}
+	elseif ( $atts['zoom'] === false ) {
+		$atts['zoom'] = 0;
 	}
 
 	// Initiate the Locations repository and get query the locations.
@@ -472,7 +471,6 @@ function wpseo_local_show_map( $atts ) {
 	$post_type_instance = new PostType();
 	$post_type_instance->initialize();
 	$post_type = $post_type_instance->get_post_type();
-
 
 	$noscript_output = '<ul>';
 	foreach ( $locations as $location_key => $location ) {
@@ -496,7 +494,7 @@ function wpseo_local_show_map( $atts ) {
 
 		if ( $location['coords']['lat'] !== '' && $location['coords']['long'] !== '' ) {
 			$address_atts = [
-				'id'                 => isset( $location['post_id'] ) ? $location['post_id'] : '',
+				'id'                 => ( $location['post_id'] ?? '' ),
 				'hide_name'          => true,
 				'business_address'   => wpseo_cleanup_string( $location['business_address'] ),
 				'business_address_2' => wpseo_cleanup_string( $location['business_address_2'] ),
@@ -523,7 +521,7 @@ function wpseo_local_show_map( $atts ) {
 			];
 			$full_address = wpseo_local_show_address( $address_atts );
 
-			$location_array_str .= "location_data.push( {
+			$location_array_str[] = "{
 				'name': '" . wpseo_cleanup_string( $location['business_name'] ) . "',
 				'url': '" . wpseo_cleanup_string( $location['business_url'] ) . "',
 				'address': " . WPSEO_Utils::format_json_encode( $full_address ) . ",
@@ -541,13 +539,13 @@ function wpseo_local_show_map( $atts ) {
 				'custom_marker': '" . wpseo_cleanup_string( $location['custom_marker'] ) . "',
 				'categories': " . WPSEO_Utils::format_json_encode( $terms ) . ",
 				'self_url': '" . $self_url . "',
-			} );\n";
+			}";
 		}
 		$noscript_output .= '<li>';
 		if ( $location['business_url'] !== get_permalink() ) {
-			$noscript_output .= '<a href="' . $location['business_url'] . '">';
+			$noscript_output .= '<a href="' . esc_url( $location['business_url'] ) . '">';
 		}
-		$noscript_output .= $location['business_name'];
+		$noscript_output .= esc_html( $location['business_name'] );
 		if ( $location['business_url'] !== get_permalink() ) {
 			$noscript_output .= '</a>';
 		}
@@ -587,25 +585,40 @@ function wpseo_local_show_map( $atts ) {
 		$atts['zoom'] = 10;
 	}
 
-	if ( $location_array_str != '' ) {
+	$marker_clustering = ( $atts['marker_clustering'] ) ? 1 : '';
+
+	if ( count( $location_array_str ) > 0 ) {
+		if ( $map_counter === 0 ) {
+			$wpseo_map .= '<script type="text/javascript">
+				window.wpseoMapOptions = {};
+			</script>' . PHP_EOL;
+		}
 		$wpseo_map .= '<script type="text/javascript">
-			var map_' . $map_counter . ';
-			var directionsDisplay_' . $map_counter . ';
+			wpseoMapOptions[ ' . $map_counter . ' ] = {
+				location_data: [],
+				mapVars: [
+					' . WPSEO_Utils::format_json_encode( $center_lat ) . ',
+					' . WPSEO_Utils::format_json_encode( $center_long ) . ',
+					' . (int) $atts['zoom'] . ',
+					' . WPSEO_Utils::format_json_encode( $atts['map_style'] ) . ',
+					"' . (int) $atts['scrollable'] . '",
+					"' . (int) $atts['draggable'] . '",
+					"' . (int) $atts['default_show_infowindow'] . '",
+					"' . is_admin() . '",
+					"' . $marker_clustering . '",
+				],
+				directionVars: [
+					"' . (int) $atts['show_route'] . '",
+				],
+			};' . PHP_EOL;
+		foreach ( $location_array_str as $location ) {
+			$wpseo_map .= "wpseoMapOptions[$map_counter].location_data.push($location);" . PHP_EOL;
+		}
 
-			function wpseo_map_init' . ( ( $map_counter !== 0 ) ? '_' . $map_counter : '' ) . '() {
-				var location_data = new Array();' . PHP_EOL . $location_array_str . '
-				map_' . $map_counter . ' = wpseo_show_map( location_data, ' . $map_counter . ', ' . json_encode( $center_lat ) . ', ' . json_encode( $center_long ) . ', ' . $atts['zoom'] . ', "' . $atts['map_style'] . '", "' . $atts['scrollable'] . '", "' . $atts['draggable'] . '", "' . $atts['default_show_infowindow'] . '", "' . is_admin() . '", "' . $atts['marker_clustering'] . '" );
-				directionsDisplay_' . $map_counter . ' = wpseo_get_directions(map_' . $map_counter . ', location_data, ' . $map_counter . ', "' . $atts['show_route'] . '");
-			}
-
-			if( window.addEventListener )
-				window.addEventListener( "load", wpseo_map_init' . ( ( $map_counter !== 0 ) ? '_' . $map_counter : '' ) . ', false );
-			else if(window.attachEvent )
-				window.attachEvent( "onload", wpseo_map_init' . ( ( $map_counter !== 0 ) ? '_' . $map_counter : '' ) . ');
-		</script>' . PHP_EOL;
+		$wpseo_map .= '</script>' . PHP_EOL;
 
 		// Override(reset) the setting for images inside the map.
-		$map .= '<div id="map_canvas' . ( ( $map_counter !== 0 ) ? '_' . $map_counter : '' ) . '" class="wpseo-map-canvas" style="max-width: 100%; width: ' . $atts['width'] . 'px; height: ' . $atts['height'] . 'px;">' . $noscript_output . '</div>';
+		$map .= '<div id="map_canvas' . ( ( $map_counter !== 0 ) ? '_' . $map_counter : '' ) . '" class="wpseo-map-canvas" style="max-width: 100%; width: ' . esc_attr( $atts['width'] ) . 'px; height: ' . esc_attr( $atts['height'] ) . 'px;">' . $noscript_output . '</div>';
 
 		$route_tag   = apply_filters( 'wpseo_local_location_route_title_name', 'h3' );
 		$route_label = apply_filters( 'wpseo_local_location_route_label', __( 'Route', 'yoast-local-seo' ) );
@@ -616,11 +629,11 @@ function wpseo_local_show_map( $atts ) {
 		 */
 		if ( $atts['show_route'] && ( count( $locations ) === 1 || $atts['from_sl'] === true ) ) {
 			$location = reset( $locations );
-			$map      .= '<div id="wpseo-directions-wrapper"' . ( ( $atts['from_sl'] ) ? ' style="display: none;"' : '' ) . '>';
+			$map     .= '<div id="wpseo-directions-wrapper"' . ( ( $atts['from_sl'] ) ? ' style="display: none;"' : '' ) . '>';
 			if ( ! empty( $route_label ) ) {
 				$map .= '<' . esc_html( $route_tag ) . ' id="wpseo-directions" class="wpseo-directions-heading">' . $route_label . '</' . esc_html( $route_tag ) . '>';
 			}
-			$map .= '<form action="" method="post" class="wpseo-directions-form" id="wpseo-directions-form' . ( ( $map_counter !== 0 ) ? '_' . $map_counter : '' ) . '" onsubmit="wpseo_calculate_route( map_' . $map_counter . ', directionsDisplay_' . $map_counter . ', ' . $location['coords']['lat'] . ', ' . $location['coords']['long'] . ', ' . $map_counter . '); return false;">';
+			$map .= '<form action="" method="post" class="wpseo-directions-form" id="wpseo-directions-form' . ( ( $map_counter !== 0 ) ? '_' . $map_counter : '' ) . '" onsubmit="wpseo_calculate_route( wpseoMapOptions[' . $map_counter . '].map, wpseoMapOptions[' . $map_counter . '].directionsDisplay, wpseoMapOptions[' . $map_counter . '].mapVars[0], wpseoMapOptions[' . $map_counter . '].mapVars[1], ' . $map_counter . '); return false;">';
 			$map .= '<p>';
 			$map .= __( 'Your location', 'yoast-local-seo' ) . ': <input type="text" size="20" id="origin' . ( ( $map_counter !== 0 ) ? '_' . $map_counter : '' ) . '" value="' . ( ! empty( $_REQUEST['wpseo-sl-search'] ) ? esc_attr( $_REQUEST['wpseo-sl-search'] ) : '' ) . '" />';
 			// Show icon for retrieving current location.
@@ -628,7 +641,7 @@ function wpseo_local_show_map( $atts ) {
 				$map .= ' <a href="javascript:" class="wpseo_use_current_location" data-target="origin' . ( ( $map_counter !== 0 ) ? '_' . $map_counter : '' ) . '"><img src="' . plugins_url( 'images/location-icon.svg', WPSEO_LOCAL_FILE ) . '" class="wpseo_use_current_location_image" height="24" width="24" alt="' . __( 'Use my current location', 'yoast-local-seo' ) . '" data-loading-text="' . __( 'Determining current location', 'yoast-local-seo' ) . '"></a> ';
 				$map .= '<br>';
 			}
-			$map .= '<input type="submit" class="wpseo-directions-submit" value="' . $atts['show_route_label'] . '">';
+			$map .= '<input type="submit" class="wpseo-directions-submit" value="' . esc_attr( $atts['show_route_label'] ) . '">';
 			$map .= '<span id="wpseo-noroute" style="display: none;">' . __( 'No route could be calculated.', 'yoast-local-seo' ) . '</span>';
 			$map .= '</p>';
 			$map .= '</form>';
@@ -712,7 +725,7 @@ function wpseo_local_show_opening_hours( $atts, $standalone = true ) {
 		'category_id' => $atts['term_id'],
 	];
 	$locations                    = $repo->get( $filter_args );
-	$container_id                 = 'wpseo-opening-hours-' . $atts['id'];
+	$container_id                 = 'wpseo-opening-hours-' . esc_attr( $atts['id'] );
 	$output                       = '';
 	foreach ( $locations as $location ) {
 		if ( $location['business_type'] == '' ) {
@@ -900,6 +913,8 @@ function wpseo_multiple_location_one_organization() {
 
 /**
  * Checks whether website has primary locations enabled and has a primary location set.
+ *
+ * @return bool
  */
 function wpseo_has_primary_location() {
 	return ( wpseo_multiple_location_one_organization() && ! empty( WPSEO_Options::get( 'multiple_locations_primary_location' ) ) );
@@ -907,6 +922,8 @@ function wpseo_has_primary_location() {
 
 /**
  * Checks whether website has primary locations enabled, has a primary location set and checks what page we are on.
+ *
+ * @return bool
  */
 function wpseo_has_usable_primary_location() {
 	return ( wpseo_has_primary_location() && ! is_singular( 'wpseo_locations' ) );
@@ -914,6 +931,8 @@ function wpseo_has_usable_primary_location() {
 
 /**
  * Checks whether website has only one published location item.
+ *
+ * @return bool
  */
 function wpseo_has_location_acting_as_primary() {
 	if ( wpseo_multiple_location_one_organization() ) {
@@ -985,8 +1004,8 @@ function wpseo_schema_will_have_branch_organization( $is_company = false ) {
 function wpseo_show_hour_options( $use_24h = false, $selected = '09:00' ) {
 	$options = get_option( 'wpseo_local' );
 	$output  = '<option value="closed">';
-	$output  .= ( ! empty( $options['closed_label'] ) ? esc_html( $options['closed_label'] ) : esc_html__( 'Closed', 'yoast-local-seo' ) );
-	$output  .= '</option>';
+	$output .= ( ! empty( $options['closed_label'] ) ? esc_html( $options['closed_label'] ) : esc_html__( 'Closed', 'yoast-local-seo' ) );
+	$output .= '</option>';
 
 	/*
 	 * These are hard-coded times not affected by timezone. Using gmdate()
@@ -1059,10 +1078,8 @@ function wpseo_check_falses( $input ) {
 		if ( $value === 'false' || $value === 'off' || $value === 'no' || $value === '0' ) {
 			$atts[ $key ] = false;
 		}
-		else {
-			if ( $value === 'true' || $value === 'on' || $value === 'yes' || $value === '1' ) {
-				$atts[ $key ] = true;
-			}
+		elseif ( $value === 'true' || $value === 'on' || $value === 'yes' || $value === '1' ) {
+			$atts[ $key ] = true;
 		}
 	}
 
@@ -1075,13 +1092,15 @@ function wpseo_check_falses( $input ) {
 
 /**
  * Places scripts in footer for Google Maps use.
+ *
+ * @return void
  */
 function wpseo_enqueue_geocoder() {
 	global $wpseo_map;
 
 	$options         = get_option( 'wpseo_local' );
 	$detect_location = isset( $options['detect_location'] ) && $options['detect_location'] === 'on';
-	$default_country = isset( $options['default_country'] ) ? $options['default_country'] : '';
+	$default_country = ( $options['default_country'] ?? '' );
 	if ( $default_country != '' ) {
 		$default_country = WPSEO_Local_Frontend::get_country( $default_country );
 	}
@@ -1196,16 +1215,14 @@ function wpseo_unicode_to_utf8( $string_array ) {
 		if ( $unicode < 128 ) {
 			$utf8 .= chr( $unicode );
 		}
+		elseif ( $unicode < 2048 ) {
+			$utf8 .= chr( 192 + ( ( $unicode - ( $unicode % 64 ) ) / 64 ) );
+			$utf8 .= chr( 128 + ( $unicode % 64 ) );
+		}
 		else {
-			if ( $unicode < 2048 ) {
-				$utf8 .= chr( 192 + ( ( $unicode - ( $unicode % 64 ) ) / 64 ) );
-				$utf8 .= chr( 128 + ( $unicode % 64 ) );
-			}
-			else {
-				$utf8 .= chr( 224 + ( ( $unicode - ( $unicode % 4096 ) ) / 4096 ) );
-				$utf8 .= chr( 128 + ( ( ( $unicode % 4096 ) - ( $unicode % 64 ) ) / 64 ) );
-				$utf8 .= chr( 128 + ( $unicode % 64 ) );
-			}
+			$utf8 .= chr( 224 + ( ( $unicode - ( $unicode % 4096 ) ) / 4096 ) );
+			$utf8 .= chr( 128 + ( ( ( $unicode % 4096 ) - ( $unicode % 64 ) ) / 64 ) );
+			$utf8 .= chr( 128 + ( $unicode % 64 ) );
 		}
 	}
 
@@ -1216,6 +1233,8 @@ function wpseo_unicode_to_utf8( $string_array ) {
  * Run the upgrade procedures.
  *
  * @param array $options Options from database to check with.
+ *
+ * @return void
  */
 function wpseo_local_do_upgrade( $options ) {
 
@@ -1332,7 +1351,7 @@ function wpseo_local_do_upgrade( $options ) {
 		}
 
 		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- YoastSEO Free hook.
-		$shutdown_limit = \apply_filters( 'wpseo_shutdown_indexation_limit', 25 );
+		$shutdown_limit = apply_filters( 'wpseo_shutdown_indexation_limit', 25 );
 
 		$indexables_repository = YoastSEO()->classes->get( Indexable_Repository::class );
 		$indexed_locations     = $indexables_repository->query()
@@ -1360,7 +1379,7 @@ function wpseo_local_do_upgrade( $options ) {
 			/**
 			 * Represents the Indexable_Permalink_Watcher.
 			 *
-			 * @var \Yoast\WP\SEO\Integrations\Watchers\Indexable_Permalink_Watcher $watcher
+			 * @var Indexable_Permalink_Watcher $watcher
 			 */
 			$watcher = YoastSEO()->classes->get( Indexable_Permalink_Watcher::class );
 			$watcher->reset_permalinks_post_type( 'wpseo_locations' );
@@ -1380,11 +1399,19 @@ function wpseo_local_do_upgrade( $options ) {
 			/**
 			 * Represents the Indexable_Helper.
 			 *
-			 * @var \Yoast\WP\SEO\Helpers\Indexable_Helper $helper
+			 * @var Indexable_Helper $helper
 			 */
 			$helper = YoastSEO()->classes->get( Indexable_Helper::class );
 			$helper->reset_permalink_indexables( 'term', 'wpseo_locations_category' );
 		}
+	}
+
+	if ( version_compare( $db_version, '15.1', '<' ) ) {
+		require_once ABSPATH . 'wp-admin/includes/admin.php';
+		require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+		$upgrader       = new WP_Upgrader();
+		$upgrader->skin = new Automatic_Upgrader_Skin();
+		Language_Pack_Upgrader::async_upgrade( $upgrader );
 	}
 }
 
@@ -1417,6 +1444,8 @@ function wpseo_local_get_excerpt( $post_id ) {
 
 /**
  * Create an upload field for an image
+ *
+ * @return string
  */
 function wpseo_local_upload_image() {
 
@@ -1436,6 +1465,8 @@ function wpseo_local_upload_image() {
 
 /**
  * @param string $value The value of the Business types array.
+ *
+ * @return void
  */
 function wpseo_local_sanitize_business_types( &$value ) {
 	$value = str_replace( '&mdash;', '', $value );
@@ -1456,7 +1487,6 @@ function wpseo_local_show_logo( $atts ) {
 	$post_type_instance = new PostType();
 	$post_type_instance->initialize();
 	$post_type = $post_type_instance->get_post_type();
-
 
 	$output = '';
 
@@ -1497,6 +1527,8 @@ function yoast_wpseo_local_get_attachment_id_from_src( $src ) {
 
 /**
  * Update business type from Attorney to Legal Service
+ *
+ * @return void
  */
 function yoast_wpseo_local_update_business_type() {
 	if ( wpseo_has_multiple_locations() ) {
@@ -1599,11 +1631,11 @@ function yoast_should_use_24h_format( $location_id, $format_option_value ) {
 		return ( $format_option_value === 'on' );
 	}
 
-	$use_24h       = \get_post_meta( $location_id, '_wpseo_format_24h', true ) === 'on';
-	$is_overridden = \get_post_meta( $location_id, '_wpseo_format_24h_override', true ) === 'on';
+	$use_24h       = get_post_meta( $location_id, '_wpseo_format_24h', true ) === 'on';
+	$is_overridden = get_post_meta( $location_id, '_wpseo_format_24h_override', true ) === 'on';
 
 	// Default to the meta value when on a single location.
-	if ( ! \wpseo_may_use_multiple_locations_shared_opening_hours() ) {
+	if ( ! wpseo_may_use_multiple_locations_shared_opening_hours() ) {
 		return $use_24h;
 	}
 
@@ -1628,11 +1660,11 @@ function yoast_is_open_247( $location_id, $open_247_option ) {
 		return $open_247_option;
 	}
 
-	$open_247      = \get_post_meta( $location_id, '_wpseo_open_247', true ) === 'on';
-	$is_overridden = \get_post_meta( $location_id, '_wpseo_open_247_override', true ) === 'on';
+	$open_247      = get_post_meta( $location_id, '_wpseo_open_247', true ) === 'on';
+	$is_overridden = get_post_meta( $location_id, '_wpseo_open_247_override', true ) === 'on';
 
 	// Default to the meta value when on a single location.
-	if ( ! \wpseo_may_use_multiple_locations_shared_opening_hours() ) {
+	if ( ! wpseo_may_use_multiple_locations_shared_opening_hours() ) {
 		return $open_247;
 	}
 

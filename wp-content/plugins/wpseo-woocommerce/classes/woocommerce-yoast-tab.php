@@ -13,7 +13,7 @@ class WPSEO_WooCommerce_Yoast_Tab {
 	/**
 	 * The array of allowed identifier types.
 	 *
-	 * @var string[]
+	 * @var array<string, string>
 	 */
 	protected $global_identifier_types = [
 		'gtin8'  => 'GTIN8',
@@ -36,9 +36,9 @@ class WPSEO_WooCommerce_Yoast_Tab {
 	/**
 	 * Adds the Yoast SEO product tab.
 	 *
-	 * @param array $tabs The current product data tabs.
+	 * @param array<string, array<string, string>> $tabs The current product data tabs.
 	 *
-	 * @return array An array with product tabs with the Yoast SEO tab added.
+	 * @return array<string, array<string, string>> An array with product tabs with the Yoast SEO tab added.
 	 */
 	public function yoast_seo_tab( $tabs ) {
 		$tabs['yoast_tab'] = [
@@ -70,7 +70,7 @@ class WPSEO_WooCommerce_Yoast_Tab {
 		wp_nonce_field( 'yoast_woo_seo_identifiers', '_wpnonce_yoast_seo_woo' );
 
 		foreach ( $this->global_identifier_types as $type => $label ) {
-			$value = isset( $global_identifier_values[ $type ] ) ? $global_identifier_values[ $type ] : '';
+			$value = ( $global_identifier_values[ $type ] ?? '' );
 			$this->input_field_for_identifier( $type, $label, $value );
 		}
 		echo '</div>';
@@ -78,7 +78,7 @@ class WPSEO_WooCommerce_Yoast_Tab {
 	}
 
 	/**
-	 * Save the $_POST values from our tab.
+	 * Save the $_POST values from our tab in product page, woocommerce section.
 	 *
 	 * @param int $post_id The post ID.
 	 *
@@ -89,8 +89,9 @@ class WPSEO_WooCommerce_Yoast_Tab {
 			return false;
 		}
 
-		$nonce = filter_input( INPUT_POST, '_wpnonce_yoast_seo_woo' );
-		if ( ! wp_verify_nonce( $nonce, 'yoast_woo_seo_identifiers' ) ) {
+		// No need to sanitize or unslash nonce.
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.MissingUnslash
+		if ( ! isset( $_POST['_wpnonce_yoast_seo_woo'] ) || ! wp_verify_nonce( $_POST['_wpnonce_yoast_seo_woo'], 'yoast_woo_seo_identifiers' ) ) {
 			return false;
 		}
 
@@ -127,7 +128,7 @@ class WPSEO_WooCommerce_Yoast_Tab {
 		$values = [];
 		foreach ( $this->global_identifier_types as $key => $label ) {
 			// Ignoring nonce verification as we do that elsewhere, sanitization as we do that below.
-			// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			$value = isset( $_POST['yoast_seo'][ $key ] ) ? wp_unslash( $_POST['yoast_seo'][ $key ] ) : '';
 			if ( $this->validate_data( $value ) ) {
 				$values[ $key ] = $value;

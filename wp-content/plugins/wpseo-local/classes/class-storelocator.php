@@ -110,6 +110,8 @@ if ( ! class_exists( 'WPSEO_Local_Storelocator' ) ) {
 		 * Enqueue the scripts necessary for the Store Locator to work.
 		 *
 		 * The wp-polyfill asset is needed for versions of WP before 5.0.
+		 *
+		 * @return void
 		 */
 		public function enqueue_scripts() {
 			$this->asset_manager = new WPSEO_Local_Admin_Assets();
@@ -239,7 +241,6 @@ if ( ! class_exists( 'WPSEO_Local_Storelocator' ) ) {
 					$map_atts = [
 						'id'                   => $ids,
 						'max_number'           => $atts['max_number'],
-						'width'                => $atts['map_width'],
 						'from_sl'              => true,
 						'show_route'           => true,
 						'scrollable'           => $atts['scrollable'],
@@ -511,6 +512,8 @@ if ( ! class_exists( 'WPSEO_Local_Storelocator' ) ) {
 
 		/**
 		 * Load jQuery script (if not already loaded before).
+		 *
+		 * @return void
 		 */
 		public function load_scripts() {
 			if ( wp_script_is( 'jquery', 'done' ) === false && apply_filters( 'wpseo_local_load_jquery', true ) !== false ) {
@@ -524,6 +527,8 @@ if ( ! class_exists( 'WPSEO_Local_Storelocator' ) ) {
 		 * @param int   $location_id Post ID of the location.
 		 * @param array $atts        Array of attributes, used for displaying the address.
 		 *                           These are matching attributes for the wpseo_local_show_address() method.
+		 *
+		 * @return void
 		 */
 		public function get_location_details( $location_id, $atts ) {
 			$coords_lat  = get_post_meta( $location_id, '_wpseo_coordinates_lat', true );

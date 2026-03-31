@@ -35,7 +35,7 @@ class WPSEO_Storelocator_Form extends WP_Widget {
 	 * @return void
 	 */
 	public function widget( $args, $instance ) {
-		$title        = apply_filters( 'widget_title', isset( $instance['title'] ) ? $instance['title'] : '' );
+		$title        = apply_filters( 'widget_title', ( $instance['title'] ?? '' ) );
 		$search_label = ( ! empty( $instance['search_label'] ) ) ? $instance['search_label'] : apply_filters( 'yoast-local-seo-search-label', __( 'Enter your postal code, city and / or state', 'yoast-local-seo' ) );
 		$radius       = ( ! empty( $instance['radius'] ) ) ? $instance['radius'] : 10;
 		$page_id      = ( ! empty( $instance['page_id'] ) ) ? (int) $instance['page_id'] : 0;

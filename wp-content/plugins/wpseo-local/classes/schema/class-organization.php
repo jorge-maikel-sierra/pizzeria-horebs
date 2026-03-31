@@ -3,18 +3,19 @@
  * @package WPSEO_Local\Frontend\Schema
  */
 
-use Yoast\WP\SEO\Config\Schema_IDs;
-use Yoast\WP\SEO\Generators\Schema\Abstract_Schema_Piece;
-use Yoast\WP\Local\PostType\PostType;
 use Yoast\WP\Local\Builders\Locations_Repository_Builder;
+use Yoast\WP\Local\PostType\PostType;
 use Yoast\WP\Local\Repositories\Business_Types_Repository;
+use Yoast\WP\SEO\Config\Schema_IDs;
+use Yoast\WP\SEO\Context\Meta_Tags_Context;
+use Yoast\WP\SEO\Generators\Schema\Abstract_Schema_Piece;
 
 /**
  * Class WPSEO_Local_Organization.
  *
  * Manages the Schema for an Organization.
  *
- * @property WPSEO_Schema_Context $context A value object with context variables.
+ * @property Meta_Tags_Context $context A value object with context variables.
  * @property array                $options Local SEO options.
  */
 class WPSEO_Local_Organization extends Abstract_Schema_Piece {
@@ -22,7 +23,7 @@ class WPSEO_Local_Organization extends Abstract_Schema_Piece {
 	/**
 	 * A value object with context variables.
 	 *
-	 * @var WPSEO_Schema_Context
+	 * @var Meta_Tags_Context
 	 */
 	public $context;
 
@@ -36,9 +37,9 @@ class WPSEO_Local_Organization extends Abstract_Schema_Piece {
 	/**
 	 * Constructor.
 	 *
-	 * @param WPSEO_Schema_Context $context A value object with context variables.
+	 * @param Meta_Tags_Context $context A value object with context variables.
 	 */
-	public function __construct( WPSEO_Schema_Context $context ) {
+	public function __construct( Meta_Tags_Context $context ) {
 		$this->context = $context;
 		$this->options = get_option( 'wpseo_local' );
 
@@ -145,7 +146,7 @@ class WPSEO_Local_Organization extends Abstract_Schema_Piece {
 		 *
 		 * @param string $site_url The homepage URL.
 		 */
-		$data['url'] = \apply_filters( 'yoast-local-seo-schema-organization-url', $this->context->site_url );
+		$data['url'] = apply_filters( 'yoast-local-seo-schema-organization-url', $this->context->site_url );
 
 		return $data;
 	}
@@ -240,7 +241,7 @@ class WPSEO_Local_Organization extends Abstract_Schema_Piece {
 		$post_type_instance = new PostType();
 		$post_type_instance->initialize();
 
-		if ( \get_post_type() !== $post_type_instance->get_post_type() ) {
+		if ( get_post_type() !== $post_type_instance->get_post_type() ) {
 			return false;
 		}
 
@@ -262,10 +263,8 @@ class WPSEO_Local_Organization extends Abstract_Schema_Piece {
 				return true;
 			}
 		}
-		else {
-			if ( ! wpseo_is_current_location_identical_to_primary() ) {
-				return true;
-			}
+		elseif ( ! wpseo_is_current_location_identical_to_primary() ) {
+			return true;
 		}
 
 		return false;

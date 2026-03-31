@@ -7,6 +7,8 @@
 
 /**
  * Copies location data for further use.
+ *
+ * @return array|void
  */
 function wpseo_copy_location_callback() {
 
@@ -85,6 +87,8 @@ function wpseo_copy_location_callback() {
 
 /**
  * Callback function to get address data.
+ *
+ * @return void
  */
 function wpseo_local_show_address_ajax_cb() {
 	$atts   = [
@@ -115,6 +119,8 @@ function wpseo_local_show_address_ajax_cb() {
 
 /**
  * Callback function to get address data.
+ *
+ * @return void
  */
 function wpseo_local_show_map_ajax_cb() {
 	$atts   = [
@@ -152,6 +158,8 @@ function wpseo_local_show_map_ajax_cb() {
 
 /**
  * Callback function to get location opening hours data.
+ *
+ * @return void
  */
 function wpseo_local_show_opening_hours_ajax_cb() {
 	$atts = [

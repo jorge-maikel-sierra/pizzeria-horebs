@@ -49,6 +49,13 @@ if ( ! class_exists( 'WPSEO_Local_Admin_Map_Settings' ) ) {
 		private $api_repository;
 
 		/**
+		 * Holds the Timezone repository.
+		 *
+		 * @var Timezone_Repository
+		 */
+		private $wpseo_local_timezone_repository;
+
+		/**
 		 * WPSEO_Local_Admin_Map_Settings constructor.
 		 */
 		public function __construct() {
@@ -66,6 +73,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_Map_Settings' ) ) {
 
 		/**
 		 * Set WPSEO Local Core instance in local property
+		 *
+		 * @return void
 		 */
 		private function get_core() {
 			global $wpseo_local_core;
@@ -74,6 +83,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_Map_Settings' ) ) {
 
 		/**
 		 * Set WPSEO Local Core Timezone Repository in local property
+		 *
+		 * @return void
 		 */
 		private function get_timezone_repository() {
 			$timezone_repository = new Timezone_Repository();
@@ -108,6 +119,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_Map_Settings' ) ) {
 
 		/**
 		 * Advanced settings section.
+		 *
+		 * @return void
 		 */
 		public function maps_settings() {
 			$api_key_browser = $this->api_repository->get_api_key( 'browser' );
@@ -168,6 +181,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_Map_Settings' ) ) {
 
 		/**
 		 * Store locator settings section.
+		 *
+		 * @return void
 		 */
 		public function store_locator() {
 			$api_key_browser = $this->api_repository->get_api_key( 'browser' );

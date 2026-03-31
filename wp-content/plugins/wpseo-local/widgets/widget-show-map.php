@@ -38,7 +38,7 @@ class WPSEO_Show_Map extends WP_Widget {
 	 * @return void
 	 */
 	public function widget( $args, $instance ) {
-		$title                   = apply_filters( 'widget_title', isset( $instance['title'] ) ? $instance['title'] : '' );
+		$title                   = apply_filters( 'widget_title', ( $instance['title'] ?? '' ) );
 		$show_all_locations      = ! empty( $instance['show_all_locations'] );
 		$location_id             = ! empty( $instance['location_id'] ) ? $instance['location_id'] : '';
 		$width                   = ! empty( $instance['width'] ) ? $instance['width'] : 400;

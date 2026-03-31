@@ -292,13 +292,46 @@
 							'i18n_sale_less_than_regular_error',
 						] );
 					} else {
-						$(
-							document.body
-						).triggerHandler( 'wc_remove_error_tip', [
-							$( this ),
-							'i18n_sale_less_than_regular_error',
-						] );
+						$( document.body ).triggerHandler(
+							'wc_remove_error_tip',
+							[ $( this ), 'i18n_sale_less_than_regular_error' ]
+						);
 					}
+				}
+			)
+
+			.on(
+				'keyup',
+				'input[type=text][name*=_global_unique_id]',
+				function () {
+					var global_unique_id = $( this ).val();
+
+					if ( /[^0-9\-]/.test( global_unique_id ) ) {
+						$( document.body ).triggerHandler( 'wc_add_error_tip', [
+							$( this ),
+							'i18n_global_unique_id_error',
+						] );
+					} else {
+						$( document.body ).triggerHandler(
+							'wc_remove_error_tip',
+							[ $( this ), 'i18n_global_unique_id_error' ]
+						);
+					}
+				}
+			)
+
+			.on(
+				'change',
+				'input[type=text][name*=_global_unique_id]',
+				function () {
+					var global_unique_id = $( this ).val();
+					$( this ).val(
+						global_unique_id.replace( /[^0-9\-]/g, '' )
+					);
+					$( document.body ).triggerHandler(
+						'wc_remove_error_tip',
+						[ $( this ), 'i18n_global_unique_id_error' ]
+					);
 				}
 			)
 
@@ -675,6 +708,10 @@
 				// Order screen.
 				this.$lock_dialog = $( '.woocommerce_page_wc-orders #post-lock-dialog.order-lock-dialog' );
 				if ( 0 !== this.$lock_dialog.length && 'undefined' !== typeof woocommerce_admin_meta_boxes ) {
+					// We do not want WP's lock to interfere.
+					$( document ).off( 'heartbeat-send.refresh-lock' );
+					$( document ).off( 'heartbeat-tick.refresh-lock' );
+
 					$( document ).on( 'heartbeat-send', this.refresh_order_lock );
 					$( document ).on( 'heartbeat-tick', this.check_order_lock );
 				}
@@ -688,6 +725,7 @@
 			},
 
 			refresh_order_lock: function( e, data ) {
+				delete data['wp-refresh-post-lock'];
 				data['wc-refresh-order-lock'] = woocommerce_admin_meta_boxes.post_id;
 			},
 
@@ -725,7 +763,7 @@
 			},
 
 			send_orders_in_list: function( e, data ) {
-				data['wc-check-locked-orders'] = wc_order_lock.$list_table.find( 'tr input[name="order"]' ).map(
+				data['wc-check-locked-orders'] = wc_order_lock.$list_table.find( 'tr input[name="id[]"]' ).map(
 					function() { return this.value; }
 				).get();
 			},
@@ -735,7 +773,7 @@
 
 				wc_order_lock.$list_table.find( 'tr' ).each( function( i, tr ) {
 					var $tr      = $( tr );
-					var order_id = $tr.find( 'input[name="order"]' ).val();
+					var order_id = $tr.find( 'input[name="id[]"]' ).val();
 
 					if ( locked_orders[ order_id ] ) {
 						if ( ! $tr.hasClass( 'wp-locked' ) ) {

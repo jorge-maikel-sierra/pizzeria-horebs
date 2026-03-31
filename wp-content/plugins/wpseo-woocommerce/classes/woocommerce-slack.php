@@ -5,6 +5,8 @@
  * @package WPSEO/WooCommerce
  */
 
+use Yoast\WP\SEO\Presentations\Indexable_Presentation;
+
 /**
  * Class WPSEO_WooCommerce_Slack
  */
@@ -12,9 +14,11 @@ class WPSEO_WooCommerce_Slack {
 
 	/**
 	 * Registers the hooks.
+	 *
+	 * @return void
 	 */
 	public function register_hooks() {
-		\add_filter( 'wpseo_enhanced_slack_data', [ $this, 'filter_enhanced_data' ], 10, 2 );
+		add_filter( 'wpseo_enhanced_slack_data', [ $this, 'filter_enhanced_data' ], 10, 2 );
 	}
 
 	/**
@@ -27,7 +31,7 @@ class WPSEO_WooCommerce_Slack {
 	 */
 	public function filter_enhanced_data( $data, $presentation ) {
 		$object  = $presentation->model;
-		$product = \wc_get_product( $object->object_id );
+		$product = wc_get_product( $object->object_id );
 
 		if ( $product ) {
 			$data         = [];
@@ -53,10 +57,10 @@ class WPSEO_WooCommerce_Slack {
 					$price = apply_filters( 'woocommerce_empty_price_html', '', $product );
 				}
 				else {
-					$price = \wc_price( \wc_get_price_to_display( $product ) ) . $product->get_price_suffix();
+					$price = wc_price( wc_get_price_to_display( $product ) ) . $product->get_price_suffix();
 				}
 
-				$data[ __( 'Price', 'yoast-woo-seo' ) ] = \wp_strip_all_tags( $price );
+				$data[ __( 'Price', 'yoast-woo-seo' ) ] = wp_strip_all_tags( $price );
 			}
 			$data[ __( 'Availability', 'yoast-woo-seo' ) ] = $availability;
 		}

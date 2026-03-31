@@ -59,10 +59,10 @@ class WPSEO_WooCommerce_Schema_Presenter extends Abstract_Indexable_Presenter {
 			'@graph'   => $graph,
 		];
 
-		$classes_string = \implode( ' ', $this->classes );
+		$classes_string = implode( ' ', $this->classes );
 
-		$output = \WPSEO_Utils::format_json_encode( $schema );
-		return '<script type="application/ld+json" class="' . \esc_attr( $classes_string ) . '">' . $output . '</script>' . PHP_EOL;
+		$output = WPSEO_Utils::format_json_encode( $schema );
+		return '<script type="application/ld+json" class="' . esc_attr( $classes_string ) . '">' . $output . '</script>' . PHP_EOL;
 	}
 
 	/**

@@ -46,13 +46,33 @@ class Yoast_WCSEO_Local_Shipping_Method extends WC_Shipping_Flat_Rate {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->id                 = 'yoast_wcseo_local_pickup';
-		$this->title              = __( 'Local store pickup', 'yoast-local-seo' );
-		$this->method_title       = __( 'Local Store Pickup', 'yoast-local-seo' );
-		$this->method_description = __(
+		$this->id           = 'yoast_wcseo_local_pickup';
+		$this->title        = __( 'Local store pickup', 'yoast-local-seo' );
+		$this->method_title = __( 'Local Store Pickup', 'yoast-local-seo' );
+
+		$description = __(
 			'This shipping method enables customers to pick up their order in local stores defined in the Local SEO plugin.',
 			'yoast-local-seo'
 		);
+
+		$deprecation_title = sprintf(
+			/* translators: %1$s <strong> open tag, %2$s Yoast Local SEO, %3$s <strong> close tag */
+			__( '%1$sThis feature will soon be deprecated from %2$s%3$s', 'yoast-local-seo' ),
+			'<strong>',
+			'Yoast Local SEO',
+			'</strong>'
+		);
+		$deprecation_body = sprintf(
+			/* translators: %1$s <br> tag, %2$s <a> open tag, %3$s <a> close tag */
+			__( 'Please use the \'Local Pickup\' feature in the latest version of WooCommerce instead. To ensure functionality, please re-enter your settings there. %1$s%2$sRead more about setting up%3$s.', 'yoast-local-seo' ),
+			'<br>',
+			'<a href="' . WPSEO_Shortlinker::get( 'https://yoa.st/local-setting-up-shipping' ) . '" target="_blank" rel="noopener noreferrer">',
+			'</a>'
+		);
+
+		$deprecation_alert = '<div class="inline notice notice-warning woocommerce-message woocommerce-notice-invalid-variation"><p>' . $deprecation_title . '<br>' . $deprecation_body . '</p></div>';
+
+		$this->method_description = $deprecation_alert . $description;
 
 		$this->enabled = $this->get_option( 'enabled' );
 
@@ -183,7 +203,7 @@ class Yoast_WCSEO_Local_Shipping_Method extends WC_Shipping_Flat_Rate {
 
 		foreach ( $keys as $key ) {
 			if ( isset( $_POST[ $key ] ) ) {
-				// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Unslashing not needed for numeric values and the intval mapping takes care of sanitization.
+				// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Unslashing not needed for numeric values and the intval mapping takes care of sanitization.
 				$ids = array_merge( $ids, array_map( 'intval', array_keys( $_POST[ $key ] ) ) );
 			}
 		}
@@ -245,6 +265,8 @@ class Yoast_WCSEO_Local_Shipping_Method extends WC_Shipping_Flat_Rate {
 	 *
 	 * @param array $old_value An array containing the old values of the settings.
 	 * @param array $new_value An array containing the new values of the settings.
+	 *
+	 * @return void
 	 */
 	public function save_shadow_setting( $old_value, $new_value ) {
 		if ( $old_value['enabled'] !== $new_value['enabled'] || $old_value['location_specific'] !== $new_value['location_specific'] ) {
@@ -277,7 +299,7 @@ class Yoast_WCSEO_Local_Shipping_Method extends WC_Shipping_Flat_Rate {
 		}
 
 		if ( ! wpseo_has_multiple_locations() ) {
-			$price = isset( $this->settings['costs'] ) ? $this->settings['costs'] : 0;
+			$price = ( $this->settings['costs'] ?? 0 );
 
 			// Evaluate the price, it may contain shortcodes.
 			$args_for_shortcode = [
@@ -470,7 +492,6 @@ class Yoast_WCSEO_Local_Shipping_Method extends WC_Shipping_Flat_Rate {
 			}
 		}
 
-
 		ob_start();
 		include WPSEO_LOCAL_PATH . 'woocommerce/shipping/includes/category-costs-table.php';
 
@@ -567,6 +588,8 @@ class Yoast_WCSEO_Local_Shipping_Method extends WC_Shipping_Flat_Rate {
 	 * Flush the transients that hold the shipping methods. This is to prevent cached shipping methods being shown.
 	 *
 	 * @since 9.7
+	 *
+	 * @return void
 	 */
 	public function flush_shipping_cache() {
 		global $wpdb;

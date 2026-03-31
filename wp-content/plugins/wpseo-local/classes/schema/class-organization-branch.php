@@ -3,16 +3,17 @@
  * @package WPSEO_Local\Frontend\Schema
  */
 
-use Yoast\WP\SEO\Config\Schema_IDs;
 use Yoast\WP\Local\Builders\Locations_Repository_Builder;
+use Yoast\WP\SEO\Config\Schema_IDs;
+use Yoast\WP\SEO\Context\Meta_Tags_Context;
 
 /**
  * Class WPSEO_Local_JSON_LD
  *
  * Manages the Schema for a branch Organization.
  *
- * @property WPSEO_Schema_Context $context A value object with context variables.
- * @property array                $options Local SEO options.
+ * @property Meta_Tags_Context $context A value object with context variables.
+ * @property array             $options Local SEO options.
  */
 class WPSEO_Local_Organization_Branch extends WPSEO_Local_Organization {
 

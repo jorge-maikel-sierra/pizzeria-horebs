@@ -3,24 +3,25 @@
  * @package WPSEO_Local\Frontend\Schema
  */
 
-use Yoast\WP\SEO\Generators\Schema\Abstract_Schema_Piece;
-use Yoast\WP\Local\PostType\PostType;
 use Yoast\WP\Local\Builders\Locations_Repository_Builder;
+use Yoast\WP\Local\PostType\PostType;
+use Yoast\WP\SEO\Context\Meta_Tags_Context;
+use Yoast\WP\SEO\Generators\Schema\Abstract_Schema_Piece;
 
 /**
  * Class WPSEO_Local_Organization_List.
  *
  * Manages the Schema for an Organization List.
  *
- * @property WPSEO_Schema_Context $context A value object with context variables.
- * @property array                $options Local SEO options.
+ * @property Meta_Tags_Context $context A value object with context variables.
+ * @property array             $options Local SEO options.
  */
 class WPSEO_Local_Organization_List extends Abstract_Schema_Piece {
 
 	/**
 	 * A value object with context variables.
 	 *
-	 * @var WPSEO_Schema_Context
+	 * @var Meta_Tags_Context
 	 */
 	public $context;
 
@@ -34,9 +35,9 @@ class WPSEO_Local_Organization_List extends Abstract_Schema_Piece {
 	/**
 	 * Constructor.
 	 *
-	 * @param WPSEO_Schema_Context $context A value object with context variables.
+	 * @param Meta_Tags_Context $context A value object with context variables.
 	 */
-	public function __construct( WPSEO_Schema_Context $context ) {
+	public function __construct( Meta_Tags_Context $context ) {
 		$this->context = $context;
 		$this->options = get_option( 'wpseo_local' );
 	}
@@ -86,4 +87,3 @@ class WPSEO_Local_Organization_List extends Abstract_Schema_Piece {
 		return $data;
 	}
 }
-

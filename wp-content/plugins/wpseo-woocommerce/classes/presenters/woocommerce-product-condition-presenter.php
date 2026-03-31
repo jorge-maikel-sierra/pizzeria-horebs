@@ -26,9 +26,8 @@ class WPSEO_WooCommerce_Product_Condition_Presenter extends WPSEO_WooCommerce_Ab
 		/**
 		 * Filter: Yoast\WP\Woocommerce\product_condition - Allow developers to prevent or change the output of the product condition in the OpenGraph tags.
 		 *
-		 * @param \WC_Product $product The product we're outputting.
-		 *
-		 * @api string Defaults to 'new'.
+		 * @param string     $condition Defaults to 'new'.
+		 * @param WC_Product $product   The product we're outputting.
 		 */
 		return (string) apply_filters( 'Yoast\WP\Woocommerce\product_condition', 'new', $this->product );
 	}

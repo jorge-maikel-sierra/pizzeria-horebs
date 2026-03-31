@@ -10,6 +10,7 @@ use Automattic\WooCommerce\Admin\PageController;
 use Automattic\WooCommerce\Admin\API\Reports\Orders\DataStore as OrdersDataStore;
 use Automattic\WooCommerce\Admin\PluginsHelper;
 use Automattic\WooCommerce\Utilities\FeaturesUtil;
+use Automattic\WooCommerce\Internal\BrandingController;
 use WC_Marketplace_Suggestions;
 
 /**
@@ -77,7 +78,7 @@ class Settings {
 	}
 
 	/**
-	 * Return an object defining the currecy options for the site's current currency
+	 * Return an object defining the currency options for the site's current currency
 	 *
 	 * @return  array  Settings for the current currency {
 	 *     Array of settings.
@@ -137,9 +138,7 @@ class Settings {
 
 		//phpcs:ignore
 		$preload_data_endpoints = apply_filters( 'woocommerce_component_settings_preload_endpoints', array() );
-		if ( class_exists( 'Jetpack' ) ) {
-			$preload_data_endpoints['jetpackStatus'] = '/jetpack/v4/connection';
-		}
+		$preload_data_endpoints['jetpackStatus'] = '/jetpack/v4/connection';
 		if ( ! empty( $preload_data_endpoints ) ) {
 			$preload_data = array_reduce(
 				array_values( $preload_data_endpoints ),
@@ -201,6 +200,12 @@ class Settings {
 			'installedPlugins' => PluginsHelper::get_installed_plugin_slugs(),
 			'activePlugins'    => Plugins::get_active_plugins(),
 		);
+
+		// DO NOT use outside of core, these can be removed without deprecation.
+		$settings['__experimentalFlags'] = array(
+			'isNewBranding' => BrandingController::use_new_branding(),
+		);
+
 		// Plugins that depend on changing the translation work on the server but not the client -
 		// WooCommerce Branding is an example of this - so pass through the translation of
 		// 'WooCommerce' to wcSettings.
@@ -233,14 +238,31 @@ class Settings {
 		$settings['allowMarketplaceSuggestions']      = WC_Marketplace_Suggestions::allow_suggestions();
 		$settings['connectNonce']                     = wp_create_nonce( 'connect' );
 		$settings['wcpay_welcome_page_connect_nonce'] = wp_create_nonce( 'wcpay-connect' );
+		$settings['wc_helper_nonces']                 = array(
+			'refresh' => wp_create_nonce( 'refresh' ),
+		);
 
 		$settings['features'] = $this->get_features();
+
+		$has_gutenberg     = is_plugin_active( 'gutenberg/gutenberg.php' );
+		$gutenberg_version = '';
+		if ( $has_gutenberg ) {
+			if ( defined( 'GUTENBERG_VERSION' ) ) {
+				$gutenberg_version = GUTENBERG_VERSION;
+			}
+
+			if ( ! $gutenberg_version ) {
+				$gutenberg_data    = get_plugin_data( WP_PLUGIN_DIR . '/gutenberg/gutenberg.php' );
+				$gutenberg_version = $gutenberg_data['Version'];
+			}
+		}
+		$settings['gutenberg_version'] = $has_gutenberg ? $gutenberg_version : 0;
 
 		return $settings;
 	}
 
 	/**
-	 * Removes non necesary feature properties for the client side.
+	 * Removes non-necessary feature properties for the client side.
 	 *
 	 * @return array
 	 */

@@ -37,8 +37,8 @@ class WPSEO_WooCommerce_Product_Brand_Presenter extends WPSEO_WooCommerce_Abstra
 	/**
 	 * Retrieve the primary and if that doesn't exist first term for the brand taxonomy.
 	 *
-	 * @param string      $schema_brand The taxonomy the site uses for brands.
-	 * @param \WC_Product $product      The product we're finding the brand for.
+	 * @param string     $schema_brand The taxonomy the site uses for brands.
+	 * @param WC_Product $product      The product we're finding the brand for.
 	 *
 	 * @return bool|string The brand name or false on failure.
 	 */

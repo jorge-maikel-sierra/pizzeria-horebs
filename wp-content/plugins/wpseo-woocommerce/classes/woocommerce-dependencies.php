@@ -18,7 +18,7 @@ class Yoast_WooCommerce_Dependencies {
 	 * @return bool True when the dependencies are okay.
 	 */
 	public function check_dependencies( $wp_version ) {
-		if ( ! version_compare( $wp_version, '5.9', '>=' ) ) {
+		if ( ! version_compare( $wp_version, '6.3', '>=' ) ) {
 			add_action( 'all_admin_notices', [ $this, 'wordpress_upgrade_error' ] );
 
 			return false;
@@ -39,7 +39,7 @@ class Yoast_WooCommerce_Dependencies {
 			return false;
 		}
 
-		if ( ! version_compare( $wordpress_seo_version, '19.14-RC0', '>=' ) ) {
+		if ( ! version_compare( $wordpress_seo_version, '22.4-RC0', '>=' ) ) {
 			add_action( 'all_admin_notices', [ $this, 'yoast_seo_upgrade_error' ] );
 
 			return false;
@@ -72,6 +72,8 @@ class Yoast_WooCommerce_Dependencies {
 
 	/**
 	 * Throw an error if WooCommerce is not active.
+	 *
+	 * @return void
 	 */
 	public function woocommerce_missing_error() {
 		echo '<div class="error"><p>';
@@ -88,6 +90,8 @@ class Yoast_WooCommerce_Dependencies {
 
 	/**
 	 * Throw an error if WordPress SEO is not installed.
+	 *
+	 * @return void
 	 */
 	public function yoast_seo_missing_error() {
 		echo '<div class="error"><p>';
@@ -104,6 +108,8 @@ class Yoast_WooCommerce_Dependencies {
 
 	/**
 	 * Throw an error if WordPress is out of date.
+	 *
+	 * @return void
 	 */
 	public function wordpress_upgrade_error() {
 		echo '<div class="error"><p>';
@@ -117,6 +123,8 @@ class Yoast_WooCommerce_Dependencies {
 
 	/**
 	 * Throw an error if WordPress SEO is out of date.
+	 *
+	 * @return void
 	 */
 	public function yoast_seo_upgrade_error() {
 		echo '<div class="error"><p>';

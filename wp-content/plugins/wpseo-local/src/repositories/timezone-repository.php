@@ -37,6 +37,8 @@ if ( ! \class_exists( Timezone_Repository::class ) ) {
 
 		/**
 		 * Initializer
+		 *
+		 * @return void
 		 */
 		public function initialize() {
 			$this->options = \get_option( 'wpseo_local' );
@@ -102,7 +104,7 @@ if ( ! \class_exists( Timezone_Repository::class ) ) {
 		 * @return mixed
 		 */
 		private function get_location_timezone( $post = null ) {
-			$timezone_option = isset( $this->options['location_timezone'] ) ? $this->options['location_timezone'] : null;
+			$timezone_option = ( $this->options['location_timezone'] ?? null );
 
 			if ( ! \wpseo_has_multiple_locations() ) {
 				return $timezone_option;

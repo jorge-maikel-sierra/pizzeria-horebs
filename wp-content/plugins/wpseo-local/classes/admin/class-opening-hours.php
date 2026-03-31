@@ -8,8 +8,8 @@
  */
 
 use Yoast\WP\Local\Repositories\Options_Repository;
-use Yoast\WP\SEO\Presenters\Admin\Help_Link_Presenter;
 use Yoast\WP\Local\Repositories\Timezone_Repository;
+use Yoast\WP\SEO\Presenters\Admin\Help_Link_Presenter;
 
 if ( ! defined( 'WPSEO_LOCAL_VERSION' ) ) {
 	header( 'Status: 403 Forbidden' );
@@ -52,6 +52,13 @@ class WPSEO_Local_Admin_Opening_Hours {
 	private $options;
 
 	/**
+	 * Holds the Timezone repository.
+	 *
+	 * @var Timezone_Repository
+	 */
+	private $wpseo_local_timezone_repository;
+
+	/**
 	 * WPSEO_Local_Admin_API_Opening_Hours constructor.
 	 */
 	public function __construct() {
@@ -67,6 +74,8 @@ class WPSEO_Local_Admin_Opening_Hours {
 
 	/**
 	 * Set WPSEO Local Core instance in local property
+	 *
+	 * @return void
 	 */
 	private function get_core() {
 		global $wpseo_local_core;
@@ -75,6 +84,8 @@ class WPSEO_Local_Admin_Opening_Hours {
 
 	/**
 	 * Set WPSEO Local Core Timezone Repository in local property
+	 *
+	 * @return void
 	 */
 	private function get_timezone_repository() {
 		$wpseo_local_timezone_repository = new Timezone_Repository();
@@ -84,6 +95,8 @@ class WPSEO_Local_Admin_Opening_Hours {
 
 	/**
 	 * Get wpseo_local options.
+	 *
+	 * @return void
 	 */
 	private function get_options() {
 		$this->options = new Options_Repository();
@@ -117,6 +130,8 @@ class WPSEO_Local_Admin_Opening_Hours {
 
 	/**
 	 * Opening hours settings section.
+	 *
+	 * @return void
 	 */
 	public function opening_hours() {
 		WPSEO_Local_Admin_Page::section_before( 'opening-hours-container', 'clear: both; ' );
@@ -165,7 +180,6 @@ class WPSEO_Local_Admin_Opening_Hours {
 		);
 		WPSEO_Local_Admin_Page::section_after();
 
-
 		WPSEO_Local_Admin_Page::section_after(); // End opening-hours-settings section.
 
 		$display_time_settings = ( ( $is_multiple_location_single_organization || ! $this->options->use_multiple_locations() ) && $hide_opening_hours === false );
@@ -191,6 +205,7 @@ class WPSEO_Local_Admin_Opening_Hours {
 	private function generate_opening_hour_forms() {
 		$timezone_help = new WPSEO_Local_Admin_Help_Panel(
 			'timezone_help',
+			/* translators: Hidden accessibility text. */
 			__( 'Help with: Timezone', 'yoast-local-seo' ),
 			esc_html__( 'The timezone is used to calculate the “Open now” functionality which can be shown together with your opening hours.', 'yoast-local-seo' ),
 			'has-wrapper'
@@ -220,7 +235,6 @@ class WPSEO_Local_Admin_Opening_Hours {
 		);
 
 		echo '</div>';
-
 
 		$open_247 = ! empty( $this->options->get( $open_247_field_name ) ) && $this->options->get( $open_247_field_name ) === 'on';
 
@@ -255,12 +269,12 @@ class WPSEO_Local_Admin_Opening_Hours {
 				$field_name = $field_name_prefix . '_' . $field_name;
 			}
 
-			$value_from        = ( ! empty( $this->options->get( $field_name . '_from' ) ) ) ? \esc_attr( $this->options->get( $field_name . '_from' ) ) : '09:00';
-			$value_to          = ( ! empty( $this->options->get( $field_name . '_to' ) ) ) ? \esc_attr( $this->options->get( $field_name . '_to' ) ) : '17:00';
-			$value_second_from = ( ! empty( $this->options->get( $field_name . '_second_from' ) ) ) ? \esc_attr( $this->options->get( $field_name . '_second_from' ) ) : '09:00';
-			$value_second_to   = ( ! empty( $this->options->get( $field_name . '_second_to' ) ) ) ? \esc_attr( $this->options->get( $field_name . '_second_to' ) ) : '17:00';
+			$value_from        = ( ! empty( $this->options->get( $field_name . '_from' ) ) ) ? esc_attr( $this->options->get( $field_name . '_from' ) ) : '09:00';
+			$value_to          = ( ! empty( $this->options->get( $field_name . '_to' ) ) ) ? esc_attr( $this->options->get( $field_name . '_to' ) ) : '17:00';
+			$value_second_from = ( ! empty( $this->options->get( $field_name . '_second_from' ) ) ) ? esc_attr( $this->options->get( $field_name . '_second_from' ) ) : '09:00';
+			$value_second_to   = ( ! empty( $this->options->get( $field_name . '_second_to' ) ) ) ? esc_attr( $this->options->get( $field_name . '_second_to' ) ) : '17:00';
 
-			$value_24h = ( ! empty( $this->options->get( $field_name . '_24h' ) ) ) ? \esc_attr( $this->options->get( $field_name . '_24h' ) ) : false;
+			$value_24h = ( ! empty( $this->options->get( $field_name . '_24h' ) ) ) ? esc_attr( $this->options->get( $field_name . '_24h' ) ) : false;
 
 			// Determine whether we're using the 24h format.
 			$use_24_hours = ( ! empty( $this->options->get( $opening_hours_24h_option_name ) ) && $this->options->get( $opening_hours_24h_option_name ) === 'on' );

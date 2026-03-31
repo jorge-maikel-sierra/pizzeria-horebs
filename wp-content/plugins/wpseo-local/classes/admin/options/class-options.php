@@ -6,16 +6,6 @@
  * @since   12.3
  */
 
-if ( ! defined( 'WPSEO_LOCAL_VERSION' ) ) {
-	header( 'Status: 403 Forbidden' );
-	header( 'HTTP/1.1 403 Forbidden' );
-	exit();
-}
-
-if ( ! class_exists( 'WPSEO_Option' ) ) {
-	return;
-}
-
 /**
  * Overall option management class for Yoast SEO: Local.
  *
@@ -56,6 +46,8 @@ class WPSEO_Local_Option extends WPSEO_Option {
 
 	/**
 	 * Set Yoast SEO: Local default option values.
+	 *
+	 * @return void
 	 */
 	private function set_defaults() {
 		$this->defaults = [
@@ -146,6 +138,7 @@ class WPSEO_Local_Option extends WPSEO_Option {
 			'local_enhanced_search'                      => 'no',
 			'local_version'                              => '0',
 			'woocommerce_local_pickup_setting'           => 'no',
+			'dismiss_local_pickup_notice'                => false,
 		];
 	}
 
@@ -284,8 +277,18 @@ class WPSEO_Local_Option extends WPSEO_Option {
 				case 'location_coords_lat':
 				case 'location_coords_long':
 					if ( isset( $dirty[ $key ] ) && $dirty[ $key ] !== '' ) {
-						$clean[ $key ] = filter_var( $dirty[ $key ], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
+						$value = $dirty[ $key ];
+						// Remove all characters except digits, minus, plus, and point.
+						$clean_value = preg_replace( '/[^0-9\.\-\+]/', '', $value );
+
+						if ( is_numeric( $clean_value ) ) {
+							$clean[ $key ] = $clean_value;
+						}
 					}
+					break;
+				/* Bool values */
+				default:
+					$clean[ $key ] = ( isset( $dirty[ $key ] ) ? WPSEO_Utils::validate_bool( $dirty[ $key ] ) : false );
 					break;
 			}
 		}

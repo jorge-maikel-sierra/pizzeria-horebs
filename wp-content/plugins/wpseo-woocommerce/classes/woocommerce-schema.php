@@ -15,7 +15,7 @@ class WPSEO_WooCommerce_Schema {
 	/**
 	 * The schema data we're going to output.
 	 *
-	 * @var array
+	 * @var array<string,string|int|array<string,string|int>> $data
 	 */
 	protected $data;
 
@@ -27,16 +27,24 @@ class WPSEO_WooCommerce_Schema {
 	protected $wc_version;
 
 	/**
+	 * The list of product variation images.
+	 *
+	 * @var array <string,string>
+	 */
+	private $variation_images;
+
+	/**
 	 * WPSEO_WooCommerce_Schema constructor.
 	 *
 	 * @param string $wc_version The WooCommerce version.
 	 */
 	public function __construct( $wc_version = WC_VERSION ) {
-		$this->wc_version = $wc_version;
+		$this->wc_version       = $wc_version;
+		$this->variation_images = [];
 
 		// Filters & actions below in order of execution.
 		add_filter( 'wpseo_frontend_presenters', [ $this, 'remove_unneeded_presenters' ] );
-		add_filter( 'wpseo_schema_webpage', [ $this, 'filter_webpage' ], 10, 2 );
+		add_filter( 'wpseo_schema_webpage', [ $this, 'filter_webpage' ], 10, 1 );
 		add_filter( 'woocommerce_structured_data_product', [ $this, 'change_product' ], 10, 2 );
 		add_filter( 'woocommerce_structured_data_type_for_page', [ $this, 'remove_woo_breadcrumbs' ] );
 
@@ -51,9 +59,9 @@ class WPSEO_WooCommerce_Schema {
 	/**
 	 * If this is a product page, remove some of the presenters so we don't output them.
 	 *
-	 * @param array $presenters Array of presenters.
+	 * @param array<string> $presenters Array of presenters.
 	 *
-	 * @return array Array of presenters.
+	 * @return array<string> Array of presenters.
 	 */
 	public function remove_unneeded_presenters( $presenters ) {
 		if ( is_product() ) {
@@ -86,11 +94,11 @@ class WPSEO_WooCommerce_Schema {
 	 * @return bool False when there's nothing to output, true when we did output something.
 	 */
 	public function output_schema_footer() {
-		if ( empty( $this->data ) || $this->data === [] || ! is_array( $this->data ) ) {
+		if ( ! is_array( $this->data ) || $this->data === [] ) {
 			return false;
 		}
 
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- We need to output HTML. If we escape this we break it.
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- We need to output HTML. If we escape this we break it.
 		echo new WPSEO_WooCommerce_Schema_Presenter(
 			[ $this->data ],
 			[
@@ -100,22 +108,22 @@ class WPSEO_WooCommerce_Schema {
 			]
 		);
 
+		// phpcs:enable
+
 		return true;
 	}
 
 	/**
 	 * Changes the WebPage output to point to Product as the main entity.
 	 *
-	 * @param array $webpage_data Product Schema data.
+	 * @param array<string,string|array<string>> $webpage_data Product Schema data.
 	 *
-	 * @return array Product Schema data.
+	 * @return array<string,string|array<string>> Product Schema data.
 	 */
 	public function filter_webpage( $webpage_data ) {
 		if ( is_product() ) {
-			if ( ! is_array( $webpage_data['@type'] ) ) {
-				$webpage_data['@type'] = [ $webpage_data['@type'] ];
-			}
-			$webpage_data['@type'][] = 'ItemPage';
+			// We force the page type to be WebPage and ItemPage.
+			$webpage_data['@type'] = [ 'WebPage', 'ItemPage' ];
 			// We normally add a `ReadAction` on pages, we're replacing with a `BuyAction` on product pages.
 			$webpage_data['potentialAction'] = [
 				'@type'  => 'BuyAction',
@@ -135,9 +143,9 @@ class WPSEO_WooCommerce_Schema {
 	/**
 	 * Changes the Review output to point to Product as the reviewed Item.
 	 *
-	 * @param array $data Review Schema data.
+	 * @param array<string|array<string>> $data Review Schema data.
 	 *
-	 * @return array Review Schema data.
+	 * @return array<string|array<string>> Review Schema data.
 	 */
 	public function change_reviewed_entity( $data ) {
 		unset( $data['@type'] );
@@ -148,7 +156,7 @@ class WPSEO_WooCommerce_Schema {
 		/**
 		 * Filter: 'wpseo_schema_review' - Allow changing the Review type.
 		 *
-		 * @api array $data The Schema Review data.
+		 * @param array $data The Schema Review data.
 		 */
 		$this->data = apply_filters( 'wpseo_schema_review', $this->data );
 
@@ -158,16 +166,22 @@ class WPSEO_WooCommerce_Schema {
 	/**
 	 * Filter Schema Product data to work.
 	 *
-	 * @param array      $data    Schema Product data.
-	 * @param WC_Product $product Product object.
+	 * @param array<string,string|int|array<string,string|int>> $data    Schema Product data.
+	 * @param WC_Product                                        $product Product object.
 	 *
-	 * @return array Schema Product data.
+	 * @return array<string,string|int|array<string,string|int>> Schema Product data.
 	 */
 	public function change_product( $data, $product ) {
 		$data = $this->change_seller_in_offers( $data );
 		$data = $this->filter_reviews( $data, $product );
-		$data = $this->filter_offers( $data, $product );
 		$data = $this->filter_sku( $data, $product );
+
+		if ( $product instanceof WC_Product_Variable ) {
+			$data = $this->filter_variations( $data, $product );
+		}
+		else {
+			$data = $this->filter_offers( $data, $product );
+		}
 
 		// This product is the main entity of this page, so we set it as such.
 		$data['mainEntityOfPage'] = [
@@ -178,6 +192,7 @@ class WPSEO_WooCommerce_Schema {
 		$this->data = $data;
 
 		$this->add_image();
+		$this->add_variation_images();
 		$this->add_brand( $product );
 		$this->add_manufacturer( $product );
 		$this->add_color( $product );
@@ -188,7 +203,7 @@ class WPSEO_WooCommerce_Schema {
 		/**
 		 * Filter: 'wpseo_schema_product' - Allow changing the Product type.
 		 *
-		 * @api array $data The Schema Product data.
+		 * @param array $data The Schema Product data.
 		 */
 		$this->data = apply_filters( 'wpseo_schema_product', $this->data );
 
@@ -198,10 +213,10 @@ class WPSEO_WooCommerce_Schema {
 	/**
 	 * Filters the offers array to enrich it.
 	 *
-	 * @param array      $data    Schema Product data.
-	 * @param WC_Product $product The product.
+	 * @param array<string,string|int|array<string,string|int>> $data    Schema Product data.
+	 * @param WC_Product                                        $product The product.
 	 *
-	 * @return array Schema Product data.
+	 * @return array<string,string|int|array<string,string|int>> Schema Product data.
 	 */
 	protected function filter_offers( $data, $product ) {
 		if ( ! isset( $data['offers'] ) || $data['offers'] === [] ) {
@@ -213,41 +228,27 @@ class WPSEO_WooCommerce_Schema {
 		foreach ( $data['offers'] as $key => $offer ) {
 
 			// Add an @id to the offer.
-			if ( $offer['@type'] === 'Offer' ) {
-				$price                         = WPSEO_WooCommerce_Utils::get_product_display_price( $product );
-				$data['offers'][ $key ]['@id'] = YoastSEO()->meta->for_current_page()->site_url . '#/schema/offer/' . $product->get_id() . '-' . $key;
+			$price                         = WPSEO_WooCommerce_Utils::get_product_display_price( $product );
+			$data['offers'][ $key ]['@id'] = YoastSEO()->meta->for_current_page()->site_url . '#/schema/offer/' . $product->get_id() . '-' . $key;
 
-				$data['offers'][ $key ]['priceSpecification']['@type'] = 'PriceSpecification';
-				$data['offers'][ $key ]['priceSpecification']['price'] = $price;
-				if ( wc_tax_enabled() ) {
-					$data['offers'][ $key ]['priceSpecification']['valueAddedTaxIncluded'] = WPSEO_WooCommerce_Utils::prices_have_tax_included();
-				}
-				else {
-					unset( $data['offers'][ $key ]['priceSpecification']['valueAddedTaxIncluded'] );
-				}
-
-				$data['offers'][ $key ]['seller'] = [ '@id' => YoastSEO()->meta->for_current_page()->site_url . '#organization' ];
-
-				// Remove price property from Schema output by WooCommerce.
-				if ( isset( $data['offers'][ $key ]['price'] ) ) {
-					unset( $data['offers'][ $key ]['price'] );
-				}
-				// Remove priceCurrency property from Schema output by WooCommerce.
-				if ( isset( $data['offers'][ $key ]['priceCurrency'] ) ) {
-					unset( $data['offers'][ $key ]['priceCurrency'] );
-				}
+			$data['offers'][ $key ]['priceSpecification']['@type'] = 'PriceSpecification';
+			$data['offers'][ $key ]['priceSpecification']['price'] = $price;
+			if ( wc_tax_enabled() ) {
+				$data['offers'][ $key ]['priceSpecification']['valueAddedTaxIncluded'] = WPSEO_WooCommerce_Utils::prices_have_tax_included();
 			}
-			if ( $offer['@type'] === 'AggregateOffer' ) {
-				$data['offers'][ $key ]['@id']    = YoastSEO()->meta->for_current_page()->site_url . '#/schema/aggregate-offer/' . $product->get_id() . '-' . $key;
-				$data['offers'][ $key ]['offers'] = $this->add_individual_offers( $product );
-				if ( $product instanceof WC_Product_Variable ) {
-					$decimals = wc_get_price_decimals();
-					$lowest   = $product->get_variation_price( 'min', true );
-					$highest  = $product->get_variation_price( 'max', true );
+			else {
+				unset( $data['offers'][ $key ]['priceSpecification']['valueAddedTaxIncluded'] );
+			}
 
-					$data['offers'][ $key ]['lowPrice']  = wc_format_decimal( $lowest, $decimals );
-					$data['offers'][ $key ]['highPrice'] = wc_format_decimal( $highest, $decimals );
-				}
+			$data['offers'][ $key ]['seller'] = [ '@id' => YoastSEO()->meta->for_current_page()->site_url . '#organization' ];
+
+			// Remove price property from Schema output by WooCommerce.
+			if ( isset( $data['offers'][ $key ]['price'] ) ) {
+				unset( $data['offers'][ $key ]['price'] );
+			}
+			// Remove priceCurrency property from Schema output by WooCommerce.
+			if ( isset( $data['offers'][ $key ]['priceCurrency'] ) ) {
+				unset( $data['offers'][ $key ]['priceCurrency'] );
 			}
 
 			// Alter availability when product is "on backorder".
@@ -263,12 +264,47 @@ class WPSEO_WooCommerce_Schema {
 	}
 
 	/**
+	 * Filters the offers array to wrap and enrich it.
+	 *
+	 * @param array<string,string|int|array<string,string|int>> $data    Schema Product data.
+	 * @param WC_Product                                        $product The product.
+	 *
+	 * @return array<string,string|int|array<string,string|int>> Schema Product data.
+	 */
+	protected function filter_variations( $data, $product ) {
+		if ( ! isset( $data['offers'] ) || $data['offers'] === [] ) {
+			return $data;
+		}
+
+		$data['@type'] = 'ProductGroup';
+		if ( isset( $data['sku'] ) ) {
+			$data['productGroupID'] = $data['sku'];
+		}
+		$data['hasVariant'] = [];
+		unset( $data['offers'] );
+
+		$product_variations = $product->get_available_variations();
+		foreach ( $product_variations as $key => $variation ) {
+			$variant_schema = $this->add_individual_product_variation( $product, $variation, $key );
+			if ( isset( $variant_schema['image'] ) ) {
+				$this->variation_images[] = [ '@id' => $variant_schema['image']['@id'] ];
+			}
+			$data['hasVariant'][] = $variant_schema;
+		}
+
+		// We don't want an array with keys, we just need the offers.
+		$data['hasVariant'] = array_values( $data['hasVariant'] );
+
+		return $data;
+	}
+
+	/**
 	 * Filters the offers array on sales, possibly unset them.
 	 *
-	 * @param array      $offers  Schema Offer data.
-	 * @param WC_Product $product The product.
+	 * @param array<string,string|int|array<string,string|int>> $offers  Schema Offer data.
+	 * @param WC_Product                                        $product The product.
 	 *
-	 * @return array Schema Offer data.
+	 * @return array<string,string|int|array<string,string|int>> Schema Offer data.
 	 */
 	protected function filter_sales( $offers, $product ) {
 		foreach ( $offers as $key => $offer ) {
@@ -289,10 +325,10 @@ class WPSEO_WooCommerce_Schema {
 	/**
 	 * Removes the SKU when it's empty to prevent the WooCommerce fallback to the product's ID.
 	 *
-	 * @param array      $data    Schema Product data.
-	 * @param WC_Product $product The product.
+	 * @param array<string,string|int|array<string,string|int>> $data    Schema Product data.
+	 * @param WC_Product                                        $product The product.
 	 *
-	 * @return array Schema Product data.
+	 * @return array<string,string|int|array<string,string|int>> Schema Product data.
 	 */
 	protected function filter_sku( $data, $product ) {
 		/*
@@ -309,9 +345,9 @@ class WPSEO_WooCommerce_Schema {
 	/**
 	 * Removes the Woo Breadcrumbs from their Schema output.
 	 *
-	 * @param array $types Types of Schema Woo will render.
+	 * @param array<string> $types Types of Schema Woo will render.
 	 *
-	 * @return array Types of Schema Woo will render.
+	 * @return array<string> Types of Schema Woo will render.
 	 */
 	public function remove_woo_breadcrumbs( $types ) {
 		foreach ( $types as $key => $type ) {
@@ -344,7 +380,13 @@ class WPSEO_WooCommerce_Schema {
 			}
 			$this->data[ $type ] = $value;
 			if ( $type === 'isbn' ) {
-				$this->data['@type'] = [ 'Book', 'Product' ];
+				if ( ! isset( $this->data['@type'] ) ) {
+					$this->data['@type'] = 'Product';
+				}
+				if ( ! is_array( $this->data['@type'] ) ) {
+					$this->data['@type'] = [ $this->data['@type'] ];
+				}
+				$this->data['@type'] = array_merge( [ 'Book' ], $this->data['@type'] );
 			}
 		}
 
@@ -354,9 +396,9 @@ class WPSEO_WooCommerce_Schema {
 	/**
 	 * Update the seller attribute to reference the Organization, when it is set.
 	 *
-	 * @param array $data Schema Product data.
+	 * @param array<string,string|int|array<string,string|int>> $data Schema Product data.
 	 *
-	 * @return array Schema Product data.
+	 * @return array<string,string|int|array<string,string|int>> Schema Product data.
 	 */
 	protected function change_seller_in_offers( $data ) {
 		$company_or_person = WPSEO_Options::get( 'company_or_person', false );
@@ -381,6 +423,8 @@ class WPSEO_WooCommerce_Schema {
 	 * Add brand to our output.
 	 *
 	 * @param WC_Product $product Product object.
+	 *
+	 * @return void
 	 */
 	private function add_brand( $product ) {
 		$schema_brand = WPSEO_Options::get( 'woo_schema_brand' );
@@ -393,6 +437,8 @@ class WPSEO_WooCommerce_Schema {
 	 * Add manufacturer to our output.
 	 *
 	 * @param WC_Product $product Product object.
+	 *
+	 * @return void
 	 */
 	private function add_manufacturer( $product ) {
 		$schema_manufacturer = WPSEO_Options::get( 'woo_schema_manufacturer' );
@@ -408,6 +454,8 @@ class WPSEO_WooCommerce_Schema {
 	 * @param WC_Product $product   The WooCommerce product we're working with.
 	 * @param string     $taxonomy  The taxonomy to get the attribute's value from.
 	 * @param string     $type      The Schema type to use.
+	 *
+	 * @return void
 	 */
 	private function add_attribute_as( $attribute, $product, $taxonomy, $type = 'Organization' ) {
 		$term = $this->get_primary_term_or_first_term( $taxonomy, $product->get_id() );
@@ -415,13 +463,15 @@ class WPSEO_WooCommerce_Schema {
 		if ( $term !== null ) {
 			$this->data[ $attribute ] = [
 				'@type' => $type,
-				'name'  => \wp_strip_all_tags( $term->name ),
+				'name'  => wp_strip_all_tags( $term->name ),
 			];
 		}
 	}
 
 	/**
 	 * Adds image schema.
+	 *
+	 * @return void
 	 */
 	private function add_image() {
 		/**
@@ -446,16 +496,32 @@ class WPSEO_WooCommerce_Schema {
 		if ( function_exists( 'wc_placeholder_img_src' ) ) {
 			$image_schema_id     = YoastSEO()->meta->for_current_page()->canonical . '#woocommerceimageplaceholder';
 			$placeholder_img_src = wc_placeholder_img_src();
-			$this->data['image'] = YoastSEO()->helpers->schema->image->generate_from_url( $image_schema_id, $placeholder_img_src );
+			$this->data['image'] = YoastSEO()->helpers->schema->image->generate_from_url( $image_schema_id, $placeholder_img_src, '', false, false );
+		}
+	}
+
+	/**
+	 * Adds image schema for product variations to main node.
+	 *
+	 * @return void
+	 */
+	private function add_variation_images() {
+		$image_list = [];
+		if ( is_array( $this->variation_images ) && count( $this->variation_images ) !== 0 ) {
+			$image_list[] = $this->data['image'];
+			foreach ( $this->variation_images as $image ) {
+				$image_list[] = $image;
+			}
+			$this->data['image'] = $image_list;
 		}
 	}
 
 	/**
 	 * Add a custom schema property to the Schema output.
 	 *
-	 * @param WC_Product $product The product object.
+	 * @param WC_Product $product     The product object.
 	 * @param string     $option_name The option name.
-	 * @param string     $schema_id The schema identifier to use.
+	 * @param string     $schema_id   The schema identifier to use.
 	 *
 	 * @return void
 	 */
@@ -556,84 +622,138 @@ class WPSEO_WooCommerce_Schema {
 	/**
 	 * Adds the individual product variants as variants of the offer.
 	 *
-	 * @param WC_Product $product The WooCommerce product we're working with.
+	 * @param WC_Product                          $product   The WooCommerce Product we're working with.
+	 * @param array<string|int|array<string|int>> $variation The WooCommerce variation we're working with.
+	 * @param int                                 $key       The nth product variation.
 	 *
-	 * @return array Schema Offers data.
+	 * @return array<string|int|array<string|int>> Schema Offers data.
 	 */
-	protected function add_individual_offers( $product ) {
-		$variations = $product->get_available_variations();
+	protected function add_individual_offer( $product, $variation, $key ) {
 
 		$currency           = get_woocommerce_currency();
 		$tax_enabled        = wc_tax_enabled();
 		$prices_include_tax = WPSEO_WooCommerce_Utils::prices_have_tax_included();
 		$decimals           = wc_get_price_decimals();
-		$data               = [];
+		$product_id         = $product->get_id();
+		$product_name       = $product->get_name();
+		$variation_name     = implode( ' / ', $variation['attributes'] );
+
+		$offer = [
+			'@type'              => 'Offer',
+			'@id'                => YoastSEO()->meta->for_current_page()->site_url . '#/schema/offer/' . $product_id . '-' . $key,
+			'name'               => $product_name . ' - ' . $variation_name,
+			'url'                => get_permalink( $variation['variation_id'] ),
+			'priceSpecification' => [
+				'@type'         => 'PriceSpecification',
+				'price'         => wc_format_decimal( $variation['display_price'], $decimals ),
+				'priceCurrency' => $currency,
+			],
+		];
+
+		if ( $tax_enabled ) {
+			$offer['priceSpecification']['valueAddedTaxIncluded'] = $prices_include_tax;
+		}
+
+		if ( ! $product->is_on_sale() || ! $product->get_date_on_sale_to() ) {
+			unset( $offer['priceValidUntil'] );
+		}
+
+		if ( $product->is_on_backorder() ) {
+			$offer['availability'] = 'https://schema.org/PreOrder';
+		}
+
+		/**
+		 * Filter: 'wpseo_schema_offer' - Allow changing the offer schema.
+		 *
+		 * @param array<string|int|array<string|int>> $offer     The schema offer data.
+		 * @param WC_Product_Variation                $variation The WooCommerce product variation we're working with.
+		 * @param WC_Product                          $product   The WooCommerce product we're working with.
+		 */
+		$data = apply_filters( 'wpseo_schema_offer', $offer, $variation, $product );
+
+		if ( is_array( $data ) ) {
+			return $data;
+		}
+
+		return $offer;
+	}
+
+	/**
+	 * Adds the individual product variants.
+	 *
+	 * @param WC_Product           $product   The WooCommerce product we're working with.
+	 * @param array<string,string> $variation The variation data.
+	 * @param int                  $key       The nth product variation data.
+	 *
+	 * @return array<string,string|int|array<string,string|int>> Schema Product data.
+	 */
+	protected function add_individual_product_variation( $product, $variation, $key ) {
 		$product_id         = $product->get_id();
 		$product_name       = $product->get_name();
 		$product_global_ids = get_post_meta( $product_id, 'wpseo_global_identifier_values', true );
 
-		foreach ( $variations as $key => $variation ) {
-			$variation_name = implode( ' / ', $variation['attributes'] );
+		$variation_name = implode( ' / ', $variation['attributes'] );
 
-			$offer = [
-				'@type'              => 'Offer',
-				'@id'                => YoastSEO()->meta->for_current_page()->site_url . '#/schema/offer/' . $product_id . '-' . $key,
-				'name'               => $product_name . ' - ' . $variation_name,
-				'url'                => get_permalink( $variation['variation_id'] ),
-				'priceSpecification' => [
-					'@type'                 => 'PriceSpecification',
-					'price'                 => wc_format_decimal( $variation['display_price'], $decimals ),
-					'priceCurrency'         => $currency,
-				],
-			];
+		$product_schema = [
+			'@type' => 'Product',
+			'@id'   => YoastSEO()->meta->for_current_page()->site_url . '#/product/' . $product_id . '-' . $key,
+			'name'  => $product_name . ' - ' . $variation_name,
+			'url'   => get_permalink( $variation['variation_id'] ),
+			'image' => $this->add_variation_image( $variation ),
 
-			if ( ! empty( $variation['sku'] ) ) {
-				$offer['sku'] = $variation['sku'];
-			}
+		];
 
-			if ( $tax_enabled ) {
-				$offer['priceSpecification']['valueAddedTaxIncluded'] = $prices_include_tax;
-			}
-
-			// Adds variation's global identifiers to the $offer array.
-			$variation_global_ids    = get_post_meta( $variation['variation_id'], 'wpseo_variation_global_identifiers_values', true );
-			$global_identifier_types = [
-				'gtin8',
-				'gtin12',
-				'gtin13',
-				'gtin14',
-				'mpn',
-			];
-
-			foreach ( $global_identifier_types as $global_identifier_type ) {
-				if ( isset( $variation_global_ids[ $global_identifier_type ] ) && ! empty( $variation_global_ids[ $global_identifier_type ] ) ) {
-					$offer[ $global_identifier_type ] = $variation_global_ids[ $global_identifier_type ];
-				}
-				elseif ( isset( $product_global_ids[ $global_identifier_type ] ) && ! empty( $product_global_ids[ $global_identifier_type ] ) ) {
-					$offer[ $global_identifier_type ] = $product_global_ids[ $global_identifier_type ];
-				}
-			}
-
-			/**
-			 * Filter: 'wpseo_schema_offer' - Allow changing the offer schema.
-			 *
-			 * @param array                $offer     The schema offer data.
-			 * @param WC_Product_Variation $variation The WooCommerce product variation we're working with.
-			 * @param WC_Product           $product   The WooCommerce product we're working with.
-			 */
-			$data[] = apply_filters( 'wpseo_schema_offer', $offer, $variation, $product );
+		if ( ! empty( $variation['sku'] ) ) {
+			$product_schema['sku'] = $variation['sku'];
 		}
 
-		return $data;
+		if ( $variation['variation_description'] !== '' ) {
+			$product_schema['description'] = YoastSEO()->helpers->string->strip_all_tags( stripslashes( $variation['variation_description'] ) );
+		}
+		// Adds variation's global identifiers to the $offer array.
+		$variation_global_ids    = get_post_meta( $variation['variation_id'], 'wpseo_variation_global_identifiers_values', true );
+		$global_identifier_types = [
+			'gtin8',
+			'gtin12',
+			'gtin13',
+			'gtin14',
+			'mpn',
+		];
+
+		foreach ( $global_identifier_types as $global_identifier_type ) {
+			if ( isset( $variation_global_ids[ $global_identifier_type ] ) && ! empty( $variation_global_ids[ $global_identifier_type ] ) ) {
+				$product_schema[ $global_identifier_type ] = $variation_global_ids[ $global_identifier_type ];
+			}
+			elseif ( isset( $product_global_ids[ $global_identifier_type ] ) && ! empty( $product_global_ids[ $global_identifier_type ] ) ) {
+				$product_schema[ $global_identifier_type ] = $product_global_ids[ $global_identifier_type ];
+			}
+		}
+
+		$product_schema['offers'] = $this->add_individual_offer( $product, $variation, $key );
+
+		return $product_schema;
+	}
+
+	/**
+	 * Adds image schema for a product variation.
+	 *
+	 * @param array<string,string> $variation_data The variation data.
+	 *
+	 * @return array<string,string> The imageObject schema.
+	 */
+	private function add_variation_image( $variation_data ) {
+		$image_schema_id = YoastSEO()->meta->for_current_page()->canonical . '#' . $variation_data['image']['title'];
+
+		return YoastSEO()->helpers->schema->image->generate_from_url( $image_schema_id, $variation_data['image']['url'], $variation_data['image']['caption'] );
 	}
 
 	/**
 	 * Enhances the review data output by WooCommerce.
 	 *
-	 * @param array      $data    Review Schema data.
-	 * @param WC_Product $product The WooCommerce product we're working with.
+	 * @param array<string,string|int|array<string,string|int>> $data    Review Schema data.
+	 * @param WC_Product                                        $product The WooCommerce product we're working with.
 	 *
-	 * @return array Review Schema data.
+	 * @return array<string,string|int|array<string,string|int>> Review Schema data.
 	 */
 	protected function filter_reviews( $data, $product ) {
 		if ( ! isset( $data['review'] ) || $data['review'] === [] ) {

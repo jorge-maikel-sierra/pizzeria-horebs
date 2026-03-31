@@ -37,6 +37,10 @@ class Hotspot extends Widget_Image {
 		return [ 'image', 'tooltip', 'CTA', 'dot' ];
 	}
 
+	protected function is_dynamic_content(): bool {
+		return false;
+	}
+
 	protected function register_controls() {
 		parent::register_controls();
 
@@ -92,7 +96,6 @@ class Hotspot extends Widget_Image {
 				'dynamic' => [
 					'active' => true,
 				],
-				'placeholder' => esc_html__( 'https://your-link.com', 'elementor-pro' ),
 			]
 		);
 
@@ -106,6 +109,9 @@ class Hotspot extends Widget_Image {
 			]
 		);
 
+		$start = is_rtl() ? 'right' : 'left';
+		$end = is_rtl() ? 'left' : 'right';
+
 		$repeater->add_control(
 			'hotspot_icon_position',
 			[
@@ -113,12 +119,12 @@ class Hotspot extends Widget_Image {
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'start' => [
-						'title' => esc_html__( 'Icon Start', 'elementor-pro' ),
-						'icon' => 'eicon-h-align-left',
+						'title' => esc_html__( 'Start', 'elementor-pro' ),
+						'icon' => "eicon-h-align-{$start}",
 					],
 					'end' => [
-						'title' => esc_html__( 'Icon End', 'elementor-pro' ),
-						'icon' => 'eicon-h-align-right',
+						'title' => esc_html__( 'End', 'elementor-pro' ),
+						'icon' => "eicon-h-align-{$end}",
 					],
 				],
 				'selectors_dictionary' => [
@@ -144,12 +150,17 @@ class Hotspot extends Widget_Image {
 				'size_units' => [ 'px', 'em', 'rem', 'custom' ],
 				'range' => [
 					'px' => [
-						'min' => 0,
 						'max' => 100,
+					],
+					'em' => [
+						'max' => 10,
+					],
+					'rem' => [
+						'max' => 10,
 					],
 				],
 				'default' => [
-					'size' => '5',
+					'size' => 5,
 				],
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}} .e-hotspot__button' =>
@@ -181,9 +192,13 @@ class Hotspot extends Widget_Image {
 				'size_units' => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],
 				'range' => [
 					'px' => [
-						'min' => 0,
 						'max' => 1000,
-						'step' => 1,
+					],
+					'em' => [
+						'max' => 100,
+					],
+					'rem' => [
+						'max' => 100,
 					],
 				],
 				'selectors' => [
@@ -203,9 +218,13 @@ class Hotspot extends Widget_Image {
 				'size_units' => [ 'px', 'em', 'rem', 'vh', 'custom' ],
 				'range' => [
 					'px' => [
-						'min' => 0,
 						'max' => 1000,
-						'step' => 1,
+					],
+					'em' => [
+						'max' => 100,
+					],
+					'rem' => [
+						'max' => 100,
 					],
 				],
 				'selectors' => [
@@ -264,7 +283,7 @@ class Hotspot extends Widget_Image {
 				'size_units' => [ '%' ],
 				'default' => [
 					'unit' => '%',
-					'size' => '50',
+					'size' => 50,
 				],
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}}' =>
@@ -301,7 +320,7 @@ class Hotspot extends Widget_Image {
 				'size_units' => [ '%' ],
 				'default' => [
 					'unit' => '%',
-					'size' => '50',
+					'size' => 50,
 				],
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}}' =>
@@ -374,9 +393,13 @@ class Hotspot extends Widget_Image {
 				'size_units' => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],
 				'range' => [
 					'px' => [
-						'min' => 0,
 						'max' => 2000,
-						'step' => 1,
+					],
+					'em' => [
+						'max' => 200,
+					],
+					'rem' => [
+						'max' => 200,
 					],
 				],
 				'selectors' => [
@@ -460,8 +483,9 @@ class Hotspot extends Widget_Image {
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
-						'min' => 100,
+						'min' => 0,
 						'max' => 20000,
+						'step' => 100,
 					],
 				],
 				'condition' => [
@@ -560,6 +584,7 @@ class Hotspot extends Widget_Image {
 					'px' => [
 						'min' => 0,
 						'max' => 10000,
+						'step' => 100,
 					],
 				],
 				'selectors' => [
@@ -693,14 +718,14 @@ class Hotspot extends Widget_Image {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'custom' ],
 				'range' => [
-					'%' => [
-						'min' => 0,
-						'max' => 100,
-					],
 					'px' => [
-						'min' => 0,
 						'max' => 300,
-						'step' => 1,
+					],
+					'em' => [
+						'max' => 30,
+					],
+					'rem' => [
+						'max' => 30,
 					],
 				],
 				'selectors' => [
@@ -728,9 +753,13 @@ class Hotspot extends Widget_Image {
 				'size_units' => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],
 				'range' => [
 					'px' => [
-						'min' => 0,
 						'max' => 1000,
-						'step' => 1,
+					],
+					'em' => [
+						'max' => 100,
+					],
+					'rem' => [
+						'max' => 100,
 					],
 				],
 				'selectors' => [
@@ -747,9 +776,13 @@ class Hotspot extends Widget_Image {
 				'size_units' => [ 'px', 'em', 'rem', 'vh', 'custom' ],
 				'range' => [
 					'px' => [
-						'min' => 0,
 						'max' => 1000,
-						'step' => 1,
+					],
+					'em' => [
+						'max' => 100,
+					],
+					'rem' => [
+						'max' => 100,
 					],
 				],
 				'selectors' => [
@@ -779,14 +812,14 @@ class Hotspot extends Widget_Image {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'vw', 'custom' ],
 				'range' => [
-					'em' => [
-						'min' => 0,
+					'px' => [
 						'max' => 100,
 					],
-					'px' => [
-						'min' => 0,
-						'max' => 100,
-						'step' => 1,
+					'em' => [
+						'max' => 10,
+					],
+					'rem' => [
+						'max' => 10,
 					],
 				],
 				'selectors' => [
@@ -899,9 +932,13 @@ class Hotspot extends Widget_Image {
 				'size_units' => [ 'px', 'em', 'rem', 'vw', 'custom' ],
 				'range' => [
 					'px' => [
-						'min' => 0,
 						'max' => 2000,
-						'step' => 1,
+					],
+					'em' => [
+						'max' => 200,
+					],
+					'rem' => [
+						'max' => 200,
 					],
 				],
 				'selectors' => [
@@ -962,6 +999,10 @@ class Hotspot extends Widget_Image {
 
 	protected function render() {
 		$settings = $this->get_settings_for_display();
+
+		if ( empty( $settings['image']['url'] ) ) {
+			return;
+		}
 
 		$is_tooltip_direction_animation = 'e-hotspot--slide-direction' === $settings['tooltip_animation'] || 'e-hotspot--fade-direction' === $settings['tooltip_animation'];
 		$show_tooltip = 'none' === $settings['tooltip_trigger'];
@@ -1106,6 +1147,9 @@ class Hotspot extends Widget_Image {
 
 		const imageUrl = elementor.imagesManager.getImageUrl( image );
 
+		if ( ! imageUrl ) {
+			return;
+		}
 		#>
 		<img src="{{ imageUrl }}" title="" alt="">
 		<#

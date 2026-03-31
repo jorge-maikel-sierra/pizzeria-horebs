@@ -7,8 +7,8 @@
  * @todo    CHECK THE @SINCE VERSION NUMBER!!!!!!!!
  */
 
-use Yoast\WP\Local\Repositories\Api_Keys_Repository;
 use Yoast\WP\Local\PostType\PostType;
+use Yoast\WP\Local\Repositories\Api_Keys_Repository;
 
 if ( ! defined( 'WPSEO_LOCAL_VERSION' ) ) {
 	header( 'Status: 403 Forbidden' );
@@ -52,14 +52,16 @@ if ( ! class_exists( 'WPSEO_Local_Admin_API_Keys' ) ) {
 
 			add_action( 'wpseo_local_admin_' . $this->slug . '_content', [ $this, 'tab_content' ], 10 );
 
-			add_action( 'Yoast\WP\Local\before_option_content_' . $this->slug, [
-				$this,
-				'maybe_show_google_maps_api_key_update_notification',
-			] );
+			add_action(
+				'Yoast\WP\Local\before_option_content_' . $this->slug,
+				[ $this, 'maybe_show_google_maps_api_key_update_notification' ]
+			);
 		}
 
 		/**
 		 * Set WPSEO Local API Keys Repository in local property.
+		 *
+		 * @return void
 		 */
 		private function get_api_keys_repository() {
 			$this->api_keys_repository = new Api_Keys_Repository();
@@ -93,6 +95,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_API_Keys' ) ) {
 
 		/**
 		 * Create tab content for API Settings.
+		 *
+		 * @return void
 		 */
 		public function tab_content() {
 
@@ -122,7 +126,7 @@ if ( ! class_exists( 'WPSEO_Local_Admin_API_Keys' ) ) {
 				echo '<h3>' . esc_html__( 'API browser key for Google Maps', 'yoast-local-seo' ) . '</h3>';
 				echo '<p>';
 				/* translators: %1$s extends to the anchor opening tag '<a href="https://yoa.st/gm-api-browser-key" target="_blank">', %2$s closes that tag. */
-				echo sprintf( esc_html__( 'A Google Maps browser key is required to show Google Maps and make use of the Store Locator. For more information on how to create and set your %1$sGoogle Maps browser key%2$s, %3$scheck our Yoast help center%4$s.', 'yoast-local-seo' ), '<a href="' . WPSEO_Shortlinker::get( 'https://yoa.st/gm-api-browser-key' ) . '" target="_blank">', '</a>' );
+				printf( esc_html__( 'A Google Maps browser key is required to show Google Maps and make use of the Store Locator. For more information on how to create and set your %1$sGoogle Maps browser key%2$s, %3$scheck our Yoast help center%4$s.', 'yoast-local-seo' ), '<a href="' . WPSEO_Shortlinker::get( 'https://yoa.st/gm-api-browser-key' ) . '" target="_blank">', '</a>' );
 				echo '</p>';
 				if ( ! defined( 'WPSEO_LOCAL_API_KEY_BROWSER' ) ) {
 					WPSEO_Local_Admin_Wrappers::textinput( 'local_api_key_browser', __( 'Google Maps API browser key (required)', 'yoast-local-seo' ) );
@@ -132,6 +136,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin_API_Keys' ) ) {
 
 		/**
 		 * Maybe display a notification that the API key has been changed.
+		 *
+		 * @return void
 		 */
 		public function maybe_show_google_maps_api_key_update_notification() {
 			if ( get_transient( 'wpseo_local_api_key_changed' ) ) {

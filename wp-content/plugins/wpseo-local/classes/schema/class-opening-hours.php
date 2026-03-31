@@ -83,7 +83,7 @@ class WPSEO_Local_Opening_Hours {
 			return ( $open_247 === 'on' );
 		}
 
-		$open_247 = isset( $this->options['open_247'] ) ? $this->options['open_247'] : '';
+		$open_247 = ( $this->options['open_247'] ?? '' );
 
 		return ( $open_247 === 'on' );
 	}

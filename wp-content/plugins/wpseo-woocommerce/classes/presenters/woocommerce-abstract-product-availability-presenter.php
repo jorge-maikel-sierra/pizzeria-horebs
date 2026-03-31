@@ -27,9 +27,9 @@ abstract class WPSEO_WooCommerce_Abstract_Product_Availability_Presenter extends
 	/**
 	 * WPSEO_WooCommerce_Abstract_Product_Availability_Presenter constructor.
 	 *
-	 * @param \WC_Product $product         The product.
-	 * @param bool        $is_on_backorder Whether the product is on backorder.
-	 * @param bool        $is_in_stock     Whether the product is in stock.
+	 * @param WC_Product $product         The product.
+	 * @param bool       $is_on_backorder Whether the product is on backorder.
+	 * @param bool       $is_in_stock     Whether the product is in stock.
 	 */
 	public function __construct( WC_Product $product, $is_on_backorder, $is_in_stock = false ) {
 		parent::__construct( $product );

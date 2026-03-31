@@ -38,7 +38,7 @@ class WPSEO_Show_Address extends WP_Widget {
 	 * @return void
 	 */
 	public function widget( $args, $instance ) {
-		$title              = apply_filters( 'widget_title', isset( $instance['title'] ) ? $instance['title'] : '' );
+		$title              = apply_filters( 'widget_title', ( $instance['title'] ?? '' ) );
 		$location_id        = ! empty( $instance['location_id'] ) ? $instance['location_id'] : '';
 		$hide_name          = ! empty( $instance['hide_name'] );
 		$hide_address       = ! empty( $instance['hide_address'] );

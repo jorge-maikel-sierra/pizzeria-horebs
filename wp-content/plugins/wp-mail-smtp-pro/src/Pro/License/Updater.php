@@ -2,6 +2,9 @@
 
 namespace WPMailSMTP\Pro\License;
 
+use stdClass;
+use WPMailSMTP\Helpers\Helpers;
+
 /**
  * Updater class.
  *
@@ -283,6 +286,7 @@ class Updater {
 
 		$args = [
 			'headers' => $headers,
+			'user-agent' => Helpers::get_default_user_agent(),
 		];
 
 		// Perform the query and retrieve the response.
@@ -317,16 +321,46 @@ class Updater {
 	 * Is required for the enable/disable auto-updates links to correctly appear in UI.
 	 *
 	 * @since 3.0.0
+	 * @since 3.8.0 Refactor to get the `return` object from a public static method.
 	 *
 	 * @return object
 	 */
 	protected function get_no_update() {
 
+		return self::get_no_update_object(
+			[
+				'plugin_path' => $this->plugin_path,
+				'plugin_slug' => $this->plugin_slug,
+				'version'     => $this->version,
+			]
+		);
+	}
+
+	/**
+	 * Returns the "mock" item to the `no_update` property.
+	 *
+	 * @since 3.8.0
+	 *
+	 * @param array $plugin_data Plugin data.
+	 *
+	 * @return object
+	 */
+	public static function get_no_update_object( $plugin_data ) {
+
+		$plugin = wp_parse_args(
+			$plugin_data,
+			[
+				'plugin_path' => '',
+				'plugin_slug' => '',
+				'version'     => '',
+			]
+		);
+
 		return (object) [
-			'id'            => $this->plugin_path,
-			'slug'          => $this->plugin_slug,
-			'plugin'        => $this->plugin_path,
-			'new_version'   => $this->version,
+			'id'            => $plugin['plugin_path'],
+			'slug'          => $plugin['plugin_slug'],
+			'plugin'        => $plugin['plugin_path'],
+			'new_version'   => $plugin['version'],
 			'url'           => '',
 			'package'       => '',
 			'icons'         => [],
@@ -334,7 +368,7 @@ class Updater {
 			'banners_rtl'   => [],
 			'tested'        => '',
 			'requires_php'  => '',
-			'compatibility' => new \stdClass(),
+			'compatibility' => new stdClass(),
 		];
 	}
 }

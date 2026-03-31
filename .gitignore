@@ -1,23 +1,77 @@
+# ==============================================================================
+# Pizzería Horeb's – .gitignore
+# Estrategia: TODO WordPress se versiona EXCEPTO lo listado aquí.
+# Hostinger clona el repo directo en public_html.
+# ==============================================================================
 
-# Ignorar archivos de configuración específicos del servidor
+# ─── Configuración sensible ───────────────────────────────────────────────────
 wp-config.php
-
-# Ignorar el archivo de registro de errores de PHP
-error_log
-
-# Eliminacion de archivo .ddev
-.ddev
-
-# Eliminacion de archivo de configuracion ddev
 wp-config-ddev.php
+wp-config-local.php
+.env
+.env.*
 
-# Eliminar archivo .log 
+# ─── Base de datos y exportaciones ────────────────────────────────────────────
+*.sql
+*.sql.gz
+pizzeriaHorebsDB/
+exports/
+export_wp_database_full/
+Backup/
+
+# ─── Uploads (contenido dinámico, solo en producción) ─────────────────────────
+wp-content/uploads/
+
+# ─── Caché y archivos generados ───────────────────────────────────────────────
+wp-content/cache/
+wp-content/litespeed/
+wp-content/upgrade/
+wp-content/backups-dup-lite/
+wp-content/ai1wm-backups/
+wp-content/updraft/
+wp-content/wflogs/
+wp-content/advanced-cache.php
+wp-content/object-cache.php
+wp-content/db.php
+
+# ─── Logs ─────────────────────────────────────────────────────────────────────
 *.log
+error_log
+debug.log
+wp-content/debug.log
 
-pizzeriaHorebsDB
-exports
-export_wp_database_full
-.vscode
-.venv
-pizzeriaHorebsDB
+# ─── Entorno de desarrollo local (DDEV) ──────────────────────────────────────
+.ddev/
+
+# ─── Analytics (pipeline Python independiente, no va a producción) ────────────
 analytics/
+.venv/
+__pycache__/
+*.pyc
+
+# ─── IDE y herramientas ──────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ─── Node/Composer (si se usan en desarrollo) ────────────────────────────────
+node_modules/
+vendor/
+package-lock.json
+composer.lock
+
+# ─── Archivos del sistema de deploy (no necesarios en producción) ─────────────
+# deploy.sh SÍ se versiona para tenerlo disponible en el servidor
+.deployignore
+
+# ─── Plugins de terceros pesados (se instalan en producción vía WP Admin) ────
+# NOTA: Si decides NO versionar plugins de terceros, descomenta lo siguiente:
+# wp-content/plugins/elementor/
+# wp-content/plugins/elementor-pro/
+# wp-content/plugins/woocommerce/
+# wp-content/plugins/woocommerce-mercadopago/
+# Ver docs/DEPLOY.md para la estrategia completa de plugins

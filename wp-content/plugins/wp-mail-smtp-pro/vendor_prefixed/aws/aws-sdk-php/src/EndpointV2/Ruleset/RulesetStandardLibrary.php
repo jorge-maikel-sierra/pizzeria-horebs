@@ -190,7 +190,7 @@ class RulesetStandardLibrary
         }
         $arn = [];
         $parts = \explode(':', $arnString, 6);
-        if (\sizeof($parts) > 6) {
+        if (\sizeof($parts) < 6) {
             return null;
         }
         $arn['partition'] = isset($parts[1]) ? $parts[1] : null;
@@ -202,8 +202,7 @@ class RulesetStandardLibrary
             return null;
         }
         $resource = $arn['resourceId'];
-        $delimiter = \strpos($resource, ':') !== \false ? ':' : '/';
-        $arn['resourceId'] = \explode($delimiter, $resource);
+        $arn['resourceId'] = \preg_split("/[:\\/]/", $resource);
         return $arn;
     }
     /**
@@ -256,7 +255,7 @@ class RulesetStandardLibrary
         if ($funcName === 'isSet') {
             $funcName = 'is_set';
         }
-        $result = \call_user_func_array(['WPMailSMTP\\Vendor\\Aws\\EndpointV2\\Ruleset\\RulesetStandardLibrary', $funcName], $funcArgs);
+        $result = \call_user_func_array([\WPMailSMTP\Vendor\Aws\EndpointV2\Ruleset\RulesetStandardLibrary::class, $funcName], $funcArgs);
         if (isset($funcCondition['assign'])) {
             $assign = $funcCondition['assign'];
             if (isset($inputParameters[$assign])) {

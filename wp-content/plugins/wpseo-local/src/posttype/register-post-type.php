@@ -6,7 +6,6 @@ use WPSEO_Local_Option;
 use WPSEO_Options;
 use Yoast\WP\Local\Conditionals\Multiple_Locations_Conditional;
 use Yoast\WP\SEO\Initializers\Initializer_Interface;
-use Yoast\WP\SEO\Integrations\Integration_Interface;
 
 if ( \class_exists( PostType::class ) ) {
 	return;
@@ -18,12 +17,16 @@ if ( \class_exists( PostType::class ) ) {
 class PostType implements Initializer_Interface {
 
 	/**
-	 * @var string The post type on which the Yoast SEO: Local functionality will be added.
+	 * The post type on which the Yoast SEO: Local functionality will be added.
+	 *
+	 * @var string
 	 */
 	private $post_type = 'wpseo_locations';
 
 	/**
-	 * @return array A list of conditionals that must be met to use the class
+	 * A list of conditionals that must be met to use the class.
+	 *
+	 * @return array<string>
 	 */
 	public static function get_conditionals() {
 		return [
@@ -33,6 +36,8 @@ class PostType implements Initializer_Interface {
 
 	/**
 	 * Initialize PostType
+	 *
+	 * @return void
 	 */
 	public function initialize() {
 		$this->post_type = (string) \apply_filters( 'wpseo_local_post_type', $this->post_type );
@@ -43,6 +48,8 @@ class PostType implements Initializer_Interface {
 
 	/**
 	 * Register a custom post type for locations.
+	 *
+	 * @return void
 	 */
 	public function register_post_type() {
 		/**
@@ -52,6 +59,7 @@ class PostType implements Initializer_Interface {
 		 * This is a temporary fix until we remove all usages of deprecated classes.
 		 */
 		if ( $this->is_post_type_filtered() || ! \wpseo_has_multiple_locations() ) {
+			$this->maybe_flush_rewrite_rules();
 			return;
 		}
 
@@ -100,6 +108,7 @@ class PostType implements Initializer_Interface {
 		$args_cpt = \apply_filters( 'wpseo_local_cpt_args', $args_cpt );
 
 		\register_post_type( $this->post_type, $args_cpt );
+		$this->maybe_flush_rewrite_rules();
 	}
 
 	/**
@@ -118,5 +127,18 @@ class PostType implements Initializer_Interface {
 	 */
 	public function get_post_type() {
 		return $this->post_type;
+	}
+
+	/**
+	 * Flushes rewrite rules if the relevant transient had been set when a settings change was detected.
+	 *
+	 * @return void
+	 */
+	private function maybe_flush_rewrite_rules() {
+		if ( \get_transient( 'wpseo_local_location_type_status_changed' ) ) {
+			\flush_rewrite_rules();
+
+			\delete_transient( 'wpseo_local_location_type_status_changed' );
+		}
 	}
 }

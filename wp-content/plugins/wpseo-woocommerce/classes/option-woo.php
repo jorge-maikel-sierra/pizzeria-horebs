@@ -52,7 +52,7 @@ if ( ! class_exists( 'WPSEO_Option_Woo' ) && class_exists( 'WPSEO_Option' ) ) {
 		 *
 		 * Shouldn't be requested directly, use $this->get_defaults().
 		 *
-		 * @var array
+		 * @var array<string, int|string|bool>
 		 */
 		protected $defaults = [
 			// Non-form fields, set via validation routine.
@@ -83,6 +83,8 @@ if ( ! class_exists( 'WPSEO_Option_Woo' ) && class_exists( 'WPSEO_Option' ) ) {
 
 		/**
 		 * Registers the option to the WPSEO Options framework.
+		 *
+		 * @return void
 		 */
 		public static function register_option() {
 			WPSEO_Options::register_option( self::get_instance() );
@@ -190,6 +192,8 @@ if ( ! class_exists( 'WPSEO_Option_Woo' ) && class_exists( 'WPSEO_Option' ) ) {
 
 		/**
 		 * Performs the upgrade of the option.
+		 *
+		 * @return void
 		 */
 		private function upgrade() {
 			$option = get_option( $this->option_name );

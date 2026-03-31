@@ -80,20 +80,37 @@ function _wp_ajax_menu_quick_search( $request = array() ) {
 				}
 			}
 		}
-	} elseif ( preg_match( '/quick-search-(posttype|taxonomy)-([a-zA-Z_-]*\b)/', $type, $matches ) ) {
+	} elseif ( preg_match( '/quick-search-(posttype|taxonomy)-([a-zA-Z0-9_-]*\b)/', $type, $matches ) ) {
 		if ( 'posttype' === $matches[1] && get_post_type_object( $matches[2] ) ) {
 			$post_type_obj = _wp_nav_menu_meta_box_object( get_post_type_object( $matches[2] ) );
-			$args          = array_merge(
-				$args,
-				array(
-					'no_found_rows'          => true,
-					'update_post_meta_cache' => false,
-					'update_post_term_cache' => false,
-					'posts_per_page'         => 10,
-					'post_type'              => $matches[2],
-					's'                      => $query,
-				)
+			$query_args    = array(
+				'no_found_rows'          => true,
+				'update_post_meta_cache' => false,
+				'update_post_term_cache' => false,
+				'posts_per_page'         => 10,
+				'post_type'              => $matches[2],
+				's'                      => $query,
+				'search_columns'         => array( 'post_title' ),
 			);
+			/**
+			 * Filter the menu quick search arguments.
+			 *
+			 * @since 6.9.0
+			 *
+			 * @param array $args {
+			 *     Menu quick search arguments.
+			 *
+			 *     @type boolean      $no_found_rows          Whether to return found rows data. Default true.
+			 *     @type boolean      $update_post_meta_cache Whether to update post meta cache. Default false.
+			 *     @type boolean      $update_post_term_cache Whether to update post term cache. Default false.
+			 *     @type int          $posts_per_page         Number of posts to return. Default 10.
+			 *     @type string       $post_type              Type of post to return.
+			 *     @type string       $s                      Search query.
+			 *     @type array        $search_columns         Which post table columns to query.
+			 * }
+			*/
+			$query_args = apply_filters( 'wp_ajax_menu_quick_search_args', $query_args );
+			$args       = array_merge( $args, $query_args );
 
 			if ( isset( $post_type_obj->_default_query ) ) {
 				$args = array_merge( $args, (array) $post_type_obj->_default_query );
@@ -204,7 +221,7 @@ function wp_nav_menu_setup() {
  *
  * @since 3.0.0
  *
- * @global array $wp_meta_boxes
+ * @global array $wp_meta_boxes Global meta box state.
  */
 function wp_initial_nav_menu_meta_boxes() {
 	global $wp_meta_boxes;
@@ -351,6 +368,7 @@ function wp_nav_menu_item_link_meta_box() {
 				type="text"<?php wp_nav_menu_disabled_check( $nav_menu_selected_id ); ?>
 				class="code menu-item-textbox form-required" placeholder="https://"
 			/>
+			<span id="custom-url-error" class="error-message" style="display: none;"><?php _e( 'Please provide a valid link.' ); ?></span>
 		</p>
 
 		<p id="menu-item-name-wrap" class="wp-clearfix">
@@ -494,7 +512,6 @@ function wp_nav_menu_item_post_type_meta_box( $data_object, $box ) {
 		}
 	}
 
-	// @todo Transient caching of these results with proper invalidation on updating of a post of this type.
 	$get_posts = new WP_Query();
 	$posts     = $get_posts->query( $args );
 
@@ -874,8 +891,8 @@ function wp_nav_menu_item_taxonomy_meta_box( $data_object, $box ) {
 		return;
 	}
 
-	$num_pages = ceil(
-		wp_count_terms(
+	$num_pages = (int) ceil(
+		(int) wp_count_terms(
 			array_merge(
 				$args,
 				array(
@@ -1238,7 +1255,8 @@ function _wp_nav_menu_meta_box_object( $data_object = null ) {
  * @since 3.0.0
  *
  * @param int $menu_id Optional. The ID of the menu to format. Default 0.
- * @return string|WP_Error The menu formatted to edit or error object on failure.
+ * @return string|WP_Error|null The menu formatted to edit or error object on failure.
+ *                              Null if the `$menu_id` parameter is not supplied or the term does not exist.
  */
 function wp_get_nav_menu_to_edit( $menu_id = 0 ) {
 	$menu = wp_get_nav_menu_object( $menu_id );
@@ -1291,15 +1309,21 @@ function wp_get_nav_menu_to_edit( $menu_id = 0 ) {
 		}
 
 		if ( $some_pending_menu_items ) {
-			$result .= '<div class="notice notice-info notice-alt inline"><p>'
-				. __( 'Click Save Menu to make pending menu items public.' )
-				. '</p></div>';
+			$message     = __( 'Click Save Menu to make pending menu items public.' );
+			$notice_args = array(
+				'type'               => 'info',
+				'additional_classes' => array( 'notice-alt', 'inline' ),
+			);
+			$result     .= wp_get_admin_notice( $message, $notice_args );
 		}
 
 		if ( $some_invalid_menu_items ) {
-			$result .= '<div class="notice notice-error notice-alt inline"><p>'
-				. __( 'There are some invalid menu items. Please check or delete them.' )
-				. '</p></div>';
+			$message     = __( 'There are some invalid menu items. Please check or delete them.' );
+			$notice_args = array(
+				'type'               => 'error',
+				'additional_classes' => array( 'notice-alt', 'inline' ),
+			);
+			$result     .= wp_get_admin_notice( $message, $notice_args );
 		}
 
 		$result .= '<ul class="menu" id="menu-to-edit"> ';
@@ -1315,6 +1339,7 @@ function wp_get_nav_menu_to_edit( $menu_id = 0 ) {
 		return $menu;
 	}
 
+	return null;
 }
 
 /**
@@ -1432,7 +1457,13 @@ function wp_nav_menu_update_menu_items( $nav_menu_selected_id, $nav_menu_selecte
 			);
 
 			if ( is_wp_error( $menu_item_db_id ) ) {
-				$messages[] = '<div id="message" class="error"><p>' . $menu_item_db_id->get_error_message() . '</p></div>';
+				$messages[] = wp_get_admin_notice(
+					$menu_item_db_id->get_error_message(),
+					array(
+						'id'                 => 'message',
+						'additional_classes' => array( 'error' ),
+					)
+				);
 			} else {
 				unset( $menu_items[ $menu_item_db_id ] );
 			}
@@ -1473,19 +1504,22 @@ function wp_nav_menu_update_menu_items( $nav_menu_selected_id, $nav_menu_selecte
 		wp_get_nav_menus( array( 'fields' => 'ids' ) )
 	);
 
-	update_option( 'nav_menu_options', $nav_menu_option );
+	update_option( 'nav_menu_options', $nav_menu_option, false );
 
 	wp_defer_term_counting( false );
 
 	/** This action is documented in wp-includes/nav-menu.php */
 	do_action( 'wp_update_nav_menu', $nav_menu_selected_id );
 
-	$messages[] = '<div id="message" class="updated notice is-dismissible"><p>' .
-		sprintf(
-			/* translators: %s: Nav menu title. */
-			__( '%s has been updated.' ),
-			'<strong>' . $nav_menu_selected_title . '</strong>'
-		) . '</p></div>';
+	/* translators: %s: Nav menu title. */
+	$message     = sprintf( __( '%s has been updated.' ), '<strong>' . $nav_menu_selected_title . '</strong>' );
+	$notice_args = array(
+		'id'                 => 'message',
+		'dismissible'        => true,
+		'additional_classes' => array( 'updated' ),
+	);
+
+	$messages[] = wp_get_admin_notice( $message, $notice_args );
 
 	unset( $menu_items, $unsorted_menu_items );
 

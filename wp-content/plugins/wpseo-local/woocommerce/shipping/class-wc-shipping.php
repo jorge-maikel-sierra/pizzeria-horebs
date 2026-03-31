@@ -219,9 +219,9 @@ class Yoast_WCSEO_Local_Shipping {
 			$yoast_wcseo_local_translations = [
 				'has_categories'             => (int) $this->has_location_categories,
 				'label_remove'               => esc_attr( __( 'Remove', 'yoast-local-seo' ) ),
-				/* translators: %s expands to a pickup location title. */
+				/* translators: Hidden accessibility text; %s expands to a pickup location title. */
 				'label_allow_location'       => esc_attr( __( 'Allow pickup location: %s', 'yoast-local-seo' ) ),
-				/* translators: %s expands to a pickup location title. */
+				/* translators: Hidden accessibility text; %s expands to a pickup location title. */
 				'label_costs_location'       => esc_attr( __( 'Costs for pickup location: %s', 'yoast-local-seo' ) ),
 				'placeholder_costs_location' => esc_attr( __( 'Enter a price (excl. tax), like: 42.12', 'yoast-local-seo' ) ),
 				/* translators: 1: expands to "Yoast SEO: Local SEO for WooCommerce"; 2: expands to "WooCommerce. */

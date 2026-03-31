@@ -5,6 +5,8 @@
  * @package WPSEO/WooCommerce
  */
 
+use Yoast\WP\SEO\Presentations\Indexable_Presentation;
+
 /**
  * Class WPSEO_WooCommerce_Twitter
  */
@@ -12,9 +14,11 @@ class WPSEO_WooCommerce_Twitter {
 
 	/**
 	 * Register hooks.
+	 *
+	 * @return void
 	 */
 	public function register_hooks() {
-		\add_filter( 'wpseo_twitter_image', [ $this, 'fallback_to_product_gallery_image' ], 10, 2 );
+		add_filter( 'wpseo_twitter_image', [ $this, 'fallback_to_product_gallery_image' ], 10, 2 );
 	}
 
 	/**
@@ -34,16 +38,16 @@ class WPSEO_WooCommerce_Twitter {
 		$object = $presentation->model;
 
 		// This method only provides a fallback for products.
-		if ( ! $object->object_type === 'post' && ! $object->object_sub_type === 'product' ) {
+		if ( $object->object_type !== 'post' || $object->object_sub_type !== 'product' ) {
 			return $twitter_image;
 		}
 
-		$product = \wc_get_product( $object->object_id );
+		$product = wc_get_product( $object->object_id );
 
 		if ( $product ) {
 			// Fall back to the first image in the product gallery.
 			$gallery_image_ids      = $product->get_gallery_image_ids();
-			$first_gallery_image_id = \reset( $gallery_image_ids );
+			$first_gallery_image_id = reset( $gallery_image_ids );
 
 			if ( $first_gallery_image_id ) {
 				return YoastSEO()->helpers->twitter->image->get_by_id( $first_gallery_image_id );

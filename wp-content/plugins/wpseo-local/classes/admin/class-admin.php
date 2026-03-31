@@ -5,9 +5,9 @@
  * @package WPSEO_LOCAL\Admin
  */
 
-use Yoast\WP\SEO\Presenters\Admin\Alert_Presenter;
-use Yoast\WP\Local\Repositories\Api_Keys_Repository;
 use Yoast\WP\Local\PostType\PostType;
+use Yoast\WP\Local\Repositories\Api_Keys_Repository;
+use Yoast\WP\SEO\Presenters\Admin\Alert_Presenter;
 
 if ( ! defined( 'WPSEO_LOCAL_VERSION' ) ) {
 	header( 'Status: 403 Forbidden' );
@@ -93,12 +93,6 @@ if ( ! class_exists( 'WPSEO_Local_Admin' ) ) {
 			add_action( 'admin_init', [ $this, 'flush_rewrite_rules' ] );
 
 			add_filter( 'wpseo_helpscout_beacon_settings', [ $this, 'filter_helpscout_beacon' ] );
-
-			// Only register the yoast i18n when the page is a Yoast SEO page.
-			if ( $this->is_local_seo_page( filter_input( INPUT_GET, 'page' ) ) ) {
-				$this->register_i18n_promo_class();
-			}
-
 			add_action( 'admin_init', [ $this, 'maps_api_browser_key_notification' ] );
 
 			$this->asset_manager = new WPSEO_Local_Admin_Assets();
@@ -111,6 +105,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin' ) ) {
 
 		/**
 		 * Register wpeso_local option with Yoast SEO Options framework.
+		 *
+		 * @return void
 		 */
 		public function register_custom_option() {
 			WPSEO_Options::register_option( WPSEO_Local_Option::get_instance() );
@@ -134,6 +130,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin' ) ) {
 		 * Registers the wpseo_local setting for Settings API
 		 *
 		 * @since 1.0
+		 *
+		 * @return void
 		 */
 		public function options_init() {
 			register_setting( 'yoast_wpseo_local_options', 'wpseo_local' );
@@ -141,6 +139,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin' ) ) {
 
 		/**
 		 * Adds local page to admin_page variable of wpseo
+		 *
+		 * @return void
 		 */
 		public function register_wpseo() {
 			add_filter( 'wpseo_admin_pages', [ $this, 'register_local_page' ] );
@@ -184,6 +184,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin' ) ) {
 
 		/**
 		 * Set true or false values to see what screen we are on.
+		 *
+		 * @return void
 		 */
 		public function set_current_screen() {
 			global $pagenow;
@@ -204,6 +206,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin' ) ) {
 		 * Loads some CSS
 		 *
 		 * @since 1.0
+		 *
+		 * @return void
 		 */
 		public function config_page_styles() {
 			if ( $this->is_locations_page || $this->is_settings_page || $this->is_edit_page || $this->is_locations_category_term_page ) {
@@ -213,6 +217,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin' ) ) {
 
 		/**
 		 * Enqueues the (tiny) global JS needed for the plugin.
+		 *
+		 * @return void
 		 */
 		public function config_page_scripts() {
 			if ( $this->is_settings_page || $this->is_locations_page || $this->is_locations_category_term_page ) {
@@ -272,6 +278,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin' ) ) {
 
 		/**
 		 * Print the required JavaScript in the footer
+		 *
+		 * @return void
 		 */
 		public function config_page_footer() {
 			if ( $this->is_settings_page || $this->is_locations_page ) {
@@ -325,6 +333,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin' ) ) {
 
 		/**
 		 * Generates the import panel for importing locations via CSV
+		 *
+		 * @return void
 		 */
 		public function import_panel() {
 
@@ -341,6 +351,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin' ) ) {
 		 *
 		 * @param mixed $old_option_value Value of the current option.
 		 * @param mixed $new_option_value Value of the new, currently saved option.
+		 *
+		 * @return void
 		 */
 		public function update_multiple_locations( $old_option_value, $new_option_value ) {
 			$old_value_exists = array_key_exists( 'use_multiple_locations', $old_option_value );
@@ -361,6 +373,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin' ) ) {
 		 * Flushes the rewrite rules if multiple locations is turned on or off or the slug is changed.
 		 *
 		 * @since 1.3.1
+		 *
+		 * @return void
 		 */
 		public function flush_rewrite_rules() {
 			if ( get_transient( 'wpseo_local_permalinks_settings_changed' ) == true ) {
@@ -372,6 +386,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin' ) ) {
 
 		/**
 		 * Registers a notification if the Google Maps API browser key has not yet been set.
+		 *
+		 * @return void
 		 */
 		public function maps_api_browser_key_notification() {
 			if ( ! class_exists( 'Yoast_Notification_Center' ) ) {
@@ -419,26 +435,6 @@ if ( ! class_exists( 'WPSEO_Local_Admin' ) ) {
 		}
 
 		/**
-		 * Register the promotion class for our GlotPress instance
-		 *
-		 * @link https://github.com/Yoast/i18n-module
-		 */
-		private function register_i18n_promo_class() {
-			$args = [
-				'textdomain'     => 'yoast-local-seo',
-				'project_slug'   => 'yoast-seo-local',
-				'plugin_name'    => 'Local SEO by Yoast',
-				'hook'           => 'wpseo_admin_promo_footer',
-				'glotpress_url'  => 'http://translate.yoast.com/gp/',
-				'glotpress_name' => 'Yoast Translate',
-				'glotpress_logo' => 'https://translate.yoast.com/gp-templates/images/Yoast_Translate.svg',
-				'register_url'   => 'https://translate.yoast.com/gp/projects#utm_source=plugin&utm_medium=promo-box&utm_campaign=wpseo-i18n-promo',
-			];
-
-			new Yoast_I18n_v3( $args );
-		}
-
-		/**
 		 * @param string $message   The notification message to display.
 		 * @param string $type      The type of notification to display. Can be warning, success or info.
 		 * @param string $css_class Optional. CSS class name(s).
@@ -477,8 +473,8 @@ if ( ! class_exists( 'WPSEO_Local_Admin' ) ) {
 		public static function get_missing_zipcode_country_alert() {
 			$message = sprintf(
 				/* translators: 1: expands to a link opening tag; 2: expands to a link closing tag */
-				\esc_html__( 'A zipcode and country need to be set for structured data to work properly. %1$sLearn more about the importance of structured data.%2$s', 'yoast-local-seo' ),
-				'<a href ="' . \esc_url( WPSEO_Shortlinker::get( 'https://yoa.st/4ca' ) ) . '" target="_blank">',
+				esc_html__( 'A zipcode and country need to be set for structured data to work properly. %1$sLearn more about the importance of structured data.%2$s', 'yoast-local-seo' ),
+				'<a href ="' . esc_url( WPSEO_Shortlinker::get( 'https://yoa.st/4ca' ) ) . '" target="_blank">',
 				WPSEO_Admin_Utils::get_new_tab_message() . '</a>'
 			);
 
@@ -495,18 +491,18 @@ if ( ! class_exists( 'WPSEO_Local_Admin' ) ) {
 				return;
 			}
 
-			\printf(
+			printf(
 				'<div class="notice notice-warning"><p>%1$s</p><p>%2$s</p></div>',
-				\sprintf(
+				sprintf(
 					/* translators: 1: Link start tag to a yoast.com page about structured data, 2: Link closing tag. */
-					\esc_html__( 'A company name and logo need to be set for structured data to work properly. %1$sLearn more about the importance of structured data.%2$s', 'yoast-local-seo' ),
-					'<a href="' . \esc_url( WPSEO_Shortlinker::get( 'https://yoa.st/4cb' ) ) . '" target="_blank">',
+					esc_html__( 'An Organization name and logo need to be set for structured data to work properly. %1$sLearn more about the importance of structured data.%2$s', 'yoast-local-seo' ),
+					'<a href="' . esc_url( WPSEO_Shortlinker::get( 'https://yoa.st/4cb' ) ) . '" target="_blank">',
 					WPSEO_Admin_Utils::get_new_tab_message() . '</a>'
 				),
-				\sprintf(
+				sprintf(
 					/* translators: 1: Link start tag to the Yoast SEO Search Appearance settings page, 2: Link closing tag. */
-					\esc_html__( '%1$sSet your company name and logo%2$s', 'yoast-local-seo' ),
-					'<a href="' . \esc_url( \admin_url( 'admin.php?page=wpseo_titles' ) ) . '" class="button">',
+					esc_html__( '%1$sSet your Organization name and logo.%2$s', 'yoast-local-seo' ),
+					'<a href="' . esc_url( admin_url( 'admin.php?page=wpseo_page_settings#/site-representation' ) ) . '" class="button">',
 					'</a>'
 				)
 			);
@@ -528,7 +524,7 @@ if ( ! class_exists( 'WPSEO_Local_Admin' ) ) {
 				&& WPSEO_Capability_Utils::current_user_can( 'wpseo_manage_options' )
 				&& (
 					YoastSEO()->helpers->current_page->is_yoast_seo_page()
-					|| \in_array( YoastSEO()->helpers->current_page->get_current_admin_page(), $relevant_wp_pages, true )
+					|| in_array( YoastSEO()->helpers->current_page->get_current_admin_page(), $relevant_wp_pages, true )
 				)
 			);
 		}

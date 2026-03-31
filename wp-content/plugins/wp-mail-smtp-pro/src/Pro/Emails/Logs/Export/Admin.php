@@ -2,6 +2,7 @@
 
 namespace WPMailSMTP\Pro\Emails\Logs\Export;
 
+use WPMailSMTP\Pro\Emails\Logs\EmailsCollection;
 use WPMailSMTP\WP;
 use WPMailSMTP\Admin\Pages\ExportTab;
 
@@ -106,10 +107,12 @@ class Admin extends ExportTab {
 			<input type="hidden" name="action" value="wp_mail_smtp_tools_export_email_logs">
 			<?php wp_nonce_field( 'wp-mail-smtp-tools-export-email-logs-nonce', 'nonce' ); ?>
 
+			<div class="wp-mail-smtp-setting-row wp-mail-smtp-setting-row-content section-heading no-desc wp-mail-smtp-section-heading--has-divider">
+				<div class="wp-mail-smtp-setting-field">
+					<h2><?php esc_html_e( 'Export Email Logs', 'wp-mail-smtp-pro' ); ?></h2>
+				</div>
+			</div>
 			<div class="wp-mail-smtp-setting-row">
-
-				<h2><?php esc_html_e( 'Export Email Logs', 'wp-mail-smtp-pro' ); ?></h2>
-
 				<section class="wp-clearfix" id="wp-mail-smtp-tools-export-email-logs-export-type">
 					<h5><?php esc_html_e( 'Export Type', 'wp-mail-smtp-pro' ); ?></h5>
 					<?php $this->display_export_type_block(); ?>
@@ -242,15 +245,15 @@ class Admin extends ExportTab {
 		$search = $this->request->get_arg( 'search' );
 		?>
 		<select name="search[place]" class="wp-mail-smtp-search-box-field">
-			<option value="people" <?php selected( 'people', $search['place'] ); ?>>
-				<?php esc_html_e( 'Email Addresses', 'wp-mail-smtp-pro' ); ?>
-			</option>
-			<option value="headers" <?php selected( 'headers', $search['place'] ); ?>>
-				<?php esc_html_e( 'Subject & Headers', 'wp-mail-smtp-pro' ); ?>
-			</option>
-			<option value="content" <?php selected( 'content', $search['place'] ); ?>>
-				<?php esc_html_e( 'Content', 'wp-mail-smtp-pro' ); ?>
-			</option>
+			<?php
+				foreach ( EmailsCollection::get_search_conditions() as $value => $label ) {
+					?>
+					<option value="<?php echo esc_attr( $value ); ?>" <?php selected( esc_attr( $value ), $search['place'] ); ?>>
+						<?php echo esc_html( $label ); ?>
+					</option>
+					<?php
+				}
+			?>
 		</select>
 
 		<input type="text" name="search[term]" class="wp-mail-smtp-search-box-term" value="<?php echo esc_attr( $search['term'] ); ?>">

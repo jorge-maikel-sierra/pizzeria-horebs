@@ -38,6 +38,8 @@ if ( ! class_exists( 'WPSEO_Local_Taxonomy' ) ) {
 		 * Show the SEO inputs for term.
 		 *
 		 * @param object $term Term to show the edit boxes for.
+		 *
+		 * @return void
 		 */
 		public function term_seo_form( $term ) {
 
