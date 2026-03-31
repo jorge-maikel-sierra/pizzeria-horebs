@@ -58,7 +58,9 @@
 |---|---|
 | **Repositorio** | `git@github.com:jorge-maikel-sierra/pizzeria-horebs.git` |
 | **Rama** | `main` |
-| **Directorio** | *(dejar vacío)* → deploy directo en `public_html` |
+| **Directorio** | `domains/pizzeriahorebs.com/public_html` |
+
+> ⚠️ **NOTA**: Como `pizzeriahorebs.com` es un dominio **addon**, la ruta NO es `public_html` estándar sino `domains/pizzeriahorebs.com/public_html`. Si tu WordPress estuviera en el dominio principal (`pizzeriahorebs.shop`), dejarías el directorio vacío.
 
 4. Haz clic en **"Crear"**
 5. Hostinger hará el primer `git clone` automáticamente

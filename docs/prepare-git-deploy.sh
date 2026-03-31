@@ -18,7 +18,18 @@ set -euo pipefail
 
 # ─── Configuración ───────────────────────────────────────────────────────────
 HOME_DIR="$HOME"
-PUBLIC_HTML="${HOME_DIR}/public_html"
+
+# IMPORTANTE: pizzeriahorebs.com es un dominio addon en Hostinger
+# La ruta real NO es ~/public_html sino ~/domains/pizzeriahorebs.com/public_html
+# Cambia esta variable si tu estructura es diferente
+PUBLIC_HTML="${HOME_DIR}/domains/pizzeriahorebs.com/public_html"
+
+# Si el directorio addon no existe, intentar con public_html estándar
+if [ ! -d "${PUBLIC_HTML}" ]; then
+    PUBLIC_HTML="${HOME_DIR}/public_html"
+    echo "⚠️  Usando ruta estándar: ${PUBLIC_HTML}"
+fi
+
 BACKUP_DIR="${HOME_DIR}/pre-git-backup-$(date +%Y%m%d-%H%M%S)"
 
 RED='\033[0;31m'
@@ -256,7 +267,8 @@ echo "  PASO 1: Ir a hPanel → Avanzado → Git"
 echo "  PASO 2: Crear repositorio con:"
 echo "          Repo: git@github.com:jorge-maikel-sierra/pizzeria-horebs.git"
 echo "          Rama: main"
-echo "          Directorio: (vacío)"
+echo "          Directorio: domains/pizzeriahorebs.com/public_html"
+echo "          (o dejarlo vacío si tu WP está en ~/public_html)"
 echo "  PASO 3: Esperar a que Hostinger haga el git clone"
 echo "  PASO 4: Ejecutar el script de restauración:"
 echo ""
